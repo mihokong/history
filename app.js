@@ -1,4 +1,4 @@
-// Tori's World History - App Script
+// Mochi's World History - App Script
 
 document.addEventListener('DOMContentLoaded', () => {
     // App State
@@ -516,7 +516,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "호모 사피엔스 (지혜로운 사람)"
             ],
             correctIndex: 1,
-            hint: "토리 꿀팁: 두 발로 걸어 다녀서 다리가 '아파! 아파렌시스'라고 외웠지! 👣"
+            hint: "모찌 꿀팁: 두 발로 걸어 다녀서 다리가 '아파! 아파렌시스'라고 외웠지! 👣"
         },
         {
             q: "추위와 맹수로부터 스스로를 지키기 위해 최초로 '불'을 소중히 다루고, 동료들과 '언어'로 소통하기 시작한 인류는 누구일까요?",
@@ -526,7 +526,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "오스트랄로피테쿠스 아파렌시스"
             ],
             correctIndex: 0,
-            hint: "토리 꿀팁: 불이 솟구치는 걸 보고 '에렉(에렉투스)!!' 놀랐어! 🔥"
+            hint: "모찌 꿀팁: 불이 솟구치는 걸 보고 '에렉(에렉투스)!!' 놀랐어! 🔥"
         },
         {
             q: "구석기 시대와 신석기 시대의 설명으로 틀린 것은 무엇일까요?",
@@ -536,7 +536,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "구석기 시대 사람들은 빗살무늬 토기를 만들어 곡식을 보관했다."
             ],
             correctIndex: 2,
-            hint: "토리 꿀팁: 토기를 만들어 음식을 가열하고 저장한 것은 농사를 짓기 시작한 '신석기' 시대야! 🌾"
+            hint: "모찌 꿀팁: 토기를 만들어 음식을 가열하고 저장한 것은 농사를 짓기 시작한 '신석기' 시대야! 🌾"
         },
         {
             q: "청동기 시대의 지배자가 썼던 비싼 무기나 제사도구(동검, 청동거울)가 아닌, '농사를 지을 때 수확을 위해 사용한 반달 모양의 돌 도구'는 무엇일까요?",
@@ -546,7 +546,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "고인돌"
             ],
             correctIndex: 0,
-            hint: "토리 꿀팁: 청동은 귀해서 농기구로 못 쓰고 돌(반달 돌칼)을 여전히 사용했어! 🗡️"
+            hint: "모찌 꿀팁: 청동은 귀해서 농기구로 못 쓰고 돌(반달 돌칼)을 여전히 사용했어! 🗡️"
         },
         {
             q: "황하, 인더스, 이집트, 메소포타미아 등 인류 최초의 문명 발생지가 가진 공통점이 아닌 것은 무엇일까요?",
@@ -556,7 +556,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 "신분이나 계급이 없는 완벽히 평등한 평화 사회였다."
             ],
             correctIndex: 2,
-            hint: "토리 꿀팁: 농사 생산량이 늘어 뺏고 뺏기는 싸움이 일어나면서 지배자와 피지배자가 나뉘는 '계급 사회'가 형성되었어! 👑"
+            hint: "모찌 꿀팁: 농사 생산량이 늘어 뺏고 뺏기는 싸움이 일어나면서 지배자와 피지배자가 나뉘는 '계급 사회'가 형성되었어! 👑"
         }
     ];
 
@@ -645,13 +645,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Personalised feedback message based on score
         let messageText = "";
         if (state.quizScore === 5) {
-            messageText = "💯 우와아! 5점 만점에 5점! 앵무새 토리마저 깜짝 놀라게 만든 역사 신동 탄생! 둥지에 있는 모든 황금 해바라기씨는 네 거야! 학교 시험은 백점 따놓은 당상이구만! 🌻🏆🥇";
+            messageText = "💯 우와아! 5점 만점에 5점! 앵무새 모찌마저 깜짝 놀라게 만든 역사 신동 탄생! 둥지에 있는 모든 황금 해바라기씨는 네 거야! 학교 시험은 백점 따놓은 당상이구만! 🌻🏆🥇";
             setParrotAvatar('happy');
         } else if (state.quizScore >= 3) {
-            messageText = "👍 훌륭해! 대부분의 문제를 다 이해했구나! 헷갈린 한두 문제만 토리 카드로 다시 쓱 훑어보면 금방 마스터할 수 있어! 정말 잘했어! 🦜✨";
+            messageText = "👍 훌륭해! 대부분의 문제를 다 이해했구나! 헷갈린 한두 문제만 모찌 카드로 다시 쓱 훑어보면 금방 마스터할 수 있어! 정말 잘했어! 🦜✨";
             setParrotAvatar('teacher');
         } else {
-            messageText = "🦜 괜찮아, 역사 용어는 원래 낯설고 외우기 힘들어! 토리랑 같이 인류 진화 카드 뒤집기 놀이랑 분류 게임을 한 번만 더 복습해 보면 점수가 쑥쑥 오를 거야! 화이팅! 🚀";
+            messageText = "🦜 괜찮아, 역사 용어는 원래 낯설고 외우기 힘들어! 모찌랑 같이 인류 진화 카드 뒤집기 놀이랑 분류 게임을 한 번만 더 복습해 보면 점수가 쑥쑥 오를 거야! 화이팅! 🚀";
             setParrotAvatar('cheer');
         }
         
