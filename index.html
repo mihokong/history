@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>토리와 함께하는 뒹굴뒹굴 세계사: 선사 시대 편</title>
+    <!-- Google Fonts for Cute Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Nanum+Neo:wght@400;700;800&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Cute Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-mode">
+    <!-- Day/Night Toggle Floating Button -->
+    <button id="theme-toggle" class="theme-toggle-btn" aria-label="테마 변경">
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <!-- App Header & Progress Bar -->
+    <header class="app-header">
+        <div class="logo-container">
+            <span class="logo-icon">🦜</span>
+            <h1 class="logo-text">토리의 뒹굴뒹굴 세계사</h1>
+        </div>
+        
+        <!-- Flight Progress Bar (Tori flying home) -->
+        <div class="progress-container">
+            <div class="progress-path">
+                <div id="parrot-flight" class="parrot-flight-icon">
+                    <img src="assets/parrot_teacher.png" alt="비행하는 토리" class="flight-avatar">
+                    <div class="flight-bubble">안녕! 나 날고 있어!</div>
+                </div>
+                <div id="progress-bar-fill" class="progress-bar-fill"></div>
+                <span class="nest-icon">🪹</span>
+            </div>
+            <div class="progress-info">
+                <span class="progress-label">선사 시대 모험 진행률</span>
+                <span id="progress-percentage" class="progress-percent">0%</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="main-container">
+        
+        <!-- Hero Introduction Section -->
+        <section id="hero-section" class="hero-card">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2 class="hero-title">앗, 안녕! 난 역사 천재 앵무새 <span class="highlight">토리</span>야!</h2>
+                    <p class="hero-desc">
+                        역사 시험 범위만 보면 머리가 지끈지끈하지? 🤯<br>
+                        걱정 마! 나 토리가 인류가 처음 태어난 <strong>선사 시대</strong>부터 <strong>문명이 싹튼 때</strong>까지 아주 쉽고 재밌게 안내해 줄게!<br>
+                        카드 공부를 끝내고 신나는 미니 게임을 클리어하면 둥지에 맛있는 해바라기씨가 쌓인다구! 함께 가볼까? 🌻✨
+                    </p>
+                    <button id="start-adventure-btn" class="cute-btn large-btn pulse">모험 시작하기! 🚀</button>
+                </div>
+                <div class="hero-avatar-wrapper">
+                    <img src="assets/parrot_teacher.png" alt="토리 가이드" class="hero-avatar floating">
+                    <div class="speech-bubble">오스트랄로... 아파! 아파서 직립 보행! 🤣</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter Selector Tab -->
+        <nav class="chapter-nav">
+            <button class="nav-tab active" data-target="chapter1">
+                <span class="tab-badge">1</span> 인류의 출현 🐒
+            </button>
+            <button class="nav-tab" data-target="chapter2">
+                <span class="tab-badge">2</span> 구석기 vs 신석기 🪨
+            </button>
+            <button class="nav-tab" data-target="chapter3">
+                <span class="tab-badge">3</span> 청동기와 문명 👑
+            </button>
+            <button class="nav-tab" data-target="chapter-quiz">
+                <span class="tab-badge">🏁</span> 종합 퀴즈 게임 🏆
+            </button>
+        </nav>
+
+        <!-- Chapter Contents -->
+        <div class="chapter-content-container">
+            
+            <!-- Chapter 1: 인류의 출현 -->
+            <section id="chapter1" class="chapter-panel active">
+                <div class="panel-header">
+                    <h3>제1장: 인류의 출현 (어떻게 사람이 되었을까?)</h3>
+                    <p class="panel-subtitle">인류가 지구에 태어나 진화하는 과정을 한눈에 알아보자!</p>
+                </div>
+
+                <!-- Learning Section -->
+                <div class="study-section">
+                    <div class="parrot-tip">
+                        <img src="assets/parrot_teacher.png" alt="선생님 토리" class="tip-avatar">
+                        <div class="tip-bubble-text">
+                            <strong>토리의 핵심 콕! 🦜</strong><br>
+                            인류는 다른 동물과 달리 <strong>직립 보행(두 발로 걷기)</strong>을 하고 <strong>도구와 불</strong>을 쓰기 시작하면서 진화했어! 
+                            기억하기 쉽게 4단계 진화 과정을 순서대로 외워보자구!
+                        </div>
+                    </div>
+
+                    <div class="card-grid">
+                        <div class="flip-card" id="c1-card1">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front card-theme-1">
+                                    <div class="card-icon">🦴</div>
+                                    <h4>1단계: 오스트랄로피테쿠스 아파렌시스</h4>
+                                    <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4>오스트랄로피테쿠스 아파렌시스</h4>
+                                    <ul>
+                                        <li><strong>언제?</strong> 약 390만 년 전</li>
+                                        <li><strong>특징:</strong> 최초의 인류! 두 발로 걷기(직립 보행)를 시작해서 손이 자유로워졌어.</li>
+                                        <li><strong>도구:</strong> 간단한 돌 도구를 썼단다.</li>
+                                    </ul>
+                                    <div class="parrot-mnemonic">
+                                        💡 <strong>토리 암기법:</strong> "오스트랄로... 걷느라 발이 <strong>아파(아파렌시스)!</strong>" 최초로 두 발로 걸어 다녀서 발이 아프다고 외워봐! 🤣
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flip-card" id="c1-card2">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front card-theme-2">
+                                    <div class="card-icon">🔥</div>
+                                    <h4>2단계: 호모 에렉투스</h4>
+                                    <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4>호모 에렉투스</h4>
+                                    <ul>
+                                        <li><strong>언제?</strong> 약 180만 년 전</li>
+                                        <li><strong>뜻:</strong> '곧선 사람' (허리를 꼿꼿이 편 사람)</li>
+                                        <li><strong>특징:</strong> <strong>불🔥</strong>과 <strong>언어💬</strong>를 최초로 사용하여 추위와 맹수를 물리치고 뇌가 커졌어!</li>
+                                    </ul>
+                                    <div class="parrot-mnemonic">
+                                        💡 <strong>토리 암기법:</strong> "불을 보면 <strong>에렉(에렉투스)!!</strong> 깜짝 놀라 불을 쓰고 말하기 시작했대!"
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flip-card" id="c1-card3">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front card-theme-3">
+                                    <div class="card-icon">🪦</div>
+                                    <h4>3단계: 호모 네안데르탈렌시스</h4>
+                                    <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4>호모 네안데르탈렌시스</h4>
+                                    <ul>
+                                        <li><strong>언제?</strong> 약 40만 년 전</li>
+                                        <li><strong>특징:</strong> <strong>시신을 매장🪦</strong>하는 풍습이 생겼어. 영혼이나 사후 세계에 대해 생각하게 되었다는 증거지!</li>
+                                        <li><strong>생존:</strong> 빙하기의 혹독한 추위를 이겨냈단다.</li>
+                                    </ul>
+                                    <div class="parrot-mnemonic">
+                                        💡 <strong>토리 암기법:</strong> "친구의 죽음에 마음이 <strong>네안(미안)</strong>해서 땅에 고이 묻어줬어 😢"
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flip-card" id="c1-card4">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front card-theme-4">
+                                    <div class="card-icon">🎨</div>
+                                    <h4>4단계: 호모 사피엔스</h4>
+                                    <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4>호모 사피엔스</h4>
+                                    <ul>
+                                        <li><strong>언제?</strong> 약 20만 년 전</li>
+                                        <li><strong>뜻:</strong> '지혜로운 사람' (우리의 직접적인 조상!)</li>
+                                        <li><strong>특징:</strong> <strong>동굴 벽화🎨</strong>(라스코, 알타미라)를 그려서 사냥이 잘되길 바랐어. 뼈 바늘로 옷도 지어 입었대!</li>
+                                    </ul>
+                                    <div class="parrot-mnemonic">
+                                        💡 <strong>토리 암기법:</strong> "똑똑해서 <strong>사피(슬기)</strong>로운 호모 사피엔스! 그림도 잘 그리는 예술가!"
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Evolutionary Order Wrap -->
+                    <div class="mnemonic-banner">
+                        💥 <strong>앵무새 총정리 비법:</strong> "<strong>오</strong>늘 <strong>에</strong>버랜드에서 <strong>네</strong>잎클로버 <strong>사</strong>왔어!"<br>
+                        (<strong>오</strong>스트랄로피테쿠스 → <strong>에</strong>렉투스 → <strong>네</strong>안데르탈렌시스 → <strong>사</strong>피엔스)
+                    </div>
+                </div>
+
+                <!-- Game Section -->
+                <div class="game-section">
+                    <div class="game-header">
+                        <h4>🎮 챕터 1 게임: "인류 진화 짝 맞추기 카드 매칭"</h4>
+                        <p>인류의 이름과 그 특징(꿀팁) 카드를 알맞게 매칭하여 카드를 모두 없애봐!</p>
+                    </div>
+                    
+                    <div class="game-body matching-game" id="matching-game-container">
+                        <!-- Javascript will dynamically build this game -->
+                        <button id="start-game-1-btn" class="cute-btn">게임 시작하기 🧩</button>
+                    </div>
+                    <div class="game-feedback" id="game1-feedback"></div>
+                </div>
+            </section>
+
+            <!-- Chapter 2: 구석기 vs 신석기 -->
+            <section id="chapter2" class="chapter-panel">
+                <div class="panel-header">
+                    <h3>제2장: 구석기와 신석기 (돌을 깨서 쓰고, 갈아서 쓰고!)</h3>
+                    <p class="panel-subtitle">생활 모습이 완전히 뒤바뀐 인류 역사 최고의 혁명을 만나보자!</p>
+                </div>
+
+                <!-- Learning Section -->
+                <div class="study-section">
+                    <div class="parrot-tip">
+                        <img src="assets/parrot_teacher.png" alt="선생님 토리" class="tip-avatar">
+                        <div class="tip-bubble-text">
+                            <strong>토리의 핵심 콕! 🦜</strong><br>
+                            구석기 시대와 신석기 시대는 '도구 만드는 방법'과 '먹을 것을 구하는 방법'이 완전히 달라! 
+                            특히 농사를 시작한 신석기는 <strong>'신석기 혁명'</strong>이라 불릴 만큼 엄청난 변화가 일어났단다!
+                        </div>
+                    </div>
+
+                    <div class="versus-container">
+                        <!-- Paleolithic (구석기) -->
+                        <div class="versus-card paleolithic">
+                            <div class="vs-header bg-paleo">구석기 시대 (Old Stone Age)</div>
+                            <div class="vs-body">
+                                <div class="vs-item">
+                                    <span class="vs-icon">🔨</span>
+                                    <div>
+                                        <strong>뗀석기:</strong> 돌을 떼어내서 대충 만든 도구!
+                                        <div class="keyword-pill">주먹도끼</div> <div class="keyword-pill">찍개</div>
+                                    </div>
+                                </div>
+                                <div class="vs-item">
+                                    <span class="vs-icon">🥩</span>
+                                    <div>
+                                        <strong>식생활:</strong> 사냥, 채집(열매 따기), 물고기 잡이.
+                                    </div>
+                                </div>
+                                <div class="vs-item">
+                                    <span class="vs-icon">⛺</span>
+                                    <div>
+                                        <strong>주거/사회:</strong> 먹을 것이 떨어지면 이동하는 <strong>이동 생활🏃‍♂️</strong>. 동굴이나 대충 지은 <strong>막집</strong>에서 살았어. 무리 사회!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Neolithic (신석기) -->
+                        <div class="versus-card neolithic">
+                            <div class="vs-header bg-neo">신석기 시대 (New Stone Age)</div>
+                            <div class="vs-body">
+                                <div class="vs-item">
+                                    <span class="vs-icon">🪓</span>
+                                    <div>
+                                        <strong>간석기 & 토기:</strong> 돌을 정교하게 갈아 만든 간석기!
+                                        <div class="keyword-pill">갈판과 갈돌</div> <div class="keyword-pill">빗살무늬 토기</div>
+                                    </div>
+                                </div>
+                                <div class="vs-item">
+                                    <span class="vs-icon">🌾</span>
+                                    <div>
+                                        <strong>농경과 목축의 시작! (★신석기 혁명★):</strong> 먹을 것을 직접 생산하기 시작했어!
+                                    </div>
+                                </div>
+                                <div class="vs-item">
+                                    <span class="vs-icon">🏡</span>
+                                    <div>
+                                        <strong>주거/사회:</strong> 농사짓느라 한곳에 머무는 <strong>정착 생활🏠</strong>. 땅을 파고 지은 <strong>움집</strong>에서 살았고, 가족 중심의 <strong>씨족/부족 사회</strong>였어.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mnemonic-banner font-large">
+                        💡 <strong>토리 암기법:</strong> "구석기는 돌을 <strong>떼어내서(뗀석기) 떼쓰며 이동</strong>했고,<br>
+                        신석기는 돌을 <strong>갈아서(간석기) 농사짓고 집(움집) 지어 정착</strong>했다!"
+                    </div>
+                </div>
+
+                <!-- Game Section -->
+                <div class="game-section">
+                    <div class="game-header">
+                        <h4>🎮 챕터 2 게임: "구석기 vs 신석기! 도구 분류 대작전"</h4>
+                        <p>화면에 등장하는 그림이나 단어를 보고, 구석기인지 신석기인지 알맞은 바구니에 쏙 골라 담아보자!</p>
+                    </div>
+
+                    <div class="game-body sorting-game" id="sorting-game-container">
+                        <div class="sorting-dashboard">
+                            <div class="sorting-score">맞춘 개수: <span id="sorting-score-val">0</span> / 6</div>
+                            <div class="sorting-card-display" id="sorting-card">
+                                <div class="sorting-card-inner">
+                                    <div class="sorting-card-content" id="sorting-item-text">
+                                        여기에 도구가 나타나요!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sorting-buttons">
+                                <button id="btn-paleo" class="cute-btn paleo-btn">🪨 구석기 바구니</button>
+                                <button id="btn-neo" class="cute-btn neo-btn">🌾 신석기 바구니</button>
+                            </div>
+                        </div>
+                        <div class="sorting-controls">
+                            <button id="start-game-2-btn" class="cute-btn">게임 시작하기 🍎</button>
+                        </div>
+                    </div>
+                    <div class="game-feedback" id="game2-feedback"></div>
+                </div>
+            </section>
+
+            <!-- Chapter 3: 청동기와 문명 -->
+            <section id="chapter3" class="chapter-panel">
+                <div class="panel-header">
+                    <h3>제3장: 청동기 시대와 문명의 탄생 (인류 최초의 국가가 생기다!)</h3>
+                    <p class="panel-subtitle">금속 도구의 사용과 거대한 강 유역에서 피어난 고대 문명들!</p>
+                </div>
+
+                <!-- Learning Section -->
+                <div class="study-section">
+                    <div class="parrot-tip">
+                        <img src="assets/parrot_teacher.png" alt="선생님 토리" class="tip-avatar">
+                        <div class="tip-bubble-text">
+                            <strong>토리의 핵심 콕! 🦜</strong><br>
+                            인류는 돌을 벗어나 번쩍이는 금속인 <strong>청동기</strong>를 썼어. 청동기는 귀해서 무기나 제사 도구로만 쓰고, 
+                            <strong>농사는 여전히 돌(반달 돌칼)</strong>로 지었어! 이 시기에 농사가 잘되어 남는 식량이 생기자 계급과 국가, 그리고 문명이 나타났지!
+                        </div>
+                    </div>
+
+                    <div class="bronze-info-grid">
+                        <div class="info-card gold-border">
+                            <h5>🗡️ 청동기 시대의 핵심 특징</h5>
+                            <ul>
+                                <li><strong>귀한 금속:</strong> 청동(구리와 주석의 합금)은 단단하고 만들기 어려워 지배자만 썼어 (예: 비파형 동검, 청동 거울).</li>
+                                <li><strong>농사 도구:</strong> 청동은 너무 귀하고 물러서 농사 도구로는 못 썼단다! <strong>반달 돌칼</strong>이라는 돌 도구로 곡식을 수확했어. (이거 시험에 진짜 많이 나와! 🌟)</li>
+                                <li><strong>계급과 무덤:</strong> 사유 재산이 생겨 부자와 가난한 자가 나뉘었고, 지배자(군장)가 나타나 큰 <strong>고인돌</strong> 무덤을 만들었어.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="info-card blue-border">
+                            <h5>🌊 인류 4대 문명의 발생 공통점</h5>
+                            <p>인류 최초의 문명들은 모두 아래의 4가지 공통점을 가지고 큰 강 유역에서 탄생했어!</p>
+                            <div class="civil-factors">
+                                <span class="factor-pill">큰 강 유역 (비옥한 땅)</span>
+                                <span class="factor-pill">청동기 사용</span>
+                                <span class="factor-pill">문자 사용 (기록)</span>
+                                <span class="factor-pill">도시 국가 & 계급 발생</span>
+                            </div>
+                            <ul class="c-list">
+                                <li><strong>메소포타미아 문명:</strong> 티그리스·유프라테스강, 지구라트 신전, 쐐기 문자.</li>
+                                <li><strong>이집트 문명:</strong> 나일강, 피라미드와 미라, 상형 문자.</li>
+                                <li><strong>인더스 문명:</strong> 인더스강, 모헨조다로(계획도시), 인장 문자.</li>
+                                <li><strong>황하(중국) 문명:</strong> 황하강, 갑골 문자(한자의 기원), 은나라.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mnemonic-banner">
+                        💡 <strong>토리 암기법:</strong> "<strong>청동</strong>기라고 다 청동이 아니야! 농사지을 땐 <strong>반달 돌칼(돌)</strong>!<br>
+                        지배층이 세상을 <strong>고</strong>이 다스려서 죽어서 <strong>고인돌</strong>!"
+                    </div>
+                </div>
+
+                <!-- Game Section -->
+                <div class="game-section">
+                    <div class="game-header">
+                        <h4>🎮 챕터 3 게임: "청동기 & 문명 OX 퀴즈 낚시"</h4>
+                        <p>토리의 아슬아슬한 설명이 맞으면 O, 틀리면 X를 골라 해바라기씨를 획득해 봐!</p>
+                    </div>
+
+                    <div class="game-body ox-game" id="ox-game-container">
+                        <div class="ox-display">
+                            <div class="ox-score">점수: <span id="ox-score-val">0</span> / 4</div>
+                            <div class="ox-question-box" id="ox-question">
+                                여기에 OX 질문이 나옵니다!
+                            </div>
+                            <div class="ox-buttons">
+                                <button id="btn-ox-o" class="cute-btn o-btn">⭕ 그렇다! (O)</button>
+                                <button id="btn-ox-x" class="cute-btn x-btn">❌ 아니다! (X)</button>
+                            </div>
+                        </div>
+                        <div class="ox-controls">
+                            <button id="start-game-3-btn" class="cute-btn">게임 시작하기 🎣</button>
+                        </div>
+                    </div>
+                    <div class="game-feedback" id="game3-feedback"></div>
+                </div>
+            </section>
+
+            <!-- Final Quiz Section: 종합 퀴즈 게임 -->
+            <section id="chapter-quiz" class="chapter-panel">
+                <div class="panel-header">
+                    <h3>🏆 종합 도전: 선사 시대 세계사 왕중왕전!</h3>
+                    <p class="panel-subtitle">지금까지 배운 내용을 총동원해 토리가 숨겨둔 보물상자를 열어봐!</p>
+                </div>
+
+                <div class="quiz-arena">
+                    <div class="quiz-intro-box" id="quiz-intro-view">
+                        <img src="assets/parrot_cheer.png" alt="응원하는 토리" class="quiz-intro-avatar">
+                        <h4>최종 꿀떡 퀴즈 스테이지!</h4>
+                        <p>
+                            선사 시대의 진정한 강자가 될 준비가 되었니? 😎<br>
+                            총 5문제를 다 맞추면 토리의 둥지에 황금 열매를 달 수 있어!<br>
+                            틀려도 괜찮아, 토리가 언제든 따뜻하게 다시 가르쳐 줄 테니까!
+                        </p>
+                        <button id="start-final-quiz-btn" class="cute-btn large-btn">보물상자 퀴즈 도전하기 💎</button>
+                    </div>
+
+                    <!-- Active Quiz Interface -->
+                    <div class="quiz-play-box hidden" id="quiz-play-view">
+                        <div class="quiz-status">
+                            <span class="quiz-progress-num">문제 <span id="current-q-num">1</span> / 5</span>
+                            <span class="quiz-score-num">맞춘 개수: <span id="final-score-val">0</span></span>
+                        </div>
+                        
+                        <div class="quiz-card">
+                            <div class="quiz-question" id="quiz-question-text">
+                                문명이 발생한 곳들의 공통점이 아닌 것은 무엇일까요?
+                            </div>
+                            <div class="quiz-options-list" id="quiz-options-container">
+                                <!-- Choices will be rendered here dynamically -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Result Interface -->
+                    <div class="quiz-result-box hidden" id="quiz-result-view">
+                        <img src="assets/parrot_happy.png" alt="축하하는 토리" class="result-avatar">
+                        <h3>🎉 축하해! 선사 시대 탐험 완료! 🎉</h3>
+                        <p class="score-summary">너의 점수: <span id="final-total-score">5</span> / 5점</p>
+                        <div id="result-message" class="result-message-box">
+                            와! 너 정말 대단하다! 선사 시대의 모든 지식을 마스터했어! 이제 학교 역사 시험은 식은 죽 먹기겠는걸? 토리가 맛있는 해바라기씨를 가득 줄게! 🌻👑
+                        </div>
+                        
+                        <div class="certificate-container" id="certificate">
+                            <div class="cert-border">
+                                <h2>역사 마스터 인증서</h2>
+                                <p class="cert-name">이름: 멋쟁이 역사 모험가</p>
+                                <p class="cert-body">위 학생은 역사 천재 앵무새 토리가 주관한 [세계사: 선사 시대] 과정의 모험과 모든 퀴즈 게임을 훌륭히 마쳤으므로 이 인증서를 수여함.</p>
+                                <div class="cert-footer">
+                                    <span>발행인: 앵무새 토리 🦜</span>
+                                    <span id="cert-date">2026년 6월 12일</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="result-buttons">
+                            <button id="btn-print-cert" class="cute-btn cert-btn"><i class="fas fa-print"></i> 인증서 인쇄/저장</button>
+                            <button id="btn-restart-adventure" class="cute-btn restart-btn"><i class="fas fa-undo"></i> 처음부터 다시 공부하기</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <p>© 2026 토리의 뒹굴뒹굴 세계사. All Rights Reserved. 🦜</p>
+        <p>귀여운 앵무새 토리와 함께라면 역사 공부도 식은 죽 먹기! 🌟 (GitHub Pages 배포용)</p>
+    </footer>
+
+    <!-- App JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
