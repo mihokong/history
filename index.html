@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>모찌와 함께하는 뒹굴뒹굴 세계사: 선사 시대 편</title>
+    <title>모찌와 함께하는 뒹굴뒹굴 세계사</title>
     <!-- Google Fonts for Cute Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,6 +24,18 @@
             <span class="logo-icon">🦜</span>
             <h1 class="logo-text">모찌의 뒹굴뒹굴 세계사</h1>
         </div>
+
+        <!-- NEW: Grand Unit Selector Menu -->
+        <div class="unit-selector-wrap">
+            <div class="unit-selector">
+                <button class="unit-btn active" data-unit="unit1">
+                    <span class="unit-emoji">🌿</span> 단원 1: 선사 시대의 모험
+                </button>
+                <button class="unit-btn" data-unit="unit2">
+                    <span class="unit-emoji">🏺</span> 단원 2: 고대 서아시아·지중해
+                </button>
+            </div>
+        </div>
         
         <!-- Flight Progress Bar (Mochi flying home) -->
         <div class="progress-container">
@@ -33,10 +45,10 @@
                     <div class="flight-bubble">안녕! 나 날고 있어!</div>
                 </div>
                 <div id="progress-bar-fill" class="progress-bar-fill"></div>
-                <span class="nest-icon">🪹</span>
+                <span class="nest-icon" id="nest-emoji">🪹</span>
             </div>
             <div class="progress-info">
-                <span class="progress-label">선사 시대 모험 진행률</span>
+                <span class="progress-label" id="progress-unit-label">단원 1 모험 진행률</span>
                 <span id="progress-percentage" class="progress-percent">0%</span>
             </div>
         </div>
@@ -50,7 +62,7 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h2 class="hero-title">앗, 안녕! 난 역사 천재 앵무새 <span class="highlight">모찌</span>야!</h2>
-                    <p class="hero-desc">
+                    <p class="hero-desc" id="hero-welcome-text">
                         역사 시험 범위만 보면 머리가 지끈지끈하지? 🤯<br>
                         걱정 마! 나 모찌가 인류가 처음 태어난 <strong>선사 시대</strong>부터 <strong>문명이 싹튼 때</strong>까지 아주 쉽고 재밌게 안내해 줄게!<br>
                         카드 공부를 끝내고 신나는 미니 게임을 클리어하면 둥지에 맛있는 해바라기씨가 쌓인다구! 함께 가볼까? 🌻✨
@@ -59,406 +71,747 @@
                 </div>
                 <div class="hero-avatar-wrapper">
                     <img src="assets/parrot_teacher.png" alt="모찌 가이드" class="hero-avatar floating">
-                    <div class="speech-bubble">오스트랄로... 아파! 아파서 직립 보행! 🤣</div>
+                    <div class="speech-bubble">원하는 단원을 위에서 고르고 모험을 시작해 봐! 🧭</div>
                 </div>
             </div>
         </section>
 
-        <!-- Chapter Selector Tab -->
-        <nav class="chapter-nav">
-            <button class="nav-tab active" data-target="chapter1">
-                <span class="tab-badge">1</span> 인류의 출현 🐒
-            </button>
-            <button class="nav-tab" data-target="chapter2">
-                <span class="tab-badge">2</span> 구석기 vs 신석기 🪨
-            </button>
-            <button class="nav-tab" data-target="chapter3">
-                <span class="tab-badge">3</span> 청동기와 문명 👑
-            </button>
-            <button class="nav-tab" data-target="chapter-quiz">
-                <span class="tab-badge">🏁</span> 종합 퀴즈 게임 🏆
-            </button>
-        </nav>
+        <!-- ========================================== -->
+        <!-- UNIT 1: 선사 시대의 모험 CONTAINER -->
+        <!-- ========================================== -->
+        <div id="unit1-container" class="unit-view active">
+            <!-- Chapter Selector Tab for Unit 1 -->
+            <nav class="chapter-nav" id="unit1-nav">
+                <button class="nav-tab active" data-target="u1-chapter1">
+                    <span class="tab-badge">1-1</span> 인류의 출현 🐒
+                </button>
+                <button class="nav-tab" data-target="u1-chapter2">
+                    <span class="tab-badge">1-2</span> 구석기 vs 신석기 🪨
+                </button>
+                <button class="nav-tab" data-target="u1-chapter3">
+                    <span class="tab-badge">1-3</span> 청동기와 문명 👑
+                </button>
+                <button class="nav-tab" data-target="u1-chapter-quiz">
+                    <span class="tab-badge">🏁</span> 종합 퀴즈 게임 🏆
+                </button>
+            </nav>
 
-        <!-- Chapter Contents -->
-        <div class="chapter-content-container">
-            
-            <!-- Chapter 1: 인류의 출현 -->
-            <section id="chapter1" class="chapter-panel active">
-                <div class="panel-header">
-                    <h3>제1장: 인류의 출현 (어떻게 사람이 되었을까?)</h3>
-                    <p class="panel-subtitle">인류가 지구에 태어나 진화하는 과정을 한눈에 알아보자!</p>
-                </div>
-
-                <!-- Learning Section -->
-                <div class="study-section">
-                    <div class="parrot-tip">
-                        <img src="assets/parrot_teacher.png" alt="선생님 모찌" class="tip-avatar">
-                        <div class="tip-bubble-text">
-                            <strong>모찌의 핵심 콕! 🦜</strong><br>
-                            인류는 다른 동물과 달리 <strong>직립 보행(두 발로 걷기)</strong>을 하고 <strong>도구와 불</strong>을 쓰기 시작하면서 진화했어! 
-                            기억하기 쉽게 4단계 진화 과정을 순서대로 외워보자구!
-                        </div>
+            <div class="chapter-content-container">
+                <!-- Chapter 1-1: 인류의 출현 -->
+                <section id="u1-chapter1" class="chapter-panel active">
+                    <div class="panel-header">
+                        <h3>제1장: 인류의 출현 (어떻게 사람이 되었을까?)</h3>
+                        <p class="panel-subtitle">인류가 지구에 태어나 진화하는 과정을 한눈에 알아보자!</p>
                     </div>
 
-                    <div class="card-grid">
-                        <div class="flip-card" id="c1-card1">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front card-theme-1">
-                                    <div class="card-icon">🦴</div>
-                                    <h4>1단계: 오스트랄로피테쿠스 아파렌시스</h4>
-                                    <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                    <div class="study-section">
+                        <div class="parrot-tip">
+                            <img src="assets/parrot_teacher.png" alt="선생님 모찌" class="tip-avatar">
+                            <div class="tip-bubble-text">
+                                <strong>모찌의 핵심 콕! 🦜</strong><br>
+                                인류는 다른 동물과 달리 <strong>직립 보행(두 발로 걷기)</strong>을 하고 <strong>도구와 불</strong>을 쓰기 시작하면서 진화했어! 
+                                기억하기 쉽게 4단계 진화 과정을 순서대로 외워보자구!
+                            </div>
+                        </div>
+
+                        <div class="card-grid">
+                            <div class="flip-card u1-card" id="u1-c1-card1">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front card-theme-1">
+                                        <div class="card-icon">🦴</div>
+                                        <h4>1단계: 오스트랄로피테쿠스 아파렌시스</h4>
+                                        <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>오스트랄로피테쿠스 아파렌시스</h4>
+                                        <ul>
+                                            <li><strong>언제?</strong> 약 390만 년 전</li>
+                                            <li><strong>특징:</strong> 최초의 인류! 두 발로 걷기(직립 보행)를 시작해서 손이 자유로워졌어.</li>
+                                            <li><strong>도구:</strong> 간단한 돌 도구를 썼단다.</li>
+                                        </ul>
+                                        <div class="parrot-mnemonic">
+                                            💡 <strong>모찌 암기법:</strong> "오스트랄로... 걷느라 발이 <strong>아파(아파렌시스)!</strong>" 최초로 두 발로 걸어 다녀서 발이 아프다고 외워봐! 🤣
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="flip-card-back">
-                                    <h4>오스트랄로피테쿠스 아파렌시스</h4>
-                                    <ul>
-                                        <li><strong>언제?</strong> 약 390만 년 전</li>
-                                        <li><strong>특징:</strong> 최초의 인류! 두 발로 걷기(직립 보행)를 시작해서 손이 자유로워졌어.</li>
-                                        <li><strong>도구:</strong> 간단한 돌 도구를 썼단다.</li>
-                                    </ul>
-                                    <div class="parrot-mnemonic">
-                                        💡 <strong>모찌 암기법:</strong> "오스트랄로... 걷느라 발이 <strong>아파(아파렌시스)!</strong>" 최초로 두 발로 걸어 다녀서 발이 아프다고 외워봐! 🤣
+                            </div>
+
+                            <div class="flip-card u1-card" id="u1-c1-card2">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front card-theme-2">
+                                        <div class="card-icon">🔥</div>
+                                        <h4>2단계: 호모 에렉투스</h4>
+                                        <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>호모 에렉투스</h4>
+                                        <ul>
+                                            <li><strong>언제?</strong> 약 180만 년 전</li>
+                                            <li><strong>뜻:</strong> '곧선 사람'</li>
+                                            <li><strong>특징:</strong> <strong>불🔥</strong>과 <strong>언어💬</strong>를 최초로 사용하여 추위와 맹수를 물리치고 뇌가 커졌어!</li>
+                                        </ul>
+                                        <div class="parrot-mnemonic">
+                                            💡 <strong>모찌 암기법:</strong> "불을 보면 <strong>에렉(에렉투스)!!</strong> 깜짝 놀라 불을 쓰고 말하기 시작했대!"
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flip-card u1-card" id="u1-c1-card3">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front card-theme-3">
+                                        <div class="card-icon">🪦</div>
+                                        <h4>3단계: 호모 네안데르탈렌시스</h4>
+                                        <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>호모 네안데르탈렌시스</h4>
+                                        <ul>
+                                            <li><strong>언제?</strong> 약 40만 년 전</li>
+                                            <li><strong>특징:</strong> <strong>시신을 매장🪦</strong>하는 풍습이 생겼어. 영혼이나 사후 세계에 대해 생각하게 되었다는 증거지!</li>
+                                        </ul>
+                                        <div class="parrot-mnemonic">
+                                            💡 <strong>모찌 암기법:</strong> "친구의 죽음에 마음이 <strong>네안(미안)</strong>해서 땅에 고이 묻어줬어 😢"
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flip-card u1-card" id="u1-c1-card4">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front card-theme-4">
+                                        <div class="card-icon">🎨</div>
+                                        <h4>4단계: 호모 사피엔스</h4>
+                                        <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>호모 사피엔스</h4>
+                                        <ul>
+                                            <li><strong>언제?</strong> 약 20만 년 전</li>
+                                            <li><strong>뜻:</strong> '지혜로운 사람'</li>
+                                            <li><strong>특징:</strong> <strong>동굴 벽화🎨</strong>(라스코, 알타미라)를 그려서 사냥이 잘되길 바랐어. 뼈 바늘로 옷도 지어 입었대!</li>
+                                        </ul>
+                                        <div class="parrot-mnemonic">
+                                            💡 <strong>모찌 암기법:</strong> "똑똑해서 <strong>사피(슬기)</strong>로운 호모 사피엔스! 그림도 잘 그리는 예술가!"
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="flip-card" id="c1-card2">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front card-theme-2">
-                                    <div class="card-icon">🔥</div>
-                                    <h4>2단계: 호모 에렉투스</h4>
-                                    <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                        <div class="mnemonic-banner">
+                            💥 <strong>앵무새 총정리 비법:</strong> "<strong>오</strong>늘 <strong>에</strong>버랜드에서 <strong>네</strong>잎클로버 <strong>사</strong>왔어!"<br>
+                            (<strong>오</strong>스트랄로피테쿠스 → <strong>에</strong>렉투스 → <strong>네</strong>안데르탈렌시스 → <strong>사</strong>피엔스)
+                        </div>
+                    </div>
+
+                    <!-- Game Section -->
+                    <div class="game-section">
+                        <div class="game-header">
+                            <h4>🎮 챕터 1 게임: "인류 진화 짝 맞추기 카드 매칭"</h4>
+                            <p>인류의 이름과 그 특징(꿀팁) 카드를 알맞게 매칭하여 카드를 모두 없애봐!</p>
+                        </div>
+                        <div class="game-body matching-game" id="matching-game-container">
+                            <button id="start-game-1-btn" class="cute-btn">게임 시작하기 🧩</button>
+                        </div>
+                        <div class="game-feedback" id="game1-feedback"></div>
+                    </div>
+                </section>
+
+                <!-- Chapter 1-2: 구석기 vs 신석기 -->
+                <section id="u1-chapter2" class="chapter-panel">
+                    <div class="panel-header">
+                        <h3>제2장: 구석기와 신석기 (돌을 깨서 쓰고, 갈아서 쓰고!)</h3>
+                        <p class="panel-subtitle">생활 모습이 완전히 뒤바뀐 인류 역사 최고의 혁명을 만나보자!</p>
+                    </div>
+
+                    <div class="study-section">
+                        <div class="parrot-tip">
+                            <img src="assets/parrot_teacher.png" alt="선생님 모찌" class="tip-avatar">
+                            <div class="tip-bubble-text">
+                                <strong>모찌의 핵심 콕! 🦜</strong><br>
+                                구석기 시대와 신석기 시대는 '도구 만드는 방법'과 '먹을 것을 구하는 방법'이 완전히 달라! 
+                                특히 농사를 시작한 신석기는 <strong>'신석기 혁명'</strong>이라 불릴 만큼 엄청난 변화가 일어났단다!
+                            </div>
+                        </div>
+
+                        <div class="versus-container">
+                            <!-- Paleolithic -->
+                            <div class="versus-card paleolithic">
+                                <div class="vs-header bg-paleo">구석기 시대 (Old Stone Age)</div>
+                                <div class="vs-body">
+                                    <div class="vs-item">
+                                        <span class="vs-icon">🔨</span>
+                                        <div>
+                                            <strong>뗀석기:</strong> 돌을 떼어내서 만든 도구!
+                                            <div class="keyword-pill">주먹도끼</div> <div class="keyword-pill">찍개</div>
+                                        </div>
+                                    </div>
+                                    <div class="vs-item">
+                                        <span class="vs-icon">🥩</span>
+                                        <div><strong>식생활:</strong> 사냥, 채집(열매 따기), 물고기 잡이.</div>
+                                    </div>
+                                    <div class="vs-item">
+                                        <span class="vs-icon">⛺</span>
+                                        <div><strong>주거/사회:</strong> 먹을 것이 떨어지면 이동하는 <strong>이동 생활🏃‍♂️</strong>. <strong>막집</strong>이나 동굴에 살았어.</div>
+                                    </div>
                                 </div>
-                                <div class="flip-card-back">
-                                    <h4>호모 에렉투스</h4>
-                                    <ul>
-                                        <li><strong>언제?</strong> 약 180만 년 전</li>
-                                        <li><strong>뜻:</strong> '곧선 사람' (허리를 꼿꼿이 편 사람)</li>
-                                        <li><strong>특징:</strong> <strong>불🔥</strong>과 <strong>언어💬</strong>를 최초로 사용하여 추위와 맹수를 물리치고 뇌가 커졌어!</li>
-                                    </ul>
-                                    <div class="parrot-mnemonic">
-                                        💡 <strong>모찌 암기법:</strong> "불을 보면 <strong>에렉(에렉투스)!!</strong> 깜짝 놀라 불을 쓰고 말하기 시작했대!"
+                            </div>
+
+                            <!-- Neolithic -->
+                            <div class="versus-card neolithic">
+                                <div class="vs-header bg-neo">신석기 시대 (New Stone Age)</div>
+                                <div class="vs-body">
+                                    <div class="vs-item">
+                                        <span class="vs-icon">🪓</span>
+                                        <div>
+                                            <strong>간석기 & 토기:</strong> 돌을 정교하게 갈아 만든 간석기!
+                                            <div class="keyword-pill">갈판과 갈돌</div> <div class="keyword-pill">빗살무늬 토기</div>
+                                        </div>
+                                    </div>
+                                    <div class="vs-item">
+                                        <span class="vs-icon">🌾</span>
+                                        <div><strong>농경과 목축의 시작! (신석기 혁명):</strong> 먹을 것을 직접 생산하기 시작!</div>
+                                    </div>
+                                    <div class="vs-item">
+                                        <span class="vs-icon">🏡</span>
+                                        <div><strong>주거/사회:</strong> 농사 지으며 <strong>정착 생활🏠</strong>. 땅을 판 <strong>움집</strong>에 살았어.</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="flip-card" id="c1-card3">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front card-theme-3">
-                                    <div class="card-icon">🪦</div>
-                                    <h4>3단계: 호모 네안데르탈렌시스</h4>
-                                    <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                        <div class="mnemonic-banner font-large">
+                            💡 <strong>모찌 암기법:</strong> "구석기는 돌을 <strong>떼어내서(뗀석기) 떼쓰며 이동</strong>했고,<br>
+                            신석기는 돌을 <strong>갈아서(간석기) 농사짓고 집(움집) 지어 정착</strong>했다!"
+                        </div>
+                    </div>
+
+                    <!-- Game Section -->
+                    <div class="game-section">
+                        <div class="game-header">
+                            <h4>🎮 챕터 2 게임: "구석기 vs 신석기! 도구 분류 대작전"</h4>
+                            <p>유물을 보고 구석기인지 신석기인지 알맞은 바구니에 골라 담아보자!</p>
+                        </div>
+                        <div class="game-body sorting-game" id="sorting-game-container">
+                            <div class="sorting-dashboard">
+                                <div class="sorting-score">맞춘 개수: <span id="sorting-score-val">0</span> / 6</div>
+                                <div class="sorting-card-display" id="sorting-card">
+                                    <div class="sorting-card-inner">
+                                        <div class="sorting-card-content" id="sorting-item-text">여기에 도구가 나타나요!</div>
+                                    </div>
                                 </div>
-                                <div class="flip-card-back">
-                                    <h4>호모 네안데르탈렌시스</h4>
-                                    <ul>
-                                        <li><strong>언제?</strong> 약 40만 년 전</li>
-                                        <li><strong>특징:</strong> <strong>시신을 매장🪦</strong>하는 풍습이 생겼어. 영혼이나 사후 세계에 대해 생각하게 되었다는 증거지!</li>
-                                        <li><strong>생존:</strong> 빙하기의 혹독한 추위를 이겨냈단다.</li>
-                                    </ul>
-                                    <div class="parrot-mnemonic">
-                                        💡 <strong>모찌 암기법:</strong> "친구의 죽음에 마음이 <strong>네안(미안)</strong>해서 땅에 고이 묻어줬어 😢"
+                                <div class="sorting-buttons">
+                                    <button id="btn-paleo" class="cute-btn paleo-btn">🪨 구석기 바구니</button>
+                                    <button id="btn-neo" class="cute-btn neo-btn">🌾 신석기 바구니</button>
+                                </div>
+                            </div>
+                            <div class="sorting-controls">
+                                <button id="start-game-2-btn" class="cute-btn">게임 시작하기 🍎</button>
+                            </div>
+                        </div>
+                        <div class="game-feedback" id="game2-feedback"></div>
+                    </div>
+                </section>
+
+                <!-- Chapter 1-3: 청동기와 문명 -->
+                <section id="u1-chapter3" class="chapter-panel">
+                    <div class="panel-header">
+                        <h3>제3장: 청동기 시대와 문명의 탄생 (인류 최초의 국가가 생기다!)</h3>
+                        <p class="panel-subtitle">금속 도구의 사용과 거대한 강 유역에서 피어난 고대 문명들!</p>
+                    </div>
+
+                    <div class="study-section">
+                        <div class="parrot-tip">
+                            <img src="assets/parrot_teacher.png" alt="선생님 모찌" class="tip-avatar">
+                            <div class="tip-bubble-text">
+                                <strong>모찌의 핵심 콕! 🦜</strong><br>
+                                청동기는 너무 귀하고 쉽게 무뎌져서 <strong>농기구로 쓰지 못하고</strong> 무기나 제사 도구로 썼어. 
+                                <strong>농사는 여전히 돌(반달 돌칼)</strong>로 지었다는 것을 절대 잊지 마! 🌟
+                            </div>
+                        </div>
+
+                        <div class="bronze-info-grid">
+                            <div class="info-card gold-border">
+                                <h5>🗡️ 청동기 시대의 핵심 특징</h5>
+                                <ul>
+                                    <li><strong>귀한 금속:</strong> 지배자만 청동을 사용 (예: 비파형 동검, 청동 거울).</li>
+                                    <li><strong>농사 도구:</strong> 청동 농기구는 없음! 여전히 <strong>반달 돌칼</strong>로 벼 수확!</li>
+                                    <li><strong>계급과 무덤:</strong> 사유 재산과 계급 발생, 군장의 무덤인 <strong>고인돌</strong> 제작.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="info-card blue-border">
+                                <h5>🌊 인류 4대 문명의 공통점</h5>
+                                <p>큰 강 유역에서 농사가 발달하며 일어난 4대 문명 공통 특징!</p>
+                                <div class="civil-factors">
+                                    <span class="factor-pill">큰 강 유역 (비옥한 땅)</span>
+                                    <span class="factor-pill">청동기 사용</span>
+                                    <span class="factor-pill">문자 사용 (기록)</span>
+                                    <span class="factor-pill">도시 국가 & 계급 발생</span>
+                                </div>
+                                <ul class="c-list">
+                                    <li><strong>메소포타미아:</strong> 티그리스·유프라테스강, 지구라트, 쐐기 문자.</li>
+                                    <li><strong>이집트:</strong> 나일강, 피라미드와 미라, 상형 문자.</li>
+                                    <li><strong>인더스:</strong> 인더스강, 모헨조다로(계획도시), 인장 문자.</li>
+                                    <li><strong>황하:</strong> 황하강, 갑골 문자(한자의 기원), 은나라.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mnemonic-banner">
+                            💡 <strong>모찌 암기법:</strong> "<strong>청동</strong>기라고 다 청동이 아니야! 농사지을 땐 <strong>반달 돌칼(돌)</strong>!<br>
+                            지배층이 세상을 <strong>고</strong>이 다스려서 죽어서 <strong>고인돌</strong>!"
+                        </div>
+                    </div>
+
+                    <!-- Game Section -->
+                    <div class="game-section">
+                        <div class="game-header">
+                            <h4>🎮 챕터 3 게임: "청동기 & 문명 OX 퀴즈 낚시"</h4>
+                            <p>모찌의 설명이 맞으면 O, 틀리면 X를 골라봐!</p>
+                        </div>
+                        <div class="game-body ox-game" id="ox-game-container">
+                            <div class="ox-display">
+                                <div class="ox-score">점수: <span id="ox-score-val">0</span> / 4</div>
+                                <div class="ox-question-box" id="ox-question">여기에 OX 질문이 나옵니다!</div>
+                                <div class="ox-buttons">
+                                    <button id="btn-ox-o" class="cute-btn o-btn">⭕ 그렇다! (O)</button>
+                                    <button id="btn-ox-x" class="cute-btn x-btn">❌ 아니다! (X)</button>
+                                </div>
+                            </div>
+                            <div class="ox-controls">
+                                <button id="start-game-3-btn" class="cute-btn">게임 시작하기 🎣</button>
+                            </div>
+                        </div>
+                        <div class="game-feedback" id="game3-feedback"></div>
+                    </div>
+                </section>
+
+                <!-- Final Quiz Section for Unit 1 -->
+                <section id="u1-chapter-quiz" class="chapter-panel">
+                    <div class="panel-header">
+                        <h3>🏆 종합 도전: 선사 시대 세계사 왕중왕전!</h3>
+                        <p class="panel-subtitle">모든 문제를 맞춰 모찌가 숨겨둔 보물상자를 열어봐!</p>
+                    </div>
+
+                    <div class="quiz-arena">
+                        <div class="quiz-intro-box" id="u1-quiz-intro-view">
+                            <img src="assets/parrot_cheer.png" alt="응원하는 모찌" class="quiz-intro-avatar">
+                            <h4>단원 1 최종 퀴즈 스테이지!</h4>
+                            <p>
+                                5문제를 다 맞추면 모찌의 둥지에 황금 열매를 달 수 있어!<br>
+                                준비가 되면 아래 버튼을 눌러줘!
+                            </p>
+                            <button id="start-final-quiz-btn" class="cute-btn large-btn">보물상자 퀴즈 도전하기 💎</button>
+                        </div>
+
+                        <!-- Active Quiz Interface -->
+                        <div class="quiz-play-box hidden" id="u1-quiz-play-view">
+                            <div class="quiz-status">
+                                <span class="quiz-progress-num">문제 <span id="u1-current-q-num">1</span> / 5</span>
+                                <span class="quiz-score-num">맞춘 개수: <span id="u1-final-score-val">0</span></span>
+                            </div>
+                            <div class="quiz-card">
+                                <div class="quiz-question" id="u1-quiz-question-text">질문 텍스트</div>
+                                <div class="quiz-options-list" id="u1-quiz-options-container"></div>
+                            </div>
+                        </div>
+
+                        <!-- Quiz Result Interface -->
+                        <div class="quiz-result-box hidden" id="u1-quiz-result-view">
+                            <img src="assets/parrot_happy.png" alt="축하하는 모찌" class="result-avatar">
+                            <h3>🎉 축하해! 선사 시대 마스터! 🎉</h3>
+                            <p class="score-summary">너의 점수: <span id="u1-final-total-score">5</span> / 5점</p>
+                            <div id="u1-result-message" class="result-message-box">메시지</div>
+                            
+                            <!-- Certificate -->
+                            <div class="certificate-container" id="u1-certificate">
+                                <div class="cert-border">
+                                    <h2>역사 마스터 인증서</h2>
+                                    <p class="cert-name">이름: 멋쟁이 역사 모험가</p>
+                                    <p class="cert-body">위 학생은 역사 천재 앵무새 모찌가 주관한 [세계사: 선사 시대의 모험] 과정의 모든 퀴즈 게임을 훌륭히 마쳤으므로 이 인증서를 수여함.</p>
+                                    <div class="cert-footer">
+                                        <span>발행인: 앵무새 모찌 🦜</span>
+                                        <span class="cert-date-span">2026년 6월 12일</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="result-buttons">
+                                <button class="cute-btn cert-btn btn-print-cert-class"><i class="fas fa-print"></i> 인증서 인쇄/저장</button>
+                                <button class="cute-btn restart-btn btn-restart-adventure-class"><i class="fas fa-undo"></i> 처음부터 다시 공부하기</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- UNIT 2: 고대 서아시아·지중해 세계의 형성 CONTAINER -->
+        <!-- ========================================== -->
+        <div id="unit2-container" class="unit-view">
+            <!-- Chapter Selector Tab for Unit 2 -->
+            <nav class="chapter-nav" id="unit2-nav">
+                <button class="nav-tab active" data-target="u2-chapter1">
+                    <span class="tab-badge">2-1</span> 페르시아 제국 🦁
+                </button>
+                <button class="nav-tab" data-target="u2-chapter2">
+                    <span class="tab-badge">2-2</span> 그리스 & 헬레니즘 🏛️
+                </button>
+                <button class="nav-tab" data-target="u2-chapter3">
+                    <span class="tab-badge">2-3</span> 로마 제국 🛡️
+                </button>
+                <button class="nav-tab" data-target="u2-chapter-quiz">
+                    <span class="tab-badge">🏁</span> 종합 퀴즈 게임 🏆
+                </button>
+            </nav>
+
+            <div class="chapter-content-container">
+                <!-- Chapter 2-1: 페르시아 제국 -->
+                <section id="u2-chapter1" class="chapter-panel active">
+                    <div class="panel-header">
+                        <h3>제1장: 페르시아가 강력한 통일 제국을 형성하다</h3>
+                        <p class="panel-subtitle">오리엔트를 다시 통일하고 관용으로 통치한 페르시아의 강력한 지배 속으로!</p>
+                    </div>
+
+                    <div class="study-section">
+                        <div class="parrot-tip">
+                            <img src="assets/parrot_teacher.png" alt="선생님 모찌" class="tip-avatar">
+                            <div class="tip-bubble-text">
+                                <strong>모찌의 핵심 콕! 🦜</strong><br>
+                                페르시아(아케메네스 왕조)의 전성기를 이끈 인물은 **다리우스 1세**야! 
+                                나라가 워낙 넓다 보니 통신과 교통을 지배하는 **왕의 길**을 뚫고, 지방 총독을 감시할 **감찰관**을 보낸 것이 아주 중요하단다!
+                            </div>
+                        </div>
+
+                        <div class="card-grid">
+                            <div class="flip-card u2-card" id="u2-c1-card1">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front card-theme-1">
+                                        <div class="card-icon">👑</div>
+                                        <h4>다리우스 1세의 중앙 집권</h4>
+                                        <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>다리우스 1세의 핵심 정책</h4>
+                                        <ul>
+                                            <li><strong>전국 통치:</strong> 영토를 20개 주로 나누고 각각 총독을 파견했어.</li>
+                                            <li><strong>감찰관 파견:</strong> 총독이 나쁜 마음을 먹지 않게 감시하는 <strong>'왕의 눈'</strong>, <strong>'왕의 귀'</strong>라 불린 감찰관을 보냈단다.</li>
+                                        </ul>
+                                        <div class="parrot-mnemonic">
+                                            💡 <strong>모찌 암기법:</strong> 다리우스 1세가 <strong>다리</strong>를 쩍 뻗어 <strong>눈(왕의 눈)</strong>과 <strong>귀(왕의 귀)</strong>로 세상을 살폈어! 👁️👂
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flip-card u2-card" id="u2-c1-card2">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front card-theme-2">
+                                        <div class="card-icon">🛣️</div>
+                                        <h4>왕의 길 (Royal Road)</h4>
+                                        <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>왕의 길과 제도 정비</h4>
+                                        <ul>
+                                            <li><strong>로열 로드:</strong> 수도 수사에서 사르디스까지 약 2,400km에 달하는 <strong>'왕의 길'</strong>을 닦고 주요 거점에 역참을 설치했어.</li>
+                                            <li><strong>효과:</strong> 명령이 빠르게 전달되고 상인들이 오가며 경제가 발달했지.</li>
+                                        </ul>
+                                        <div class="parrot-mnemonic">
+                                            💡 <strong>모찌 암기법:</strong> 왕이 편하게 다니는 전용 고속도로, <strong>왕의 길!</strong> 교통체증 없는 지중해 하이웨이!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flip-card u2-card" id="u2-c1-card3">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front card-theme-3">
+                                        <div class="card-icon">🤝</div>
+                                        <h4>지방 관용 정책</h4>
+                                        <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>포용적인 관용 정책</h4>
+                                        <ul>
+                                            <li><strong>너그러운 통치:</strong> 정복당한 피지배민족이라도 세금만 잘 내고 복종하면 그들의 <strong>종교와 관습을 그대로 인정</strong>해 줬어.</li>
+                                            <li><strong>결과:</strong> 가혹하게 통치해서 금방 망했던 아시리아와 달리 페르시아는 200년 넘게 평화를 누렸단다.</li>
+                                        </ul>
+                                        <div class="parrot-mnemonic">
+                                            💡 <strong>모찌 암기법:</strong> "너그러운 마음으로 <strong>관용(종교 인정)</strong>을 베푸니 백성들이 좋아해!"
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flip-card u2-card" id="u2-c1-card4">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front card-theme-4">
+                                        <div class="card-icon">🔥</div>
+                                        <h4>조로아스터교</h4>
+                                        <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>세계를 구하는 조로아스터교</h4>
+                                        <ul>
+                                            <li><strong>교리:</strong> 세상은 선의 신(아후라 마즈다)과 악의 신(아리만)의 대결이야! 불을 신성시했어.</li>
+                                            <li><strong>영향:</strong> 최후의 심판, 천국과 지옥, 구세주의 출현 사상은 훗날 **유대교, 크리스트교, 이슬람교**에 큰 영향을 주었단다.</li>
+                                        </ul>
+                                        <div class="parrot-mnemonic">
+                                            💡 <strong>모찌 암기법:</strong> 세상을 구하는 <strong>조로(조로아스터교)</strong>가 불처럼 선하게 살면 <strong>천국</strong> 간다고 외쳤어! 👼
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Game Section for U2 Ch1 -->
+                    <div class="game-section">
+                        <div class="game-header">
+                            <h4>🎮 챕터 1 게임: "다리우스 1세의 왕의 길 건설!"</h4>
+                            <p>다리우스 1세의 통치 업적 키워드를 순서대로 알맞게 클릭하여 수사에서 사르디스까지 역참을 건설하자!</p>
+                        </div>
+                        <div class="game-body path-game" id="path-game-container">
+                            <!-- JS will build matching route steps -->
+                            <button id="start-game-u2-1-btn" class="cute-btn">로열 로드 출발! 🛣️</button>
+                        </div>
+                        <div class="game-feedback" id="u2-game1-feedback"></div>
+                    </div>
+                </section>
+
+                <!-- Chapter 2-2: 그리스 & 헬레니즘 -->
+                <section id="u2-chapter2" class="chapter-panel">
+                    <div class="panel-header">
+                        <h3>제2장: 그리스 세계와 헬레니즘 세계가 발전하다</h3>
+                        <p class="panel-subtitle">민주정의 아테네, 군사력의 스파르타! 그리고 동서양이 하나가 된 헬레니즘!</p>
+                    </div>
+
+                    <div class="study-section">
+                        <div class="parrot-tip">
+                            <img src="assets/parrot_teacher.png" alt="선생님 모찌" class="tip-avatar">
+                            <div class="tip-bubble-text">
+                                <strong>모찌의 핵심 콕! 🦜</strong><br>
+                                그리스 폴리스 중 **아테네(민주주의, 도편추방제)**와 **스파르타(군국주의)**의 차이점을 먼저 기억해! 
+                                그리고 동방원정을 떠난 **알렉산드로스**가 만든 **헬레니즘 문화(그리스+오리엔트)**의 특징을 정리하면 지중해 세계는 정복 완료야!
+                            </div>
+                        </div>
+
+                        <div class="versus-container three-way">
+                            <!-- Athens -->
+                            <div class="versus-card paleolithic">
+                                <div class="vs-header bg-paleo" style="background: linear-gradient(135deg, #0077b6, #0096c7);">아테네 (Athens)</div>
+                                <div class="vs-body">
+                                    <div class="vs-item">
+                                        <span class="vs-icon">🗳️</span>
+                                        <div>
+                                            <strong>민주 정치:</strong> 시민들이 민회에서 직접 나라 일을 결정! 독재자가 될 사람을 도자기 조각에 써서 쫓아내는 <strong>도편추방제</strong>를 실시했어.
+                                        </div>
+                                    </div>
+                                    <div class="vs-item">
+                                        <span class="vs-icon">🎭</span>
+                                        <div><strong>문화:</strong> 인간 중심적이고 합리적인 문화. 소크라테스, 플라톤 등 철학 발달!</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sparta -->
+                            <div class="versus-card neolithic">
+                                <div class="vs-header bg-neo" style="background: linear-gradient(135deg, #9e2a2b, #ff5400);">스파르타 (Sparta)</div>
+                                <div class="vs-body">
+                                    <div class="vs-item">
+                                        <span class="vs-icon">⚔️</span>
+                                        <div>
+                                            <strong>엄격한 군사 정치:</strong> 소수의 스파르타 시민이 대다수의 피지배층을 다스리기 위해, 7세부터 엄격한 공동 군사 훈련(스파르타 교육)을 벌였어.
+                                        </div>
+                                    </div>
+                                    <div class="vs-item">
+                                        <span class="vs-icon">🛡️</span>
+                                        <div><strong>사회:</strong> 강력한 육군을 바탕으로 펠로폰네소스 전쟁에서 아테네를 이겼지.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Hellenism -->
+                            <div class="versus-card" style="border-color: var(--accent-light);">
+                                <div class="vs-header" style="background: linear-gradient(135deg, #ffb703, #fb8500);">헬레니즘 세계 (Hellenism)</div>
+                                <div class="vs-body">
+                                    <div class="vs-item">
+                                        <span class="vs-icon">🌍</span>
+                                        <div>
+                                            <strong>동서 문화 융합:</strong> 알렉산드로스 대제가 그리스 문화와 오리엔트 문화를 합쳤어. <strong>'세계 시민주의'</strong>와 <strong>'개인주의'</strong>가 유행했단다.
+                                        </div>
+                                    </div>
+                                    <div class="vs-item">
+                                        <span class="vs-icon">🏛️</span>
+                                        <div>
+                                            <strong>철학과 미술:</strong> 쾌락을 추구한 에피쿠로스 학파, 금욕을 주장한 스토아 학파! 대표 미술은 <strong>라오콘 군상</strong>이 있어.
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="flip-card" id="c1-card4">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front card-theme-4">
-                                    <div class="card-icon">🎨</div>
-                                    <h4>4단계: 호모 사피엔스</h4>
-                                    <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                        <div class="mnemonic-banner font-large" style="background: linear-gradient(135deg, #00b4d8, #0077b6);">
+                            💡 <strong>모찌 암기법:</strong> "아테네는 <strong>'아~ 민주적이야!'</strong>, 스파르타는 군인처럼 <strong>'스~ 빠르다!'</strong>,<br>
+                            알렉산드로스는 온 세상을 <strong>헬렐레~(헬레니즘)</strong> 하나로 섞었다!"
+                        </div>
+                    </div>
+
+                    <!-- Game Section for U2 Ch2 -->
+                    <div class="game-section">
+                        <div class="game-header">
+                            <h4>🎮 챕터 2 게임: "아테네 vs 스파르타 vs 헬레니즘 분류기"</h4>
+                            <p>단어 카드가 나타나면 알맞은 바구니를 선택해 점수를 모으자!</p>
+                        </div>
+                        <div class="game-body sorting-game" id="sorting-game-u2-container">
+                            <div class="sorting-dashboard">
+                                <div class="sorting-score">맞춘 개수: <span id="sorting-score-u2-val">0</span> / 6</div>
+                                <div class="sorting-card-display" id="sorting-card-u2">
+                                    <div class="sorting-card-inner" style="border-color: var(--accent-color);">
+                                        <div class="sorting-card-content" id="sorting-item-u2-text">카드를 불러오는 중...</div>
+                                    </div>
                                 </div>
-                                <div class="flip-card-back">
-                                    <h4>호모 사피엔스</h4>
-                                    <ul>
-                                        <li><strong>언제?</strong> 약 20만 년 전</li>
-                                        <li><strong>뜻:</strong> '지혜로운 사람' (우리의 직접적인 조상!)</li>
-                                        <li><strong>특징:</strong> <strong>동굴 벽화🎨</strong>(라스코, 알타미라)를 그려서 사냥이 잘되길 바랐어. 뼈 바늘로 옷도 지어 입었대!</li>
-                                    </ul>
-                                    <div class="parrot-mnemonic">
-                                        💡 <strong>모찌 암기법:</strong> "똑똑해서 <strong>사피(슬기)</strong>로운 호모 사피엔스! 그림도 잘 그리는 예술가!"
+                                <div class="sorting-buttons-three">
+                                    <button id="btn-u2-athens" class="cute-btn choice-btn blue-btn">🗳️ 아테네</button>
+                                    <button id="btn-u2-sparta" class="cute-btn choice-btn red-btn">⚔️ 스파르타</button>
+                                    <button id="btn-u2-hellenism" class="cute-btn choice-btn yellow-btn">🌍 헬레니즘</button>
+                                </div>
+                            </div>
+                            <div class="sorting-controls">
+                                <button id="start-game-u2-2-btn" class="cute-btn">게임 시작하기 🏛️</button>
+                            </div>
+                        </div>
+                        <div class="game-feedback" id="u2-game2-feedback"></div>
+                    </div>
+                </section>
+
+                <!-- Chapter 2-3: 로마 제국 -->
+                <section id="u2-chapter3" class="chapter-panel">
+                    <div class="panel-header">
+                        <h3>제3장: 로마 제국이 지중해 세계를 통일하다</h3>
+                        <p class="panel-subtitle">지중해를 호수로 삼은 거대한 제국! 그리고 크리스트교의 전파!</p>
+                    </div>
+
+                    <div class="study-section">
+                        <div class="parrot-tip">
+                            <img src="assets/parrot_teacher.png" alt="선생님 모찌" class="tip-avatar">
+                            <div class="tip-bubble-text">
+                                <strong>모찌의 핵심 콕! 🦜</strong><br>
+                                로마는 공화정에서 영토를 넓히다 혼란을 극복하고 **제정(황제 중심 통치)**이 되었어! 
+                                로마인들은 수로, 도로, 법률 같은 **실용적인 문화**를 발달시켰고, 박해받던 **크리스트교(기독교)**를 결국 국가 종교로 삼았단다!
+                            </div>
+                        </div>
+
+                        <div class="bronze-info-grid">
+                            <div class="info-card gold-border">
+                                <h5>🏟️ 로마의 성장과 제국화</h5>
+                                <ul>
+                                    <li><strong>포에니 전쟁:</strong> 지중해 패권을 두고 카르타고와 싸워 승리하며 지중해 세계의 지배자가 됨.</li>
+                                    <li><strong>제정 수립:</strong> 옥타비아누스가 <strong>아우구스투스(존엄한 자)</strong> 칭호를 얻으며 황제가 다스리는 제국 시작.</li>
+                                    <li><strong>팍스 로마나:</strong> 이후 약 200년간 평화와 번영을 누림(로마의 평화).</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="info-card blue-border">
+                                <h5>⚖️ 로마의 문화와 종교</h5>
+                                <ul>
+                                    <li><strong>실용적 문화:</strong> 콜로세움(원형 경기장), 로마 도로(모든 길은 로마로!), 거대한 공공 수로, 12표법과 로마법 대전(법률).</li>
+                                    <li><strong>크리스트교의 역사:</strong> 콘스탄티누스 대제가 <strong>밀라노 칙령(313년)</strong>으로 신앙을 공인하고, 테오도시우스 대제가 <strong>국교화(392년)</strong>했어.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mnemonic-banner" style="background: linear-gradient(135deg, #e63946, #b5179e);">
+                            💡 <strong>모찌 암기법:</strong> "옥타비아누스는 존엄해서 <strong>'아우구스투스(아우 구수해~!)'</strong>!"<br>
+                            "콘스탄티누스는 크리스트교 믿으라고 법으로 <strong>밀었어!(밀라노 칙령)</strong>!" ⛪
+                        </div>
+                    </div>
+
+                    <!-- Game Section for U2 Ch3 -->
+                    <div class="game-section">
+                        <div class="game-header">
+                            <h4>🎮 챕터 3 게임: "로마 제국 OX 퀴즈"</h4>
+                            <p>로마 제국에 대한 설명이 맞으면 O, 틀리면 X를 선택해보자!</p>
+                        </div>
+                        <div class="game-body ox-game" id="ox-game-u2-container">
+                            <div class="ox-display">
+                                <div class="ox-score">점수: <span id="ox-score-u2-val">0</span> / 4</div>
+                                <div class="ox-question-box" id="ox-question-u2" style="border-color: var(--secondary-color);">질문이 여기에 나옵니다!</div>
+                                <div class="ox-buttons">
+                                    <button id="btn-u2-ox-o" class="cute-btn o-btn">⭕ O</button>
+                                    <button id="btn-u2-ox-x" class="cute-btn x-btn">❌ X</button>
+                                </div>
+                            </div>
+                            <div class="ox-controls">
+                                <button id="start-game-u2-3-btn" class="cute-btn">게임 시작하기 🛡️</button>
+                            </div>
+                        </div>
+                        <div class="game-feedback" id="u2-game3-feedback"></div>
+                    </div>
+                </section>
+
+                <!-- Final Quiz Section for Unit 2 -->
+                <section id="u2-chapter-quiz" class="chapter-panel">
+                    <div class="panel-header">
+                        <h3>🏆 종합 도전: 고대 서아시아·지중해 세계사 마스터!</h3>
+                        <p class="panel-subtitle">모든 문제를 맞춰 모찌가 준비한 로마 콜로세움 둥지 열쇠를 획득해!</p>
+                    </div>
+
+                    <div class="quiz-arena">
+                        <div class="quiz-intro-box" id="u2-quiz-intro-view">
+                            <img src="assets/parrot_cheer.png" alt="응원하는 모찌" class="quiz-intro-avatar">
+                            <h4>단원 2 최종 퀴즈 스테이지!</h4>
+                            <p>
+                                로마 제국과 페르시아 제국의 지식을 모조리 무찔러봐!<br>
+                                5문제를 다 맞추면 대단한 인증서를 발급해줄게!
+                            </p>
+                            <button id="start-u2-final-quiz-btn" class="cute-btn large-btn">도전하기 🏛️🔑</button>
+                        </div>
+
+                        <!-- Active Quiz Interface -->
+                        <div class="quiz-play-box hidden" id="u2-quiz-play-view">
+                            <div class="quiz-status">
+                                <span class="quiz-progress-num">문제 <span id="u2-current-q-num">1</span> / 5</span>
+                                <span class="quiz-score-num">맞춘 개수: <span id="u2-final-score-val">0</span></span>
+                            </div>
+                            <div class="quiz-card">
+                                <div class="quiz-question" id="u2-quiz-question-text">질문 텍스트</div>
+                                <div class="quiz-options-list" id="u2-quiz-options-container"></div>
+                            </div>
+                        </div>
+
+                        <!-- Quiz Result Interface -->
+                        <div class="quiz-result-box hidden" id="u2-quiz-result-view">
+                            <img src="assets/parrot_happy.png" alt="축하하는 모찌" class="result-avatar">
+                            <h3>🎉 축하해! 지중해 세계 정복 완료! 🎉</h3>
+                            <p class="score-summary">너의 점수: <span id="u2-final-total-score">5</span> / 5점</p>
+                            <div id="u2-result-message" class="result-message-box">메시지</div>
+                            
+                            <!-- Certificate -->
+                            <div class="certificate-container" id="u2-certificate">
+                                <div class="cert-border" style="border-color: #8b263e;">
+                                    <h2 style="color: #8b263e;">지중해 제국 마스터 인증서</h2>
+                                    <p class="cert-name">이름: 멋쟁이 역사 모험가</p>
+                                    <p class="cert-body">위 학생은 역사 천재 앵무새 모찌가 주관한 [세계사: 고대 서아시아·지중해 세계의 형성] 과정의 모든 퀴즈 게임을 훌륭히 마쳤으므로 이 인증서를 수여함.</p>
+                                    <div class="cert-footer">
+                                        <span>발행인: 앵무새 모찌 🦜</span>
+                                        <span class="cert-date-span">2026년 6월 13일</span>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <!-- Evolutionary Order Wrap -->
-                    <div class="mnemonic-banner">
-                        💥 <strong>앵무새 총정리 비법:</strong> "<strong>오</strong>늘 <strong>에</strong>버랜드에서 <strong>네</strong>잎클로버 <strong>사</strong>왔어!"<br>
-                        (<strong>오</strong>스트랄로피테쿠스 → <strong>에</strong>렉투스 → <strong>네</strong>안데르탈렌시스 → <strong>사</strong>피엔스)
-                    </div>
-                </div>
-
-                <!-- Game Section -->
-                <div class="game-section">
-                    <div class="game-header">
-                        <h4>🎮 챕터 1 게임: "인류 진화 짝 맞추기 카드 매칭"</h4>
-                        <p>인류의 이름과 그 특징(꿀팁) 카드를 알맞게 매칭하여 카드를 모두 없애봐!</p>
-                    </div>
-                    
-                    <div class="game-body matching-game" id="matching-game-container">
-                        <!-- Javascript will dynamically build this game -->
-                        <button id="start-game-1-btn" class="cute-btn">게임 시작하기 🧩</button>
-                    </div>
-                    <div class="game-feedback" id="game1-feedback"></div>
-                </div>
-            </section>
-
-            <!-- Chapter 2: 구석기 vs 신석기 -->
-            <section id="chapter2" class="chapter-panel">
-                <div class="panel-header">
-                    <h3>제2장: 구석기와 신석기 (돌을 깨서 쓰고, 갈아서 쓰고!)</h3>
-                    <p class="panel-subtitle">생활 모습이 완전히 뒤바뀐 인류 역사 최고의 혁명을 만나보자!</p>
-                </div>
-
-                <!-- Learning Section -->
-                <div class="study-section">
-                    <div class="parrot-tip">
-                        <img src="assets/parrot_teacher.png" alt="선생님 모찌" class="tip-avatar">
-                        <div class="tip-bubble-text">
-                            <strong>모찌의 핵심 콕! 🦜</strong><br>
-                            구석기 시대와 신석기 시대는 '도구 만드는 방법'과 '먹을 것을 구하는 방법'이 완전히 달라! 
-                            특히 농사를 시작한 신석기는 <strong>'신석기 혁명'</strong>이라 불릴 만큼 엄청난 변화가 일어났단다!
-                        </div>
-                    </div>
-
-                    <div class="versus-container">
-                        <!-- Paleolithic (구석기) -->
-                        <div class="versus-card paleolithic">
-                            <div class="vs-header bg-paleo">구석기 시대 (Old Stone Age)</div>
-                            <div class="vs-body">
-                                <div class="vs-item">
-                                    <span class="vs-icon">🔨</span>
-                                    <div>
-                                        <strong>뗀석기:</strong> 돌을 떼어내서 대충 만든 도구!
-                                        <div class="keyword-pill">주먹도끼</div> <div class="keyword-pill">찍개</div>
-                                    </div>
-                                </div>
-                                <div class="vs-item">
-                                    <span class="vs-icon">🥩</span>
-                                    <div>
-                                        <strong>식생활:</strong> 사냥, 채집(열매 따기), 물고기 잡이.
-                                    </div>
-                                </div>
-                                <div class="vs-item">
-                                    <span class="vs-icon">⛺</span>
-                                    <div>
-                                        <strong>주거/사회:</strong> 먹을 것이 떨어지면 이동하는 <strong>이동 생활🏃‍♂️</strong>. 동굴이나 대충 지은 <strong>막집</strong>에서 살았어. 무리 사회!
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Neolithic (신석기) -->
-                        <div class="versus-card neolithic">
-                            <div class="vs-header bg-neo">신석기 시대 (New Stone Age)</div>
-                            <div class="vs-body">
-                                <div class="vs-item">
-                                    <span class="vs-icon">🪓</span>
-                                    <div>
-                                        <strong>간석기 & 토기:</strong> 돌을 정교하게 갈아 만든 간석기!
-                                        <div class="keyword-pill">갈판과 갈돌</div> <div class="keyword-pill">빗살무늬 토기</div>
-                                    </div>
-                                </div>
-                                <div class="vs-item">
-                                    <span class="vs-icon">🌾</span>
-                                    <div>
-                                        <strong>농경과 목축의 시작! (★신석기 혁명★):</strong> 먹을 것을 직접 생산하기 시작했어!
-                                    </div>
-                                </div>
-                                <div class="vs-item">
-                                    <span class="vs-icon">🏡</span>
-                                    <div>
-                                        <strong>주거/사회:</strong> 농사짓느라 한곳에 머무는 <strong>정착 생활🏠</strong>. 땅을 파고 지은 <strong>움집</strong>에서 살았고, 가족 중심의 <strong>씨족/부족 사회</strong>였어.
-                                    </div>
-                                </div>
+                            <div class="result-buttons">
+                                <button class="cute-btn cert-btn btn-print-cert-class"><i class="fas fa-print"></i> 인증서 인쇄/저장</button>
+                                <button class="cute-btn restart-btn btn-restart-adventure-class"><i class="fas fa-undo"></i> 처음부터 다시 공부하기</button>
                             </div>
                         </div>
                     </div>
-
-                    <div class="mnemonic-banner font-large">
-                        💡 <strong>모찌 암기법:</strong> "구석기는 돌을 <strong>떼어내서(뗀석기) 떼쓰며 이동</strong>했고,<br>
-                        신석기는 돌을 <strong>갈아서(간석기) 농사짓고 집(움집) 지어 정착</strong>했다!"
-                    </div>
-                </div>
-
-                <!-- Game Section -->
-                <div class="game-section">
-                    <div class="game-header">
-                        <h4>🎮 챕터 2 게임: "구석기 vs 신석기! 도구 분류 대작전"</h4>
-                        <p>화면에 등장하는 그림이나 단어를 보고, 구석기인지 신석기인지 알맞은 바구니에 쏙 골라 담아보자!</p>
-                    </div>
-
-                    <div class="game-body sorting-game" id="sorting-game-container">
-                        <div class="sorting-dashboard">
-                            <div class="sorting-score">맞춘 개수: <span id="sorting-score-val">0</span> / 6</div>
-                            <div class="sorting-card-display" id="sorting-card">
-                                <div class="sorting-card-inner">
-                                    <div class="sorting-card-content" id="sorting-item-text">
-                                        여기에 도구가 나타나요!
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sorting-buttons">
-                                <button id="btn-paleo" class="cute-btn paleo-btn">🪨 구석기 바구니</button>
-                                <button id="btn-neo" class="cute-btn neo-btn">🌾 신석기 바구니</button>
-                            </div>
-                        </div>
-                        <div class="sorting-controls">
-                            <button id="start-game-2-btn" class="cute-btn">게임 시작하기 🍎</button>
-                        </div>
-                    </div>
-                    <div class="game-feedback" id="game2-feedback"></div>
-                </div>
-            </section>
-
-            <!-- Chapter 3: 청동기와 문명 -->
-            <section id="chapter3" class="chapter-panel">
-                <div class="panel-header">
-                    <h3>제3장: 청동기 시대와 문명의 탄생 (인류 최초의 국가가 생기다!)</h3>
-                    <p class="panel-subtitle">금속 도구의 사용과 거대한 강 유역에서 피어난 고대 문명들!</p>
-                </div>
-
-                <!-- Learning Section -->
-                <div class="study-section">
-                    <div class="parrot-tip">
-                        <img src="assets/parrot_teacher.png" alt="선생님 모찌" class="tip-avatar">
-                        <div class="tip-bubble-text">
-                            <strong>모찌의 핵심 콕! 🦜</strong><br>
-                            인류는 돌을 벗어나 번쩍이는 금속인 <strong>청동기</strong>를 썼어. 청동기는 귀해서 무기나 제사 도구로만 쓰고, 
-                            <strong>농사는 여전히 돌(반달 돌칼)</strong>로 지었어! 이 시기에 농사가 잘되어 남는 식량이 생기자 계급과 국가, 그리고 문명이 나타났지!
-                        </div>
-                    </div>
-
-                    <div class="bronze-info-grid">
-                        <div class="info-card gold-border">
-                            <h5>🗡️ 청동기 시대의 핵심 특징</h5>
-                            <ul>
-                                <li><strong>귀한 금속:</strong> 청동(구리와 주석의 합금)은 단단하고 만들기 어려워 지배자만 썼어 (예: 비파형 동검, 청동 거울).</li>
-                                <li><strong>농사 도구:</strong> 청동은 너무 귀하고 물러서 농사 도구로는 못 썼단다! <strong>반달 돌칼</strong>이라는 돌 도구로 곡식을 수확했어. (이거 시험에 진짜 많이 나와! 🌟)</li>
-                                <li><strong>계급과 무덤:</strong> 사유 재산이 생겨 부자와 가난한 자가 나뉘었고, 지배자(군장)가 나타나 큰 <strong>고인돌</strong> 무덤을 만들었어.</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="info-card blue-border">
-                            <h5>🌊 인류 4대 문명의 발생 공통점</h5>
-                            <p>인류 최초의 문명들은 모두 아래의 4가지 공통점을 가지고 큰 강 유역에서 탄생했어!</p>
-                            <div class="civil-factors">
-                                <span class="factor-pill">큰 강 유역 (비옥한 땅)</span>
-                                <span class="factor-pill">청동기 사용</span>
-                                <span class="factor-pill">문자 사용 (기록)</span>
-                                <span class="factor-pill">도시 국가 & 계급 발생</span>
-                            </div>
-                            <ul class="c-list">
-                                <li><strong>메소포타미아 문명:</strong> 티그리스·유프라테스강, 지구라트 신전, 쐐기 문자.</li>
-                                <li><strong>이집트 문명:</strong> 나일강, 피라미드와 미라, 상형 문자.</li>
-                                <li><strong>인더스 문명:</strong> 인더스강, 모헨조다로(계획도시), 인장 문자.</li>
-                                <li><strong>황하(중국) 문명:</strong> 황하강, 갑골 문자(한자의 기원), 은나라.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="mnemonic-banner">
-                        💡 <strong>모찌 암기법:</strong> "<strong>청동</strong>기라고 다 청동이 아니야! 농사지을 땐 <strong>반달 돌칼(돌)</strong>!<br>
-                        지배층이 세상을 <strong>고</strong>이 다스려서 죽어서 <strong>고인돌</strong>!"
-                    </div>
-                </div>
-
-                <!-- Game Section -->
-                <div class="game-section">
-                    <div class="game-header">
-                        <h4>🎮 챕터 3 게임: "청동기 & 문명 OX 퀴즈 낚시"</h4>
-                        <p>모찌의 아슬아슬한 설명이 맞으면 O, 틀리면 X를 골라 해바라기씨를 획득해 봐!</p>
-                    </div>
-
-                    <div class="game-body ox-game" id="ox-game-container">
-                        <div class="ox-display">
-                            <div class="ox-score">점수: <span id="ox-score-val">0</span> / 4</div>
-                            <div class="ox-question-box" id="ox-question">
-                                여기에 OX 질문이 나옵니다!
-                            </div>
-                            <div class="ox-buttons">
-                                <button id="btn-ox-o" class="cute-btn o-btn">⭕ 그렇다! (O)</button>
-                                <button id="btn-ox-x" class="cute-btn x-btn">❌ 아니다! (X)</button>
-                            </div>
-                        </div>
-                        <div class="ox-controls">
-                            <button id="start-game-3-btn" class="cute-btn">게임 시작하기 🎣</button>
-                        </div>
-                    </div>
-                    <div class="game-feedback" id="game3-feedback"></div>
-                </div>
-            </section>
-
-            <!-- Final Quiz Section: 종합 퀴즈 게임 -->
-            <section id="chapter-quiz" class="chapter-panel">
-                <div class="panel-header">
-                    <h3>🏆 종합 도전: 선사 시대 세계사 왕중왕전!</h3>
-                    <p class="panel-subtitle">지금까지 배운 내용을 총동원해 모찌가 숨겨둔 보물상자를 열어봐!</p>
-                </div>
-
-                <div class="quiz-arena">
-                    <div class="quiz-intro-box" id="quiz-intro-view">
-                        <img src="assets/parrot_cheer.png" alt="응원하는 모찌" class="quiz-intro-avatar">
-                        <h4>최종 꿀떡 퀴즈 스테이지!</h4>
-                        <p>
-                            선사 시대의 진정한 강자가 될 준비가 되었니? 😎<br>
-                            총 5문제를 다 맞추면 모찌의 둥지에 황금 열매를 달 수 있어!<br>
-                            틀려도 괜찮아, 모찌가 언제든 따뜻하게 다시 가르쳐 줄 테니까!
-                        </p>
-                        <button id="start-final-quiz-btn" class="cute-btn large-btn">보물상자 퀴즈 도전하기 💎</button>
-                    </div>
-
-                    <!-- Active Quiz Interface -->
-                    <div class="quiz-play-box hidden" id="quiz-play-view">
-                        <div class="quiz-status">
-                            <span class="quiz-progress-num">문제 <span id="current-q-num">1</span> / 5</span>
-                            <span class="quiz-score-num">맞춘 개수: <span id="final-score-val">0</span></span>
-                        </div>
-                        
-                        <div class="quiz-card">
-                            <div class="quiz-question" id="quiz-question-text">
-                                문명이 발생한 곳들의 공통점이 아닌 것은 무엇일까요?
-                            </div>
-                            <div class="quiz-options-list" id="quiz-options-container">
-                                <!-- Choices will be rendered here dynamically -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Quiz Result Interface -->
-                    <div class="quiz-result-box hidden" id="quiz-result-view">
-                        <img src="assets/parrot_happy.png" alt="축하하는 모찌" class="result-avatar">
-                        <h3>🎉 축하해! 선사 시대 탐험 완료! 🎉</h3>
-                        <p class="score-summary">너의 점수: <span id="final-total-score">5</span> / 5점</p>
-                        <div id="result-message" class="result-message-box">
-                            와! 너 정말 대단하다! 선사 시대의 모든 지식을 마스터했어! 이제 학교 역사 시험은 식은 죽 먹기겠는걸? 모찌가 맛있는 해바라기씨를 가득 줄게! 🌻👑
-                        </div>
-                        
-                        <div class="certificate-container" id="certificate">
-                            <div class="cert-border">
-                                <h2>역사 마스터 인증서</h2>
-                                <p class="cert-name">이름: 멋쟁이 역사 모험가</p>
-                                <p class="cert-body">위 학생은 역사 천재 앵무새 모찌가 주관한 [세계사: 선사 시대] 과정의 모험과 모든 퀴즈 게임을 훌륭히 마쳤으므로 이 인증서를 수여함.</p>
-                                <div class="cert-footer">
-                                    <span>발행인: 앵무새 모찌 🦜</span>
-                                    <span id="cert-date">2026년 6월 12일</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="result-buttons">
-                            <button id="btn-print-cert" class="cute-btn cert-btn"><i class="fas fa-print"></i> 인증서 인쇄/저장</button>
-                            <button id="btn-restart-adventure" class="cute-btn restart-btn"><i class="fas fa-undo"></i> 처음부터 다시 공부하기</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                </section>
+            </div>
         </div>
     </main>
 

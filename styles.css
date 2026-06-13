@@ -89,7 +89,7 @@ body {
 /* Header & Flight Progress Bar */
 .app-header {
     background: linear-gradient(135deg, rgba(204, 255, 51, 0.15) 0%, rgba(0, 180, 216, 0.15) 100%);
-    padding: 30px 20px;
+    padding: 30px 20px 20px 20px;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
@@ -121,7 +121,60 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-/* Progress bar styling (Tori flying home) */
+/* NEW: Grand Unit Selector Styling */
+.unit-selector-wrap {
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.unit-selector {
+    display: flex;
+    background: var(--bg-card);
+    padding: 8px;
+    border-radius: 40px;
+    border: 2px solid var(--border-color);
+    box-shadow: 0 4px 15px var(--shadow-color);
+    gap: 8px;
+    width: 100%;
+}
+
+.unit-btn {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-family: var(--font-cute);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: var(--transition-smooth);
+    word-break: keep-all;
+}
+
+.unit-btn:hover {
+    background: rgba(0, 180, 216, 0.05);
+    transform: translateY(-1px);
+}
+
+.unit-btn.active {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #1e8f00 100%);
+    color: white;
+    box-shadow: 0 6px 15px rgba(56, 176, 0, 0.25);
+}
+
+.unit-emoji {
+    font-size: 1.25rem;
+}
+
+/* Progress bar styling (Mochi flying home) */
 .progress-container {
     max-width: 800px;
     margin: 0 auto;
@@ -204,6 +257,7 @@ body {
     right: -10px;
     font-size: 1.8rem;
     top: -12px;
+    transition: var(--transition-smooth);
 }
 
 .progress-info {
@@ -353,6 +407,16 @@ body {
     animation: pulse-animation 2s infinite;
 }
 
+/* Unit Container Controls */
+.unit-view {
+    display: none;
+}
+
+.unit-view.active {
+    display: block;
+    animation: fadeIn 0.6s ease-in-out forwards;
+}
+
 /* Navigation Tabs */
 .chapter-nav {
     display: flex;
@@ -394,13 +458,13 @@ body {
 .tab-badge {
     background: rgba(255, 255, 255, 0.25);
     color: inherit;
-    width: 24px;
+    width: 32px;
     height: 24px;
-    border-radius: 50%;
+    border-radius: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
 }
 
 /* Panels */
@@ -467,7 +531,7 @@ body {
     flex: 1;
 }
 
-/* Card Grid for Flip Cards (Chapter 1) */
+/* Card Grid for Flip Cards */
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -597,12 +661,16 @@ body {
     font-size: 1.1rem;
 }
 
-/* Versus Container (Chapter 2) */
+/* Versus Container & U2 Ch2 Three-Way VS */
 .versus-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 25px;
     margin-bottom: 30px;
+}
+
+.versus-container.three-way {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .versus-card {
@@ -655,7 +723,7 @@ body {
     margin-right: 5px;
 }
 
-/* Bronze & Civilization Layout (Chapter 3) */
+/* Bronze & Civilization Layout */
 .bronze-info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -795,6 +863,119 @@ body {
     pointer-events: none;
 }
 
+/* Path Game Specific (U2 Ch1) */
+.path-game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.road-map-display {
+    width: 100%;
+    background: #eedcb3;
+    border: 3px solid #b08968;
+    border-radius: 16px;
+    padding: 20px;
+    position: relative;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.road-points {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin: 20px 0;
+}
+
+.road-points::before {
+    content: '';
+    position: absolute;
+    height: 6px;
+    background: repeating-linear-gradient(90deg, #8b5a2b, #8b5a2b 10px, transparent 10px, transparent 20px);
+    left: 10px;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.road-node {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid #8b5a2b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+    z-index: 2;
+    transition: var(--transition-smooth);
+    font-size: 0.85rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.road-node.active {
+    background: var(--accent-light);
+    border-color: var(--accent-color);
+    transform: scale(1.15);
+}
+
+.road-node.passed {
+    background: var(--primary-light);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.road-desc-box {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #5c3d2e;
+    font-weight: 700;
+    margin-top: 10px;
+    border-top: 1px dashed #b08968;
+    padding-top: 10px;
+}
+
+.road-options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    width: 100%;
+}
+
+.road-opt-btn {
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    color: var(--text-main);
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 10px var(--shadow-color);
+    word-break: keep-all;
+}
+
+.road-opt-btn:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-color);
+}
+
+.road-opt-btn.correct {
+    background: rgba(56, 176, 0, 0.15) !important;
+    border-color: var(--primary-color) !important;
+}
+
+.road-opt-btn.wrong {
+    background: rgba(230, 57, 70, 0.15) !important;
+    border-color: #e63946 !important;
+}
+
 /* Sorting Game Specific */
 .sorting-game {
     max-width: 500px;
@@ -851,23 +1032,48 @@ body {
     justify-content: center;
 }
 
+.sorting-buttons-three {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.choice-btn {
+    color: white;
+    justify-content: center;
+    font-size: 0.9rem;
+    padding: 12px 10px;
+}
+
+.blue-btn {
+    background: linear-gradient(135deg, #0077b6, #0096c7);
+    box-shadow: 0 4px 10px rgba(0, 119, 182, 0.25);
+}
+.blue-btn:hover { box-shadow: 0 6px 15px rgba(0, 119, 182, 0.35); }
+
+.red-btn {
+    background: linear-gradient(135deg, #9e2a2b, #ff5400);
+    box-shadow: 0 4px 10px rgba(158, 42, 43, 0.25);
+}
+.red-btn:hover { box-shadow: 0 6px 15px rgba(158, 42, 43, 0.35); }
+
+.yellow-btn {
+    background: linear-gradient(135deg, #ffb703, #fb8500);
+    box-shadow: 0 4px 10px rgba(251, 133, 0, 0.25);
+}
+.yellow-btn:hover { box-shadow: 0 6px 15px rgba(251, 133, 0, 0.35); }
+
 .paleo-btn {
     background: linear-gradient(135deg, #b08968, #7f5539);
     box-shadow: 0 6px 15px rgba(127, 85, 57, 0.3);
 }
-
-.paleo-btn:hover {
-    box-shadow: 0 8px 20px rgba(127, 85, 57, 0.4);
-}
+.paleo-btn:hover { box-shadow: 0 8px 20px rgba(127, 85, 57, 0.4); }
 
 .neo-btn {
     background: linear-gradient(135deg, #52b788, #2d6a4f);
     box-shadow: 0 6px 15px rgba(45, 106, 79, 0.3);
 }
-
-.neo-btn:hover {
-    box-shadow: 0 8px 20px rgba(45, 106, 79, 0.4);
-}
+.neo-btn:hover { box-shadow: 0 8px 20px rgba(45, 106, 79, 0.4); }
 
 .sorting-controls, .ox-controls {
     display: flex;
@@ -927,10 +1133,7 @@ body {
     background: linear-gradient(135deg, #e63946, #d62828);
     box-shadow: 0 6px 15px rgba(230, 57, 70, 0.3);
 }
-
-.x-btn:hover {
-    box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4);
-}
+.x-btn:hover { box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4); }
 
 /* Feedbacks styling */
 .game-feedback {
@@ -1240,5 +1443,12 @@ body {
         width: 100%;
         border: 10px double #ffb703;
         box-shadow: none;
+    }
+}
+
+/* Support for U2 layout features */
+@media (max-width: 768px) {
+    .sorting-buttons-three {
+        grid-template-columns: 1fr;
     }
 }
