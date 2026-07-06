@@ -27,16 +27,39 @@
         </div>
 
         <!-- NEW: Grand Unit Selector Menu -->
+        <div class="grand-unit-selector-wrap">
+            <div class="grand-unit-selector">
+                <button class="grand-unit-btn active" data-grand="grand1">
+                    대단원 I. 문명의 발생과 고대 세계의 형성 🏛️
+                </button>
+                <button class="grand-unit-btn" data-grand="grand2">
+                    대단원 II. 세계 종교의 확산과 지역 문화의 발전 🌍
+                </button>
+            </div>
+        </div>
+
         <div class="unit-selector-wrap">
             <div class="unit-selector">
-                <button class="unit-btn active" data-unit="unit1">
-                    <span class="unit-emoji">🌿</span> 단원 1: 선사 시대의 모험
+                <!-- Grand Unit 1 Sub-Chapters -->
+                <button class="unit-btn active" data-unit="unit1" data-grand="grand1">
+                    <span class="unit-emoji">🌿</span> 1단원: 선사 시대의 모험
                 </button>
-                <button class="unit-btn" data-unit="unit2">
-                    <span class="unit-emoji">🏺</span> 단원 2: 고대 서아시아·지중해
+                <button class="unit-btn" data-unit="unit2" data-grand="grand1">
+                    <span class="unit-emoji">🏺</span> 2단원: 고대 서아시아·지중해
                 </button>
-                <button class="unit-btn" data-unit="unit3">
-                    <span class="unit-emoji">☸️</span> 단원 3: 고대 동아시아·인도
+                <button class="unit-btn" data-unit="unit3" data-grand="grand1">
+                    <span class="unit-emoji">☸️</span> 3단원: 고대 동아시아·인도
+                </button>
+
+                <!-- Grand Unit 2 Sub-Chapters (Hidden initially) -->
+                <button class="unit-btn hidden" data-unit="unit4" data-grand="grand2">
+                    <span class="unit-emoji">🌸</span> 1단원: 동아시아 문화의 형성
+                </button>
+                <button class="unit-btn hidden" data-unit="unit5" data-grand="grand2">
+                    <span class="unit-emoji">🐫</span> 2단원: 인도·서아시아·지중해
+                </button>
+                <button class="unit-btn hidden" data-unit="unit6" data-grand="grand2">
+                    <span class="unit-emoji">⛪</span> 3단원: 크리스트교 문화 확산
                 </button>
             </div>
         </div>
@@ -1121,6 +1144,338 @@
                         </div>
                     </div>
                 </section>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- UNIT 4: 동아시아 문화의 형성과 발전 CONTAINER -->
+        <!-- ========================================== -->
+        <div id="unit4-container" class="unit-view">
+            <!-- Chapter Selector Tab for Unit 4 -->
+            <nav class="chapter-nav" id="unit4-nav">
+                <button class="nav-tab active" data-target="u4-chapter1">
+                    <span class="tab-badge">4-1</span> 중국의 분열과 수·당 🇨🇳
+                </button>
+                <button class="nav-tab" data-target="u4-chapter2">
+                    <span class="tab-badge">4-2</span> 일본의 성장과 동아시아 문화권 🌸
+                </button>
+                <button class="nav-tab" data-target="u4-chapter-quiz">
+                    <span class="tab-badge">🏁</span> 종합 퀴즈 게임 🏆
+                </button>
+            </nav>
+
+            <div class="chapter-content-container">
+                <!-- Chapter 4-1: 중국의 분열과 수·당 -->
+                <section id="u4-chapter1" class="chapter-panel active">
+                    <div class="panel-header">
+                        <h3>제1장: 중국이 오랜 분열을 극복하고 수·당의 통일 제국으로 나아가다</h3>
+                        <p class="panel-subtitle">위진남북조의 분열과 융합, 그리고 찬란하고 국제적인 수·당 문명 속으로!</p>
+                    </div>
+
+                    <div class="study-section">
+                        <div class="parrot-tip">
+                            <img src="assets/parrot_teacher.png" alt="선생님 모찌" class="tip-avatar">
+                            <div class="tip-bubble-text">
+                                <strong>모찌의 핵심 콕! 🦜</strong><br>
+                                한나라가 망한 후 중국은 **위진남북조**라는 엄청난 분열기를 거치며 북방 유목민과 한족 문화가 하나로 합쳐졌어. 이 시기에는 추천제인 **9품중정제**로 귀족이 권력을 잡았고, 불안한 사회 탓에 **불교 석굴(윈강, 룽먼)**과 **도교, 청담사상**이 유행했지. 
+                                이를 통일한 **수나라**는 엄청난 규모의 **대운하**를 뚫다 금방 망했지만, 뒤이은 **당나라**는 강력한 **율령 체제(3성 6부)**와 과거제, 그리고 아주 개방적인 국제 문화(**당삼채**)로 동아시아의 중심이 되었단다!
+                            </div>
+                        </div>
+
+                        <div class="card-grid">
+                            <div class="flip-card u4-card" id="u4-c1-card1">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front card-theme-1">
+                                        <div class="card-icon">🎨</div>
+                                        <h4>위진남북조와 귀족 문화</h4>
+                                        <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>오랜 분열과 귀족 예술</h4>
+                                        <ul>
+                                            <li><strong>9품중정제:</strong> 지방에 관리(중정관)를 보내 가문 배경을 보고 관리를 추천해 귀족(문벌 귀족)들이 요직을 독점했어.</li>
+                                            <li><strong>청담 사상 & 도교:</strong> 혼란을 피해 자연으로 도망쳐 술 마시고 토론하는 신선 사상(노장사상)이 유행했지.</li>
+                                        </ul>
+                                        <div class="parrot-mnemonic">
+                                            💡 <strong>모찌 암기법:</strong> 분열로 복잡할 땐 술 마시고 <strong>도를 닦자(도교, 청담 사상)!</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flip-card u4-card" id="u4-c1-card2">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front card-theme-2">
+                                        <div class="card-icon">🧱</div>
+                                        <h4>수나라의 대운하 건설</h4>
+                                        <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>짧고 강력했던 통일 왕조</h4>
+                                        <ul>
+                                            <li><strong>통일과 제도:</strong> 오랜 분열을 극복하고 통일을 이룬 수나라는 시험으로 관리를 뽑는 <strong>과거제</strong>를 최초로 시작했어.</li>
+                                            <li><strong>대운하:</strong> 남북의 경제를 연결하기 위해 대운하를 팠지만, 무리한 토목 공사와 고구려 원정 실패로 금방 멸망했지.</li>
+                                        </ul>
+                                        <div class="parrot-mnemonic">
+                                            💡 <strong>모찌 암기법:</strong> 남북을 가로지르는 <strong>대~운하</strong>를 무리하게 파다가 힘이 다 빠져 <strong>수~욱(수나라)</strong> 가버렸네! 🌊
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flip-card u4-card" id="u4-c1-card3">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front card-theme-3">
+                                        <div class="card-icon">🐉</div>
+                                        <h4>당나라의 율령 체제</h4>
+                                        <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>체계적인 국가 통치 뼈대</h4>
+                                        <ul>
+                                            <li><strong>통치 기구:</strong> 당나라는 <strong>3성 6부제</strong>를 정비해 중앙 정치를 철저히 분담했어.</li>
+                                            <li><strong>민생 안정:</strong> 땅을 나눠주는 <strong>균전제</strong>, 세금을 거두는 <strong>조·용·조</strong>, 군사 의무인 <strong>부병제</strong>가 율령으로 확립되었단다.</li>
+                                        </ul>
+                                        <div class="parrot-mnemonic">
+                                            💡 <strong>모찌 암기법:</strong> 당나라는 규칙적인 법과 규범인 <strong>율령</strong>으로 나라를 확 <strong>'당(당나라)'</strong>겼어!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flip-card u4-card" id="u4-c1-card4">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front card-theme-4">
+                                        <div class="card-icon">🐫</div>
+                                        <h4>당의 개방적·국제적 문화</h4>
+                                        <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>글로벌 동아시아의 중심</h4>
+                                        <ul>
+                                            <li><strong>개방적 사회:</strong> 서역(아시아 서쪽) 상인들이 자유롭게 오가며 크리스트교 일파(경교)나 이슬람교가 전파되었어.</li>
+                                            <li><strong>당삼채:</strong> 세 가지 색(녹, 황, 백) 유약을 바른 흙인형으로, 페르시아인이나 낙타 모양 등이 조각되어 국제적인 분위기를 잘 보여주지.</li>
+                                        </ul>
+                                        <div class="parrot-mnemonic">
+                                            💡 <strong>모찌 암기법:</strong> 화려하고 글로벌한 삼색 인형 <strong>당삼채!</strong> 🐫🎨
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Game Section for U4 Ch1: 위진남북조 vs 수·당 분류기 -->
+                    <div class="game-section">
+                        <div class="game-header">
+                            <h4>🎮 챕터 1 게임: "위진남북조 vs 수·당 업적 분류기"</h4>
+                            <p>단어 카드가 나타나면 위진남북조 시대(분열기)인지 수·당 시대(통일기)인지 알맞게 분류해봐!</p>
+                        </div>
+                        <div class="game-body">
+                            <div id="u4-sorting-game-container" class="sort-game-area"></div>
+                            <div id="u4-sorting-feedback" class="sorting-feedback"></div>
+                            <div id="u4-sorting-result" class="sorting-result hidden">
+                                <p>🎉 분류 완료! <strong id="u4-sort-score">0</strong> / <strong id="u4-sort-total">8</strong> 정답!</p>
+                                <p id="u4-sort-msg" class="sort-result-msg"></p>
+                            </div>
+                            <div class="sorting-controls">
+                                <button id="start-u4-sorting-btn" class="cute-btn">게임 시작하기 🚀</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Chapter 4-2: 일본의 성장과 동아시아 문화권 -->
+                <section id="u4-chapter2" class="chapter-panel">
+                    <div class="panel-header">
+                        <h3>제2장: 주변국들이 도약하고 찬란한 동아시아 문화권을 완성하다</h3>
+                        <p class="panel-subtitle">만주·한반도의 국가 성장과 일본의 중앙 집권, 그리고 공통의 동아시아 문화권!</p>
+                    </div>
+
+                    <div class="study-section">
+                        <div class="parrot-tip">
+                            <img src="assets/parrot_teacher.png" alt="선생님 모찌" class="tip-avatar">
+                            <div class="tip-bubble-text">
+                                <strong>모찌의 핵심 콕! 🦜</strong><br>
+                                중국의 분열과 통일이 이뤄지는 동안 **만주·한반도(고구려, 백제, 신라, 가야)**도 비약적으로 성장하며 신라의 삼국 통일과 발해 건국으로 이어졌어. 
+                                이웃 나라 **일본**은 **야마토 정권**의 **쇼토쿠 태자**가 불교를 일으키고 개혁을 추진했고, 당나라 율령을 전면 도입한 **다이카 개신**을 통해 국왕 중심의 국가 체제를 세웠단다!
+                                이 과정에서 중국의 **한자, 유교, 불교, 율령** 4가지가 동아시아 전체로 퍼져나가 **동아시아 문화권**이라는 단단한 공통의 문화가 싹텄어!
+                            </div>
+                        </div>
+
+                        <div class="versus-container three-way">
+                            <!-- Korea -->
+                            <div class="versus-card paleolithic">
+                                <div class="vs-header bg-paleo" style="background: linear-gradient(135deg, #4f772d, #90a955);">만주 & 한반도의 성장 🏹</div>
+                                <div class="vs-body">
+                                    <div class="vs-item">
+                                        <span class="vs-icon">🏇</span>
+                                        <div>
+                                            <strong>고구려·백제·신라:</strong> 철기 문화를 바탕으로 고대 국가를 세우고 전쟁하며 성장했어. 불교를 들여와 왕권을 키우고 법(율령)을 선포했단다.
+                                        </div>
+                                    </div>
+                                    <div class="vs-item">
+                                        <span class="vs-icon">👑</span>
+                                        <div><strong>남북국 시대:</strong> 당나라와 연합한 신라가 삼국을 통일하고, 고구려 유민 대조영이 북쪽에 <strong>발해</strong>를 세우며 번영을 누렸지.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Japan -->
+                            <div class="versus-card neolithic">
+                                <div class="vs-header bg-neo" style="background: linear-gradient(135deg, #c1121f, #f77f00);">일본 야마토와 다이카 개신 🌸</div>
+                                <div class="vs-body">
+                                    <div class="vs-item">
+                                        <span class="vs-icon">🌸</span>
+                                        <div>
+                                            <strong>쇼토쿠 태자의 개혁:</strong> 6세기 말 쇼토쿠 태자가 아스카 지방을 중심으로 불교 문화를 진흥하고(아스카 문화) 개방적인 개혁을 실시해 왕권을 강화했어.
+                                        </div>
+                                    </div>
+                                    <div class="vs-item">
+                                        <span class="vs-icon">⚖️</span>
+                                        <div><strong>다이카 개신 (645년):</strong> 당나라 율령 체제를 본떠 왕을 중심으로 세금을 정비하고 토지를 국유화하는 개혁을 추진했단다.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- East Asia Block -->
+                            <div class="versus-card" style="border-color: var(--accent-light);">
+                                <div class="vs-header" style="background: linear-gradient(135deg, #7209b7, #b5179e);">동아시아 문화권의 형성 🌐</div>
+                                <div class="vs-body">
+                                    <div class="vs-item">
+                                        <span class="vs-icon">📂</span>
+                                        <div>
+                                            <strong>4대 공통 요소:</strong> 동아시아 여러 나라는 중국과의 활발한 교류 속에서 **한자, 유교, 불교, 율령**을 공통적으로 받아들였어.
+                                        </div>
+                                    </div>
+                                    <div class="vs-item">
+                                        <span class="vs-icon">✍️</span>
+                                        <div>
+                                            <strong>자신만의 문화로 변형:</strong> 한자를 기반으로 일본은 <strong>가나 문자</strong>, 베트남은 <strong>쯔놈 문자</strong>를 만들어 자기 식의 문화를 또다시 발전시켰단다!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mnemonic-banner font-large" style="background: linear-gradient(135deg, #023e8a, #0096c7);">
+                            💡 <strong>모찌 암기법:</strong> "일본 쇼토쿠 태자가 불교 진흥하여 <strong>'쇼(쇼토쿠)킹'</strong>한 아스카 불교를 꽃피웠고,<br>
+                            당나라 법(율령)을 카피해서 <strong>'다이(다이카 개신)내믹'</strong>하게 나라 제도를 갈아엎었어!" 🌸⚖️<br>
+                            "동아시아 4대 공통 묶음 패키지는 <strong>'한·유·불·율(한자, 유교, 불교, 율령)'</strong>!"
+                        </div>
+                    </div>
+
+                    <!-- Game Section for U4 Ch2: OX 퀴즈 -->
+                    <div class="game-section" id="u4-ox-game-section">
+                        <div class="game-header">
+                            <h4>🎮 챕터 2 게임: "동아시아 문화권 OX 퀴즈"</h4>
+                            <p>설명이 맞으면 ⭕, 틀리면 ❌를 골라봐! 동아시아 문화권의 핵심 개념을 확인해보자!</p>
+                        </div>
+                        <div class="game-body ox-game">
+                            <div class="ox-display">
+                                <div class="ox-question-box" id="u4-ox-question-text">게임 시작 버튼을 눌러봐! 🌸</div>
+                                <div class="ox-buttons">
+                                    <button id="u4-ox-o-btn" class="cute-btn o-btn hidden">⭕ O</button>
+                                    <button id="u4-ox-x-btn" class="cute-btn x-btn hidden">❌ X</button>
+                                </div>
+                                <div id="u4-ox-feedback" class="ox-feedback"></div>
+                            </div>
+                            <div id="u4-ox-result" class="ox-result hidden">
+                                <p>🎉 OX 완료! <strong id="u4-ox-score">0</strong> / <strong id="u4-ox-total">7</strong> 정답!</p>
+                                <p id="u4-ox-msg" class="sort-result-msg"></p>
+                            </div>
+                            <div class="ox-controls">
+                                <button id="start-u4-ox-btn" class="cute-btn">게임 시작하기 🌸</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Final Quiz Section for Unit 4 -->
+                <section id="u4-chapter-quiz" class="chapter-panel">
+                    <div class="panel-header">
+                        <h3>🏆 종합 도전: 동아시아 문화의 형성과 발전 마스터!</h3>
+                        <p class="panel-subtitle">수당 제국과 동아시아 문화권의 퀴즈를 무찌르고 모찌의 벚꽃 둥지 열쇠를 획득하자!</p>
+                    </div>
+
+                    <div class="quiz-arena">
+                        <!-- Quiz Intro -->
+                        <div class="quiz-intro-box" id="u4-quiz-intro">
+                            <img src="assets/parrot_cheer.png" alt="응원하는 모찌" class="quiz-intro-avatar">
+                            <h4>대단원 II - 1단원 최종 퀴즈 스테이지! 🌸</h4>
+                            <p>
+                                위진남북조·수당 제국, 한반도와 일본의 성장, 그리고 동아시아 문화권!<br>
+                                5문제를 다 맞추면 멋진 벚꽃 마스터 인증서를 발급해줄게!
+                            </p>
+                            <button id="start-u4-quiz-btn" class="cute-btn large-btn">도전하기 🌸🇨🇳🔑</button>
+                        </div>
+
+                        <!-- Active Quiz Interface -->
+                        <div class="quiz-play-box hidden" id="u4-quiz-play">
+                            <div class="quiz-status">
+                                <span class="quiz-progress-num">문제 <span id="u4-quiz-counter">1 / 5</span></span>
+                            </div>
+                            <div class="quiz-card">
+                                <div class="quiz-question" id="u4-quiz-question-text">질문 텍스트</div>
+                                <div class="quiz-options-list" id="u4-quiz-options"></div>
+                            </div>
+                        </div>
+
+                        <!-- Quiz Result Interface -->
+                        <div class="quiz-result-box hidden" id="u4-quiz-result">
+                            <img src="assets/parrot_happy.png" alt="축하하는 모찌" class="result-avatar">
+                            <h3>🎉 축하해! 동아시아 문화권 마스터! 🎉</h3>
+                            <p class="score-summary">너의 점수: <span id="u4-final-score">5</span> / 5점</p>
+                            <div id="u4-result-message" class="result-message-box">메시지</div>
+                            
+                            <!-- Certificate -->
+                            <div class="certificate-container" id="u4-certificate">
+                                <div class="cert-border" style="border-color: #c77dff;">
+                                    <h2 style="color: #7b2d8b;">🌸 동아시아 문화권 마스터 인증서 🌸</h2>
+                                    <p class="cert-name">이름: 멋쟁이 역사 모험가</p>
+                                    <p class="cert-body">위 학생은 역사 천재 앵무새 모찌가 주관한 [세계사: 동아시아 문화의 형성과 발전] 과정의 모든 퀴즈 게임을 훌륭히 마쳤으므로 이 벚꽃 인증서를 수여함. 한자·유교·불교·율령의 4대 요소를 완벽히 마스터하였음!</p>
+                                    <div class="cert-footer">
+                                        <span>발행인: 앵무새 모찌 🦜</span>
+                                        <span class="cert-date-span">2026년 7월 6일</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="result-buttons">
+                                <button class="cute-btn cert-btn btn-print-cert-class"><i class="fas fa-print"></i> 인증서 인쇄/저장</button>
+                                <button class="cute-btn restart-btn btn-restart-adventure-class"><i class="fas fa-undo"></i> 처음부터 다시 공부하기</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- UNIT 5: 인도·서아시아·지중해 세계의 변화 CONTAINER (COMING SOON) -->
+        <!-- ========================================== -->
+        <div id="unit5-container" class="unit-view">
+            <div class="coming-soon-box">
+                <img src="assets/parrot_teacher.png" alt="준비 중인 모찌" class="coming-soon-avatar">
+                <h3>인도·서아시아·지중해 세계의 변화 🐫🕌🧭</h3>
+                <p>
+                    모찌가 이슬람 제국과 비잔티움 제국의 지도와 신나는 게임을 열심히 준비하고 있단다!<br>
+                    잠시만 기다려 주면 멋진 모험으로 돌아올게! 🌻✨
+                </p>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- UNIT 6: 크리스트교 문화의 확산과 변화 CONTAINER (COMING SOON) -->
+        <!-- ========================================== -->
+        <div id="unit6-container" class="unit-view">
+            <div class="coming-soon-box">
+                <img src="assets/parrot_cheer.png" alt="준비 중인 모찌" class="coming-soon-avatar">
+                <h3>크리스트교 문화의 확산과 변화 ⛪🛡️🏰</h3>
+                <p>
+                    서유럽 중세 봉건 사회와 장엄한 성당, 십자군 전쟁의 퀴즈판을 모찌가 열심히 조각하고 있단다!<br>
+                    더 나은 공부를 위해 조금만 뒹굴뒹굴 기다려 줘! 🌻✨
+                </p>
             </div>
         </div>
     </main>

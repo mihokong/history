@@ -3,10 +3,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     // App State
     const state = {
-        activeUnit: 'unit1', // 'unit1', 'unit2', or 'unit3'
+        activeGrandUnit: 'grand1', // 'grand1' or 'grand2'
+        activeUnit: 'unit1', // 'unit1', 'unit2', ... 'unit6'
         unit1Progress: 0,
         unit2Progress: 0,
         unit3Progress: 0,
+        unit4Progress: 0,
+        unit5Progress: 0,
+        unit6Progress: 0,
         completedActivities: new Set(),
         
         // Unit 1 Quiz State
@@ -20,6 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Unit 3 Quiz State
         u3CurrentQuizIndex: 0,
         u3QuizScore: 0,
+
+        // Unit 4 Quiz State
+        u4CurrentQuizIndex: 0,
+        u4QuizScore: 0,
         
         theme: 'light',
         
@@ -48,7 +56,18 @@ document.addEventListener('DOMContentLoaded', () => {
             'u3-sortingGame': 20,
             'u3-readCh2': 10,
             'u3-oxGame': 20,
-            'u3-finalQuiz': 30
+            'u3-finalQuiz': 30,
+
+            // Unit 4
+            'u4-card1': 5, 'u4-card2': 5, 'u4-card3': 5, 'u4-card4': 5, // Total 20%
+            'u4-sortingGame': 20,
+            'u4-readCh2': 10,
+            'u4-oxGame': 20,
+            'u4-finalQuiz': 30,
+
+            // Unit 5 & 6 (Skeletons)
+            'u5-finalQuiz': 100,
+            'u6-finalQuiz': 100
         }
     };
 
@@ -70,12 +89,52 @@ document.addEventListener('DOMContentLoaded', () => {
     const unitContainers = {
         unit1: document.getElementById('unit1-container'),
         unit2: document.getElementById('unit2-container'),
-        unit3: document.getElementById('unit3-container')
+        unit3: document.getElementById('unit3-container'),
+        unit4: document.getElementById('unit4-container'),
+        unit5: document.getElementById('unit5-container'),
+        unit6: document.getElementById('unit6-container')
     };
+
+    // Grand Unit Selector Elements
+    const grandButtons = document.querySelectorAll('.grand-unit-btn');
 
     // -----------------------------------------
     // 1. Grand Unit Switching Logic
     // -----------------------------------------
+    grandButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const grandId = btn.getAttribute('data-grand');
+            switchGrandUnit(grandId);
+        });
+    });
+
+    function switchGrandUnit(grandId) {
+        state.activeGrandUnit = grandId;
+        
+        // Update Grand Buttons active class
+        grandButtons.forEach(btn => {
+            if (btn.getAttribute('data-grand') === grandId) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        // Show/Hide sub unit buttons based on Grand Unit
+        unitButtons.forEach(btn => {
+            const btnGrand = btn.getAttribute('data-grand');
+            if (btnGrand === grandId) {
+                btn.classList.remove('hidden');
+            } else {
+                btn.classList.add('hidden');
+            }
+        });
+
+        // Switch to the default active unit of this Grand Unit
+        const defaultUnit = grandId === 'grand1' ? 'unit1' : 'unit4';
+        switchUnit(defaultUnit);
+    }
+
     unitButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             const selectedUnit = btn.getAttribute('data-unit');
@@ -107,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update Progress bar and comments
         if (unitId === 'unit1') {
             nestEmoji.textContent = '🪹';
-            progressUnitLabel.textContent = "단원 1 모험 진행률";
+            progressUnitLabel.textContent = "1단원 모험 진행률";
             heroWelcomeText.innerHTML = `
                 역사 시험 범위만 보면 머리가 지끈지끈하지? 🤯<br>
                 걱정 마! 나 모찌가 인류가 처음 태어난 <strong>선사 시대</strong>부터 <strong>문명이 싹튼 때</strong>까지 아주 쉽고 재밌게 안내해 줄게!<br>
@@ -116,22 +175,49 @@ document.addEventListener('DOMContentLoaded', () => {
             updateParrotSpeech("오스트랄로... 발 아파! 최초의 인류 선사 시대로 모험을 떠나자! 🌿");
         } else if (unitId === 'unit2') {
             nestEmoji.textContent = '🏛️';
-            progressUnitLabel.textContent = "단원 2 모험 진행률";
+            progressUnitLabel.textContent = "2단원 모험 진행률";
             heroWelcomeText.innerHTML = `
                 두 번째 모험에 온 걸 환영해! 🏺<br>
                 여기는 다리우스 1세의 강력한 <strong>페르시아 제국</strong>, 철학의 고향 <strong>그리스</strong>와 <strong>헬레니즘</strong>, 그리고 <strong>로마 제국</strong>이 속한 대단원이야!<br>
                 모찌와 함께 카드를 정복하고 로마 콜로세움 둥지 열쇠를 획득해 봐! 🛡️🗝️
             `;
             updateParrotSpeech("대제국 다리우스 1세의 길을 뚫고, 로마의 크리스트교 국교화 비밀을 밝혀내 보자! 🛡️");
-        } else {
+        } else if (unitId === 'unit3') {
             nestEmoji.textContent = '🕌';
-            progressUnitLabel.textContent = "단원 3 모험 진행률";
+            progressUnitLabel.textContent = "3단원 모험 진행률";
             heroWelcomeText.innerHTML = `
                 세 번째 모험에 온 걸 환영해! ☸️<br>
                 여기는 최초로 중국을 통일한 <strong>진나라</strong>와 비단길을 개척한 <strong>한나라</strong>, 그리고 자비와 평등을 전파한 <strong>인도의 통일 왕조들</strong>이 속한 대단원이야!<br>
                 모찌와 함께 카드를 정복하고 인도 타지마할 둥지 열쇠를 획득해 봐! 🕌🔑
             `;
             updateParrotSpeech("시황제의 통일 비법과 인도 카니시카왕의 대승 불교 전파 이야기를 파헤쳐 보자! ☸️");
+        } else if (unitId === 'unit4') {
+            nestEmoji.textContent = '🌸';
+            progressUnitLabel.textContent = "1단원 모험 진행률";
+            heroWelcomeText.innerHTML = `
+                네 번째 모험에 온 걸 환영해! 🌸<br>
+                여기는 오랜 분열을 극복한 <strong>수·당 제국</strong>과 다이카 개신으로 성장한 <strong>일본</strong>, 그리고 이들이 연결된 <strong>동아시아 문화권</strong>을 다루는 대단원이야!<br>
+                모찌와 함께 카드를 뒤집고 벚꽃 둥지 열쇠를 획득해 봐! 🌸🔑
+            `;
+            updateParrotSpeech("위진남북조 분열의 역사를 뚫고, 당나라 율령과 동아시아의 4대 공통 패키지를 파헤쳐 보자! 🌸");
+        } else if (unitId === 'unit5') {
+            nestEmoji.textContent = '🐫';
+            progressUnitLabel.textContent = "2단원 모험 진행률";
+            heroWelcomeText.innerHTML = `
+                다섯 번째 모험은 준비 중이야! 🐫<br>
+                이슬람 제국의 팽창과 비잔티움 제국의 역사 지도를 모찌가 열심히 그리고 있단다!<br>
+                조금만 기다려 주면 멋진 미니게임과 함께 돌아올게! 🧭✨
+            `;
+            updateParrotSpeech("이슬람 세계와 지중해의 대변화 지도를 모찌가 열심히 그리고 있어! 🐫");
+        } else {
+            nestEmoji.textContent = '⛪';
+            progressUnitLabel.textContent = "3단원 모험 진행률";
+            heroWelcomeText.innerHTML = `
+                여섯 번째 모험은 준비 중이야! ⛪<br>
+                서유럽 중세 봉건 사회와 장엄한 고딕 성당, 십자군 전쟁의 퀴즈판을 모찌가 열심히 깎고 있어!<br>
+                조금만 뒹굴뒹굴 기다려 줘! 🏰✨
+            `;
+            updateParrotSpeech("서유럽 봉건 사회와 크리스트교의 확산 지도를 모찌가 깎고 있단다! ⛪");
         }
 
         updateProgressBar();
@@ -145,9 +231,14 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (state.activeUnit === 'unit2') {
             switchPanel('unit2', 'u2-chapter1');
             updateParrotSpeech("페르시아 제국! 다리우스 1세의 카드를 뒤집어서 핵심 정책을 알아봐! 👑");
-        } else {
+        } else if (state.activeUnit === 'unit3') {
             switchPanel('unit3', 'u3-chapter1');
             updateParrotSpeech("진나라 시황제 카드를 뒤집어서 중국의 기틀을 어떻게 닦았는지 알아봐! 👑");
+        } else if (state.activeUnit === 'unit4') {
+            switchPanel('unit4', 'u4-chapter1');
+            updateParrotSpeech("위진남북조 귀족 카드를 뒤집어서 분열기의 화려한 예술을 알아봐! 🎨");
+        } else {
+            updateParrotSpeech("이 단원은 열심히 제작 중이야! 다른 완료된 단원을 공부해보자! 🦜");
         }
     });
 
@@ -209,11 +300,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 state.unit2Progress = Math.min(state.unit2Progress + addValue, 100);
             } else if (activityKey.startsWith('u3-')) {
                 state.unit3Progress = Math.min(state.unit3Progress + addValue, 100);
+            } else if (activityKey.startsWith('u4-')) {
+                state.unit4Progress = Math.min(state.unit4Progress + addValue, 100);
+            } else if (activityKey.startsWith('u5-')) {
+                state.unit5Progress = Math.min(state.unit5Progress + addValue, 100);
+            } else if (activityKey.startsWith('u6-')) {
+                state.unit6Progress = Math.min(state.unit6Progress + addValue, 100);
             }
             
             updateProgressBar();
             
-            const curProgress = state.activeUnit === 'unit1' ? state.unit1Progress : (state.activeUnit === 'unit2' ? state.unit2Progress : state.unit3Progress);
+            const curProgress = getUnitProgress(state.activeUnit);
             if (curProgress >= 100) {
                 setParrotAvatar('happy');
                 updateParrotSpeech("와아아! 둥지에 다 왔어! 🌻 너 정말 엄청난 역사 천재로구나! 🥇");
@@ -225,8 +322,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function getUnitProgress(unitId) {
+        if (unitId === 'unit1') return state.unit1Progress;
+        if (unitId === 'unit2') return state.unit2Progress;
+        if (unitId === 'unit3') return state.unit3Progress;
+        if (unitId === 'unit4') return state.unit4Progress;
+        if (unitId === 'unit5') return state.unit5Progress;
+        return state.unit6Progress;
+    }
+
     function updateProgressBar() {
-        const curProgress = state.activeUnit === 'unit1' ? state.unit1Progress : (state.activeUnit === 'unit2' ? state.unit2Progress : state.unit3Progress);
+        const curProgress = getUnitProgress(state.activeUnit);
         progressFill.style.width = `${curProgress}%`;
         progressPercent.textContent = `${curProgress}%`;
         
@@ -317,12 +423,19 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (targetId === 'u2-chapter-quiz') {
                 updateParrotSpeech("로마 콜로세움 둥지 열쇠를 쥐기 위한 대도전! 퀴즈 시작! 🏆🗝️");
             }
-        } else {
+        } else if (unitPrefix === 'unit3') {
             if (targetId === 'u3-chapter2') {
                 addProgress('u3-readCh2');
                 updateParrotSpeech("인도 대륙의 마우리아 왕조와 쿠샨 왕조가 꽃피운 아름다운 불교 예술! ☸️");
             } else if (targetId === 'u3-chapter-quiz') {
                 updateParrotSpeech("마지막 관문! 동아시아와 인도 세계 마스터 퀴즈에 다다랐어! 🏆");
+            }
+        } else if (unitPrefix === 'unit4') {
+            if (targetId === 'u4-chapter2') {
+                addProgress('u4-readCh2');
+                updateParrotSpeech("야마토 정권과 다이카 개신, 그리고 동아시아를 지배한 4대 문화권! 🌸");
+            } else if (targetId === 'u4-chapter-quiz') {
+                updateParrotSpeech("마지막 관문! 동아시아 문화의 형성과 발전 종합 퀴즈 시작! 🏆");
             }
         }
     }
@@ -331,6 +444,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupTabListeners('unit1', '#unit1-nav', '#unit1-container .chapter-panel');
     setupTabListeners('unit2', '#unit2-nav', '#unit2-container .chapter-panel');
     setupTabListeners('unit3', '#unit3-nav', '#unit3-container .chapter-panel');
+    setupTabListeners('unit4', '#unit4-nav', '#unit4-container .chapter-panel');
 
     // -----------------------------------------
     // 5. Flip Cards for Units
@@ -356,11 +470,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (cardId.includes('card2')) updateParrotSpeech("대제국의 중심 고속도로, 왕의 길! 🛣️");
                         if (cardId.includes('card3')) updateParrotSpeech("세금만 잘 내면 오케이! 종교/전통 인정하는 관용 정책 🤝");
                         if (cardId.includes('card4')) updateParrotSpeech("선의 신과 악의 신 대결, 조로가 구세주를 믿는 조로아스터교! 👼");
-                    } else {
+                    } else if (unitPrefix === 'u3') {
                         if (cardId.includes('card1')) updateParrotSpeech("시황제의 통일 정책! 문자, 화폐, 도량형 통일! 👑");
                         if (cardId.includes('card2')) updateParrotSpeech("책을 태우고 유학자를 묻은 분서갱유와 흉노 방어 만리장성! 🧱");
                         if (cardId.includes('card3')) updateParrotSpeech("한 무제의 유교 국교화와 강력한 군현제 실시! 🐉");
                         if (cardId.includes('card4')) updateParrotSpeech("서역으로 장거리 건너간(장건) 비단길 개척자! 🐫");
+                    } else if (unitPrefix === 'u4') {
+                        if (cardId.includes('card1')) updateParrotSpeech("위진남북조! 9품중정제로 귀족들이 떵떵거리고, 불교 석굴을 팠단다! 🎨");
+                        if (cardId.includes('card2')) updateParrotSpeech("수나라는 남북을 가로지르는 대운하를 파다가 수~욱 가버렸지! 🧱");
+                        if (cardId.includes('card3')) updateParrotSpeech("당나라는 법과 질서인 율령 체제로 나라의 기틀을 확립했어! 🐉");
+                        if (cardId.includes('card4')) updateParrotSpeech("화려하고 글로벌한 당삼채! 개방적인 당나라 문화가 유행했단다! 🐫");
                     }
                 }
             });
@@ -369,6 +488,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupFlipCards('.u1-card', 'u1');
     setupFlipCards('.u2-card', 'u2');
     setupFlipCards('.u3-card', 'u3');
+    setupFlipCards('.u4-card', 'u4');
 
     // -----------------------------------------
     // 6. Unit 1 Game 1: Matching Card Game
@@ -1574,10 +1694,356 @@ document.addEventListener('DOMContentLoaded', () => {
                 u3QuizResultView.classList.add('hidden');
                 u3QuizIntroView.classList.remove('hidden');
                 updateParrotSpeech("고대 동아시아·인도의 모험을 처음부터 차분히 다시 시작해보자! ☸️");
+            } else if (unit === 'unit4') {
+                state.unit4Progress = 0;
+                state.u4CurrentQuizIndex = 0;
+                state.u4QuizScore = 0;
+                for (let key of state.completedActivities) {
+                    if (key.startsWith('u4-')) state.completedActivities.delete(key);
+                }
+                updateProgressBar();
+                switchPanel('unit4', 'u4-chapter1');
+                if (u4QuizResultView) u4QuizResultView.classList.add('hidden');
+                if (u4QuizIntroView) u4QuizIntroView.classList.remove('hidden');
+                updateParrotSpeech("동아시아 문화권 모험을 처음부터 다시 시작해보자! 🌸");
             }
             setParrotAvatar('teacher');
         });
     });
+
+    // Initialize progress bar at load
+    updateProgressBar();
+
+    // -----------------------------------------
+    // 17. Unit 4 Game 1: 위진남북조 vs 수·당 분류기
+    // -----------------------------------------
+    const u4SortingItems = [
+        { text: "9품중정제 실시", answer: "위진", hint: "9품중정제는 위나라 조비가 만든 관리 선발 제도야! 관료 귀족층이 기득권을 독점했지!" },
+        { text: "대운하 건설", answer: "수당", hint: "수 양제가 북쪽 황하와 남쪽 양쯔강을 잇는 대운하를 팠어! 이게 경제를 통합시켰단다!" },
+        { text: "관음보살 등 불교 석굴 사원 조성", answer: "위진", hint: "위진남북조 시대에 불교가 크게 유행해서 운강·용문 석굴 같은 아름다운 석굴 사원이 만들어졌어!" },
+        { text: "율령 체제 정비", answer: "수당", hint: "당나라는 율(형법)과 령(행정법)을 정비해서 동아시아 전체의 법과 질서 모델이 됐단다!" },
+        { text: "삼성육부제 완성", answer: "수당", hint: "수·당에서 완성된 삼성(중서성·문하성·상서성)과 육부(이·호·예·병·형·공부)는 당나라 핵심 행정 체계야!" },
+        { text: "죽림칠현의 청담 사상", answer: "위진", hint: "위진 시대 지식인들은 현실 정치를 피해 대나무 숲에 모여 무위자연을 논하는 청담 사상에 빠졌단다!" },
+        { text: "과거제 시행", answer: "수당", hint: "수 문제가 시작하고 당나라에서 본격 시행된 과거제! 시험으로 능력 있는 관리를 뽑는 제도야!" },
+        { text: "귀족 문화 발달 (도연명, 왕희지)", answer: "위진", hint: "전원생활의 시인 도연명과 서예의 신 왕희지는 모두 위진남북조 시대의 귀족 문화를 대표해!" }
+    ];
+
+    const u4SortingGameContainer = document.getElementById('u4-sorting-game-container');
+    const u4SortingFeedback = document.getElementById('u4-sorting-feedback');
+    const u4SortingResult = document.getElementById('u4-sorting-result');
+    const startU4SortingBtn = document.getElementById('start-u4-sorting-btn');
+
+    let u4SortCorrect = 0;
+    let u4SortItems = [];
+    let u4CurrentSortIdx = 0;
+
+    if (startU4SortingBtn) startU4SortingBtn.addEventListener('click', initU4SortingGame);
+
+    function initU4SortingGame() {
+        u4SortCorrect = 0;
+        u4CurrentSortIdx = 0;
+        u4SortItems = [...u4SortingItems].sort(() => Math.random() - 0.5);
+        if (u4SortingFeedback) u4SortingFeedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (u4SortingResult) u4SortingResult.classList.add('hidden');
+        if (startU4SortingBtn) startU4SortingBtn.classList.add('hidden');
+        renderU4SortItem();
+        updateParrotSpeech("이 사건이 위진남북조 시대야, 수·당 시대야? 잘 분류해봐! 🧩");
+    }
+
+    function renderU4SortItem() {
+        if (!u4SortingGameContainer) return;
+        if (u4CurrentSortIdx >= u4SortItems.length) {
+            endU4SortingGame();
+            return;
+        }
+        const item = u4SortItems[u4CurrentSortIdx];
+        u4SortingGameContainer.innerHTML = `
+            <div class="sort-item-card">
+                <p class="sort-item-text">📜 ${item.text}</p>
+                <div class="sort-buttons">
+                    <button class="sort-btn sort-btn-a" id="u4-sort-btn-wuijin">⚔️ 위진남북조</button>
+                    <button class="sort-btn sort-btn-b" id="u4-sort-btn-sudang">🏯 수·당</button>
+                </div>
+                <p class="sort-progress">📌 ${u4CurrentSortIdx + 1} / ${u4SortItems.length}</p>
+            </div>
+        `;
+        document.getElementById('u4-sort-btn-wuijin').addEventListener('click', () => checkU4Sort('위진'));
+        document.getElementById('u4-sort-btn-sudang').addEventListener('click', () => checkU4Sort('수당'));
+    }
+
+    function checkU4Sort(answer) {
+        const item = u4SortItems[u4CurrentSortIdx];
+        const isCorrect = answer === item.answer;
+        const btns = u4SortingGameContainer.querySelectorAll('.sort-btn');
+        btns.forEach(b => b.disabled = true);
+        if (isCorrect) {
+            u4SortCorrect++;
+            if (u4SortingFeedback) {
+                u4SortingFeedback.textContent = "✅ 정답! 모찌가 응원해!";
+                u4SortingFeedback.className = 'sorting-feedback show feedback-correct';
+            }
+            updateParrotSpeech(`맞아! ${item.text} - 정확히 분류했어! 대단해! 🎊`);
+        } else {
+            if (u4SortingFeedback) {
+                u4SortingFeedback.innerHTML = `❌ 아쉽! 정답은 <strong>${item.answer === '위진' ? '⚔️ 위진남북조' : '🏯 수·당'}</strong>이야!<br><small>${item.hint}</small>`;
+                u4SortingFeedback.className = 'sorting-feedback show feedback-wrong';
+            }
+            updateParrotSpeech(`아쉽! 🦜 ${item.hint}`);
+        }
+        u4CurrentSortIdx++;
+        setTimeout(renderU4SortItem, isCorrect ? 1800 : 4000);
+    }
+
+    function endU4SortingGame() {
+        if (!u4SortingGameContainer) return;
+        u4SortingGameContainer.innerHTML = '';
+        if (u4SortingFeedback) u4SortingFeedback.classList.remove('show');
+        if (u4SortingResult) {
+            u4SortingResult.classList.remove('hidden');
+            const total = u4SortItems.length;
+            document.getElementById('u4-sort-score').textContent = u4SortCorrect;
+            document.getElementById('u4-sort-total').textContent = total;
+            let msg = '';
+            if (u4SortCorrect === total) {
+                msg = "완벽해! 위진남북조와 수·당의 차이를 완전히 꿰뚫었어! 🥇";
+            } else if (u4SortCorrect >= total * 0.7) {
+                msg = "훌륭해! 조금만 더 복습하면 완벽해질 거야! 🌸";
+            } else {
+                msg = "힘내! 카드를 다시 보고 재도전해봐! 🦜";
+            }
+            document.getElementById('u4-sort-msg').textContent = msg;
+            updateParrotSpeech(`분류 게임 완료! ${u4SortCorrect}/${total} 정답! ${msg}`);
+        }
+        if (startU4SortingBtn) startU4SortingBtn.classList.remove('hidden');
+        addProgress('u4-sortingGame');
+    }
+
+    // -----------------------------------------
+    // 18. Unit 4 Game 2: 동아시아 문화권 OX 퀴즈
+    // -----------------------------------------
+    const u4OxQuestions = [
+        { q: "동아시아 문화권의 공통 요소로 한자·유교·불교·율령이 꼽힌다.", answer: true, hint: "맞아! 이 4가지가 한국·일본·베트남 등 동아시아 지역에서 공통적으로 수용된 당나라 문화의 핵심이야!" },
+        { q: "일본에서 다이카 개신은 신라의 율령 제도를 모델로 하여 실시되었다.", answer: false, hint: "아니야! 다이카 개신은 당나라의 율령 제도를 모델로 했단다. 중앙 집권 강화를 위해 당나라 방식을 받아들인 거야!" },
+        { q: "수 문제(양견)는 과거제를 처음으로 시작해 능력 위주의 관리 선발 기반을 마련했다.", answer: true, hint: "맞아! 수 문제 양견이 9품중정제를 대신해 시험 능력으로 관리를 뽑는 과거제를 시작했단다!" },
+        { q: "위진남북조 시대에 귀족 문화가 쇠퇴하고 유교가 국가 이념으로 강화되었다.", answer: false, hint: "아니야! 위진남북조 시대에는 오히려 귀족 문화가 꽃피었고, 도교·불교·청담 사상이 유행했어. 유교 강화는 한나라 이야기야!" },
+        { q: "당나라의 수도 장안은 인구 100만 명이 넘는 국제 도시로 각국 사람들이 모여들었다.", answer: true, hint: "맞아! 당 장안은 실크로드의 중심지로 서역·신라·일본 등 각국 사람이 모여든 초대형 국제 도시였단다!" },
+        { q: "만주와 한반도에서 고구려가 멸망한 후 발해가 세워져 '해동성국'이라 불렸다.", answer: true, hint: "맞아! 대조영이 고구려 유민과 말갈족을 이끌고 세운 발해는 한때 '바다 동쪽의 큰 나라(해동성국)'라 불릴 만큼 강성했단다!" },
+        { q: "신라는 삼국 통일 후 당나라의 율령 제도를 완전히 거부하고 독자 제도를 유지했다.", answer: false, hint: "아니야! 통일 신라도 당나라의 율령·유교·불교를 적극 수용했단다. 동아시아 문화권의 일원으로 교류가 활발했어!" }
+    ];
+
+    const u4OxGameSection = document.getElementById('u4-ox-game-section');
+    const u4OxQuestionText = document.getElementById('u4-ox-question-text');
+    const u4OxFeedback = document.getElementById('u4-ox-feedback');
+    const u4OxResult = document.getElementById('u4-ox-result');
+    const startU4OxBtn = document.getElementById('start-u4-ox-btn');
+    const u4OxOBtn = document.getElementById('u4-ox-o-btn');
+    const u4OxXBtn = document.getElementById('u4-ox-x-btn');
+
+    let u4OxIndex = 0;
+    let u4OxScore = 0;
+    let u4OxQuestionsList = [];
+
+    if (startU4OxBtn) startU4OxBtn.addEventListener('click', initU4OxGame);
+    if (u4OxOBtn) u4OxOBtn.addEventListener('click', () => checkU4OxAnswer(true));
+    if (u4OxXBtn) u4OxXBtn.addEventListener('click', () => checkU4OxAnswer(false));
+
+    function initU4OxGame() {
+        u4OxIndex = 0;
+        u4OxScore = 0;
+        u4OxQuestionsList = [...u4OxQuestions].sort(() => Math.random() - 0.5);
+        if (u4OxResult) u4OxResult.classList.add('hidden');
+        if (u4OxFeedback) u4OxFeedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (startU4OxBtn) startU4OxBtn.classList.add('hidden');
+        if (u4OxOBtn) u4OxOBtn.classList.remove('hidden');
+        if (u4OxXBtn) u4OxXBtn.classList.remove('hidden');
+        showNextU4OxQuestion();
+        updateParrotSpeech("O야 X야? 동아시아 문화권 상식 퀴즈 시작! 🌸");
+    }
+
+    function showNextU4OxQuestion() {
+        if (u4OxIndex >= u4OxQuestionsList.length) {
+            endU4OxGame();
+            return;
+        }
+        const q = u4OxQuestionsList[u4OxIndex];
+        if (u4OxQuestionText) {
+            u4OxQuestionText.innerHTML = `<span class="ox-progress">${u4OxIndex + 1}/${u4OxQuestionsList.length}</span><br>${q.q}`;
+        }
+        if (u4OxFeedback) u4OxFeedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (u4OxOBtn) u4OxOBtn.disabled = false;
+        if (u4OxXBtn) u4OxXBtn.disabled = false;
+    }
+
+    function checkU4OxAnswer(userAnswer) {
+        const q = u4OxQuestionsList[u4OxIndex];
+        const isCorrect = userAnswer === q.answer;
+        if (u4OxOBtn) u4OxOBtn.disabled = true;
+        if (u4OxXBtn) u4OxXBtn.disabled = true;
+        if (isCorrect) {
+            u4OxScore++;
+            if (u4OxFeedback) {
+                u4OxFeedback.textContent = `✅ 정답! ${userAnswer ? '⭕' : '❌'} - 훌륭해!`;
+                u4OxFeedback.className = 'ox-feedback show feedback-correct';
+            }
+            updateParrotSpeech(`맞아! 동아시아 문화권 지식이 탄탄해! 🌸`);
+        } else {
+            if (u4OxFeedback) {
+                u4OxFeedback.innerHTML = `❌ 아쉽! 정답은 <strong>${q.answer ? '⭕' : '❌'}</strong>이야!<br><small>💡 ${q.hint}</small>`;
+                u4OxFeedback.className = 'ox-feedback show feedback-wrong';
+            }
+            updateParrotSpeech(`아쉽! 💡 ${q.hint}`);
+        }
+        u4OxIndex++;
+        setTimeout(showNextU4OxQuestion, isCorrect ? 1800 : 4500);
+    }
+
+    function endU4OxGame() {
+        if (u4OxOBtn) u4OxOBtn.classList.add('hidden');
+        if (u4OxXBtn) u4OxXBtn.classList.add('hidden');
+        if (u4OxResult) {
+            u4OxResult.classList.remove('hidden');
+            const total = u4OxQuestionsList.length;
+            document.getElementById('u4-ox-score').textContent = u4OxScore;
+            document.getElementById('u4-ox-total').textContent = total;
+            let msg = '';
+            if (u4OxScore === total) {
+                msg = "완벽해! 동아시아 문화권의 모든 지식을 마스터했어! 🥇";
+            } else if (u4OxScore >= Math.ceil(total * 0.7)) {
+                msg = "훌륭해! 조금만 더 복습하면 완벽해질 거야! 🌸";
+            } else {
+                msg = "힘내! 카드와 분류기 게임을 다시 보고 재도전해봐! 🦜";
+            }
+            document.getElementById('u4-ox-msg').textContent = msg;
+            updateParrotSpeech(`OX 퀴즈 완료! ${u4OxScore}/${total} 정답! ${msg}`);
+        }
+        if (startU4OxBtn) startU4OxBtn.classList.remove('hidden');
+        addProgress('u4-oxGame');
+    }
+
+    // -----------------------------------------
+    // 19. Unit 4 Final Quiz
+    // -----------------------------------------
+    const u4FinalQuestions = [
+        {
+            q: "위진남북조 시대에 귀족 관료를 선발하던 제도로, 가문 배경을 9등급으로 나누어 관직에 임명한 방식은?",
+            options: ["과거제", "9품중정제", "골품제", "음서제"],
+            correctIndex: 1,
+            hint: "9품중정제는 위나라 조비가 만든 귀족 중심의 관리 선발 제도야. 가문이 좋아야 높은 관직에 갈 수 있었지!"
+        },
+        {
+            q: "수나라가 강남의 풍부한 물자를 수도와 북쪽 변경으로 공급하기 위해 건설한 것으로, 남북을 연결한 대규모 수상 교통로는?",
+            options: ["비단길(실크로드)", "왕의 길", "대운하", "경항대운하"],
+            correctIndex: 2,
+            hint: "수 양제가 만든 대운하는 황하와 양쯔강을 잇는 거대한 물길이야! 이것이 남북 경제 통합의 핵심이었단다!"
+        },
+        {
+            q: "동아시아 문화권이 공통으로 수용한 4가지 요소로 올바르게 묶인 것은?",
+            options: ["한자·도교·이슬람·율령", "한자·유교·불교·율령", "한자·유교·조로아스터교·율령", "한자·힌두교·불교·율령"],
+            correctIndex: 1,
+            hint: "동아시아 문화권의 4대 공통 요소는 한자, 유교, 불교, 율령이야! 이 4가지가 한국·일본·베트남 등에 전파됐단다!"
+        },
+        {
+            q: "야마토 정권이 645년에 당나라 율령 제도를 모델로 하여 천황 중심의 중앙 집권 국가를 만들기 위해 실시한 개혁은?",
+            options: ["다이카 개신", "메이지 유신", "태화 개혁", "대보 율령"],
+            correctIndex: 0,
+            hint: "다이카(大化)는 645년 야마토 정권이 당나라를 모델로 호족 세력을 억누르고 천황 권력을 강화한 개혁이야!"
+        },
+        {
+            q: "고구려 유민과 말갈족을 이끌고 만주에 세워진 나라로, 선왕 때 최전성기를 누리며 '해동성국'이라 불린 국가는?",
+            options: ["고구려", "발해", "부여", "옥저"],
+            correctIndex: 1,
+            hint: "대조영이 세운 발해는 고구려 문화를 계승하면서 당나라의 문물을 수용해 '바다 동쪽의 성스러운 나라(해동성국)'라 불렸단다!"
+        }
+    ];
+
+    const u4QuizIntroView = document.getElementById('u4-quiz-intro');
+    const u4QuizPlayView = document.getElementById('u4-quiz-play');
+    const u4QuizResultView = document.getElementById('u4-quiz-result');
+    const u4QuizQuestionText = document.getElementById('u4-quiz-question-text');
+    const u4QuizOptionsContainer = document.getElementById('u4-quiz-options');
+    const u4QuizCounterText = document.getElementById('u4-quiz-counter');
+    const u4FinalTotalScore = document.getElementById('u4-final-score');
+    const u4ResultMessage = document.getElementById('u4-result-message');
+    const startU4QuizBtn = document.getElementById('start-u4-quiz-btn');
+
+    if (startU4QuizBtn) {
+        startU4QuizBtn.addEventListener('click', () => {
+            state.u4CurrentQuizIndex = 0;
+            state.u4QuizScore = 0;
+            if (u4QuizIntroView) u4QuizIntroView.classList.add('hidden');
+            if (u4QuizResultView) u4QuizResultView.classList.add('hidden');
+            if (u4QuizPlayView) u4QuizPlayView.classList.remove('hidden');
+            showU4FinalQuizQuestion();
+            updateParrotSpeech("동아시아 문화권 최종 보스 퀴즈 시작! 5문제 모두 맞혀봐! 🏆");
+        });
+    }
+
+    function showU4FinalQuizQuestion() {
+        if (!u4QuizPlayView) return;
+        if (state.u4CurrentQuizIndex < u4FinalQuestions.length) {
+            const qData = u4FinalQuestions[state.u4CurrentQuizIndex];
+            if (u4QuizCounterText) u4QuizCounterText.textContent = `${state.u4CurrentQuizIndex + 1} / ${u4FinalQuestions.length}`;
+            if (u4QuizQuestionText) u4QuizQuestionText.textContent = qData.q;
+            if (u4QuizOptionsContainer) u4QuizOptionsContainer.innerHTML = '';
+            
+            qData.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'quiz-opt-btn';
+                btn.textContent = opt;
+                btn.addEventListener('click', () => selectU4QuizOption(idx));
+                u4QuizOptionsContainer.appendChild(btn);
+            });
+        } else {
+            showU4QuizResults();
+        }
+    }
+
+    function selectU4QuizOption(userIndex) {
+        const qData = u4FinalQuestions[state.u4CurrentQuizIndex];
+        const isCorrect = userIndex === qData.correctIndex;
+        const optionButtons = u4QuizOptionsContainer.querySelectorAll('.quiz-opt-btn');
+        
+        optionButtons.forEach(btn => btn.disabled = true);
+
+        if (isCorrect) {
+            state.u4QuizScore++;
+            optionButtons[userIndex].classList.add('correct');
+            updateParrotSpeech("정답이야! 짝짝짝! 동아시아 문화권 지식이 탄탄하구나! 🌸🎉");
+            setParrotAvatar('happy');
+        } else {
+            optionButtons[userIndex].classList.add('wrong');
+            optionButtons[qData.correctIndex].classList.add('correct');
+            updateParrotSpeech(`아쉽다! 모찌 꿀팁: <br> ${qData.hint}`);
+            setParrotAvatar('cheer');
+        }
+        state.u4CurrentQuizIndex++;
+        setTimeout(showU4FinalQuizQuestion, isCorrect ? 1800 : 4000);
+    }
+
+    function showU4QuizResults() {
+        if (u4QuizPlayView) u4QuizPlayView.classList.add('hidden');
+        if (u4QuizResultView) u4QuizResultView.classList.remove('hidden');
+        if (u4FinalTotalScore) u4FinalTotalScore.textContent = state.u4QuizScore;
+        
+        let messageText = "";
+        if (state.u4QuizScore === 5) {
+            messageText = "💯 완벽한 동아시아 문화권 마스터 탄생! 모찌가 벚꽃 둥지를 활짝 열어줄게! 한자·유교·불교·율령을 손바닥 보듯 꿰뚫는 역사 천재야! 🌸🥇";
+            setParrotAvatar('happy');
+        } else if (state.u4QuizScore >= 3) {
+            messageText = "👍 훌륭해! 수·당의 통일 제국과 동아시아 문화권의 핵심을 잘 파악하고 있어! 틀린 것도 분류기와 OX로 한 번 더 다지면 완벽해질 거야! 🐉✨";
+            setParrotAvatar('teacher');
+        } else {
+            messageText = "🦜 동아시아 역사가 아직 낯설어? 괜찮아! 위진남북조 분류기와 OX 퀴즈를 모찌와 함께 다시 하면 머리에 쏙쏙 들어올 거야! 다시 출발! 🚀";
+            setParrotAvatar('cheer');
+        }
+        if (u4ResultMessage) u4ResultMessage.innerHTML = messageText;
+        
+        const today = new Date();
+        const dateString = `${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()}일`;
+        document.querySelectorAll('.cert-date-span').forEach(el => el.textContent = dateString);
+
+        addProgress('u4-finalQuiz');
+    }
 
     // Initialize progress bar at load
     updateProgressBar();
