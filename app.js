@@ -1683,7 +1683,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 u2QuizResultView.classList.add('hidden');
                 u2QuizIntroView.classList.remove('hidden');
                 updateParrotSpeech("고대 서아시아·지중해의 모험을 처음부터 다시 질주해보자! 🛡️");
-            } else {
+            } else if (unit === 'unit3') {
                 state.unit3Progress = 0;
                 // Clear Unit 3 completed keys from Set
                 for (let key of state.completedActivities) {
