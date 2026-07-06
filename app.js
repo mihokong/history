@@ -3,9 +3,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     // App State
     const state = {
-        activeUnit: 'unit1', // 'unit1' or 'unit2'
+        activeUnit: 'unit1', // 'unit1', 'unit2', or 'unit3'
         unit1Progress: 0,
         unit2Progress: 0,
+        unit3Progress: 0,
         completedActivities: new Set(),
         
         // Unit 1 Quiz State
@@ -15,6 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Unit 2 Quiz State
         u2CurrentQuizIndex: 0,
         u2QuizScore: 0,
+
+        // Unit 3 Quiz State
+        u3CurrentQuizIndex: 0,
+        u3QuizScore: 0,
         
         theme: 'light',
         
@@ -36,7 +41,14 @@ document.addEventListener('DOMContentLoaded', () => {
             'u2-sortingGame': 20,
             'u2-readCh3': 5,
             'u2-oxGame': 15,
-            'u2-finalQuiz': 20
+            'u2-finalQuiz': 20,
+
+            // Unit 3
+            'u3-card1': 5, 'u3-card2': 5, 'u3-card3': 5, 'u3-card4': 5, // Total 20%
+            'u3-sortingGame': 20,
+            'u3-readCh2': 10,
+            'u3-oxGame': 20,
+            'u3-finalQuiz': 30
         }
     };
 
@@ -57,7 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const unitButtons = document.querySelectorAll('.unit-btn');
     const unitContainers = {
         unit1: document.getElementById('unit1-container'),
-        unit2: document.getElementById('unit2-container')
+        unit2: document.getElementById('unit2-container'),
+        unit3: document.getElementById('unit3-container')
     };
 
     // -----------------------------------------
@@ -101,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 카드 공부를 끝내고 신나는 미니 게임을 클리어하면 둥지에 맛있는 해바라기씨가 쌓인다구! 함께 가볼까? 🌻✨
             `;
             updateParrotSpeech("오스트랄로... 발 아파! 최초의 인류 선사 시대로 모험을 떠나자! 🌿");
-        } else {
+        } else if (unitId === 'unit2') {
             nestEmoji.textContent = '🏛️';
             progressUnitLabel.textContent = "단원 2 모험 진행률";
             heroWelcomeText.innerHTML = `
@@ -110,6 +123,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 모찌와 함께 카드를 정복하고 로마 콜로세움 둥지 열쇠를 획득해 봐! 🛡️🗝️
             `;
             updateParrotSpeech("대제국 다리우스 1세의 길을 뚫고, 로마의 크리스트교 국교화 비밀을 밝혀내 보자! 🛡️");
+        } else {
+            nestEmoji.textContent = '🕌';
+            progressUnitLabel.textContent = "단원 3 모험 진행률";
+            heroWelcomeText.innerHTML = `
+                세 번째 모험에 온 걸 환영해! ☸️<br>
+                여기는 최초로 중국을 통일한 <strong>진나라</strong>와 비단길을 개척한 <strong>한나라</strong>, 그리고 자비와 평등을 전파한 <strong>인도의 통일 왕조들</strong>이 속한 대단원이야!<br>
+                모찌와 함께 카드를 정복하고 인도 타지마할 둥지 열쇠를 획득해 봐! 🕌🔑
+            `;
+            updateParrotSpeech("시황제의 통일 비법과 인도 카니시카왕의 대승 불교 전파 이야기를 파헤쳐 보자! ☸️");
         }
 
         updateProgressBar();
@@ -120,9 +142,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (state.activeUnit === 'unit1') {
             switchPanel('unit1', 'u1-chapter1');
             updateParrotSpeech("최초의 인류 카드를 클릭해서 뒤집어봐! 발 아파렌시스! 👣");
-        } else {
+        } else if (state.activeUnit === 'unit2') {
             switchPanel('unit2', 'u2-chapter1');
             updateParrotSpeech("페르시아 제국! 다리우스 1세의 카드를 뒤집어서 핵심 정책을 알아봐! 👑");
+        } else {
+            switchPanel('unit3', 'u3-chapter1');
+            updateParrotSpeech("진나라 시황제 카드를 뒤집어서 중국의 기틀을 어떻게 닦았는지 알아봐! 👑");
         }
     });
 
@@ -182,11 +207,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 state.unit1Progress = Math.min(state.unit1Progress + addValue, 100);
             } else if (activityKey.startsWith('u2-')) {
                 state.unit2Progress = Math.min(state.unit2Progress + addValue, 100);
+            } else if (activityKey.startsWith('u3-')) {
+                state.unit3Progress = Math.min(state.unit3Progress + addValue, 100);
             }
             
             updateProgressBar();
             
-            const curProgress = state.activeUnit === 'unit1' ? state.unit1Progress : state.unit2Progress;
+            const curProgress = state.activeUnit === 'unit1' ? state.unit1Progress : (state.activeUnit === 'unit2' ? state.unit2Progress : state.unit3Progress);
             if (curProgress >= 100) {
                 setParrotAvatar('happy');
                 updateParrotSpeech("와아아! 둥지에 다 왔어! 🌻 너 정말 엄청난 역사 천재로구나! 🥇");
@@ -199,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateProgressBar() {
-        const curProgress = state.activeUnit === 'unit1' ? state.unit1Progress : state.unit2Progress;
+        const curProgress = state.activeUnit === 'unit1' ? state.unit1Progress : (state.activeUnit === 'unit2' ? state.unit2Progress : state.unit3Progress);
         progressFill.style.width = `${curProgress}%`;
         progressPercent.textContent = `${curProgress}%`;
         
@@ -252,8 +279,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function switchPanel(unitPrefix, targetPanelId) {
-        const navSelector = unitPrefix === 'unit1' ? '#unit1-nav' : '#unit2-nav';
-        const panelClass = unitPrefix === 'unit1' ? '#unit1-container .chapter-panel' : '#unit2-container .chapter-panel';
+        const navSelector = `#${unitPrefix}-nav`;
+        const panelClass = `#${unitPrefix}-container .chapter-panel`;
         
         const tab = document.querySelector(`${navSelector} .nav-tab[data-target="${targetPanelId}"]`);
         const panel = document.getElementById(targetPanelId);
@@ -280,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (targetId === 'u1-chapter-quiz') {
                 updateParrotSpeech("마지막 관문 보물상자 퀴즈에 어서 와! 5문제를 다 맞춰봐! 🏆");
             }
-        } else {
+        } else if (unitPrefix === 'unit2') {
             if (targetId === 'u2-chapter2') {
                 addProgress('u2-readCh2');
                 updateParrotSpeech("그리스 폴리스 아테네와 스파르타의 기강 넘치는 대결! 그리고 헬레니즘! 🏛️");
@@ -290,12 +317,20 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (targetId === 'u2-chapter-quiz') {
                 updateParrotSpeech("로마 콜로세움 둥지 열쇠를 쥐기 위한 대도전! 퀴즈 시작! 🏆🗝️");
             }
+        } else {
+            if (targetId === 'u3-chapter2') {
+                addProgress('u3-readCh2');
+                updateParrotSpeech("인도 대륙의 마우리아 왕조와 쿠샨 왕조가 꽃피운 아름다운 불교 예술! ☸️");
+            } else if (targetId === 'u3-chapter-quiz') {
+                updateParrotSpeech("마지막 관문! 동아시아와 인도 세계 마스터 퀴즈에 다다랐어! 🏆");
+            }
         }
     }
 
     // Initialize listeners
     setupTabListeners('unit1', '#unit1-nav', '#unit1-container .chapter-panel');
     setupTabListeners('unit2', '#unit2-nav', '#unit2-container .chapter-panel');
+    setupTabListeners('unit3', '#unit3-nav', '#unit3-container .chapter-panel');
 
     // -----------------------------------------
     // 5. Flip Cards for Units
@@ -316,11 +351,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (cardId.includes('card2')) updateParrotSpeech("허리를 에렉! 불과 언어 사용 호모 에렉투스! 🔥");
                         if (cardId.includes('card3')) updateParrotSpeech("친구의 죽음에 마음이 네안(미안)해서 매장한 네안데르탈렌시스 🪦");
                         if (cardId.includes('card4')) updateParrotSpeech("지혜로운 사람! 동굴 벽화를 그린 사피엔스 🎨");
-                    } else {
+                    } else if (unitPrefix === 'u2') {
                         if (cardId.includes('card1')) updateParrotSpeech("다리(다리우스 1세)를 쩍 뻗어 감찰관 왕의 눈과 왕의 귀 파견! 👁️");
                         if (cardId.includes('card2')) updateParrotSpeech("대제국의 중심 고속도로, 왕의 길! 🛣️");
                         if (cardId.includes('card3')) updateParrotSpeech("세금만 잘 내면 오케이! 종교/전통 인정하는 관용 정책 🤝");
                         if (cardId.includes('card4')) updateParrotSpeech("선의 신과 악의 신 대결, 조로가 구세주를 믿는 조로아스터교! 👼");
+                    } else {
+                        if (cardId.includes('card1')) updateParrotSpeech("시황제의 통일 정책! 문자, 화폐, 도량형 통일! 👑");
+                        if (cardId.includes('card2')) updateParrotSpeech("책을 태우고 유학자를 묻은 분서갱유와 흉노 방어 만리장성! 🧱");
+                        if (cardId.includes('card3')) updateParrotSpeech("한 무제의 유교 국교화와 강력한 군현제 실시! 🐉");
+                        if (cardId.includes('card4')) updateParrotSpeech("서역으로 장거리 건너간(장건) 비단길 개척자! 🐫");
                     }
                 }
             });
@@ -328,6 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     setupFlipCards('.u1-card', 'u1');
     setupFlipCards('.u2-card', 'u2');
+    setupFlipCards('.u3-card', 'u3');
 
     // -----------------------------------------
     // 6. Unit 1 Game 1: Matching Card Game
@@ -1183,7 +1224,311 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // -----------------------------------------
-    // 14. Shared Actions: Certificate Print & Restart
+    // 14. Unit 3 Game 1: Qin vs Han Sorting Game
+    // -----------------------------------------
+    const u3SortingItems = [
+        { name: "문자, 화폐, 도량형 통일 🪙", category: "qin", desc: "전국의 경제와 행정을 묶기 위해 문자, 돈, 단위를 하나로 통일한 것은 진나라!" },
+        { name: "만리장성 축조 🧱", category: "qin", desc: "흉노의 침략을 막기 위해 장대한 방어벽을 쌓은 나라는 진나라!" },
+        { name: "분서갱유 사건 😡", category: "qin", desc: "법가 이외의 학문책을 태우고 유학자를 묻어 사상을 극단적으로 통제한 곳은 진나라!" },
+        { name: "장건의 비단길 개척 🐫", category: "han", desc: "무제가 서역에 장건을 보내며 동서 교통의 통로인 비단길이 뚫린 나라는 한나라!" },
+        { name: "유교를 통치 이념으로 채택 🐉", category: "han", desc: "동중서의 건의로 유교를 나라의 통치 규범으로 삼아 중앙집권을 다진 나라는 한나라!" },
+        { name: "한 무제의 영토 확장 ⚔️", category: "han", desc: "흉노를 격퇴하고 남越과 고조선을 정벌하여 대제국을 만든 왕조는 한나라!" }
+    ];
+
+    let u3SortingIndex = 0;
+    let u3SortingScore = 0;
+    let u3ShuffledSortingItems = [];
+
+    const startU3G1Btn = document.getElementById('start-game-u3-1-btn');
+    const u3SortingCard = document.getElementById('sorting-card-u3');
+    const u3SortingItemText = document.getElementById('sorting-item-u3-text');
+    const btnQin = document.getElementById('btn-u3-qin');
+    const btnHan = document.getElementById('btn-u3-han');
+    const u3SortingScoreVal = document.getElementById('sorting-score-u3-val');
+    const u3Game1Feedback = document.getElementById('u3-game1-feedback');
+
+    if (startU3G1Btn) startU3G1Btn.addEventListener('click', startU3SortingGame);
+
+    function startU3SortingGame() {
+        u3SortingScore = 0; u3SortingIndex = 0;
+        u3SortingScoreVal.textContent = "0";
+        u3Game1Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        u3ShuffledSortingItems = [...u3SortingItems].sort(() => Math.random() - 0.5);
+        showNextU3SortingItem();
+        
+        btnQin.disabled = false; btnHan.disabled = false;
+        startU3G1Btn.textContent = "다시 시작하기 🔄";
+        updateParrotSpeech("진나라(시황제) vs 한나라(무제)! 알맞은 왕조 버튼을 눌러 정답을 골라봐! 🇨🇳");
+    }
+
+    function showNextU3SortingItem() {
+        if (u3SortingIndex < u3ShuffledSortingItems.length) {
+            u3SortingItemText.textContent = u3ShuffledSortingItems[u3SortingIndex].name;
+            u3SortingCard.classList.remove('pulse');
+            void u3SortingCard.offsetWidth;
+            u3SortingCard.classList.add('pulse');
+        } else {
+            btnQin.disabled = true; btnHan.disabled = true;
+            setParrotAvatar('happy');
+            u3Game1Feedback.className = "game-feedback show feedback-correct";
+            u3Game1Feedback.innerHTML = `🏁 분류 완성! 맞춘 개수: ${u3SortingScore} / 6 <br> 대단해! 🌻 +20% 진행도 획득!`;
+            addProgress('u3-sortingGame');
+            updateParrotSpeech(`진한 제국의 역사를 완전히 정복했구나! 6개 중에 ${u3SortingScore}개 성공! 🇨🇳`);
+        }
+    }
+
+    if (btnQin && btnHan) {
+        btnQin.addEventListener('click', () => handleU3SortingChoice("qin"));
+        btnHan.addEventListener('click', () => handleU3SortingChoice("han"));
+    }
+
+    function handleU3SortingChoice(choice) {
+        if (u3ShuffledSortingItems.length === 0 || u3SortingIndex >= u3ShuffledSortingItems.length) return;
+        const currentItem = u3ShuffledSortingItems[u3SortingIndex];
+        const isCorrect = currentItem.category === choice;
+
+        if (isCorrect) {
+            u3SortingScore++;
+            u3SortingScoreVal.textContent = u3SortingScore;
+            showGameFeedback('u3-game1-feedback', true, `딩동댕! ⭕ <br> ${currentItem.desc}`);
+            setParrotAvatar('happy');
+        } else {
+            showGameFeedback('u3-game1-feedback', false, `땡! ❌ <br> ${currentItem.desc}`);
+            setParrotAvatar('cheer');
+        }
+        u3SortingIndex++;
+        setTimeout(showNextU3SortingItem, 2500);
+    }
+
+    // -----------------------------------------
+    // 15. Unit 3 Game 2: India Buddhism OX Game
+    // -----------------------------------------
+    const u3OxQuestions = [
+        {
+            q: "인도의 고타마 시다르타(석가모니)가 창시한 불교는 신분 차별을 옹호하는 엄격한 카스트 제도를 적극적으로 찬성했다.",
+            ans: false,
+            desc: "틀렸어! 불교는 모든 인간은 평등하고 자비가 중요하다고 가르치며 카스트 제도의 신분 차별에 강력히 반대했어!"
+        },
+        {
+            q: "마우리아 왕조의 전성기를 이끈 아소카왕은 영토 확장 전쟁의 참상을 반성하고 불교에 귀의하여 탑을 짓고 경전을 정리했다.",
+            ans: true,
+            desc: "맞아! 칼링가 전쟁의 무참함을 겪은 뒤 불교를 국가적으로 밀어주며 평화를 선언했지."
+        },
+        {
+            q: "아소카왕 때 발달하여 동남아시아로 주로 전파된 상좌부 불교는 개인의 엄격한 수행과 해탈을 핵심으로 한다.",
+            ans: true,
+            desc: "정답! 개인이 직접 스스로 도를 닦아 해탈하는 상좌부(소승) 불교가 스리랑카와 미얀마 등으로 전파되었어!"
+        },
+        {
+            q: "쿠샨 왕조 때 헬레니즘 문화의 영향을 받아 인도 최초로 곱슬머리와 서양식 얼굴을 한 불상을 조각하기 시작한 미술은 '로마 미술'이다.",
+            ans: false,
+            desc: "아니야! 그리스 헬레니즘 스타일과 인도의 불교가 결합한 독특한 미술 명칭은 '간다라 미술'이야!"
+        }
+    ];
+
+    let u3OxIndex = 0, u3OxScore = 0;
+    const startU3G2Btn = document.getElementById('start-game-u3-2-btn');
+    const u3OxQuestionBox = document.getElementById('ox-question-u3');
+    const btnU3OxO = document.getElementById('btn-u3-ox-o');
+    const btnU3OxX = document.getElementById('btn-u3-ox-x');
+    const u3OxScoreVal = document.getElementById('ox-score-u3-val');
+    const u3Game2Feedback = document.getElementById('u3-game2-feedback');
+
+    if (startU3G2Btn) startU3G2Btn.addEventListener('click', startU3OxGame);
+
+    function startU3OxGame() {
+        u3OxScore = 0; u3OxIndex = 0;
+        u3OxScoreVal.textContent = "0";
+        u3Game2Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        btnU3OxO.disabled = false; btnU3OxX.disabled = false;
+        startU3G2Btn.textContent = "다시 시작하기 🔄";
+        showNextU3OxQuestion();
+        updateParrotSpeech("인도 불교와 왕조 OX 퀴즈! 천천히 정독해서 풀어봐! ☸️");
+    }
+
+    function showNextU3OxQuestion() {
+        if (u3OxIndex < u3OxQuestions.length) {
+            u3OxQuestionBox.textContent = u3OxQuestions[u3OxIndex].q;
+        } else {
+            btnU3OxO.disabled = true; btnU3OxX.disabled = true;
+            setParrotAvatar('happy');
+            u3Game2Feedback.className = "game-feedback show feedback-correct";
+            u3Game2Feedback.innerHTML = `🏁 인도 OX 완료! 맞춘 개수: ${u3OxScore} / 4 <br> 최고야! 🌻 +20% 진행도 획득!`;
+            addProgress('u3-oxGame');
+            updateParrotSpeech(`훌륭해! 마우리아와 쿠샨 두 인도 왕조의 불교 특징을 정확히 나눴어! 🕌`);
+        }
+    }
+
+    if (btnU3OxO && btnU3OxX) {
+        btnU3OxO.addEventListener('click', () => handleU3OxChoice(true));
+        btnU3OxX.addEventListener('click', () => handleU3OxChoice(false));
+    }
+
+    function handleU3OxChoice(userAns) {
+        if (u3OxIndex >= u3OxQuestions.length) return;
+        const currentItem = u3OxQuestions[u3OxIndex];
+        const isCorrect = currentItem.ans === userAns;
+
+        if (isCorrect) {
+            u3OxScore++;
+            u3OxScoreVal.textContent = u3OxScore;
+            showGameFeedback('u3-game2-feedback', true, `딩동댕! ⭕ <br> ${currentItem.desc}`);
+            setParrotAvatar('happy');
+        } else {
+            showGameFeedback('u3-game2-feedback', false, `땡! ❌ <br> ${currentItem.desc}`);
+            setParrotAvatar('cheer');
+        }
+        u3OxIndex++;
+        setTimeout(showNextU3OxQuestion, 3500);
+    }
+
+    // -----------------------------------------
+    // 16. Unit 3 Final Quiz
+    // -----------------------------------------
+    const u3FinalQuestions = [
+        {
+            q: "진 시황제가 중앙 집권을 위해 전국을 36개 군으로 나누고 황제가 직접 관리를 임명해 보낸 제도는 무엇일까요?",
+            options: [
+                "군현제",
+                "봉건제",
+                "군국제"
+            ],
+            correctIndex: 0,
+            hint: "모찌 꿀팁: 황제가 각 고을에 자신의 눈과 발이 될 행정 관리를 보낸 것은 군현제야! 👑"
+        },
+        {
+            q: "진나라 시황제가 법가 사상에 반대되는 유학 사상과 학문을 통제하기 위해 책을 불태우고 유학자들을 구덩이에 묻어 죽인 사건은 무엇일까요?",
+            options: [
+                "분서갱유",
+                "도편추방제",
+                "12표법"
+            ],
+            correctIndex: 0,
+            hint: "모찌 꿀팁: 책을 태우고(분서) 유학자를 묻은(갱유) 극단적인 사상 탄압! 분서갱유! 😡"
+        },
+        {
+            q: "한나라 무제가 흉노를 견제하기 위해 대월지와 손잡으려 파견한 인물로, 이를 통해 동서양을 연결하는 비단길이 열리게 만든 장본인은 누구일까요?",
+            options: [
+                "장건",
+                "아소카왕",
+                "알렉산드로스"
+            ],
+            correctIndex: 0,
+            hint: "모찌 꿀팁: 서역으로 장거리 건너간(장건) 비단길 하이웨이의 주인공! 🐫"
+        },
+        {
+            q: "기원전 3세기 인도 마우리아 왕조의 전성기를 이끌며, 불교를 적극 장려하여 경전을 결집하고 석주(돌기둥)를 세운 인물은 누구일까요?",
+            options: [
+                "아소카왕",
+                "카니시카왕",
+                "찬드라굽타"
+            ],
+            correctIndex: 0,
+            hint: "모찌 꿀팁: 백성들의 고달픈 상처를 자비와 평등으로 '아~ 씻어(아소카)' 준 왕! 마우리아 왕조의 아소카왕이야! 🏛️"
+        },
+        {
+            q: "쿠샨 왕조의 카니시카왕 시절 크게 발달한 불교 양식과 그리스 헬레니즘 조각 기술이 융합되어 처음으로 불상을 만들기 시작한 예술 양식은 무엇일까요?",
+            options: [
+                "대승 불교 - 간다라 미술",
+                "상좌부 불교 - 이집트 미술",
+                "인도교 - 메소포타미아 미술"
+            ],
+            correctIndex: 0,
+            hint: "모찌 꿀팁: 큰 수레(대승)에 대중을 태워 구원하고, 그리스풍 불상이 인도로 '간다라(간다라 미술)'! ☸️🗿"
+        }
+    ];
+
+    const startU3FinalQuizBtn = document.getElementById('start-u3-final-quiz-btn');
+    const u3QuizIntroView = document.getElementById('u3-quiz-intro-view');
+    const u3QuizPlayView = document.getElementById('u3-quiz-play-view');
+    const u3QuizResultView = document.getElementById('u3-quiz-result-view');
+    const u3CurrentQNum = document.getElementById('u3-current-q-num');
+    const u3FinalScoreVal = document.getElementById('u3-final-score-val');
+    const u3QuizQuestionText = document.getElementById('u3-quiz-question-text');
+    const u3QuizOptionsContainer = document.getElementById('u3-quiz-options-container');
+    const u3FinalTotalScore = document.getElementById('u3-final-total-score');
+    const u3ResultMessage = document.getElementById('u3-result-message');
+
+    if (startU3FinalQuizBtn) startU3FinalQuizBtn.addEventListener('click', startU3FinalQuiz);
+
+    function startU3FinalQuiz() {
+        state.u3CurrentQuizIndex = 0; state.u3QuizScore = 0;
+        u3QuizIntroView.classList.add('hidden');
+        u3QuizPlayView.classList.remove('hidden');
+        u3QuizResultView.classList.add('hidden');
+        showU3FinalQuizQuestion();
+        updateParrotSpeech("동아시아와 인도 대륙을 정복하는 영광스러운 최종 도전이 시작된다! ☸️👑");
+    }
+
+    function showU3FinalQuizQuestion() {
+        if (state.u3CurrentQuizIndex < u3FinalQuestions.length) {
+            const qData = u3FinalQuestions[state.u3CurrentQuizIndex];
+            u3CurrentQNum.textContent = state.u3CurrentQuizIndex + 1;
+            u3FinalScoreVal.textContent = state.u3QuizScore;
+            u3QuizQuestionText.textContent = qData.q;
+            u3QuizOptionsContainer.innerHTML = '';
+            
+            qData.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'quiz-opt-btn';
+                btn.textContent = opt;
+                btn.addEventListener('click', () => selectU3QuizOption(idx));
+                u3QuizOptionsContainer.appendChild(btn);
+            });
+        } else {
+            showU3QuizResults();
+        }
+    }
+
+    function selectU3QuizOption(userIndex) {
+        const qData = u3FinalQuestions[state.u3CurrentQuizIndex];
+        const isCorrect = userIndex === qData.correctIndex;
+        const optionButtons = u3QuizOptionsContainer.querySelectorAll('.quiz-opt-btn');
+        
+        optionButtons.forEach(btn => btn.disabled = true);
+
+        if (isCorrect) {
+            state.u3QuizScore++;
+            optionButtons[userIndex].classList.add('correct');
+            updateParrotSpeech("정답이야! 짝짝짝! 역시 너의 세계사 실력은 대륙 급이구나! 🇨🇳🕉️🎉");
+            setParrotAvatar('happy');
+        } else {
+            optionButtons[userIndex].classList.add('wrong');
+            optionButtons[qData.correctIndex].classList.add('correct');
+            updateParrotSpeech(`아쉽다! 하지만 모찌 꿀팁으로 지식을 탄탄하게 메꿔봐: <br> ${qData.hint}`);
+            setParrotAvatar('cheer');
+        }
+        state.u3CurrentQuizIndex++;
+        setTimeout(showU3FinalQuizQuestion, isCorrect ? 1800 : 4000);
+    }
+
+    function showU3QuizResults() {
+        u3QuizPlayView.classList.add('hidden');
+        u3QuizResultView.classList.remove('hidden');
+        u3FinalTotalScore.textContent = state.u3QuizScore;
+        
+        let messageText = "";
+        if (state.u3QuizScore === 5) {
+            messageText = "💯 완벽한 동아시아·인도 역사 지배자 탄생! 앵무새 모찌가 평화로운 인도 타지마할 둥지를 활짝 개방해 주었어! 너의 지식 수준은 정말 명불허전이야! 🇨🇳☸️🕌🥇";
+            setParrotAvatar('happy');
+        } else if (state.u3QuizScore >= 3) {
+            messageText = "👍 훌륭해! 넓은 동아시아와 인도 대륙의 굵직한 사건들을 다 꿰뚫고 있네! 틀린 것도 모찌의 꿀팁 카드 한두 장으로 쉽게 극복 가능하단다! 🐉✨";
+            setParrotAvatar('teacher');
+        } else {
+            messageText = "🦜 역사 이름들이 길고 헷갈렸지? 괜찮아, 시황제의 통일 분류기 놀이랑 인도 OX 퀴즈를 모찌와 같이 몇 번 더 연습해 보면 머리에 쏙쏙 들어올 거야! 다시 출발! 🚀";
+            setParrotAvatar('cheer');
+        }
+        u3ResultMessage.innerHTML = messageText;
+        
+        const today = new Date();
+        const dateString = `${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()}일`;
+        document.querySelectorAll('.cert-date-span').forEach(el => el.textContent = dateString);
+
+        addProgress('u3-finalQuiz');
+    }
+
+    // -----------------------------------------
+    // 17. Shared Actions: Certificate Print & Restart
     // -----------------------------------------
     const printButtons = document.querySelectorAll('.btn-print-cert-class');
     printButtons.forEach(btn => {
@@ -1207,7 +1552,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 u1QuizResultView.classList.add('hidden');
                 u1QuizIntroView.classList.remove('hidden');
                 updateParrotSpeech("선사 시대 공부를 처음부터 차분히 다시 해보자! 🌱");
-            } else {
+            } else if (unit === 'unit2') {
                 state.unit2Progress = 0;
                 // Clear Unit 2 completed keys from Set
                 for (let key of state.completedActivities) {
@@ -1218,6 +1563,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 u2QuizResultView.classList.add('hidden');
                 u2QuizIntroView.classList.remove('hidden');
                 updateParrotSpeech("고대 서아시아·지중해의 모험을 처음부터 다시 질주해보자! 🛡️");
+            } else {
+                state.unit3Progress = 0;
+                // Clear Unit 3 completed keys from Set
+                for (let key of state.completedActivities) {
+                    if (key.startsWith('u3-')) state.completedActivities.delete(key);
+                }
+                updateProgressBar();
+                switchPanel('unit3', 'u3-chapter1');
+                u3QuizResultView.classList.add('hidden');
+                u3QuizIntroView.classList.remove('hidden');
+                updateParrotSpeech("고대 동아시아·인도의 모험을 처음부터 차분히 다시 시작해보자! ☸️");
             }
             setParrotAvatar('teacher');
         });
