@@ -28,6 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // Unit 4 Quiz State
         u4CurrentQuizIndex: 0,
         u4QuizScore: 0,
+
+        // Unit 5 Quiz State
+        u5CurrentQuizIndex: 0,
+        u5QuizScore: 0,
+
+        // Unit 6 Quiz State
+        u6CurrentQuizIndex: 0,
+        u6QuizScore: 0,
         
         theme: 'light',
         
@@ -65,9 +73,24 @@ document.addEventListener('DOMContentLoaded', () => {
             'u4-oxGame': 20,
             'u4-finalQuiz': 30,
 
-            // Unit 5 & 6 (Skeletons)
-            'u5-finalQuiz': 100,
-            'u6-finalQuiz': 100
+            // Unit 5
+            'u5-c1-card1': 2.5, 'u5-c1-card2': 2.5, 'u5-c1-card3': 2.5, 'u5-c1-card4': 2.5,
+            'u5-c2-card1': 2.5, 'u5-c2-card2': 2.5, 'u5-c2-card3': 2.5, 'u5-c2-card4': 2.5,
+            'u5-c3-card1': 2.5, 'u5-c3-card2': 2.5, 'u5-c3-card3': 2.5, 'u5-c3-card4': 2.5, // 12 cards * 2.5% = 30%
+            'u5-game1': 10,
+            'u5-readCh2': 5,
+            'u5-game2': 10,
+            'u5-readCh3': 5,
+            'u5-game3': 10,
+            'u5-finalQuiz': 30,
+
+            // Unit 6
+            'u6-c1-card1': 3.75, 'u6-c1-card2': 3.75, 'u6-c1-card3': 3.75, 'u6-c1-card4': 3.75,
+            'u6-c2-card1': 3.75, 'u6-c2-card2': 3.75, 'u6-c2-card3': 3.75, 'u6-c2-card4': 3.75, // 8 cards * 3.75% = 30%
+            'u6-game1': 20,
+            'u6-readCh2': 10,
+            'u6-game2': 20,
+            'u6-finalQuiz': 20
         }
     };
 
@@ -202,22 +225,22 @@ document.addEventListener('DOMContentLoaded', () => {
             updateParrotSpeech("위진남북조 분열의 역사를 뚫고, 당나라 율령과 동아시아의 4대 공통 패키지를 파헤쳐 보자! 🌸");
         } else if (unitId === 'unit5') {
             nestEmoji.textContent = '🐫';
-            progressUnitLabel.textContent = "2단원 모험 진행률";
+            progressUnitLabel.textContent = "5단원 모험 진행률";
             heroWelcomeText.innerHTML = `
-                다섯 번째 모험은 준비 중이야! 🐫<br>
-                이슬람 제국의 팽창과 비잔티움 제국의 역사 지도를 모찌가 열심히 그리고 있단다!<br>
-                조금만 기다려 주면 멋진 미니게임과 함께 돌아올게! 🧭✨
+                다섯 번째 모험에 온 걸 환영해! 🐫<br>
+                여기는 인도 고전 문화를 세운 <strong>굽타 왕조</strong>, 동서 무역을 주도한 <strong>사산 왕조 페르시아</strong>, 그리고 세계 제국으로 팽창한 <strong>이슬람 세계</strong>와 <strong>유럽 세계의 형성</strong>을 다루는 대단원이야!<br>
+                모찌와 함께 카드를 정복하고 오아시스 둥지 열쇠를 획득해 봐! 🐫🔑
             `;
-            updateParrotSpeech("이슬람 세계와 지중해의 대변화 지도를 모찌가 열심히 그리고 있어! 🐫");
+            updateParrotSpeech("인도의 힌두교 성립과 이슬람의 대제국, 그리고 서로마 멸망 이후 프랑크 왕국을 파헤쳐 보자! 🐫");
         } else {
             nestEmoji.textContent = '⛪';
-            progressUnitLabel.textContent = "3단원 모험 진행률";
+            progressUnitLabel.textContent = "6단원 모험 진행률";
             heroWelcomeText.innerHTML = `
-                여섯 번째 모험은 준비 중이야! ⛪<br>
-                서유럽 중세 봉건 사회와 장엄한 고딕 성당, 십자군 전쟁의 퀴즈판을 모찌가 열심히 깎고 있어!<br>
-                조금만 뒹굴뒹굴 기다려 줘! 🏰✨
+                여섯 번째 모험에 온 걸 환영해! ⛪<br>
+                여기는 주군과 봉신의 <strong>봉건 사회</strong>, 중세를 지배한 <strong>교황권</strong>, 그리고 <strong>십자군 전쟁</strong>과 <strong>흑사병</strong>으로 인한 서유럽의 대변화를 다루는 대단원이야!<br>
+                모찌와 함께 카드를 뒤집고 성당 장미창 둥지 열쇠를 획득해 봐! ⛪🔑
             `;
-            updateParrotSpeech("서유럽 봉건 사회와 크리스트교의 확산 지도를 모찌가 깎고 있단다! ⛪");
+            updateParrotSpeech("서유럽 봉건제의 성립과 중세 크리스트교 문화, 그리고 십자군 전쟁과 흑사병의 여파를 정복해 보자! ⛪");
         }
 
         updateProgressBar();
@@ -237,8 +260,12 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (state.activeUnit === 'unit4') {
             switchPanel('unit4', 'u4-chapter1');
             updateParrotSpeech("위진남북조 귀족 카드를 뒤집어서 분열기의 화려한 예술을 알아봐! 🎨");
-        } else {
-            updateParrotSpeech("이 단원은 열심히 제작 중이야! 다른 완료된 단원을 공부해보자! 🦜");
+        } else if (state.activeUnit === 'unit5') {
+            switchPanel('unit5', 'u5-chapter1');
+            updateParrotSpeech("굽타 왕조와 힌두교 카드를 뒤집어서 고전 산스크리트 문화의 재미를 알아봐! 🕉️");
+        } else if (state.activeUnit === 'unit6') {
+            switchPanel('unit6', 'u6-chapter1');
+            updateParrotSpeech("봉건제와 농노 카드를 뒤집어서 영주의 장원에서 무슨 일이 있었는지 알아봐! 🚜");
         }
     });
 
@@ -445,6 +472,8 @@ document.addEventListener('DOMContentLoaded', () => {
     setupTabListeners('unit2', '#unit2-nav', '#unit2-container .chapter-panel');
     setupTabListeners('unit3', '#unit3-nav', '#unit3-container .chapter-panel');
     setupTabListeners('unit4', '#unit4-nav', '#unit4-container .chapter-panel');
+    setupTabListeners('unit5', '#unit5-nav', '#unit5-container .chapter-panel');
+    setupTabListeners('unit6', '#unit6-nav', '#unit6-container .chapter-panel');
 
     // -----------------------------------------
     // 5. Flip Cards for Units
@@ -457,7 +486,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 const cardId = card.id;
                 
                 if (card.classList.contains('flipped')) {
-                    addProgress(`${unitPrefix}-${cardId.replace(`${unitPrefix}-`, '').split('-')[0]}`); // Triggers progress u1-card1, u2-card1...
+                    // Safe lookup: check if direct ID exists in weights, or map uX-cY-cardZ -> uX-cardZ
+                    let activityKey = cardId;
+                    if (!(activityKey in state.weights)) {
+                        const parts = cardId.replace(`${unitPrefix}-`, '').split('-');
+                        if (parts.length > 1 && parts[1].startsWith('card')) {
+                            activityKey = `${unitPrefix}-${parts[1]}`;
+                        } else {
+                            activityKey = `${unitPrefix}-${parts[0]}`;
+                        }
+                    }
+                    addProgress(activityKey);
                     
                     // Card Specific Comments
                     if (unitPrefix === 'u1') {
@@ -480,6 +519,28 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (cardId.includes('card2')) updateParrotSpeech("수나라는 남북을 가로지르는 대운하를 파다가 수~욱 가버렸지! 🧱");
                         if (cardId.includes('card3')) updateParrotSpeech("당나라는 법과 질서인 율령 체제로 나라의 기틀을 확립했어! 🐉");
                         if (cardId.includes('card4')) updateParrotSpeech("화려하고 글로벌한 당삼채! 개방적인 당나라 문화가 유행했단다! 🐫");
+                    } else if (unitPrefix === 'u5') {
+                        if (cardId.includes('c1-card1')) updateParrotSpeech("왕권을 굽히지(굽타) 않으려 힌두교를 지지한 굽타 왕조! 🕉️");
+                        if (cardId.includes('c1-card2')) updateParrotSpeech("인도인의 머릿속 의무와 법률을 빼곡히 담은 마누 법전! 📜");
+                        if (cardId.includes('c1-card3')) updateParrotSpeech("우아하고 부드러운 산스크리트 문화와 아잔타 벽화! 🎨");
+                        if (cardId.includes('c1-card4')) updateParrotSpeech("아무것도 없는 무(無)를 뜻하는 '0'과 10진법 계산! 🥯");
+                        if (cardId.includes('c2-card1')) updateParrotSpeech("중계 무역으로 번성하며 조로아스터교를 신봉한 사산 왕조! 🦁");
+                        if (cardId.includes('c2-card2')) updateParrotSpeech("메디나로 헤~지(헤지라) 웃으며 대피한 이슬람의 원년! 🕌");
+                        if (cardId.includes('c2-card3')) updateParrotSpeech("아랍인 중심이라 비아랍인들이 '우마(우마이야)이~갓' 하고 반항했지! 😡");
+                        if (cardId.includes('c2-card4')) updateParrotSpeech("차별을 아바(아바스)이(바이)하고 동서양 학문을 지혜의 집에서 번역! 🌍");
+                        if (cardId.includes('c3-card1')) updateParrotSpeech("가톨릭으로 클로즈업(클로비스) 개종하여 성공한 프랑크 왕국! ⛪");
+                        if (cardId.includes('c3-card2')) updateParrotSpeech("로마+크기독교+게르만 3종 세트 황제 대관 카롤루스 대제! 👑");
+                        if (cardId.includes('c3-card3')) updateParrotSpeech("로마 영토 수복 뉴스로 유스(유스티니아누스)에 나온 대제! 🏛️");
+                        if (cardId.includes('c3-card4')) updateParrotSpeech("황제가 종교 머리까지 독차지한 동로마 황제 교황주의! 👑⛪");
+                    } else if (unitPrefix === 'u6') {
+                        if (cardId.includes('c1-card1')) updateParrotSpeech("주군과 봉신이 함께 의무를 춤추는 쌍무적 계약 관계! 🤝");
+                        if (cardId.includes('c1-card2')) updateParrotSpeech("이사 가겠다고 하면 영주가 '농노(노노)!' 하는 묶인 신분! 🚜");
+                        if (cardId.includes('c1-card3')) updateParrotSpeech("신학 밑의 철학과 코가 딕 막히는 고딕 양식 성당! 🏰");
+                        if (cardId.includes('c1-card4')) updateParrotSpeech("황제가 교황 발밑에서 싹싹 빈 추운 겨울 카노사의 굴욕! ❄️👑");
+                        if (cardId.includes('c2-card1')) updateParrotSpeech("성지를 되찾으러 떠났으나 무역로만 뻥 뚫어준 십자군! ⚔️");
+                        if (cardId.includes('c2-card2')) updateParrotSpeech("도시 상인들과 기술자들의 끈끈한 뭉침 조합 길드! 💰");
+                        if (cardId.includes('c2-card3')) updateParrotSpeech("벼룩과 쥐 때문에 서유럽 인구의 3분의 1을 몰살시킨 흑사병! 🦠");
+                        if (cardId.includes('c2-card4')) updateParrotSpeech("교황청을 프랑스로 납치(유배)하고 백년 전쟁 거쳐 왕권 강화! 🏰");
                     }
                 }
             });
@@ -489,6 +550,8 @@ document.addEventListener('DOMContentLoaded', () => {
     setupFlipCards('.u2-card', 'u2');
     setupFlipCards('.u3-card', 'u3');
     setupFlipCards('.u4-card', 'u4');
+    setupFlipCards('.u5-card', 'u5');
+    setupFlipCards('.u6-card', 'u6');
 
     // -----------------------------------------
     // 6. Unit 1 Game 1: Matching Card Game
@@ -1706,6 +1769,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (u4QuizResultView) u4QuizResultView.classList.add('hidden');
                 if (u4QuizIntroView) u4QuizIntroView.classList.remove('hidden');
                 updateParrotSpeech("동아시아 문화권 모험을 처음부터 다시 시작해보자! 🌸");
+            } else if (unit === 'unit5') {
+                state.unit5Progress = 0;
+                state.u5CurrentQuizIndex = 0;
+                state.u5QuizScore = 0;
+                for (let key of state.completedActivities) {
+                    if (key.startsWith('u5-')) state.completedActivities.delete(key);
+                }
+                updateProgressBar();
+                switchPanel('unit5', 'u5-chapter1');
+                const u5QuizResultView = document.getElementById('u5-quiz-result');
+                const u5QuizIntroView = document.getElementById('u5-quiz-intro');
+                if (u5QuizResultView) u5QuizResultView.classList.add('hidden');
+                if (u5QuizIntroView) u5QuizIntroView.classList.remove('hidden');
+                updateParrotSpeech("인도·서아시아·지중해의 모험을 처음부터 차분히 다시 시작해보자! 🐫");
+            } else if (unit === 'unit6') {
+                state.unit6Progress = 0;
+                state.u6CurrentQuizIndex = 0;
+                state.u6QuizScore = 0;
+                for (let key of state.completedActivities) {
+                    if (key.startsWith('u6-')) state.completedActivities.delete(key);
+                }
+                updateProgressBar();
+                switchPanel('unit6', 'u6-chapter1');
+                const u6QuizResultView = document.getElementById('u6-quiz-result');
+                const u6QuizIntroView = document.getElementById('u6-quiz-intro');
+                if (u6QuizResultView) u6QuizResultView.classList.add('hidden');
+                if (u6QuizIntroView) u6QuizIntroView.classList.remove('hidden');
+                updateParrotSpeech("크리스트교 세계의 변화 모험을 처음부터 다시 질주해보자! ⛪");
             }
             setParrotAvatar('teacher');
         });
@@ -2043,6 +2134,756 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.cert-date-span').forEach(el => el.textContent = dateString);
 
         addProgress('u4-finalQuiz');
+    }
+
+    // =========================================================================
+    // 20. Unit 5 Game 1: 인도 굽타 왕조 OX 퀴즈
+    // =========================================================================
+    const u5G1Questions = [
+        { q: "굽타 왕조는 국왕을 신격화하기 위해 민간 신앙, 불교, 브라만교가 결합한 힌두교를 전폭 후원했다.", answer: true, hint: "맞아! 굽타 왕조는 왕권 강화를 위해 힌두교를 장려했어. 힌두교는 다신교로 왕을 신의 화신으로 보았단다!" },
+        { q: "카스트 제도에 따른 각 신분의 의무와 일상생활 규범을 담아 인도인의 일상생활 기준이 된 법전은 『바가바드 기타』이다.", answer: false, hint: "틀렸어! 힌두교인의 사회 규범과 의무가 적힌 것은 『마누 법전』이야! 마누라 잔소리처럼 꼼꼼하다고 암기해봐!" },
+        { q: "굽타 양식은 헬레니즘 문화의 영향을 듬뿍 받아 그리스 조각풍의 곱슬머리와 얇은 옷자락이 특징이다.", answer: false, hint: "틀렸어! 그리스풍 조각은 쿠샨 왕조 때의 '간다라 양식'이야! 굽타 양식은 인도 순수 예술이 어우러진 부드럽고 우아한 양식이란다. 아잔타 석굴이 대표적이야!" },
+        { q: "굽타 수학은 아무것도 없는 상태인 '0'의 개념을 도입하고 10진법을 완성해 훗날 아라비아 숫자의 기틀을 다졌다.", answer: true, hint: "맞아! 인도인들이 발견한 '0'의 개념과 10진법은 이슬람 세계를 거쳐 서유럽 자연과학 발전에 기여했단다!" }
+    ];
+
+    const u5G1QuestionText = document.getElementById('u5-g1-question-text');
+    const u5G1Feedback = document.getElementById('u5-g1-feedback');
+    const u5G1Result = document.getElementById('u5-g1-result');
+    const startU5G1Btn = document.getElementById('start-u5-g1-btn');
+    const u5G1OBtn = document.getElementById('u5-g1-o-btn');
+    const u5G1XBtn = document.getElementById('u5-g1-x-btn');
+
+    let u5G1Index = 0;
+    let u5G1Score = 0;
+    let u5G1QuestionsList = [];
+
+    if (startU5G1Btn) startU5G1Btn.addEventListener('click', initU5G1Game);
+    if (u5G1OBtn) u5G1OBtn.addEventListener('click', () => checkU5G1Answer(true));
+    if (u5G1XBtn) u5G1XBtn.addEventListener('click', () => checkU5G1Answer(false));
+
+    function initU5G1Game() {
+        u5G1Index = 0;
+        u5G1Score = 0;
+        u5G1QuestionsList = [...u5G1Questions].sort(() => Math.random() - 0.5);
+        if (u5G1Result) u5G1Result.classList.add('hidden');
+        if (u5G1Feedback) u5G1Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (startU5G1Btn) startU5G1Btn.classList.add('hidden');
+        if (u5G1OBtn) u5G1OBtn.classList.remove('hidden');
+        if (u5G1XBtn) u5G1XBtn.classList.remove('hidden');
+        showNextU5G1Question();
+        updateParrotSpeech("인도 굽타 시대와 힌두교 상식 퀴즈 시작! 🕉️");
+    }
+
+    function showNextU5G1Question() {
+        if (u5G1Index >= u5G1QuestionsList.length) {
+            endU5G1Game();
+            return;
+        }
+        const q = u5G1QuestionsList[u5G1Index];
+        if (u5G1QuestionText) {
+            u5G1QuestionText.innerHTML = `<span class="ox-progress">${u5G1Index + 1}/${u5G1QuestionsList.length}</span><br>${q.q}`;
+        }
+        if (u5G1Feedback) u5G1Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (u5G1OBtn) u5G1OBtn.disabled = false;
+        if (u5G1XBtn) u5G1XBtn.disabled = false;
+    }
+
+    function checkU5G1Answer(userAnswer) {
+        const q = u5G1QuestionsList[u5G1Index];
+        const isCorrect = userAnswer === q.answer;
+        if (u5G1OBtn) u5G1OBtn.disabled = true;
+        if (u5G1XBtn) u5G1XBtn.disabled = true;
+        if (isCorrect) {
+            u5G1Score++;
+            if (u5G1Feedback) {
+                u5G1Feedback.textContent = `✅ 정답! ${userAnswer ? '⭕' : '❌'} - 대단해!`;
+                u5G1Feedback.className = 'ox-feedback show feedback-correct';
+            }
+            updateParrotSpeech(`맞아! 굽타 시대와 힌두교 핵심 포인트를 잘 알고 있네! 🕉️`);
+        } else {
+            if (u5G1Feedback) {
+                u5G1Feedback.innerHTML = `❌ 아쉽! 정답은 <strong>${q.answer ? '⭕' : '❌'}</strong>이야!<br><small>💡 ${q.hint}</small>`;
+                u5G1Feedback.className = 'ox-feedback show feedback-wrong';
+            }
+            updateParrotSpeech(`아쉽! 💡 ${q.hint}`);
+        }
+        u5G1Index++;
+        setTimeout(showNextU5G1Question, isCorrect ? 1800 : 4500);
+    }
+
+    function endU5G1Game() {
+        if (u5G1OBtn) u5G1OBtn.classList.add('hidden');
+        if (u5G1XBtn) u5G1XBtn.classList.add('hidden');
+        if (u5G1Result) {
+            u5G1Result.classList.remove('hidden');
+            const total = u5G1QuestionsList.length;
+            document.getElementById('u5-g1-score').textContent = u5G1Score;
+            document.getElementById('u5-g1-total').textContent = total;
+            let msg = '';
+            if (u5G1Score === total) {
+                msg = "완벽해! 굽타 왕조의 문화와 힌두교 법전 규율을 완벽히 정복했어! 🥇";
+            } else if (u5G1Score >= 3) {
+                msg = "훌륭해! 조금만 더 공부하면 만점도 식은 죽 먹기지! 🕉️";
+            } else {
+                msg = "괜찮아! 힌두교 법전과 산스크리트 카드를 뒹굴뒹굴 다시 읽고 도전하자! 🦜";
+            }
+            document.getElementById('u5-g1-msg').textContent = msg;
+            updateParrotSpeech(`OX 퀴즈 완료! ${u5G1Score}/${total} 정답! ${msg}`);
+        }
+        if (startU5G1Btn) startU5G1Btn.classList.remove('hidden');
+        addProgress('u5-game1');
+    }
+
+    // =========================================================================
+    // 21. Unit 5 Game 2: 우마이야 왕조 vs 아바스 왕조 성격 분류기
+    // =========================================================================
+    const u5G2SortingItems = [
+        { text: "다마스쿠스 수도", answer: "우마이야", hint: "우마이야 왕조의 수도는 시리아의 다마스쿠스야!" },
+        { text: "바그다드 수도", answer: "아바스", hint: "아바스 왕조의 수도는 '평화의 도시' 바그다드란다!" },
+        { text: "아랍인 제일주의 (비아랍인 개종자 차별)", answer: "우마이야", hint: "우마이야는 아랍인만 세금을 면제해주고 관직을 독점하는 등 차별이 심했어!" },
+        { text: "다민족 국제 제국 (차별 철폐, 세금 면제)", answer: "아바스", hint: "아바스는 비아랍인 개종자도 세금을 깎아주고 공용어를 아랍어로 쓰게 하며 평등을 추구했지!" },
+        { text: "탈라스 전투(751년) 승리", answer: "아바스", hint: "아바스 왕조는 당나라와의 탈라스 전투에서 이겨 비단길 무역권을 먹고 제지술(종이)을 들여왔어!" },
+        { text: "이베리아 반도(스페인)까지 최대 영토 개척", answer: "우마이야", hint: "우마이야 왕조는 서쪽으로 나아가 이베리아 반도까지 지배하는 초거대 영토를 일구었어!" },
+        { text: "학문소 '지혜의 집(바이트 알히크마)' 건립", answer: "아바스", hint: "아바스 왕조는 바그다드에 '지혜의 집'을 지어 고대 그리스와 인도 책을 아랍어로 번역해 보존했단다!" },
+        { text: "이슬람 제국의 기틀 형성", answer: "우마이야", hint: "세습 왕조를 최초로 개척해 대제국의 영토 기틀을 닦았단다!" }
+    ];
+
+    const u5G2GameContainer = document.getElementById('u5-g2-game-container');
+    const u5G2Feedback = document.getElementById('u5-g2-feedback');
+    const u5G2Result = document.getElementById('u5-g2-result');
+    const startU5G2Btn = document.getElementById('start-u5-g2-btn');
+
+    let u5G2SortCorrect = 0;
+    let u5G2SortItems = [];
+    let u5G2CurrentSortIdx = 0;
+
+    if (startU5G2Btn) startU5G2Btn.addEventListener('click', initU5G2SortingGame);
+
+    function initU5G2SortingGame() {
+        u5G2SortCorrect = 0;
+        u5G2CurrentSortIdx = 0;
+        u5G2SortItems = [...u5G2SortingItems].sort(() => Math.random() - 0.5);
+        if (u5G2Feedback) u5G2Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (u5G2Result) u5G2Result.classList.add('hidden');
+        if (startU5G2Btn) startU5G2Btn.classList.add('hidden');
+        renderU5G2SortItem();
+        updateParrotSpeech("이 사실이 우마이야 왕조야, 아바스 왕조야? 알맞게 정렬해봐! 🧩");
+    }
+
+    function renderU5G2SortItem() {
+        if (!u5G2GameContainer) return;
+        if (u5G2CurrentSortIdx >= u5G2SortItems.length) {
+            endU5G2SortingGame();
+            return;
+        }
+        const item = u5G2SortItems[u5G2CurrentSortIdx];
+        u5G2GameContainer.innerHTML = `
+            <div class="sort-item-card">
+                <p class="sort-item-text">📜 ${item.text}</p>
+                <div class="sort-buttons">
+                    <button class="sort-btn sort-btn-a" id="u5-g2-btn-umaiyya">🐫 우마이야</button>
+                    <button class="sort-btn sort-btn-b" id="u5-g2-btn-abbas">🕌 아바스</button>
+                </div>
+                <p class="sort-progress">📌 ${u5G2CurrentSortIdx + 1} / ${u5G2SortItems.length}</p>
+            </div>
+        `;
+        document.getElementById('u5-g2-btn-umaiyya').addEventListener('click', () => checkU5G2Sort('우마이야'));
+        document.getElementById('u5-g2-btn-abbas').addEventListener('click', () => checkU5G2Sort('아바스'));
+    }
+
+    function checkU5G2Sort(answer) {
+        const item = u5G2SortItems[u5G2CurrentSortIdx];
+        const isCorrect = answer === item.answer;
+        const btns = u5G2GameContainer.querySelectorAll('.sort-btn');
+        btns.forEach(b => b.disabled = true);
+        if (isCorrect) {
+            u5G2SortCorrect++;
+            if (u5G2Feedback) {
+                u5G2Feedback.textContent = "✅ 정답! 모찌가 칭찬할게!";
+                u5G2Feedback.className = 'sorting-feedback show feedback-correct';
+            }
+            updateParrotSpeech(`정답! ${item.text} - 분류를 잘 마쳤네! 🕌`);
+        } else {
+            if (u5G2Feedback) {
+                u5G2Feedback.innerHTML = `❌ 아쉽! 정답은 <strong>${item.answer === '우마이야' ? '🐫 우마이야' : '🕌 아바스'}</strong>야!<br><small>${item.hint}</small>`;
+                u5G2Feedback.className = 'sorting-feedback show feedback-wrong';
+            }
+            updateParrotSpeech(`아쉽! 🦜 ${item.hint}`);
+        }
+        u5G2CurrentSortIdx++;
+        setTimeout(renderU5G2SortItem, isCorrect ? 1800 : 4000);
+    }
+
+    function endU5G2SortingGame() {
+        if (!u5G2GameContainer) return;
+        u5G2GameContainer.innerHTML = '';
+        if (u5G2Feedback) u5G2Feedback.classList.remove('show');
+        if (u5G2Result) {
+            u5G2Result.classList.remove('hidden');
+            const total = u5G2SortItems.length;
+            document.getElementById('u5-g2-score').textContent = u5G2SortCorrect;
+            document.getElementById('u5-g2-total').textContent = total;
+            let msg = '';
+            if (u5G2SortCorrect === total) {
+                msg = "완벽해! 이슬람 두 왕조의 성격을 완벽히 파악했어! 🥇";
+            } else if (u5G2SortCorrect >= 6) {
+                msg = "아주 훌륭해! 두 왕조의 수도와 차별 정책을 잘 나누는구나! 🕌";
+            } else {
+                msg = "조금 더 분발해보자! 아랍 차별(우마이야)과 다민족 조화(아바스)를 기억해! 🐫";
+            }
+            document.getElementById('u5-g2-msg').textContent = msg;
+            updateParrotSpeech(`분류 게임 완료! ${u5G2SortCorrect}/${total} 정답! ${msg}`);
+        }
+        if (startU5G2Btn) startU5G2Btn.classList.remove('hidden');
+        
+        // Progress trigger
+        addProgress('u5-game2');
+        addProgress('u5-readCh2');
+    }
+
+    // =========================================================================
+    // 22. Unit 5 Game 3: 프랑크 왕국 vs 비잔티움 제국 업적 분류기
+    // =========================================================================
+    const u5G3Items = [
+        { text: "클로비스의 가톨릭 개종", answer: "frank", hint: "클로비스는 로마 가톨릭교로 개종하여 원주민들과 교회의 신임을 얻었지!" },
+        { text: "성 소피아 대성당 건립", answer: "byz", hint: "비잔티움 제국의 상징인 거대한 돔형 성 소피아 대성당을 지었단다!" },
+        { text: "카롤루스 대제의 서로마 황제 대관(800년)", answer: "frank", hint: "서로마 교황이 카롤루스에게 황제관을 주어 서유럽 문화의 틀이 잡혔지!" },
+        { text: "유스티니아누스 법전 편찬", answer: "byz", hint: "고대 로마법을 체계적으로 묶어 유스티니아누스 법전을 냈단다!" },
+        { text: "황제가 교회 수장을 겸하는 황제 교황주의", answer: "byz", hint: "비잔티움은 서유럽 교황의 말을 듣지 않고 황제가 종교 우두머리까지 겸했지!" },
+        { text: "로마 문화 + 크리스트교 + 게르만 문화의 융합", answer: "frank", hint: "카롤루스 대제 시절 완성된 서유럽 문화의 3대 핵심 뼈대란다!" }
+    ];
+
+    const u5G3CardDisplay = document.getElementById('sorting-card-u5-3');
+    const u5G3ItemText = document.getElementById('sorting-item-u5-3-text');
+    const u5G3ScoreVal = document.getElementById('sorting-score-u5-3-val');
+    const u5G3Feedback = document.getElementById('u5-game3-feedback');
+    const startU5G3Btn = document.getElementById('start-game-u5-3-btn');
+    const btnU53Frank = document.getElementById('btn-u5-3-frank');
+    const btnU53Byz = document.getElementById('btn-u5-3-byz');
+
+    let u5G3Correct = 0;
+    let u5G3Index = 0;
+    let u5G3QuestionsList = [];
+
+    if (startU5G3Btn) startU5G3Btn.addEventListener('click', initU5G3Game);
+    if (btnU53Frank) btnU53Frank.addEventListener('click', () => checkU5G3Answer('frank'));
+    if (btnU53Byz) btnU53Byz.addEventListener('click', () => checkU5G3Answer('byz'));
+
+    function initU5G3Game() {
+        u5G3Correct = 0;
+        u5G3Index = 0;
+        u5G3QuestionsList = [...u5G3Items].sort(() => Math.random() - 0.5);
+        if (u5G3Feedback) u5G3Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (startU5G3Btn) startU5G3Btn.classList.add('hidden');
+        if (u5G3ScoreVal) u5G3ScoreVal.textContent = "0";
+        showNextU5G3Item();
+        updateParrotSpeech("프랑크 왕국과 비잔티움 제국 업적 매칭 시작! ⚔️");
+    }
+
+    function showNextU5G3Item() {
+        if (u5G3Index >= u5G3QuestionsList.length) {
+            endU5G3Game();
+            return;
+        }
+        const item = u5G3QuestionsList[u5G3Index];
+        if (u5G3ItemText) u5G3ItemText.textContent = item.text;
+        if (u5G3Feedback) u5G3Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (btnU53Frank) btnU53Frank.disabled = false;
+        if (btnU53Byz) btnU53Byz.disabled = false;
+    }
+
+    function checkU5G3Answer(userAnswer) {
+        const item = u5G3QuestionsList[u5G3Index];
+        const isCorrect = userAnswer === item.answer;
+        if (btnU53Frank) btnU53Frank.disabled = true;
+        if (btnU53Byz) btnU53Byz.disabled = true;
+
+        if (isCorrect) {
+            u5G3Correct++;
+            if (u5G3ScoreVal) u5G3ScoreVal.textContent = u5G3Correct;
+            if (u5G3Feedback) {
+                u5G3Feedback.textContent = "✅ 정답! 모찌가 신났어!";
+                u5G3Feedback.className = 'game-feedback show feedback-correct';
+            }
+            updateParrotSpeech("정답이야! 서로마와 동로마(비잔티움)의 다른 역사를 잘 꿰뚫었네! 🏰");
+        } else {
+            if (u5G3Feedback) {
+                u5G3Feedback.innerHTML = `❌ 아쉽! 정답은 <strong>${item.answer === 'frank' ? '🛡️ 프랑크 왕국' : '🏛️ 비잔티움 제국'}</strong>이야!<br><small>${item.hint}</small>`;
+                u5G3Feedback.className = 'game-feedback show feedback-wrong';
+            }
+            updateParrotSpeech(`아쉽! 🦜 ${item.hint}`);
+        }
+        u5G3Index++;
+        setTimeout(showNextU5G3Item, isCorrect ? 1800 : 4000);
+    }
+
+    function endU5G3Game() {
+        if (u5G3ItemText) u5G3ItemText.textContent = "분류 종료! 결과를 아래에서 확인해!";
+        if (u5G3Feedback) {
+            u5G3Feedback.innerHTML = `🎉 프랑크 vs 비잔티움 분류 완료! ${u5G3Correct}/6점 획득!`;
+            u5G3Feedback.className = 'game-feedback show feedback-correct';
+        }
+        if (startU5G3Btn) startU5G3Btn.classList.remove('hidden');
+        
+        // Progress trigger
+        addProgress('u5-game3');
+        addProgress('u5-readCh3');
+    }
+
+    // =========================================================================
+    // 23. Unit 5 Final Quiz
+    // =========================================================================
+    const u5FinalQuestions = [
+        {
+            q: "굽타 왕조 시대에 브라만교를 기반으로 불교와 인도 민간 신앙이 결합하여 성립한 종교는?",
+            options: ["불교", "힌두교", "이슬람교", "자이나교"],
+            correctIndex: 1,
+            hint: "힌두교는 굽타 왕조의 후원을 받으며 인도 고유의 다신교로 성장했단다!"
+        },
+        {
+            q: "이슬람교에서 무함마드가 메카 상인들의 박해를 피해 메디나로 피신한 사건(622년)으로 이슬람력의 원년이 된 사건은?",
+            options: ["헤지라", "카노사의 굴욕", "대이동", "아비뇽 유배"],
+            correctIndex: 0,
+            hint: "헤지라(Hegira)는 이슬람 공동체의 성장을 알리는 출발점이야!"
+        },
+        {
+            q: "아바스 왕조가 당나라와의 이 전투(751년)에서 승리하여 동서 교역로를 장악하고 제지술(종이 만드는 법)을 수입한 사건은?",
+            options: ["살라미스 해전", "탈라스 전투", "백년 전쟁", "포에니 전쟁"],
+            correctIndex: 1,
+            hint: "탈라스 전투 승리로 이슬람이 중앙아시아 무역을 쥐고 당나라 제지 기술자를 통해 종이를 서양에 알리게 되었어!"
+        },
+        {
+            q: "800년 교황 레오 3세로부터 서로마 황제의 관을 받아 로마 문화, 크리스트교, 게르만 요소를 융합해 서유럽 문화의 틀을 만든 프랑크 왕국의 국왕은?",
+            options: ["클로비스", "카롤루스 대제", "유스티니아누스 대제", "하인리히 4세"],
+            correctIndex: 1,
+            hint: "카롤루스 대제는 서유럽 문화권의 아버지로 불린단다!"
+        },
+        {
+            q: "비잔티움 제국(동로마)의 6세기 황제로, 옛 로마 영토를 대부분 회복하고 『로마법 대전』 편찬과 성 소피아 대성당을 지은 황제는?",
+            options: ["콘스탄티누스 대제", "옥타비아누스", "유스티니아누스 대제", "다리우스 1세"],
+            correctIndex: 2,
+            hint: "유스티니아누스 대제는 1000년 비잔티움 제국의 최고 전성기를 이끌었어!"
+        }
+    ];
+
+    const u5QuizIntroView = document.getElementById('u5-quiz-intro');
+    const u5QuizPlayView = document.getElementById('u5-quiz-play');
+    const u5QuizResultView = document.getElementById('u5-quiz-result');
+    const u5QuizQuestionText = document.getElementById('u5-quiz-question-text');
+    const u5QuizOptionsContainer = document.getElementById('u5-quiz-options');
+    const u5QuizCounterText = document.getElementById('u5-quiz-counter');
+    const u5FinalTotalScore = document.getElementById('u5-final-score');
+    const u5ResultMessage = document.getElementById('u5-result-message');
+    const startU5QuizBtn = document.getElementById('start-u5-quiz-btn');
+
+    if (startU5QuizBtn) {
+        startU5QuizBtn.addEventListener('click', () => {
+            state.u5CurrentQuizIndex = 0;
+            state.u5QuizScore = 0;
+            if (u5QuizIntroView) u5QuizIntroView.classList.add('hidden');
+            if (u5QuizResultView) u5QuizResultView.classList.add('hidden');
+            if (u5QuizPlayView) u5QuizPlayView.classList.remove('hidden');
+            showU5FinalQuizQuestion();
+            updateParrotSpeech("인도·서아시아·지중해 최종 퀴즈 시작! 5문제 모두 맞혀봐! 🐫🕌");
+        });
+    }
+
+    function showU5FinalQuizQuestion() {
+        if (!u5QuizPlayView) return;
+        if (state.u5CurrentQuizIndex < u5FinalQuestions.length) {
+            const qData = u5FinalQuestions[state.u5CurrentQuizIndex];
+            if (u5QuizCounterText) u5QuizCounterText.textContent = `${state.u5CurrentQuizIndex + 1} / ${u5FinalQuestions.length}`;
+            if (u5QuizQuestionText) u5QuizQuestionText.textContent = qData.q;
+            if (u5QuizOptionsContainer) u5QuizOptionsContainer.innerHTML = '';
+            
+            qData.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'quiz-opt-btn';
+                btn.textContent = opt;
+                btn.addEventListener('click', () => selectU5QuizOption(idx));
+                u5QuizOptionsContainer.appendChild(btn);
+            });
+        } else {
+            showU5QuizResults();
+        }
+    }
+
+    function selectU5QuizOption(userIndex) {
+        const qData = u5FinalQuestions[state.u5CurrentQuizIndex];
+        const isCorrect = userIndex === qData.correctIndex;
+        const optionButtons = u5QuizOptionsContainer.querySelectorAll('.quiz-opt-btn');
+        
+        optionButtons.forEach(btn => btn.disabled = true);
+
+        if (isCorrect) {
+            state.u5QuizScore++;
+            optionButtons[userIndex].classList.add('correct');
+            updateParrotSpeech("정답이야! 짝짝짝! 힌두교와 이슬람 지식이 대단해! 🐫🎉");
+            setParrotAvatar('happy');
+        } else {
+            optionButtons[userIndex].classList.add('wrong');
+            optionButtons[qData.correctIndex].classList.add('correct');
+            updateParrotSpeech(`아쉽다! 모찌 꿀팁: <br> ${qData.hint}`);
+            setParrotAvatar('cheer');
+        }
+        state.u5CurrentQuizIndex++;
+        setTimeout(showU5FinalQuizQuestion, isCorrect ? 1800 : 4000);
+    }
+
+    function showU5QuizResults() {
+        if (u5QuizPlayView) u5QuizPlayView.classList.add('hidden');
+        if (u5QuizResultView) u5QuizResultView.classList.remove('hidden');
+        if (u5FinalTotalScore) u5FinalTotalScore.textContent = state.u5QuizScore;
+        
+        let messageText = "";
+        if (state.u5QuizScore === 5) {
+            messageText = "💯 완벽한 인도·서아시아·지중해 마스터 탄생! 모찌가 사막 둥지의 모든 해바라기씨를 줄게! 힌두교의 굽타와 이슬람 번영기, 서로마 멸망 역사를 모두 꿰뚫는 역사 장인이야! 🐫🥇";
+            setParrotAvatar('happy');
+        } else if (state.u5QuizScore >= 3) {
+            messageText = "👍 훌륭해! 이슬람 두 제국과 프랑크 왕국, 굽타 수학 유산을 잘 이해하고 있어! 틀린 것도 분류기와 OX로 다시 확인해보자! 🕌✨";
+            setParrotAvatar('teacher');
+        } else {
+            messageText = "🦜 역사가 아직 어렵니? 걱정마! 프랑크 왕국 분류기와 인도 OX 퀴즈를 모찌와 다시 차분히 풀어보면 금방 기억날 거야! 🚀";
+            setParrotAvatar('cheer');
+        }
+        if (u5ResultMessage) u5ResultMessage.innerHTML = messageText;
+        
+        const today = new Date();
+        const dateString = `${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()}일`;
+        document.querySelectorAll('.cert-date-span').forEach(el => el.textContent = dateString);
+
+        addProgress('u5-finalQuiz');
+    }
+
+    // =========================================================================
+    // 24. Unit 6 Game 1: 중세 봉건제 & 서임권 OX 퀴즈
+    // =========================================================================
+    const u6G1Questions = [
+        { q: "중세 봉건제의 주종 관계는 영주와 신하가 토지를 매개로 맺은 쌍무적 계약 관계로, 한쪽이 약속을 어기면 파기될 수 있었다.", answer: true, hint: "맞아! 동양의 수직적 충성 관계와 달리 서양 봉건제는 서로 의무를 지는 쌍무적 계약 관계였어!" },
+        { q: "장원의 농노는 고대 노예와 완전히 똑같아서 결혼할 수 없었고 개인 재산을 전혀 모을 수 없었다.", answer: false, hint: "틀렸어! 농노는 가정을 이룰 수 있고 재산도 모을 수 있었지만, 거주 이전의 자유가 없어 영주의 땅에 묶여 살았단다!" },
+        { q: "카노사의 굴욕 사건에서 교황 그레고리우스 7세가 황제 하인리히 4세에게 굴복하여 황제권이 교회보다 세졌다.", answer: false, hint: "틀렸어! 황제가 교황에게 굴복하고 용서를 구한 사건으로 교황권이 황제권 위에 우뚝 섰음을 보여준 사건이야!" },
+        { q: "중세 서유럽은 크리스트교가 중심이 되어 학문은 신학 위주로 발달했으며, 철학은 '신학의 시녀'로 불렸다.", answer: true, hint: "맞아! 신의 뜻을 탐구하는 신학이 왕이었고, 인간 이성의 철학은 신학을 설명하기 위한 도구(시녀)에 불과했단다!" },
+        { q: "고딕 양식 성당은 거대한 돔과 두꺼운 벽이 특징이며, 내부 벽면에 알록달록한 모자이크화를 빼곡히 채웠다.", answer: false, hint: "틀렸어! 높은 첨탑과 오색빛깔 '스테인드글라스' 유리창이 고딕 양식의 매력이야! 돔과 모자이크는 비잔티움 양식의 특징이란다!" }
+    ];
+
+    const u6G1QuestionText = document.getElementById('u6-g1-question-text');
+    const u6G1Feedback = document.getElementById('u6-g1-feedback');
+    const u6G1Result = document.getElementById('u6-g1-result');
+    const startU6G1Btn = document.getElementById('start-u6-g1-btn');
+    const u6G1OBtn = document.getElementById('u6-g1-o-btn');
+    const u6G1XBtn = document.getElementById('u6-g1-x-btn');
+
+    let u6G1Index = 0;
+    let u6G1Score = 0;
+    let u6G1QuestionsList = [];
+
+    if (startU6G1Btn) startU6G1Btn.addEventListener('click', initU6G1Game);
+    if (u6G1OBtn) u6G1OBtn.addEventListener('click', () => checkU6G1Answer(true));
+    if (u6G1XBtn) u6G1XBtn.addEventListener('click', () => checkU6G1Answer(false));
+
+    function initU6G1Game() {
+        u6G1Index = 0;
+        u6G1Score = 0;
+        u6G1QuestionsList = [...u6G1Questions].sort(() => Math.random() - 0.5);
+        if (u6G1Result) u6G1Result.classList.add('hidden');
+        if (u6G1Feedback) u6G1Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (startU6G1Btn) startU6G1Btn.classList.add('hidden');
+        if (u6G1OBtn) u6G1OBtn.classList.remove('hidden');
+        if (u6G1XBtn) u6G1XBtn.classList.remove('hidden');
+        showNextU6G1Question();
+        updateParrotSpeech("중세 봉건 사회와 교회 관련 OX 퀴즈 시작! ⛪");
+    }
+
+    function showNextU6G1Question() {
+        if (u6G1Index >= u6G1QuestionsList.length) {
+            endU6G1Game();
+            return;
+        }
+        const q = u6G1QuestionsList[u6G1Index];
+        if (u6G1QuestionText) {
+            u6G1QuestionText.innerHTML = `<span class="ox-progress">${u6G1Index + 1}/${u6G1QuestionsList.length}</span><br>${q.q}`;
+        }
+        if (u6G1Feedback) u6G1Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (u6G1OBtn) u6G1OBtn.disabled = false;
+        if (u6G1XBtn) u6G1XBtn.disabled = false;
+    }
+
+    function checkU6G1Answer(userAnswer) {
+        const q = u6G1QuestionsList[u6G1Index];
+        const isCorrect = userAnswer === q.answer;
+        if (u6G1OBtn) u6G1OBtn.disabled = true;
+        if (u6G1XBtn) u6G1XBtn.disabled = true;
+        if (isCorrect) {
+            u6G1Score++;
+            if (u6G1Feedback) {
+                u6G1Feedback.textContent = `✅ 정답! ${userAnswer ? '⭕' : '❌'} - 중세 역사 천재!`;
+                u6G1Feedback.className = 'ox-feedback show feedback-correct';
+            }
+            updateParrotSpeech(`정답! 쌍무적 계약과 장원의 뼈대를 확실히 아는구나! ⛪`);
+        } else {
+            if (u6G1Feedback) {
+                u6G1Feedback.innerHTML = `❌ 아쉽! 정답은 <strong>${q.answer ? '⭕' : '❌'}</strong>이야!<br><small>💡 ${q.hint}</small>`;
+                u6G1Feedback.className = 'ox-feedback show feedback-wrong';
+            }
+            updateParrotSpeech(`아쉽! 💡 ${q.hint}`);
+        }
+        u6G1Index++;
+        setTimeout(showNextU6G1Question, isCorrect ? 1800 : 4500);
+    }
+
+    function endU6G1Game() {
+        if (u6G1OBtn) u6G1OBtn.classList.add('hidden');
+        if (u6G1XBtn) u6G1XBtn.classList.add('hidden');
+        if (u6G1Result) {
+            u6G1Result.classList.remove('hidden');
+            const total = u6G1QuestionsList.length;
+            document.getElementById('u6-g1-score').textContent = u6G1Score;
+            document.getElementById('u6-g1-total').textContent = total;
+            let msg = '';
+            if (u6G1Score === total) {
+                msg = "완벽해! 중세 봉건제와 교황권 역사를 완전히 마스터했어! 🥇";
+            } else if (u6G1Score >= 3) {
+                msg = "훌륭해! 조금만 더 하면 중세 가톨릭 문화의 전설이 될 수 있어! ⛪";
+            } else {
+                msg = "괜찮아! 카노사의 굴욕과 농노 지위 카드를 다시 보고 재도전하자! 🚜";
+            }
+            document.getElementById('u6-g1-msg').textContent = msg;
+            updateParrotSpeech(`OX 퀴즈 완료! ${u6G1Score}/${total} 정답! ${msg}`);
+        }
+        if (startU6G1Btn) startU6G1Btn.classList.remove('hidden');
+        addProgress('u6-game1');
+    }
+
+    // =========================================================================
+    // 25. Unit 6 Game 2: 중세 말 사회 변화 분류기 (십자군 전쟁 이전 vs 이후)
+    // =========================================================================
+    const u6G2SortingItems = [
+        { text: "교황권의 절정 및 카노사의 굴욕", answer: "이전", hint: "십자군 전쟁 전에는 교황의 힘이 황제를 누를 만큼 강력했단다!" },
+        { text: "십자군 전쟁 실패로 교황권과 영주 세력의 쇠퇴", answer: "이후", hint: "원정이 실패하면서 교황의 권위와 기사(영주)들의 군사력이 몰락했어!" },
+        { text: "폐쇄적인 자급자족 농경 장원 경제 중심", answer: "이전", hint: "도시 상업이 발달하기 전에는 장원 안에서 자급자족하며 살았단다!" },
+        { text: "흑사병(페스트) 유행으로 농민 인구 급감", answer: "이후", hint: "14세기 흑사병이 돌아 인구의 3분의 1이 숨지자 노동력이 귀해졌어!" },
+        { text: "도시 상인들과 장인들의 독점 동업 조합 '길드' 결성", answer: "이후", hint: "도시가 번창하면서 이익 보호를 위해 '길드' 조합이 똘똘 뭉쳤어!" },
+        { text: "노동력 부족으로 농노 해방 및 지대 화폐화 가속", answer: "이후", hint: "농민 인구가 부족해지자 영주들이 농민 처우를 개선해주고 농노에서 해방해줬어!" },
+        { text: "교황을 프랑스로 체포한 아비뇽 유배 및 교회 분열", answer: "이후", hint: "왕권이 세진 프랑스 국왕이 교황청을 아비뇽으로 옮겨 가둔 사건이야!" },
+        { text: "영국과 프랑스의 백년 전쟁 및 왕 중심의 집권 국가 등장", answer: "이후", hint: "영·프 영토 다툼 속에 잔 다르크가 활약했고, 국왕 권력이 극대화됐지!" }
+    ];
+
+    const u6G2GameContainer = document.getElementById('u6-g2-game-container');
+    const u6G2Feedback = document.getElementById('u6-g2-feedback');
+    const u6G2Result = document.getElementById('u6-g2-result');
+    const startU6G2Btn = document.getElementById('start-u6-g2-btn');
+
+    let u6G2SortCorrect = 0;
+    let u6G2SortItems = [];
+    let u6G2CurrentSortIdx = 0;
+
+    if (startU6G2Btn) startU6G2Btn.addEventListener('click', initU6G2SortingGame);
+
+    function initU6G2SortingGame() {
+        u6G2SortCorrect = 0;
+        u6G2CurrentSortIdx = 0;
+        u6G2SortItems = [...u6G2SortingItems].sort(() => Math.random() - 0.5);
+        if (u6G2Feedback) u6G2Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (u6G2Result) u6G2Result.classList.add('hidden');
+        if (startU6G2Btn) startU6G2Btn.classList.add('hidden');
+        renderU6G2SortItem();
+        updateParrotSpeech("이 역사적 사실이 십자군 전쟁 이전이야, 이후야? 잘 정렬해봐! 🧩");
+    }
+
+    function renderU6G2SortItem() {
+        if (!u6G2GameContainer) return;
+        if (u6G2CurrentSortIdx >= u6G2SortItems.length) {
+            endU6G2SortingGame();
+            return;
+        }
+        const item = u6G2SortItems[u6G2CurrentSortIdx];
+        u6G2GameContainer.innerHTML = `
+            <div class="sort-item-card">
+                <p class="sort-item-text">📜 ${item.text}</p>
+                <div class="sort-buttons">
+                    <button class="sort-btn sort-btn-a" id="u6-g2-btn-before">⛪ 십자군 이전</button>
+                    <button class="sort-btn sort-btn-b" id="u6-g2-btn-after">⚔️ 십자군 이후</button>
+                </div>
+                <p class="sort-progress">📌 ${u6G2CurrentSortIdx + 1} / ${u6G2SortItems.length}</p>
+            </div>
+        `;
+        document.getElementById('u6-g2-btn-before').addEventListener('click', () => checkU6G2Sort('이전'));
+        document.getElementById('u6-g2-btn-after').addEventListener('click', () => checkU6G2Sort('이후'));
+    }
+
+    function checkU6G2Sort(answer) {
+        const item = u6G2SortItems[u6G2CurrentSortIdx];
+        const isCorrect = answer === item.answer;
+        const btns = u6G2GameContainer.querySelectorAll('.sort-btn');
+        btns.forEach(b => b.disabled = true);
+        if (isCorrect) {
+            u6G2SortCorrect++;
+            if (u6G2Feedback) {
+                u6G2Feedback.textContent = "✅ 정답! 모찌 기분 굿!";
+                u6G2Feedback.className = 'sorting-feedback show feedback-correct';
+            }
+            updateParrotSpeech(`정답! ${item.text} - 정확하게 분류했어! ⚔️`);
+        } else {
+            if (u6G2Feedback) {
+                u6G2Feedback.innerHTML = `❌ 아쉽! 정답은 <strong>${item.answer === '이전' ? '⛪ 십자군 이전' : '⚔️ 십자군 이후'}</strong>이야!<br><small>${item.hint}</small>`;
+                u6G2Feedback.className = 'sorting-feedback show feedback-wrong';
+            }
+            updateParrotSpeech(`아쉽! 🦜 ${item.hint}`);
+        }
+        u6G2CurrentSortIdx++;
+        setTimeout(renderU6G2SortItem, isCorrect ? 1800 : 4000);
+    }
+
+    function endU6G2SortingGame() {
+        if (!u6G2GameContainer) return;
+        u6G2GameContainer.innerHTML = '';
+        if (u6G2Feedback) u6G2Feedback.classList.remove('show');
+        if (u6G2Result) {
+            u6G2Result.classList.remove('hidden');
+            const total = u6G2SortItems.length;
+            document.getElementById('u6-g2-score').textContent = u6G2SortCorrect;
+            document.getElementById('u6-g2-total').textContent = total;
+            let msg = '';
+            if (u6G2SortCorrect === total) {
+                msg = "완벽해! 중세 말기 교황권의 실락과 흑사병에 의한 농민들의 성장을 완벽히 분류했어! 🥇";
+            } else if (u6G2SortCorrect >= 6) {
+                msg = "훌륭해! 중세 말기 붕괴의 역사를 깊이 이해하고 있구나! 🏰";
+            } else {
+                msg = "조금만 더 복습해볼까? 십자군 실패와 흑사병이 봉건제를 무너뜨린 핵심이야! 🦠";
+            }
+            document.getElementById('u6-g2-msg').textContent = msg;
+            updateParrotSpeech(`분류 게임 완료! ${u6G2SortCorrect}/${total} 정답! ${msg}`);
+        }
+        if (startU6G2Btn) startU6G2Btn.classList.remove('hidden');
+        
+        // Progress trigger
+        addProgress('u6-game2');
+        addProgress('u6-readCh2');
+    }
+
+    // =========================================================================
+    // 26. Unit 6 Final Quiz
+    // =========================================================================
+    const u6FinalQuestions = [
+        {
+            q: "중세 서유럽 봉건 지배층 사이에 맺어진 토지 매개의 관계로, 상호 계약적이며 한쪽이 약속을 어기면 깨질 수 있었던 관계는?",
+            options: ["주종 관계(쌍무적 계약)", "부자 관계", "군신 관계", "카스트 제도"],
+            correctIndex: 0,
+            hint: "서양 봉건제는 주군과 봉신이 상호간의 의무를 약속한 계약적 주종 관계야!"
+        },
+        {
+            q: "중세 장원 사회에서 농가와 재산을 소유하고 결혼은 할 수 있었으나, 거주 이전의 자유가 없어 토지에 묶인 소작인은?",
+            options: ["자영 농민", "농노", "노예", "평민"],
+            correctIndex: 1,
+            hint: "농노는 농민과 노예의 성격을 모두 가진 중세 장원의 핵심 노동자란다!"
+        },
+        {
+            q: "성직 서임권을 둘러싸고 교황과 대립하다 파문당한 신성로마 황제 하인리히 4세가 교황에게 용서를 구한 1077년의 사건은?",
+            options: ["카노사의 굴욕", "아비뇽 유배", "십자군 전쟁", "다이카 개신"],
+            correctIndex: 0,
+            hint: "하인리히 4세가 눈 내리는 카노사 성문 밖에서 3일 동안 빌며 사죄한 사건이야!"
+        },
+        {
+            q: "예루살렘 성지를 회복하고자 11~13세기 교황 우르바누스 2세의 제창으로 결성되어 동방 원정을 떠났으나 결국 실패한 전쟁은?",
+            options: ["탈라스 전투", "백년 전쟁", "십자군 전쟁", "페르시아 전쟁"],
+            correctIndex: 2,
+            hint: "성지 수복은 실패했으나, 동서 무역을 촉진하고 교황·영주가 쇠퇴하는 큰 계기가 되었어!"
+        },
+        {
+            q: "14세기 유라시아와 유럽을 강타해 인구의 3분의 1을 숨지게 함으로써 농민 처우 개선과 농노 해방, 봉건 장원 붕괴를 초래한 병은?",
+            options: ["흑사병(페스트)", "장티푸스", "콜레라", "인플루엔자"],
+            correctIndex: 0,
+            hint: "흑사병으로 노동 인구가 크게 줄어들어 신분 구속력이 급속도로 깨졌단다!"
+        }
+    ];
+
+    const u6QuizIntroView = document.getElementById('u6-quiz-intro');
+    const u6QuizPlayView = document.getElementById('u6-quiz-play');
+    const u6QuizResultView = document.getElementById('u6-quiz-result');
+    const u6QuizQuestionText = document.getElementById('u6-quiz-question-text');
+    const u6QuizOptionsContainer = document.getElementById('u6-quiz-options');
+    const u6QuizCounterText = document.getElementById('u6-quiz-counter');
+    const u6FinalTotalScore = document.getElementById('u6-final-score');
+    const u6ResultMessage = document.getElementById('u6-result-message');
+    const startU6QuizBtn = document.getElementById('start-u6-quiz-btn');
+
+    if (startU6QuizBtn) {
+        startU6QuizBtn.addEventListener('click', () => {
+            state.u6CurrentQuizIndex = 0;
+            state.u6QuizScore = 0;
+            if (u6QuizIntroView) u6QuizIntroView.classList.add('hidden');
+            if (u6QuizResultView) u6QuizResultView.classList.add('hidden');
+            if (u6QuizPlayView) u6QuizPlayView.classList.remove('hidden');
+            showU6FinalQuizQuestion();
+            updateParrotSpeech("크리스트교의 확산과 변화 최종 퀴즈 시작! 5문제 모두 맞춰봐! ⛪🛡️");
+        });
+    }
+
+    function showU6FinalQuizQuestion() {
+        if (!u6QuizPlayView) return;
+        if (state.u6CurrentQuizIndex < u6FinalQuestions.length) {
+            const qData = u6FinalQuestions[state.u6CurrentQuizIndex];
+            if (u6QuizCounterText) u6QuizCounterText.textContent = `${state.u6CurrentQuizIndex + 1} / ${u6FinalQuestions.length}`;
+            if (u6QuizQuestionText) u6QuizQuestionText.textContent = qData.q;
+            if (u6QuizOptionsContainer) u6QuizOptionsContainer.innerHTML = '';
+            
+            qData.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'quiz-opt-btn';
+                btn.textContent = opt;
+                btn.addEventListener('click', () => selectU6QuizOption(idx));
+                u6QuizOptionsContainer.appendChild(btn);
+            });
+        } else {
+            showU6QuizResults();
+        }
+    }
+
+    function selectU6QuizOption(userIndex) {
+        const qData = u6FinalQuestions[state.u6CurrentQuizIndex];
+        const isCorrect = userIndex === qData.correctIndex;
+        const optionButtons = u6QuizOptionsContainer.querySelectorAll('.quiz-opt-btn');
+        
+        optionButtons.forEach(btn => btn.disabled = true);
+
+        if (isCorrect) {
+            state.u6QuizScore++;
+            optionButtons[userIndex].classList.add('correct');
+            updateParrotSpeech("정답이야! 짝짝짝! 중세 크리스트교 지식이 수준급이구나! ⛪🎉");
+            setParrotAvatar('happy');
+        } else {
+            optionButtons[userIndex].classList.add('wrong');
+            optionButtons[qData.correctIndex].classList.add('correct');
+            updateParrotSpeech(`아쉽다! 모찌 꿀팁: <br> ${qData.hint}`);
+            setParrotAvatar('cheer');
+        }
+        state.u6CurrentQuizIndex++;
+        setTimeout(showU6FinalQuizQuestion, isCorrect ? 1800 : 4000);
+    }
+
+    function showU6QuizResults() {
+        if (u6QuizPlayView) u6QuizPlayView.classList.add('hidden');
+        if (u6QuizResultView) u6QuizResultView.classList.remove('hidden');
+        if (u6FinalTotalScore) u6FinalTotalScore.textContent = state.u6QuizScore;
+        
+        let messageText = "";
+        if (state.u6QuizScore === 5) {
+            messageText = "💯 완벽한 중세 크리스트교 세계 마스터 탄생! 모찌가 아름다운 고딕 둥지를 활짝 열어줄게! 봉건제의 주종/장원, 카노사와 십자군 전쟁, 흑사병 여파까지 완벽히 마스터했어! ⛪🥇";
+            setParrotAvatar('happy');
+        } else if (state.u6QuizScore >= 3) {
+            messageText = "👍 훌륭해! 중세의 장원제와 십자군 영향, 흑사병 여파의 핵심을 잘 파악하고 있구나! 틀린 것도 분류기와 OX로 다시 확인해보자! ⚔️✨";
+            setParrotAvatar('teacher');
+        } else {
+            messageText = "🦜 중세 역사가 머릿속에서 뒹굴뒹굴 헤매는구나! 괜찮아! 중세 사회 변화 분류기랑 OX 퀴즈를 모찌랑 다시 한 번 복습하러 가자! 🚀";
+            setParrotAvatar('cheer');
+        }
+        if (u6ResultMessage) u6ResultMessage.innerHTML = messageText;
+        
+        const today = new Date();
+        const dateString = `${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()}일`;
+        document.querySelectorAll('.cert-date-span').forEach(el => el.textContent = dateString);
+
+        addProgress('u6-finalQuiz');
     }
 
     // Initialize progress bar at load
