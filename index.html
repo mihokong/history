@@ -2899,6 +2899,89 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Game Section for U8 Ch3 -->
+                    <div class="game-section">
+                        <div class="game-header">
+                            <h4>🎮 챕터 3 게임: "명·청·막부·무굴 OX 퀴즈"</h4>
+                            <p>설명이 맞으면 ⭕, 틀리면 ❌를 골라 동아시아·인도 역사를 맞춰봐!</p>
+                        </div>
+                        <div class="game-body ox-game">
+                            <div class="ox-display">
+                                <div class="ox-question-box" id="u8-g1-question-text">게임 시작 버튼을 눌러봐! 🏔️</div>
+                                <div class="ox-buttons">
+                                    <button id="u8-g1-o-btn" class="cute-btn o-btn hidden">⭕ O</button>
+                                    <button id="u8-g1-x-btn" class="cute-btn x-btn hidden">❌ X</button>
+                                </div>
+                                <div id="u8-g1-feedback" class="ox-feedback"></div>
+                            </div>
+                            <div id="u8-g1-result" class="ox-result hidden">
+                                <p>🎉 OX 완료! <strong id="u8-g1-score">0</strong> / <strong id="u8-g1-total">5</strong> 정답!</p>
+                                <p id="u8-g1-msg" class="sort-result-msg"></p>
+                            </div>
+                            <div class="ox-controls">
+                                <button id="start-u8-g1-btn" class="cute-btn">게임 시작하기 🚀</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Final Quiz Section for Unit 8 -->
+                <section id="u8-chapter-quiz" class="chapter-panel">
+                    <div class="panel-header">
+                        <h3>🏆 종합 도전: 동아시아·인도 지역 질서의 변화 마스터!</h3>
+                        <p class="panel-subtitle">명·청의 전성기 정책, 일본 막부 정치의 변천, 그리고 인도의 무굴 제국까지 모두 정복하자!</p>
+                    </div>
+
+                    <div class="quiz-arena">
+                        <!-- Quiz Intro -->
+                        <div class="quiz-intro-box" id="u8-quiz-intro">
+                            <img src="assets/parrot_cheer.png" alt="응원하는 모찌" class="quiz-intro-avatar">
+                            <h4>대단원 III - 2단원 최종 퀴즈 스테이지! 🏔️</h4>
+                            <p>
+                                홍무제/영락제와 강희/옹정/건륭의 업적, 에도 막부의 통제책, 그리고 무굴 제국의 흥망성쇠!<br>
+                                5문제를 다 맞추면 멋진 동아시아·인도 질서 마스터 인증서를 발급해줄게!
+                            </p>
+                            <button id="start-u8-quiz-btn" class="cute-btn large-btn">도전하기 🏔️ 🐘 🔑</button>
+                        </div>
+
+                        <!-- Active Quiz Interface -->
+                        <div class="quiz-play-box hidden" id="u8-quiz-play">
+                            <div class="quiz-status">
+                                <span class="quiz-progress-num">문제 <span id="u8-quiz-counter">1 / 5</span></span>
+                            </div>
+                            <div class="quiz-card">
+                                <div class="quiz-question" id="u8-quiz-question-text">질문 텍스트</div>
+                                <div class="quiz-options-list" id="u8-quiz-options"></div>
+                            </div>
+                        </div>
+
+                        <!-- Quiz Result Interface -->
+                        <div class="quiz-result-box hidden" id="u8-quiz-result">
+                            <img src="assets/parrot_happy.png" alt="축하하는 모찌" class="result-avatar">
+                            <h3>🎉 축하해! 동아시아·인도 질서 마스터! 🎉</h3>
+                            <p class="score-summary">너의 점수: <span id="u8-final-score">5</span> / 5점</p>
+                            <div id="u8-result-message" class="result-message-box">메시지</div>
+                            
+                            <!-- Certificate -->
+                            <div class="certificate-container" id="u8-certificate">
+                                <div class="cert-border" style="border-color: #3a86c8;">
+                                    <h2 style="color: #1e6091;">🏔️ 동아시아·인도 질서 마스터 인증서 🏔️</h2>
+                                    <p class="cert-name">이름: 멋쟁이 역사 모험가</p>
+                                    <p class="cert-body">위 학생은 역사 천재 앵무새 모찌가 주관한 [세계사: 동아시아·인도 지역 질서의 변화] 과정의 모든 퀴즈 게임을 훌륭히 마쳤으므로 이 아시아 질서 마스터 인증서를 수여함. 명·청의 황제 업적, 에도 막부의 산킨코타이 통제, 무굴 제국의 타지마할 예술과 종교 융합 역사를 완벽히 마스터하였음!</p>
+                                    <div class="cert-footer">
+                                        <span>발행인: 앵무새 모찌 🦜</span>
+                                        <span class="cert-date-span">2026년 7월 7일</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="result-buttons">
+                                <button class="cute-btn cert-btn btn-print-cert-class"><i class="fas fa-print"></i> 인증서 인쇄/저장</button>
+                                <button class="cute-btn restart-btn btn-restart-adventure-class"><i class="fas fa-undo"></i> 처음부터 다시 공부하기</button>
+                            </div>
+                        </div>
+                    </div>
                 </section>
             </div>
         </div>
@@ -3230,6 +3313,89 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Game Section for U9 Ch3 -->
+                    <div class="game-section">
+                        <div class="game-header">
+                            <h4>🎮 챕터 3 게임: "오스만 & 대항해 & 절대 왕정 OX 퀴즈"</h4>
+                            <p>설명이 맞으면 ⭕, 틀리면 ❌를 골라 서아시아와 유럽 역사를 맞춰봐!</p>
+                        </div>
+                        <div class="game-body ox-game">
+                            <div class="ox-display">
+                                <div class="ox-question-box" id="u9-g1-question-text">게임 시작 버튼을 눌러봐! 🏰</div>
+                                <div class="ox-buttons">
+                                    <button id="u9-g1-o-btn" class="cute-btn o-btn hidden">⭕ O</button>
+                                    <button id="u9-g1-x-btn" class="cute-btn x-btn hidden">❌ X</button>
+                                </div>
+                                <div id="u9-g1-feedback" class="ox-feedback"></div>
+                            </div>
+                            <div id="u9-g1-result" class="ox-result hidden">
+                                <p>🎉 OX 완료! <strong id="u9-g1-score">0</strong> / <strong id="u9-g1-total">5</strong> 정답!</p>
+                                <p id="u9-g1-msg" class="sort-result-msg"></p>
+                            </div>
+                            <div class="ox-controls">
+                                <button id="start-u9-g1-btn" class="cute-btn">게임 시작하기 🚀</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Final Quiz Section for Unit 9 -->
+                <section id="u9-chapter-quiz" class="chapter-panel">
+                    <div class="panel-header">
+                        <h3>🏆 종합 도전: 서아시아와 유럽 사회의 변화 마스터!</h3>
+                        <p class="panel-subtitle">오스만의 전성기, 신항로 개척의 여파, 그리고 유럽의 절대 왕정까지 모두 정복하자!</p>
+                    </div>
+
+                    <div class="quiz-arena">
+                        <!-- Quiz Intro -->
+                        <div class="quiz-intro-box" id="u9-quiz-intro">
+                            <img src="assets/parrot_cheer.png" alt="응원하는 모찌" class="quiz-intro-avatar">
+                            <h4>대단원 III - 3단원 최종 퀴즈 스테이지! 🏰</h4>
+                            <p>
+                                예니체리와 밀레트의 오스만, 대항해 시대의 변화, 그리고 서유럽/동유럽 절대 군주의 활약!<br>
+                                5문제를 다 맞추면 멋진 서아시아·유럽 사회 마스터 인증서를 발급해줄게!
+                            </p>
+                            <button id="start-u9-quiz-btn" class="cute-btn large-btn">도전하기 🏰 🧭 🔑</button>
+                        </div>
+
+                        <!-- Active Quiz Interface -->
+                        <div class="quiz-play-box hidden" id="u9-quiz-play">
+                            <div class="quiz-status">
+                                <span class="quiz-progress-num">문제 <span id="u9-quiz-counter">1 / 5</span></span>
+                            </div>
+                            <div class="quiz-card">
+                                <div class="quiz-question" id="u9-quiz-question-text">질문 텍스트</div>
+                                <div class="quiz-options-list" id="u9-quiz-options"></div>
+                            </div>
+                        </div>
+
+                        <!-- Quiz Result Interface -->
+                        <div class="quiz-result-box hidden" id="u9-quiz-result">
+                            <img src="assets/parrot_happy.png" alt="축하하는 모찌" class="result-avatar">
+                            <h3>🎉 축하해! 서아시아·유럽 사회 마스터! 🎉</h3>
+                            <p class="score-summary">너의 점수: <span id="u9-final-score">5</span> / 5점</p>
+                            <div id="u9-result-message" class="result-message-box">메시지</div>
+                            
+                            <!-- Certificate -->
+                            <div class="certificate-container" id="u9-certificate">
+                                <div class="cert-border" style="border-color: #8338ec;">
+                                    <h2 style="color: #3a0ca3;">🏰 서아시아·유럽 사회 마스터 인증서 🏰</h2>
+                                    <p class="cert-name">이름: 멋쟁이 역사 모험가</p>
+                                    <p class="cert-body">위 학생은 역사 천재 앵무새 모찌가 주관한 [세계사: 서아시아와 유럽 사회의 변화] 과정의 모든 퀴즈 게임을 훌륭히 마쳤으므로 이 서아시아 및 유럽 역사 인증서를 수여함. 오스만 제국의 팽창과 관용 정책, 대항해 시대의 교역망 대통합, 서구 절대 왕정의 군주들과 과학 혁명/계몽사상 역사를 완벽히 마스터하였음!</p>
+                                    <div class="cert-footer">
+                                        <span>발행인: 앵무새 모찌 🦜</span>
+                                        <span class="cert-date-span">2026년 7월 7일</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="result-buttons">
+                                <button class="cute-btn cert-btn btn-print-cert-class"><i class="fas fa-print"></i> 인증서 인쇄/저장</button>
+                                <button class="cute-btn restart-btn btn-restart-adventure-class"><i class="fas fa-undo"></i> 처음부터 다시 공부하기</button>
                             </div>
                         </div>
                     </div>
