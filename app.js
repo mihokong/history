@@ -100,11 +100,19 @@ document.addEventListener('DOMContentLoaded', () => {
             'u7-readCh2': 20,
             'u7-c2-card1': 10, 'u7-c2-card2': 10, 'u7-c2-card3': 10, 'u7-c2-card4': 10,
             
-            // Unit 8 (Stub)
-            'u8-readCh2': 100,
+            // Unit 8
+            'u8-c1-card1': 7, 'u8-c1-card2': 7, 'u8-c1-card3': 7, 'u8-c1-card4': 7,
+            'u8-readCh2': 8,
+            'u8-c2-card1': 7, 'u8-c2-card2': 7, 'u8-c2-card3': 7, 'u8-c2-card4': 7,
+            'u8-readCh3': 8,
+            'u8-c3-card1': 7, 'u8-c3-card2': 7, 'u8-c3-card3': 7, 'u8-c3-card4': 7,
 
-            // Unit 9 (Stub)
-            'u9-readCh2': 100
+            // Unit 9
+            'u9-c1-card1': 7, 'u9-c1-card2': 7, 'u9-c1-card3': 7, 'u9-c1-card4': 7,
+            'u9-readCh2': 8,
+            'u9-c2-card1': 7, 'u9-c2-card2': 7, 'u9-c2-card3': 7, 'u9-c2-card4': 7,
+            'u9-readCh3': 8,
+            'u9-c3-card1': 7, 'u9-c3-card2': 7, 'u9-c3-card3': 7, 'u9-c3-card4': 7
         }
     };
 
@@ -314,9 +322,11 @@ document.addEventListener('DOMContentLoaded', () => {
             switchPanel('unit7', 'u7-chapter1');
             updateParrotSpeech("송나라 문치주의 카드를 뒤집어서 역사를 파헤쳐봐! 📚");
         } else if (state.activeUnit === 'unit8') {
-            updateParrotSpeech("이 단원은 모찌가 열심히 컨텐츠를 준비하고 있어! 조금만 기다려줘! 🏔️");
+            switchPanel('unit8', 'u8-chapter1');
+            updateParrotSpeech("명나라 홍무제와 영락제 카드를 클릭해서 뒤집어봐! 👑");
         } else if (state.activeUnit === 'unit9') {
-            updateParrotSpeech("이 단원은 모찌가 열심히 컨텐츠를 준비하고 있어! 조금만 기다려줘! 🏰");
+            switchPanel('unit9', 'u9-chapter1');
+            updateParrotSpeech("비잔티움 제국을 정복한 오스만 제국 카드를 뒤집어봐! 🕌");
         }
     });
 
@@ -530,6 +540,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 addProgress('u7-readCh2');
                 updateParrotSpeech("칭기즈 칸이 이끄는 몽골 무적 기마병들의 대제국 건설 비결을 밝혀내봐! 🐎");
             }
+        } else if (unitPrefix === 'unit8') {
+            if (targetId === 'u8-chapter2') {
+                addProgress('u8-readCh2');
+                updateParrotSpeech("일본 막부의 사무라이 시대와 다이묘들을 묶은 참근교대 참상을 알아볼까? ⚔️");
+            } else if (targetId === 'u8-chapter3') {
+                addProgress('u8-readCh3');
+                updateParrotSpeech("인도의 아름다운 하얀 대리석 궁전 타지마할을 세운 무굴 제국의 역사로 날아보자! 🕌");
+            }
+        } else if (unitPrefix === 'unit9') {
+            if (targetId === 'u9-chapter2') {
+                addProgress('u9-readCh2');
+                updateParrotSpeech("콜럼버스와 마젤란을 따라서 거친 바다를 헤쳐 나가며 신항로를 개척해 보자! 🧭");
+            } else if (targetId === 'u9-chapter3') {
+                addProgress('u9-readCh3');
+                updateParrotSpeech("프랑스 루이 14세의 화려한 베르사유 궁전과 동유럽 절대 왕정의 시대로 출격! 👑");
+            }
         }
     }
 
@@ -619,6 +645,32 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (cardId.includes('c2-card2')) updateParrotSpeech("국호를 원(Yuan)으로 삼고 수도를 대도로 옮겨 중국을 통일한 쿠빌라이 칸! 👑");
                         if (cardId.includes('c2-card3')) updateParrotSpeech("몽골인 제일주의! 재정과 실무를 잡은 유능한 눈동자의 색목인! 👁️");
                         if (cardId.includes('c2-card4')) updateParrotSpeech("통행증(패자)으로 말을 타고 유라시아 교역로를 달린 역참 제도! 🐪");
+                    } else if (unitPrefix === 'u8') {
+                        if (cardId.includes('c1-card1')) updateParrotSpeech("세금 장부인 어린도책/부역황책을 정비한 홍무제와 영차영차 자금성 영락제! 👑");
+                        if (cardId.includes('c1-card2')) updateParrotSpeech("강희·옹정·건륭제 전성기! 머리를 땋는 변발을 거부하면 목이 댕강! ⚔️");
+                        if (cardId.includes('c1-card3')) updateParrotSpeech("세금 면제 특권의 신사층과 소설/경극을 즐긴 서민 문화! 📜");
+                        if (cardId.includes('c1-card4')) updateParrotSpeech("마테오 리치의 지도로 중국이 세상의 전부가 아님을 깨달았다! 🗺️");
+                        if (cardId.includes('c2-card1')) updateParrotSpeech("가마 타고 전쟁 터로 가마쿠라! 명나라와 감합 무역을 한 무로마치! ⚔️");
+                        if (cardId.includes('c2-card2')) updateParrotSpeech("전국 시대를 통일하고 칼을 사냥해 무기를 뺏은 히데요시! 🗡️");
+                        if (cardId.includes('c2-card3')) updateParrotSpeech("에도 막부! 다이묘들을 도쿄로 출퇴근시킨 인질제 참근교대! 🚶‍♂️");
+                        if (cardId.includes('c2-card4')) updateParrotSpeech("상인 조닌의 가부키와 나가사키 인공섬 데지마에서 배운 네덜란드 난학! 🇳🇱");
+                        if (cardId.includes('c3-card1')) updateParrotSpeech("비이슬람교도 인두세 지즈야를 과감히 폐지하고 아우른 아크바르 대제! 🤝");
+                        if (cardId.includes('c3-card2')) updateParrotSpeech("인두세 부활과 이슬람 제일주의로 반란을 자초해 쇠퇴한 아우랑제브! 💣");
+                        if (cardId.includes('c3-card3')) updateParrotSpeech("페르시아 이슬람과 인도가 믹스된 백색 대리석 무덤 타지마할! 🕌");
+                        if (cardId.includes('c3-card4')) updateParrotSpeech("명청과 일본, 무굴에 쏟아져 들어온 은! 일조편법과 지정은제 확립! 🪙");
+                    } else if (unitPrefix === 'u9') {
+                        if (cardId.includes('c1-card1')) updateParrotSpeech("콘스탄티노폴리스를 메흐메트 2세가 메흐치고 이스탄불로 체인지! 🏰");
+                        if (cardId.includes('c1-card2')) updateParrotSpeech("지중해를 지배하고 오스만의 카누니(법)를 완성한 쉴레이만 1세! 👑");
+                        if (cardId.includes('c1-card3')) updateParrotSpeech("크리스트교 소년을 뺏는 데브시르메와 최강의 조총 예니체리! 🔫");
+                        if (cardId.includes('c1-card4')) updateParrotSpeech("지방 영주에게 징세권을 주는 티마르와 종교 자치 공동체 밀레트! 🤝");
+                        if (cardId.includes('c2-card1')) updateParrotSpeech("오스만이 길을 막자 후추를 얻기 위해 바다로 뛰어든 대항해 시대! 🧭");
+                        if (cardId.includes('c2-card2')) updateParrotSpeech("아메리카를 인도로 착각한 콜럼버스와 최초 세계 일주 마젤란! 🌍");
+                        if (cardId.includes('c2-card3')) updateParrotSpeech("피사로와 코르테스의 정복, 전염병 전파와 강제 노예 농장 플랜테이션! 😢");
+                        if (cardId.includes('c2-card4')) updateParrotSpeech("아메리카 은 유입으로 물가가 껑충 가격 혁명, 주식과 은행 상업 혁명! 💰");
+                        if (cardId.includes('c3-card1')) updateParrotSpeech("왕의 권력은 신이 준 것! 관료와 대기 중인 상비군, 돈을 버는 중상주의! 👑");
+                        if (cardId.includes('c3-card2')) updateParrotSpeech("짐이 곧 국가다 베르사유 루이 14세와 영국 무적함대 격파 엘리자베스! ☀️");
+                        if (cardId.includes('c3-card3')) updateParrotSpeech("수염을 깎으며 서구화한 표트르 대제와 국가의 종복 프리드리히 2세! 🪒");
+                        if (cardId.includes('c3-card4')) updateParrotSpeech("사과가 쿵 뉴턴의 과학 혁명과 미신을 깨부수는 시민의 촛불 계몽사상! 💡");
                     }
                 }
             });
@@ -631,6 +683,8 @@ document.addEventListener('DOMContentLoaded', () => {
     setupFlipCards('.u5-card', 'u5');
     setupFlipCards('.u6-card', 'u6');
     setupFlipCards('.u7-card', 'u7');
+    setupFlipCards('.u8-card', 'u8');
+    setupFlipCards('.u9-card', 'u9');
 
     // -----------------------------------------
     // 6. Unit 1 Game 1: Matching Card Game
@@ -1890,6 +1944,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (key.startsWith('u8-')) state.completedActivities.delete(key);
                 }
                 updateProgressBar();
+                switchPanel('unit8', 'u8-chapter1');
                 updateParrotSpeech("동아시아·인도 지역 질서의 변화 모험을 다시 시작해보자! 🏔️");
             } else if (unit === 'unit9') {
                 state.unit9Progress = 0;
@@ -1897,6 +1952,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (key.startsWith('u9-')) state.completedActivities.delete(key);
                 }
                 updateProgressBar();
+                switchPanel('unit9', 'u9-chapter1');
                 updateParrotSpeech("서아시아와 유럽 사회의 변화 모험을 다시 시작해보자! 🏰");
             }
             setParrotAvatar('teacher');

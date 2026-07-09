@@ -542,7 +542,7 @@ body {
 /* Flip Cards Effect */
 .flip-card {
     background-color: transparent;
-    height: 320px;
+    height: 360px; /* Increased from 320px to prevent card back overflow */
     perspective: 1000px;
     cursor: pointer;
 }
@@ -567,7 +567,7 @@ body {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: 20px;
-    padding: 20px;
+    padding: 16px; /* Reduced from 20px to maximize vertical space */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -624,24 +624,26 @@ body {
 }
 
 .flip-card-back ul {
-    list-style-type: none;
-    font-size: 0.85rem;
-    margin: 10px 0;
+    text-align: left;
+    margin: 8px 0; /* Reduced from 10px */
+    padding-left: 20px;
+    font-size: 0.82rem; /* Reduced from 0.85rem */
     width: 100%;
 }
 
 .flip-card-back li {
-    margin-bottom: 5px;
+    margin-bottom: 4px; /* Reduced from 5px */
 }
 
 .parrot-mnemonic {
     background: rgba(255, 145, 0, 0.08);
     border: 1px solid var(--accent-color);
-    padding: 8px;
+    padding: 6px 8px; /* Reduced padding */
     border-radius: 10px;
-    font-size: 0.75rem;
+    font-size: 0.72rem; /* Reduced from 0.75rem */
     color: var(--text-main);
     word-break: keep-all;
+    width: 100%;
 }
 
 /* Mnemonic Banner */
