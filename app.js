@@ -610,6 +610,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (cardId.includes('c2-card2')) updateParrotSpeech("도시 상인들과 기술자들의 끈끈한 뭉침 조합 길드! 💰");
                         if (cardId.includes('c2-card3')) updateParrotSpeech("벼룩과 쥐 때문에 서유럽 인구의 3분의 1을 몰살시킨 흑사병! 🦠");
                         if (cardId.includes('c2-card4')) updateParrotSpeech("교황청을 프랑스로 납치(유배)하고 백년 전쟁 거쳐 왕권 강화! 🏰");
+                    } else if (unitPrefix === 'u7') {
+                        if (cardId.includes('c1-card1')) updateParrotSpeech("절도사(군인)들을 억누르고 책 좋아하는 문관들을 대접한 문치주의! 📚");
+                        if (cardId.includes('c1-card2')) updateParrotSpeech("왕창 경제를 안착(왕안석)시키기 위해 영세민을 돕는 신법 개혁! 🌾");
+                        if (cardId.includes('c1-card3')) updateParrotSpeech("금나라에 쫓겨 강남으로 피난 갔지만 벼농사와 경제가 최고조에 달한 남송! 🛶");
+                        if (cardId.includes('c1-card4')) updateParrotSpeech("거란 요나라의 남면관/북면관, 여진 금나라의 맹안/모극 등 이중 통치! 👥");
+                        if (cardId.includes('c2-card1')) updateParrotSpeech("천 가구씩 군대로 묶은 천호제와 막강한 기마군을 지휘한 칭기즈 칸! 🐎");
+                        if (cardId.includes('c2-card2')) updateParrotSpeech("국호를 원(Yuan)으로 삼고 수도를 대도로 옮겨 중국을 통일한 쿠빌라이 칸! 👑");
+                        if (cardId.includes('c2-card3')) updateParrotSpeech("몽골인 제일주의! 재정과 실무를 잡은 유능한 눈동자의 색목인! 👁️");
+                        if (cardId.includes('c2-card4')) updateParrotSpeech("통행증(패자)으로 말을 타고 유라시아 교역로를 달린 역참 제도! 🐪");
                     }
                 }
             });
@@ -621,6 +630,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupFlipCards('.u4-card', 'u4');
     setupFlipCards('.u5-card', 'u5');
     setupFlipCards('.u6-card', 'u6');
+    setupFlipCards('.u7-card', 'u7');
 
     // -----------------------------------------
     // 6. Unit 1 Game 1: Matching Card Game
