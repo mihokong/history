@@ -108,25 +108,33 @@ document.addEventListener('DOMContentLoaded', () => {
             'u6-finalQuiz': 20,
 
             // Unit 7
-            'u7-c1-card1': 10, 'u7-c1-card2': 10, 'u7-c1-card3': 10, 'u7-c1-card4': 10,
-            'u7-readCh2': 10,
-            'u7-c2-card1': 10, 'u7-c2-card2': 10, 'u7-c2-card3': 10, 'u7-c2-card4': 10,
+            'u7-c1-card1': 8, 'u7-c1-card2': 8, 'u7-c1-card3': 8, 'u7-c1-card4': 8,
+            'u7-game1': 10,
+            'u7-readCh2': 6,
+            'u7-c2-card1': 8, 'u7-c2-card2': 8, 'u7-c2-card3': 8, 'u7-c2-card4': 8,
+            'u7-game2': 10,
             'u7-finalQuiz': 10,
             
             // Unit 8
-            'u8-c1-card1': 7, 'u8-c1-card2': 7, 'u8-c1-card3': 7, 'u8-c1-card4': 7,
-            'u8-readCh2': 3,
-            'u8-c2-card1': 7, 'u8-c2-card2': 7, 'u8-c2-card3': 7, 'u8-c2-card4': 7,
-            'u8-readCh3': 3,
-            'u8-c3-card1': 7, 'u8-c3-card2': 7, 'u8-c3-card3': 7, 'u8-c3-card4': 7,
+            'u8-c1-card1': 5, 'u8-c1-card2': 5, 'u8-c1-card3': 5, 'u8-c1-card4': 5,
+            'u8-game1': 8,
+            'u8-readCh2': 2,
+            'u8-c2-card1': 5, 'u8-c2-card2': 5, 'u8-c2-card3': 5, 'u8-c2-card4': 5,
+            'u8-game2': 8,
+            'u8-readCh3': 2,
+            'u8-c3-card1': 5, 'u8-c3-card2': 5, 'u8-c3-card3': 5, 'u8-c3-card4': 5,
+            'u8-game3': 10,
             'u8-finalQuiz': 10,
 
             // Unit 9
-            'u9-c1-card1': 7, 'u9-c1-card2': 7, 'u9-c1-card3': 7, 'u9-c1-card4': 7,
-            'u9-readCh2': 3,
-            'u9-c2-card1': 7, 'u9-c2-card2': 7, 'u9-c2-card3': 7, 'u9-c2-card4': 7,
-            'u9-readCh3': 3,
-            'u9-c3-card1': 7, 'u9-c3-card2': 7, 'u9-c3-card3': 7, 'u9-c3-card4': 7,
+            'u9-c1-card1': 5, 'u9-c1-card2': 5, 'u9-c1-card3': 5, 'u9-c1-card4': 5,
+            'u9-game1': 8,
+            'u9-readCh2': 2,
+            'u9-c2-card1': 5, 'u9-c2-card2': 5, 'u9-c2-card3': 5, 'u9-c2-card4': 5,
+            'u9-game2': 8,
+            'u9-readCh3': 2,
+            'u9-c3-card1': 5, 'u9-c3-card2': 5, 'u9-c3-card3': 5, 'u9-c3-card4': 5,
+            'u9-game3': 10,
             'u9-finalQuiz': 10
         }
     };
@@ -3085,14 +3093,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
     
     // =========================================================================
-    // 25. Unit 7 Game 1: 송나라 & 북방 민족 & 몽골 OX 퀴즈
+    // =========================================================================
+    // 25. Unit 7 Game 1: 송나라 & 북방 민족 OX 퀴즈
     // =========================================================================
     const u7G1Questions = [
-        { q: "송나라는 절도사들의 횡포를 막기 위해 무인(군인)을 우대하는 정책을 펼쳐 군사력이 대단히 강력했다.", answer: false, hint: "틀렸어! 송나라는 군인을 누르고 문관을 우대한 '문치주의'를 펼쳐서 군사력이 대단히 약했단다!" },
-        { q: "왕안석은 신법 개혁을 통해 영세 상인과 농민을 돕고 국가 재정을 튼튼히 하려고 했다.", answer: true, hint: "맞아! 왕안석은 청묘법, 시역법 등을 통해 나라 재정을 구하고 국방을 기르려 했어!" },
-        { q: "요(거란)나라와 금(여진)나라는 한족을 지배할 때 자신들의 고유 문자를 일체 금지하고 중국 한자만 쓰게 강요했다.", answer: false, hint: "틀렸어! 요와 금은 한족 문화에 완전히 흡수되지 않기 위해 독자적인 '요 문자', '금 문자'를 만들어 썼어!" },
-        { q: "칭기즈 칸은 유목민들을 천 가구 단위의 군사·행정 조직인 '천호제'로 묶어 막강한 기마군을 만들었다.", answer: true, hint: "맞아! 천호제와 친위대 케식을 통해 몽골을 하나로 뭉친 최강의 군대를 완성했지!" },
-        { q: "원나라의 역참 제도는 통행증인 '패자'를 가진 사람만 이용할 수 있었으며, 동서 교류망을 잇는 고속도로 역할을 했다.", answer: true, hint: "맞아! 패자가 있어야 말을 타고 유라시아 교통망(역참)을 쌩쌩 달릴 수 있었어!" }
+        { q: "송나라는 과거 시험을 강화하여 문관(선비)을 우대하였고, 이로 인해 국방력이 강해졌다.", answer: false, hint: "틀렸어! 송나라는 군인을 누르고 문관을 우대한 '문치주의'를 펼쳐서 군사력이 대단히 약했단다!" },
+        { q: "왕안석은 나라 재정을 돕고 군대를 기르고자 농민을 보호하는 청묘법, 시역법 등의 신법을 펼쳤다.", answer: true, hint: "맞아! 부국강병을 위한 신법 개혁으로 재정을 개편하려 했단다!" },
+        { q: "송나라는 여진족의 금나라에게 침략당해 수도를 임안(남쪽)으로 옮기고 남송을 세웠다.", answer: true, hint: "맞아! 화북을 잃고 남쪽 임안으로 도망쳐서 남송을 세웠어!" },
+        { q: "요나라(거란)는 유목민과 농민을 따로 통치하기 위해 부족제와 주현제를 섞어 쓴 '이중 통치 체제'를 사용했다.", answer: true, hint: "맞아! 남면관과 북면관으로 나눠 통치하는 스마트한 이중 지배 체제였지!" },
+        { q: "금나라(여진)는 한족 문화에 완전히 흡수되어 자신들만의 고유 문자를 전혀 쓰지 않았다.", answer: false, hint: "틀렸어! 여진족은 한족에 안 빨려 들어가려고 독자적인 '금 문자'를 사용했단다!" }
     ];
 
     const u7G1QuestionText = document.getElementById('u7-g1-question-text');
@@ -3120,7 +3129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (u7G1OBtn) u7G1OBtn.classList.remove('hidden');
         if (u7G1XBtn) u7G1XBtn.classList.remove('hidden');
         showNextU7G1Question();
-        updateParrotSpeech("유라시아 교역 및 교류 역사 OX 퀴즈 시작! 🐎");
+        updateParrotSpeech("송나라와 북방 민족 OX 퀴즈 시작! 🇨🇳");
     }
 
     function showNextU7G1Question() {
@@ -3144,7 +3153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (isCorrect) {
             u7G1Score++;
-            updateParrotSpeech("대단해! 역시 유라시아 역사 척척박사 모험가야! 🎉");
+            updateParrotSpeech("정답! 역시 영리한 역사 모험가야! 🌾");
             setParrotAvatar('happy');
         } else {
             updateParrotSpeech(`아쉽다! 모찌 꿀팁: <br> ${q.hint}`);
@@ -3170,12 +3179,106 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const msg = document.getElementById('u7-g1-msg');
             if (msg) {
-                if (u7G1Score === 5) msg.textContent = "💯 퍼펙트! 칭기즈 칸 부럽지 않은 유라시아 지식왕이야! 🐎";
-                else if (u7G1Score >= 3) msg.textContent = "👍 참 잘했어! 몽골인 제일주의와 신법 핵심을 꿰뚫고 있구나!";
-                else msg.textContent = "🦜 송나라 문치주의랑 이중 지배가 헷갈렸구나? 복습해보자! 📚";
+                if (u7G1Score === 5) msg.textContent = "💯 완벽해! 송나라 역사는 눈 감고도 풀겠어! 🇨🇳";
+                else if (u7G1Score >= 3) msg.textContent = "👍 훌륭해! 왕안석 신법과 거란/여진 이중 통치를 잘 기억하고 있구나!";
+                else msg.textContent = "🦜 헷갈리는 요/금 통제랑 문치주의를 다시 읽어볼까? 📚";
             }
         }
-        addProgress('u7-readCh2'); // Give reading progress upon completion
+        addProgress('u7-game1');
+    }
+
+    // =========================================================================
+    // 25-2. Unit 7 Game 2: 몽골 제국 OX 퀴즈
+    // =========================================================================
+    const u7G2Questions = [
+        { q: "칭기즈 칸은 유목민들을 1,000가구 조직인 '천호제'로 묶어 막강한 군대를 구축했다.", answer: true, hint: "맞아! 천호제와 친위대 케식으로 세계 최강의 군대를 만들었지!" },
+        { q: "원나라는 몽골인 제일주의를 펴서, 눈 색이 다른 이슬람계 색목인을 재무 요직에 중용했다.", answer: true, hint: "맞아! 색목인들에게 돈 관리 실무를 전담시켰단다!" },
+        { q: "쿠빌라이 칸은 수도를 대도로 옮기고 나라 이름을 '원'으로 정했으며 남송을 멸망시키고 중국을 통일했다.", answer: true, hint: "맞아! 대도(베이징)로 천도하고 남송까지 삼켜 중국 전체를 통일했어!" },
+        { q: "원나라의 역참 제도는 황제의 통행증인 '패자'가 없어도 누구나 자유롭게 이용할 수 있었다.", answer: false, hint: "틀렸어! 통행증인 '패자'가 있는 관료나 신하만 말을 갈아타고 쉴 수 있었어!" },
+        { q: "몽골 제국 시기에 화약, 나침반, 인쇄술 등 중국의 기술이 이슬람 세계를 거쳐 유럽으로 전파되었다.", answer: true, hint: "맞아! 활발한 교역로를 통해 중국 3대 발명품이 서양으로 갔단다!" }
+    ];
+
+    const u7G2QuestionText = document.getElementById('u7-g2-question-text');
+    const u7G2Feedback = document.getElementById('u7-g2-feedback');
+    const u7G2Result = document.getElementById('u7-g2-result');
+    const startU7G2Btn = document.getElementById('start-u7-g2-btn');
+    const u7G2OBtn = document.getElementById('u7-g2-o-btn');
+    const u7G2XBtn = document.getElementById('u7-g2-x-btn');
+
+    let u7G2Index = 0;
+    let u7G2Score = 0;
+    let u7G2QuestionsList = [];
+
+    if (startU7G2Btn) startU7G2Btn.addEventListener('click', initU7G2Game);
+    if (u7G2OBtn) u7G2OBtn.addEventListener('click', () => checkU7G2Answer(true));
+    if (u7G2XBtn) u7G2XBtn.addEventListener('click', () => checkU7G2Answer(false));
+
+    function initU7G2Game() {
+        u7G2Index = 0;
+        u7G2Score = 0;
+        u7G2QuestionsList = [...u7G2Questions].sort(() => Math.random() - 0.5);
+        if (u7G2Result) u7G2Result.classList.add('hidden');
+        if (u7G2Feedback) u7G2Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (startU7G2Btn) startU7G2Btn.classList.add('hidden');
+        if (u7G2OBtn) u7G2OBtn.classList.remove('hidden');
+        if (u7G2XBtn) u7G2XBtn.classList.remove('hidden');
+        showNextU7G2Question();
+        updateParrotSpeech("몽골 대제국 OX 퀴즈 시작! 🐎");
+    }
+
+    function showNextU7G2Question() {
+        if (u7G2Index >= u7G2QuestionsList.length) {
+            endU7G2Game();
+            return;
+        }
+        const q = u7G2QuestionsList[u7G2Index];
+        if (u7G2QuestionText) {
+            u7G2QuestionText.innerHTML = `<strong>Q${u7G2Index+1}.</strong> ${q.q}`;
+        }
+        if (u7G2Feedback) u7G2Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+    }
+
+    function checkU7G2Answer(userAns) {
+        const q = u7G2QuestionsList[u7G2Index];
+        const isCorrect = userAns === q.answer;
+        if (u7G2Feedback) {
+            u7G2Feedback.innerHTML = isCorrect ? "⭕ <strong>정답이야!</strong>" : "❌ <strong>틀렸어!</strong>";
+            u7G2Feedback.className = 'ox-feedback show ' + (isCorrect ? 'feedback-correct' : 'feedback-wrong');
+        }
+        if (isCorrect) {
+            u7G2Score++;
+            updateParrotSpeech("정답! 유라시아를 질주하는 기분이지? 🏹");
+            setParrotAvatar('happy');
+        } else {
+            updateParrotSpeech(`아쉽다! 모찌 꿀팁: <br> ${q.hint}`);
+            setParrotAvatar('cheer');
+        }
+        u7G2Index++;
+        setTimeout(showNextU7G2Question, 2200);
+    }
+
+    function endU7G2Game() {
+        if (u7G2OBtn) u7G2OBtn.classList.add('hidden');
+        if (u7G2XBtn) u7G2XBtn.classList.add('hidden');
+        if (startU7G2Btn) {
+            startU7G2Btn.classList.remove('hidden');
+            startU7G2Btn.textContent = '다시 도전하기 🚀';
+        }
+        if (u7G2Result) {
+            u7G2Result.classList.remove('hidden');
+            const scoreVal = document.getElementById('u7-g2-score');
+            const totalVal = document.getElementById('u7-g2-total');
+            if (scoreVal) scoreVal.textContent = u7G2Score;
+            if (totalVal) totalVal.textContent = u7G2QuestionsList.length;
+            
+            const msg = document.getElementById('u7-g2-msg');
+            if (msg) {
+                if (u7G2Score === 5) msg.textContent = "💯 퍼펙트! 칭기즈 칸이 탐낼 인재야! 🐎";
+                else if (u7G2Score >= 3) msg.textContent = "👍 훌륭해! 색목인 신분제와 역참제 개념이 탄탄하군!";
+                else msg.textContent = "🦜 몽골 제일주의와 통행증 패자가 아른거리나봐! 다시 가보자! 🚀";
+            }
+        }
+        addProgress('u7-game2');
     }
 
     // =========================================================================
@@ -3304,14 +3407,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================================================
-    // 27. Unit 8 Game 1: 명·청·막부·무굴 OX 퀴즈
+    // 27. Unit 8 Game 1: 명·청 제국 OX 퀴즈
     // =========================================================================
     const u8G1Questions = [
-        { q: "명나라 태조 홍무제는 재상(정승) 제도를 폐지하고 모든 황제 독점 권력을 강화했다.", answer: true, hint: "맞아! 홍무제는 독점 정치를 위해 재상제를 완전히 없애고 스스로 모든 결정을 내렸어!" },
-        { q: "청나라는 한족들에게 변발과 호복(오랑캐 옷)을 절대 강요하지 않고 자유롭게 한족 풍습을 허락했다.", answer: false, hint: "틀렸어! 청은 한족의 자존심을 꺾기 위해 머리털을 깎는 '변발'과 만주족 옷을 아주 강압적으로 명령했단다!" },
-        { q: "일본 에도 막부는 영주(다이묘)들의 반란을 예방하고자 1년마다 영주들을 수도 에도로 번갈아 출장 보내 거주하게 한 '산킨코타이(참근교대)'를 펼쳤다.", answer: true, hint: "맞아! 1년마다 여비로 돈도 털게 하고 가족은 인질로 가두는 효과적인 다이묘 통제법이었어!" },
-        { q: "무굴 제국의 아우랑제브 황제는 힌두교도를 배려해 비이슬람교도에게 걷던 지즈야(인두세)를 영원히 없애버렸다.", answer: false, hint: "틀렸어! 지즈야를 없앤 관용 황제는 3대 '아크바르 대제'이고, '아우랑제브' 황제는 지즈야를 다시 부활시켜 나라를 망치기 시작했어!" },
-        { q: "에도 막부는 통상 수교 거부 정책을 펴다가 나가사키의 부채 모양 인공섬 '데지마'를 열어 네덜란드 상인과만 제한적으로 무역했다.", answer: true, hint: "맞아! 인공섬 데지마에서 네덜란드로부터 배운 서양 학문이 바로 '난학'이지!" }
+        { q: "명나라 태조 홍무제는 재상 제도를 없애고 황제가 직접 모든 정치를 주도하여 권력을 강화했다.", answer: true, hint: "맞아! 독점 권력을 쥐기 위해 정승 자리를 시원하게 없앴지!" },
+        { q: "명나라 영락제는 수도를 베이징으로 옮기고, 황제의 위엄을 세우기 위해 거대한 자금성을 지었다.", answer: true, hint: "맞아! 대도(베이징)로 가면서 자금성을 궁궐로 지었단다!" },
+        { q: "정화의 대함대 원정은 아프리카 동해안까지 다다르며 명나라에 조공을 바치는 나라를 크게 늘렸다.", answer: true, hint: "맞아! 정화의 배들이 아프리카 동쪽 물소까지 싣고 올 정도로 깊게 들어갔어!" },
+        { q: "청나라들은 한족을 지배할 때 강압책의 일환으로 머리를 깎아 땋게 하는 '변발'을 강요했다.", answer: true, hint: "맞아! 변발이나 호복 거부자는 사형에 처하는 강경책이었지!" },
+        { q: "명·청 시대에 활약한 지배층인 '신사층'은 세금 면제와 군대 노역 면제 등의 특권을 받았다.", answer: true, hint: "맞아! 요역과 조세 특권을 쥐고 향촌의 여론을 장악한 엘리트였어!" }
     ];
 
     const u8G1QuestionText = document.getElementById('u8-g1-question-text');
@@ -3339,7 +3442,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (u8G1OBtn) u8G1OBtn.classList.remove('hidden');
         if (u8G1XBtn) u8G1XBtn.classList.remove('hidden');
         showNextU8G1Question();
-        updateParrotSpeech("동아시아·인도 역사 OX 퀴즈 시작! 🏔️");
+        updateParrotSpeech("명·청 제국 OX 퀴즈 시작! 🇨🇳");
     }
 
     function showNextU8G1Question() {
@@ -3363,7 +3466,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (isCorrect) {
             u8G1Score++;
-            updateParrotSpeech("최고야! 홍무제와 이에야스도 너의 실력에 깜짝 놀라겠어! 🎉");
+            updateParrotSpeech("정답! 영락제도 춤추게 할 지식이군! 💃");
             setParrotAvatar('happy');
         } else {
             updateParrotSpeech(`아쉽다! 모찌 꿀팁: <br> ${q.hint}`);
@@ -3389,12 +3492,200 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const msg = document.getElementById('u8-g1-msg');
             if (msg) {
-                if (u8G1Score === 5) msg.textContent = "💯 완벽해! 동아시아·인도 제국의 최고 권위자이십니다! 👑";
-                else if (u8G1Score >= 3) msg.textContent = "👍 훌륭해! 막부 참근교대랑 무굴 제국 세법의 핵심을 기억하고 있네!";
-                else msg.textContent = "🦜 땋은 변발 머리랑 인도 지즈야 폐지가 헷갈렸나봐! 다시 공부하러 가자! 🚀";
+                if (u8G1Score === 5) msg.textContent = "💯 퍼펙트! 청나라 강희제 버금가는 아시아 지식왕! 👑";
+                else if (u8G1Score >= 3) msg.textContent = "👍 훌륭해! 명청 지배 특권과 정화 대함대 역사를 꿰차고 있구나!";
+                else msg.textContent = "🦜 홍무제 부역황책이랑 신사층이 다소 헷갈렸니? 다시 해보자! 🚀";
             }
         }
-        addProgress('u8-readCh3'); // Give reading progress upon completion
+        addProgress('u8-game1');
+    }
+
+    // =========================================================================
+    // 27-2. Unit 8 Game 2: 일본 막부 OX 퀴즈
+    // =========================================================================
+    const u8G2Questions = [
+        { q: "가마쿠라 막부는 무로마치 막부의 영주들을 통제하고자 1년마다 참근교대(산킨코타이)를 강요했다.", answer: false, hint: "틀렸어! 1년마다 영주를 교대 출장시킨 산킨코타이는 에도 막부의 지혜로운 통제책이란다!" },
+        { q: "도요토미 히데요시는 농민들의 반란을 막고 신분을 구분하기 위해 무기를 빼앗는 '가타나카리(칼 사냥)'를 펼쳤다.", answer: true, hint: "맞아! 칼을 뺏어서 무사와 농민의 경계를 획정(병농 분리)했지!" },
+        { q: "에도 막부는 지방 영주(다이묘)들의 처자식을 에도에 인질로 붙잡아 두고 지방 영주들이 꼼짝 못하게 감시했다.", answer: true, hint: "맞아! 부인과 아이들을 인질로 잡고 1년 단위로 복종을 강요했어!" },
+        { q: "에도 막부는 크리스트교 포교를 막기 위해 서양과의 교류를 금지했으나, 나가사키의 '데지마'를 통해 네덜란드와는 제한적으로 교류했다.", answer: true, hint: "맞아! 이 부채 모양 인공섬 데지마를 통해 네덜란드 의학, 과학(난학)이 일본으로 전수되었지!" },
+        { q: "무로마치 막부는 명나라와의 합법적인 무역을 위해 쪼갠 나무 표식인 '감합'을 맞추는 감합 무역을 펼쳤다.", answer: true, hint: "맞아! 왜구와 정부 선박을 구분하기 위해 '감합' 표식을 꼭 대조했단다!" }
+    ];
+
+    const u8G2QuestionText = document.getElementById('u8-g2-question-text');
+    const u8G2Feedback = document.getElementById('u8-g2-feedback');
+    const u8G2Result = document.getElementById('u8-g2-result');
+    const startU8G2Btn = document.getElementById('start-u8-g2-btn');
+    const u8G2OBtn = document.getElementById('u8-g2-o-btn');
+    const u8G2XBtn = document.getElementById('u8-g2-x-btn');
+
+    let u8G2Index = 0;
+    let u8G2Score = 0;
+    let u8G2QuestionsList = [];
+
+    if (startU8G2Btn) startU8G2Btn.addEventListener('click', initU8G2Game);
+    if (u8G2OBtn) u8G2OBtn.addEventListener('click', () => checkU8G2Answer(true));
+    if (u8G2XBtn) u8G2XBtn.addEventListener('click', () => checkU8G2Answer(false));
+
+    function initU8G2Game() {
+        u8G2Index = 0;
+        u8G2Score = 0;
+        u8G2QuestionsList = [...u8G2Questions].sort(() => Math.random() - 0.5);
+        if (u8G2Result) u8G2Result.classList.add('hidden');
+        if (u8G2Feedback) u8G2Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (startU8G2Btn) startU8G2Btn.classList.add('hidden');
+        if (u8G2OBtn) u8G2OBtn.classList.remove('hidden');
+        if (u8G2XBtn) u8G2XBtn.classList.remove('hidden');
+        showNextU8G2Question();
+        updateParrotSpeech("일본 막부 정치 OX 퀴즈 시작! ⚔️");
+    }
+
+    function showNextU8G2Question() {
+        if (u8G2Index >= u8G2QuestionsList.length) {
+            endU8G2Game();
+            return;
+        }
+        const q = u8G2QuestionsList[u8G2Index];
+        if (u8G2QuestionText) {
+            u8G2QuestionText.innerHTML = `<strong>Q${u8G2Index+1}.</strong> ${q.q}`;
+        }
+        if (u8G2Feedback) u8G2Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+    }
+
+    function checkU8G2Answer(userAns) {
+        const q = u8G2QuestionsList[u8G2Index];
+        const isCorrect = userAns === q.answer;
+        if (u8G2Feedback) {
+            u8G2Feedback.innerHTML = isCorrect ? "⭕ <strong>정답이야!</strong>" : "❌ <strong>틀렸어!</strong>";
+            u8G2Feedback.className = 'ox-feedback show ' + (isCorrect ? 'feedback-correct' : 'feedback-wrong');
+        }
+        if (isCorrect) {
+            u8G2Score++;
+            updateParrotSpeech("정답! 이에야스의 성벽 같은 수비 실력이군! 🏯");
+            setParrotAvatar('happy');
+        } else {
+            updateParrotSpeech(`아쉽다! 모찌 꿀팁: <br> ${q.hint}`);
+            setParrotAvatar('cheer');
+        }
+        u8G2Index++;
+        setTimeout(showNextU8G2Question, 2200);
+    }
+
+    function endU8G2Game() {
+        if (u8G2OBtn) u8G2OBtn.classList.add('hidden');
+        if (u8G2XBtn) u8G2XBtn.classList.add('hidden');
+        if (startU8G2Btn) {
+            startU8G2Btn.classList.remove('hidden');
+            startU8G2Btn.textContent = '다시 도전하기 🚀';
+        }
+        if (u8G2Result) {
+            u8G2Result.classList.remove('hidden');
+            const scoreVal = document.getElementById('u8-g2-score');
+            const totalVal = document.getElementById('u8-g2-total');
+            if (scoreVal) scoreVal.textContent = u8G2Score;
+            if (totalVal) totalVal.textContent = u8G2QuestionsList.length;
+            
+            const msg = document.getElementById('u8-g2-msg');
+            if (msg) {
+                if (u8G2Score === 5) msg.textContent = "💯 퍼펙트! 쇼군의 자리를 물려받아도 되겠어요! ⚔️";
+                else if (u8G2Score >= 3) msg.textContent = "👍 훌륭해! 참근교대랑 인공섬 데지마, 감합 무역을 완벽 숙지했군!";
+                else msg.textContent = "🦜 난학이나 참근교대 주체가 가마쿠라인지 아닌지 헷갈렸나 보구나? 🚀";
+            }
+        }
+        addProgress('u8-game2');
+    }
+
+    // =========================================================================
+    // 27-3. Unit 8 Game 3: 무굴 제국 OX 퀴즈
+    // =========================================================================
+    const u8G3Questions = [
+        { q: "무굴 제국의 아크바르 대제는 힌두교도에게 걷던 비이슬람 세금인 '지즈야(인두세)'를 폐지하며 종교 관용을 베풀었다.", answer: true, hint: "맞아! 평화를 위해 종교 차별 세금 지즈야를 과감히 삭제해줬단다!" },
+        { q: "아우랑제브 황제는 힌두교 등 타 종교에 관용을 베풀어 무굴 제국의 영토와 전성기를 평화롭게 유지했다.", answer: false, hint: "틀렸어! 아우랑제브 황제는 강압 정책을 펴며 지즈야를 지독하게 부활시켜 반란을 조장하고 쇠퇴를 초래했어!" },
+        { q: "샤 자한 황제가 지은 타지마할은 흰 대리석으로 만든 거대한 묘당으로, 인도 양식과 이슬람 양식이 융합된 건축의 정수이다.", answer: true, hint: "맞아! 부인의 무덤으로 지은 이슬람-인도 융합의 최고 보석이야!" },
+        { q: "무굴 제국 시기에는 페르시아어, 아랍어, 힌디어가 혼합되어 일상어로 쓰인 '우르두어'가 발달했다.", answer: true, hint: "맞아! 문화적 조화의 일환으로 새로운 언어인 우르두가 일상 깊숙이 들어왔단다!" },
+        { q: "명·청 시대에 은 경제가 발달하면서 세금을 은으로 납부하는 명나라의 '일조편법'과 청나라의 '지정은제'가 시행되었다.", answer: true, hint: "맞아! 은이 유입되면서 번거롭던 세금이 전부 은납세로 변했어!" }
+    ];
+
+    const u8G3QuestionText = document.getElementById('u8-g3-question-text');
+    const u8G3Feedback = document.getElementById('u8-g3-feedback');
+    const u8G3Result = document.getElementById('u8-g3-result');
+    const startU8G3Btn = document.getElementById('start-u8-g3-btn');
+    const u8G3OBtn = document.getElementById('u8-g3-o-btn');
+    const u8G3XBtn = document.getElementById('u8-g3-x-btn');
+
+    let u8G3Index = 0;
+    let u8G3Score = 0;
+    let u8G3QuestionsList = [];
+
+    if (startU8G3Btn) startU8G3Btn.addEventListener('click', initU8G3Game);
+    if (u8G3OBtn) u8G3OBtn.addEventListener('click', () => checkU8G3Answer(true));
+    if (u8G3XBtn) u8G3XBtn.addEventListener('click', () => checkU8G3Answer(false));
+
+    function initU8G3Game() {
+        u8G3Index = 0;
+        u8G3Score = 0;
+        u8G3QuestionsList = [...u8G3Questions].sort(() => Math.random() - 0.5);
+        if (u8G3Result) u8G3Result.classList.add('hidden');
+        if (u8G3Feedback) u8G3Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (startU8G3Btn) startU8G3Btn.classList.add('hidden');
+        if (u8G3OBtn) u8G3OBtn.classList.remove('hidden');
+        if (u8G3XBtn) u8G3XBtn.classList.remove('hidden');
+        showNextU8G3Question();
+        updateParrotSpeech("인도 무굴 제국 OX 퀴즈 시작! 🕌");
+    }
+
+    function showNextU8G3Question() {
+        if (u8G3Index >= u8G3QuestionsList.length) {
+            endU8G3Game();
+            return;
+        }
+        const q = u8G3QuestionsList[u8G3Index];
+        if (u8G3QuestionText) {
+            u8G3QuestionText.innerHTML = `<strong>Q${u8G3Index+1}.</strong> ${q.q}`;
+        }
+        if (u8G3Feedback) u8G3Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+    }
+
+    function checkU8G3Answer(userAns) {
+        const q = u8G3QuestionsList[u8G3Index];
+        const isCorrect = userAns === q.answer;
+        if (u8G3Feedback) {
+            u8G3Feedback.innerHTML = isCorrect ? "⭕ <strong>정답이야!</strong>" : "❌ <strong>틀렸어!</strong>";
+            u8G3Feedback.className = 'ox-feedback show ' + (isCorrect ? 'feedback-correct' : 'feedback-wrong');
+        }
+        if (isCorrect) {
+            u8G3Score++;
+            updateParrotSpeech("정답! 타지마할의 예술성만큼 정교한 지식이로군! 🕌");
+            setParrotAvatar('happy');
+        } else {
+            updateParrotSpeech(`아쉽다! 모찌 꿀팁: <br> ${q.hint}`);
+            setParrotAvatar('cheer');
+        }
+        u8G3Index++;
+        setTimeout(showNextU8G3Question, 2200);
+    }
+
+    function endU8G3Game() {
+        if (u8G3OBtn) u8G3OBtn.classList.add('hidden');
+        if (u8G3XBtn) u8G3XBtn.classList.add('hidden');
+        if (startU8G3Btn) {
+            startU8G3Btn.classList.remove('hidden');
+            startU8G3Btn.textContent = '다시 도전하기 🚀';
+        }
+        if (u8G3Result) {
+            u8G3Result.classList.remove('hidden');
+            const scoreVal = document.getElementById('u8-g3-score');
+            const totalVal = document.getElementById('u8-g3-total');
+            if (scoreVal) scoreVal.textContent = u8G3Score;
+            if (totalVal) totalVal.textContent = u8G3QuestionsList.length;
+            
+            const msg = document.getElementById('u8-g3-msg');
+            if (msg) {
+                if (u8G3Score === 5) msg.textContent = "💯 퍼펙트! 타지마할 대둥지를 상으로 줄게! 🕌🌟";
+                else if (u8G3Score >= 3) msg.textContent = "👍 훌륭해! 무굴 종교 정책과 세금 은납세를 아주 잘 파악했군!";
+                else msg.textContent = "🦜 아크바르와 아우랑제브 황제의 서로 상반된 정책을 더 비교해 봐! 🚀";
+            }
+        }
+        addProgress('u8-game3');
     }
 
     // =========================================================================
@@ -3523,14 +3814,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================================================
-    // 29. Unit 9 Game 1: 오스만 & 대항해 & 절대 왕정 OX 퀴즈
+    // 29. Unit 9 Game 1: 오스만 제국 OX 퀴즈
     // =========================================================================
     const u9G1Questions = [
-        { q: "오스만 제국의 메흐메트 2세는 비잔티움 제국을 멸망시키고 수도를 이스탄불로 바꿔 동서 교역망을 독점했다.", answer: true, hint: "맞아! 배를 산으로 끌고 가 동로마를 '메흐'치고 이스탄불로 바꿨지!" },
-        { q: "오스만 제국은 피지배 민족에게 기독교에서 이슬람교로의 강제 개종만 허용하고 자치를 절대 금지했다.", answer: false, hint: "틀렸어! 오스만은 세금만 잘 내면 '밀레트'라는 공동체를 통해 종교의 자유와 자치권을 너그럽게 인정했단다!" },
-        { q: "콜럼버스는 서쪽으로 항해해 새로운 아메리카 대륙에 상륙하고도, 그곳이 진짜 인도인 줄로 믿었다.", answer: true, hint: "맞아! 그래서 그 섬 이름을 서인도 제도라 부르고 원주민을 인디언이라 불렀어!" },
-        { q: "신항로 개척 이후 아메리카 대륙에서 대량의 금과 은이 유럽으로 쏟아져 들어오면서 유럽의 물가가 폭등하는 '상업 혁명'이 일어났다.", answer: false, hint: "틀렸어! 은 유입으로 물가가 날아오른 것은 '가격 혁명'이고, 주식과 은행이 꽃핀 것이 '상업 혁명'이야!" },
-        { q: "프랑스의 루이 14세는 왕권신수설을 바탕으로 관료제와 상비군을 다듬고 화려한 베르사유 궁전을 지어 절대 권력을 과시했다.", answer: true, hint: "맞아! '짐이 곧 국가다!' 외치며 태양처럼 빛나던 절대 왕정의 정점이야!" }
+        { q: "오스만 제국의 메흐메트 2세는 비잔티움 제국(동로마)을 무너뜨리고 수도를 이스탄불로 바꾸었다.", answer: true, hint: "맞아! 난공불락의 콘스탄티노폴리스 성벽을 깨고 이스탄불로 천도했단다!" },
+        { q: "쉴레이만 1세는 빈을 포위 공격하고 지중해 해상권을 장악하여 오스만 제국의 최대 전성기를 이끌었다.", answer: true, hint: "맞아! 서유럽 깊숙이 진출하며 지중해를 호령했어!" },
+        { q: "오스만 제국의 최정예 보병 부대인 '예니체리'는 기독교 소년을 징집하여 술탄에게 충성하는 친위대로 키운 조총 부대이다.", answer: true, hint: "맞아! 데브시르메로 징집되어 술탄만을 위했던 충성스런 부대였어!" },
+        { q: "오스만 제국은 타 종교 공동체인 '밀레트'의 자치권과 종교의 자유를 절대 인정하지 않고 오직 이슬람교 개종만 강요했다.", answer: false, hint: "틀렸어! 세금(인두세)만 내면 종교의 자유와 재판 자치권까지 너그럽게 보장했단다!" },
+        { q: "오스만 제국이 동서양 무역로를 장악하자 유럽인들은 새로운 교역로를 찾아 바다로 떠나기 시작했다.", answer: true, hint: "맞아! 육로가 막히자 새로운 지름길(바닷길)을 찾아 신항로를 뚫기 시작했지!" }
     ];
 
     const u9G1QuestionText = document.getElementById('u9-g1-question-text');
@@ -3558,7 +3849,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (u9G1OBtn) u9G1OBtn.classList.remove('hidden');
         if (u9G1XBtn) u9G1XBtn.classList.remove('hidden');
         showNextU9G1Question();
-        updateParrotSpeech("서아시아·유럽 사회 변화 OX 퀴즈 시작! 🏰");
+        updateParrotSpeech("오스만 제국 OX 퀴즈 시작! 🕌");
     }
 
     function showNextU9G1Question() {
@@ -3582,7 +3873,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (isCorrect) {
             u9G1Score++;
-            updateParrotSpeech("훌륭해! 엘리자베스 1세처럼 바다를 호령할 기세로구나! 🎉");
+            updateParrotSpeech("정답! 술탄도 엄지를 척 세울 솜씨야! 👍");
             setParrotAvatar('happy');
         } else {
             updateParrotSpeech(`아쉽다! 모찌 꿀팁: <br> ${q.hint}`);
@@ -3608,12 +3899,200 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const msg = document.getElementById('u9-g1-msg');
             if (msg) {
-                if (u9G1Score === 5) msg.textContent = "💯 태양왕 루이 14세 저리 가라 할 절대 지식 왕이십니다! ☀️🏰";
-                else if (u9G1Score >= 3) msg.textContent = "👍 굳굳! 오스만 밀레트와 가격 혁명의 개념을 완전 잘 알고 있어!";
-                else msg.textContent = "🦜 과학 혁명이랑 계몽사상 이성의 빛을 더 밝혀야겠어! 복습해보자! 💡";
+                if (u9G1Score === 5) msg.textContent = "💯 퍼펙트! 오스만 제국을 훌륭히 이끌 준비가 되었군요! 🕌";
+                else if (u9G1Score >= 3) msg.textContent = "👍 훌륭해! 밀레트와 예니체리의 핵심 개념을 아주 잘 아는구나!";
+                else msg.textContent = "🦜 오스만의 자치 공동체 밀레트와 최정예 예니체리가 헷갈렸나 보구나? 🚀";
             }
         }
-        addProgress('u9-readCh3'); // Give reading progress upon completion
+        addProgress('u9-game1');
+    }
+
+    // =========================================================================
+    // 29-2. Unit 9 Game 2: 신항로 개척 OX 퀴즈
+    // =========================================================================
+    const u9G2Questions = [
+        { q: "바스쿠 다 가마는 서쪽으로 항해하여 인류 최초로 세계 일주에 성공한 인물이다.", answer: false, hint: "틀렸어! 서쪽으로 향해 지구를 완전히 한 바퀴 돈 것은 마젤란 선단이고, 바스쿠 다 가마는 동쪽으로 돌아 인도 직항로를 뚫었단다!" },
+        { q: "콜럼버스는 아메리카 대륙에 상륙한 뒤 죽을 때까지 그곳이 인도라고 굳게 믿었다.", answer: true, hint: "맞아! 그래서 그곳을 서인도라 부르고 원주민을 인디언이라 칭했지!" },
+        { q: "피사로는 잉카 제국을 멸망시켰고, 코르테스는 아즈텍 제국을 정복하여 스페인의 영토로 삼았다.", answer: true, hint: "맞아! 전염병과 조총을 동원해 아메리카의 양대 고대 문명을 파괴했어!" },
+        { q: "아메리카의 풍부한 은이 유럽으로 대량 유입되면서 유럽의 물가가 급격하게 폭등한 사건을 '상업 혁명'이라고 한다.", answer: false, hint: "틀렸어! 물가가 치솟은 것은 '가격 혁명'이고, 자본 금융이 번창한 것은 '상업 혁명'이야!" },
+        { q: "신항로 개척 이후 감자, 옥수수, 담배 등 아메리카의 작물들이 아시아와 유럽으로 전파되어 인구 부양에 기여했다.", answer: true, hint: "맞아! 구황 작물인 감자와 옥수수가 동양으로 오면서 백성들의 굶주림을 달래주었단다!" }
+    ];
+
+    const u9G2QuestionText = document.getElementById('u9-g2-question-text');
+    const u9G2Feedback = document.getElementById('u9-g2-feedback');
+    const u9G2Result = document.getElementById('u9-g2-result');
+    const startU9G2Btn = document.getElementById('start-u9-g2-btn');
+    const u9G2OBtn = document.getElementById('u9-g2-o-btn');
+    const u9G2XBtn = document.getElementById('u9-g2-x-btn');
+
+    let u9G2Index = 0;
+    let u9G2Score = 0;
+    let u9G2QuestionsList = [];
+
+    if (startU9G2Btn) startU9G2Btn.addEventListener('click', initU9G2Game);
+    if (u9G2OBtn) u9G2OBtn.addEventListener('click', () => checkU9G2Answer(true));
+    if (u9G2XBtn) u9G2XBtn.addEventListener('click', () => checkU9G2Answer(false));
+
+    function initU9G2Game() {
+        u9G2Index = 0;
+        u9G2Score = 0;
+        u9G2QuestionsList = [...u9G2Questions].sort(() => Math.random() - 0.5);
+        if (u9G2Result) u9G2Result.classList.add('hidden');
+        if (u9G2Feedback) u9G2Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (startU9G2Btn) startU9G2Btn.classList.add('hidden');
+        if (u9G2OBtn) u9G2OBtn.classList.remove('hidden');
+        if (u9G2XBtn) u9G2XBtn.classList.remove('hidden');
+        showNextU9G2Question();
+        updateParrotSpeech("신항로 개척 OX 퀴즈 시작! 🧭");
+    }
+
+    function showNextU9G2Question() {
+        if (u9G2Index >= u9G2QuestionsList.length) {
+            endU9G2Game();
+            return;
+        }
+        const q = u9G2QuestionsList[u9G2Index];
+        if (u9G2QuestionText) {
+            u9G2QuestionText.innerHTML = `<strong>Q${u9G2Index+1}.</strong> ${q.q}`;
+        }
+        if (u9G2Feedback) u9G2Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+    }
+
+    function checkU9G2Answer(userAns) {
+        const q = u9G2QuestionsList[u9G2Index];
+        const isCorrect = userAns === q.answer;
+        if (u9G2Feedback) {
+            u9G2Feedback.innerHTML = isCorrect ? "⭕ <strong>정답이야!</strong>" : "❌ <strong>틀렸어!</strong>";
+            u9G2Feedback.className = 'ox-feedback show ' + (isCorrect ? 'feedback-correct' : 'feedback-wrong');
+        }
+        if (isCorrect) {
+            u9G2Score++;
+            updateParrotSpeech("정답! 콜럼버스 뺨치는 탐험 지식이야! ⛵");
+            setParrotAvatar('happy');
+        } else {
+            updateParrotSpeech(`아쉽다! 모찌 꿀팁: <br> ${q.hint}`);
+            setParrotAvatar('cheer');
+        }
+        u9G2Index++;
+        setTimeout(showNextU9G2Question, 2200);
+    }
+
+    function endU9G2Game() {
+        if (u9G2OBtn) u9G2OBtn.classList.add('hidden');
+        if (u9G2XBtn) u9G2XBtn.classList.add('hidden');
+        if (startU9G2Btn) {
+            startU9G2Btn.classList.remove('hidden');
+            startU9G2Btn.textContent = '다시 도전하기 🚀';
+        }
+        if (u9G2Result) {
+            u9G2Result.classList.remove('hidden');
+            const scoreVal = document.getElementById('u9-g2-score');
+            const totalVal = document.getElementById('u9-g2-total');
+            if (scoreVal) scoreVal.textContent = u9G2Score;
+            if (totalVal) totalVal.textContent = u9G2QuestionsList.length;
+            
+            const msg = document.getElementById('u9-g2-msg');
+            if (msg) {
+                if (u9G2Score === 5) msg.textContent = "💯 퍼펙트! 마젤란 대선장 자리를 줘도 아깝지 않군! 🧭🌊";
+                else if (u9G2Score >= 3) msg.textContent = "👍 훌륭해! 가격 혁명과 잉카/아즈텍 정복 역사를 훌륭하게 아는군!";
+                else msg.textContent = "🦜 가격 혁명이랑 상업 혁명의 미세한 차이를 다시 점검해봐! 🚀";
+            }
+        }
+        addProgress('u9-game2');
+    }
+
+    // =========================================================================
+    // 29-3. Unit 9 Game 3: 절대 왕정 OX 퀴즈
+    // =========================================================================
+    const u9G3Questions = [
+        { q: "절대 왕정 시기 국왕들은 관료제와 상비군을 유지하기 위해 상인들의 상업을 밀어주는 '중상주의'를 펼쳤다.", answer: true, hint: "맞아! 상인들을 후원하고 돈을 벌어 전쟁비와 군대 유지비를 대는 중상주의였어!" },
+        { q: "프랑스의 루이 14세는 '짐이 곧 국가다'라고 외치며 절대 왕정의 전성기를 누렸고, 베르사유 궁전을 지었다.", answer: true, hint: "맞아! 태양왕으로서 베르사유 궁전을 화려하게 세워 귀족들을 통제했지!" },
+        { q: "러시아의 표트르 대제는 전통을 지키기 위해 수염을 깎는 귀족에게 무거운 수염세를 물렸다.", answer: true, hint: "맞아! 서구화 개혁을 위해 수염 깎기를 거부하는 자에게 벌금 형식의 수염세를 징수했단다!" },
+        { q: "절대 군주들의 무소불위 권력을 뒷받침한 사상적 기반은 '이성이 세상의 미신을 깨운다'는 계몽사상이었다.", answer: false, hint: "틀렸어! 절대 권력을 옹호한 것은 '왕권신수설'이고, 계몽사상은 이성과 비판으로 절대 왕정을 공격했어!" },
+        { q: "뉴턴의 만유인력 법칙 발견 등 과학 혁명은 신 중심의 세계관에서 기계론적 우주관으로 변화하는 계기를 마련했다.", answer: true, hint: "맞아! 우주가 신의 즉흥적 개입이 아니라 수학적/기계적으로 굴러감을 입증했어!" }
+    ];
+
+    const u9G3QuestionText = document.getElementById('u9-g3-question-text');
+    const u9G3Feedback = document.getElementById('u9-g3-feedback');
+    const u9G3Result = document.getElementById('u9-g3-result');
+    const startU9G3Btn = document.getElementById('start-u9-g3-btn');
+    const u9G3OBtn = document.getElementById('u9-g3-o-btn');
+    const u9G3XBtn = document.getElementById('u9-g3-x-btn');
+
+    let u9G3Index = 0;
+    let u9G3Score = 0;
+    let u9G3QuestionsList = [];
+
+    if (startU9G3Btn) startU9G3Btn.addEventListener('click', initU9G3Game);
+    if (u9G3OBtn) u9G3OBtn.addEventListener('click', () => checkU9G3Answer(true));
+    if (u9G3XBtn) u9G3XBtn.addEventListener('click', () => checkU9G3Answer(false));
+
+    function initU9G3Game() {
+        u9G3Index = 0;
+        u9G3Score = 0;
+        u9G3QuestionsList = [...u9G3Questions].sort(() => Math.random() - 0.5);
+        if (u9G3Result) u9G3Result.classList.add('hidden');
+        if (u9G3Feedback) u9G3Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (startU9G3Btn) startU9G3Btn.classList.add('hidden');
+        if (u9G3OBtn) u9G3OBtn.classList.remove('hidden');
+        if (u9G3XBtn) u9G3XBtn.classList.remove('hidden');
+        showNextU9G3Question();
+        updateParrotSpeech("절대 왕정 & 과학 혁명 OX 퀴즈 시작! 👑");
+    }
+
+    function showNextU9G3Question() {
+        if (u9G3Index >= u9G3QuestionsList.length) {
+            endU9G3Game();
+            return;
+        }
+        const q = u9G3QuestionsList[u9G3Index];
+        if (u9G3QuestionText) {
+            u9G3QuestionText.innerHTML = `<strong>Q${u9G3Index+1}.</strong> ${q.q}`;
+        }
+        if (u9G3Feedback) u9G3Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+    }
+
+    function checkU9G3Answer(userAns) {
+        const q = u9G3QuestionsList[u9G3Index];
+        const isCorrect = userAns === q.answer;
+        if (u9G3Feedback) {
+            u9G3Feedback.innerHTML = isCorrect ? "⭕ <strong>정답이야!</strong>" : "❌ <strong>틀렸어!</strong>";
+            u9G3Feedback.className = 'ox-feedback show ' + (isCorrect ? 'feedback-correct' : 'feedback-wrong');
+        }
+        if (isCorrect) {
+            u9G3Score++;
+            updateParrotSpeech("정답! 베르사유 대궁전 샹들리에만큼 반짝이는 지식이로군! 👑");
+            setParrotAvatar('happy');
+        } else {
+            updateParrotSpeech(`아쉽다! 모찌 꿀팁: <br> ${q.hint}`);
+            setParrotAvatar('cheer');
+        }
+        u9G3Index++;
+        setTimeout(showNextU9G3Question, 2200);
+    }
+
+    function endU9G3Game() {
+        if (u9G3OBtn) u9G3OBtn.classList.add('hidden');
+        if (u9G3XBtn) u9G3XBtn.classList.add('hidden');
+        if (startU9G3Btn) {
+            startU9G3Btn.classList.remove('hidden');
+            startU9G3Btn.textContent = '다시 도전하기 🚀';
+        }
+        if (u9G3Result) {
+            u9G3Result.classList.remove('hidden');
+            const scoreVal = document.getElementById('u9-g3-score');
+            const totalVal = document.getElementById('u9-g3-total');
+            if (scoreVal) scoreVal.textContent = u9G3Score;
+            if (totalVal) totalVal.textContent = u9G3QuestionsList.length;
+            
+            const msg = document.getElementById('u9-g3-msg');
+            if (msg) {
+                if (u9G3Score === 5) msg.textContent = "💯 퍼펙트! 절대 왕정의 일등 참모를 임명합니다! 👑✨";
+                else if (u9G3Score >= 3) msg.textContent = "👍 훌륭해! 루이 14세 정책과 계몽/과학 혁명을 완벽히 정복했네!";
+                else msg.textContent = "🦜 왕권신수설과 계몽주의 철학의 충돌을 한 번만 더 곱씹어봐! 🚀";
+            }
+        }
+        addProgress('u9-game3');
     }
 
     // =========================================================================
@@ -3740,8 +4219,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         addProgress('u9-finalQuiz');
     }
-    
-    
     // Initialize progress bar at load
     updateProgressBar();
 });
