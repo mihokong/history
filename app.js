@@ -3,14 +3,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     // App State
     const state = {
-        activeGrandUnit: 'grand1', // 'grand1' or 'grand2'
-        activeUnit: 'unit1', // 'unit1', 'unit2', ... 'unit6'
+        activeGrandUnit: 'grand1', // 'grand1', 'grand2' or 'grand3'
+        activeUnit: 'unit1', // 'unit1', 'unit2', ... 'unit9'
         unit1Progress: 0,
         unit2Progress: 0,
         unit3Progress: 0,
         unit4Progress: 0,
         unit5Progress: 0,
         unit6Progress: 0,
+        unit7Progress: 0,
+        unit8Progress: 0,
+        unit9Progress: 0,
         completedActivities: new Set(),
         
         // Unit 1 Quiz State
@@ -90,7 +93,18 @@ document.addEventListener('DOMContentLoaded', () => {
             'u6-game1': 20,
             'u6-readCh2': 10,
             'u6-game2': 20,
-            'u6-finalQuiz': 20
+            'u6-finalQuiz': 20,
+
+            // Unit 7
+            'u7-c1-card1': 10, 'u7-c1-card2': 10, 'u7-c1-card3': 10, 'u7-c1-card4': 10,
+            'u7-readCh2': 20,
+            'u7-c2-card1': 10, 'u7-c2-card2': 10, 'u7-c2-card3': 10, 'u7-c2-card4': 10,
+            
+            // Unit 8 (Stub)
+            'u8-readCh2': 100,
+
+            // Unit 9 (Stub)
+            'u9-readCh2': 100
         }
     };
 
@@ -115,7 +129,10 @@ document.addEventListener('DOMContentLoaded', () => {
         unit3: document.getElementById('unit3-container'),
         unit4: document.getElementById('unit4-container'),
         unit5: document.getElementById('unit5-container'),
-        unit6: document.getElementById('unit6-container')
+        unit6: document.getElementById('unit6-container'),
+        unit7: document.getElementById('unit7-container'),
+        unit8: document.getElementById('unit8-container'),
+        unit9: document.getElementById('unit9-container')
     };
 
     // Grand Unit Selector Elements
@@ -154,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Switch to the default active unit of this Grand Unit
-        const defaultUnit = grandId === 'grand1' ? 'unit1' : 'unit4';
+        const defaultUnit = grandId === 'grand1' ? 'unit1' : (grandId === 'grand2' ? 'unit4' : 'unit7');
         switchUnit(defaultUnit);
     }
 
@@ -232,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 모찌와 함께 카드를 정복하고 오아시스 둥지 열쇠를 획득해 봐! 🐫🔑
             `;
             updateParrotSpeech("인도의 힌두교 성립과 이슬람의 대제국, 그리고 서로마 멸망 이후 프랑크 왕국을 파헤쳐 보자! 🐫");
-        } else {
+        } else if (unitId === 'unit6') {
             nestEmoji.textContent = '⛪';
             progressUnitLabel.textContent = "6단원 모험 진행률";
             heroWelcomeText.innerHTML = `
@@ -241,6 +258,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 모찌와 함께 카드를 뒤집고 성당 장미창 둥지 열쇠를 획득해 봐! ⛪🔑
             `;
             updateParrotSpeech("서유럽 봉건제의 성립과 중세 크리스트교 문화, 그리고 십자군 전쟁과 흑사병의 여파를 정복해 보자! ⛪");
+        } else if (unitId === 'unit7') {
+            nestEmoji.textContent = '🐪';
+            progressUnitLabel.textContent = "1단원 모험 진행률";
+            heroWelcomeText.innerHTML = `
+                일곱 번째 모험에 온 걸 환영해! 🐪<br>
+                여기는 <strong>송나라의 문치주의</strong>와 이중 통치 체제를 갖춘 <strong>북방 민족들</strong>, 그리고 온 세상을 통일한 <strong>몽골 제국(원나라)</strong>의 대활약을 다루는 단원이야!<br>
+                모찌와 함께 역사 카드를 뒤집으며 광활한 유라시아를 탐험하고 해바라기씨를 모아보자! 🗺️🔑
+            `;
+            updateParrotSpeech("송나라 문치주의의 약점과, 유라시아 고속도로를 뚫은 몽골 제국의 비밀을 함께 알아보자! 🐎");
+        } else if (unitId === 'unit8') {
+            nestEmoji.textContent = '🏔️';
+            progressUnitLabel.textContent = "2단원 모험 진행률";
+            heroWelcomeText.innerHTML = `
+                여덟 번째 모험에 온 걸 환영해! 🏔️<br>
+                여기는 <strong>동아시아와 인도 지역 질서의 변화</strong>를 알아보는 단원이야!<br>
+                명·청 제국과 인도의 무굴 제국이 어떻게 아시아를 이끌어 갔는지 탐험할 준비를 해볼까? ⚔️🔑
+            `;
+            updateParrotSpeech("명나라, 청나라의 성장과 인도의 이슬람 무굴 제국 이야기를 기대해줘! 🏔️");
+        } else if (unitId === 'unit9') {
+            nestEmoji.textContent = '🏰';
+            progressUnitLabel.textContent = "3단원 모험 진행률";
+            heroWelcomeText.innerHTML = `
+                아홉 번째 모험에 온 걸 환영해! 🏰<br>
+                여기는 <strong>서아시아와 유럽 사회의 변화</strong>를 알아보는 단원이야!<br>
+                오스만 제국의 번영과 서유럽 절대 왕정 시대의 다이내믹한 변화를 향해 날아볼까? 🛡️🔑
+            `;
+            updateParrotSpeech("이슬람의 자존심 오스만 제국과 유럽의 화려한 베르사유 절대 왕정 시대를 기대해줘! 🏰");
         }
 
         updateProgressBar();
@@ -266,6 +310,13 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (state.activeUnit === 'unit6') {
             switchPanel('unit6', 'u6-chapter1');
             updateParrotSpeech("봉건제와 농노 카드를 뒤집어서 영주의 장원에서 무슨 일이 있었는지 알아봐! 🚜");
+        } else if (state.activeUnit === 'unit7') {
+            switchPanel('unit7', 'u7-chapter1');
+            updateParrotSpeech("송나라 문치주의 카드를 뒤집어서 역사를 파헤쳐봐! 📚");
+        } else if (state.activeUnit === 'unit8') {
+            updateParrotSpeech("이 단원은 모찌가 열심히 컨텐츠를 준비하고 있어! 조금만 기다려줘! 🏔️");
+        } else if (state.activeUnit === 'unit9') {
+            updateParrotSpeech("이 단원은 모찌가 열심히 컨텐츠를 준비하고 있어! 조금만 기다려줘! 🏰");
         }
     });
 
@@ -333,6 +384,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 state.unit5Progress = Math.min(state.unit5Progress + addValue, 100);
             } else if (activityKey.startsWith('u6-')) {
                 state.unit6Progress = Math.min(state.unit6Progress + addValue, 100);
+            } else if (activityKey.startsWith('u7-')) {
+                state.unit7Progress = Math.min(state.unit7Progress + addValue, 100);
+            } else if (activityKey.startsWith('u8-')) {
+                state.unit8Progress = Math.min(state.unit8Progress + addValue, 100);
+            } else if (activityKey.startsWith('u9-')) {
+                state.unit9Progress = Math.min(state.unit9Progress + addValue, 100);
             }
             
             updateProgressBar();
@@ -355,7 +412,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (unitId === 'unit3') return state.unit3Progress;
         if (unitId === 'unit4') return state.unit4Progress;
         if (unitId === 'unit5') return state.unit5Progress;
-        return state.unit6Progress;
+        if (unitId === 'unit6') return state.unit6Progress;
+        if (unitId === 'unit7') return state.unit7Progress;
+        if (unitId === 'unit8') return state.unit8Progress;
+        if (unitId === 'unit9') return state.unit9Progress;
+        return 0;
     }
 
     function updateProgressBar() {
@@ -464,6 +525,11 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (targetId === 'u4-chapter-quiz') {
                 updateParrotSpeech("마지막 관문! 동아시아 문화의 형성과 발전 종합 퀴즈 시작! 🏆");
             }
+        } else if (unitPrefix === 'unit7') {
+            if (targetId === 'u7-chapter2') {
+                addProgress('u7-readCh2');
+                updateParrotSpeech("칭기즈 칸이 이끄는 몽골 무적 기마병들의 대제국 건설 비결을 밝혀내봐! 🐎");
+            }
         }
     }
 
@@ -474,6 +540,9 @@ document.addEventListener('DOMContentLoaded', () => {
     setupTabListeners('unit4', '#unit4-nav', '#unit4-container .chapter-panel');
     setupTabListeners('unit5', '#unit5-nav', '#unit5-container .chapter-panel');
     setupTabListeners('unit6', '#unit6-nav', '#unit6-container .chapter-panel');
+    setupTabListeners('unit7', '#unit7-nav', '#unit7-container .chapter-panel');
+    setupTabListeners('unit8', '#unit8-nav', '#unit8-container .chapter-panel');
+    setupTabListeners('unit9', '#unit9-nav', '#unit9-container .chapter-panel');
 
     // -----------------------------------------
     // 5. Flip Cards for Units
@@ -1797,6 +1866,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (u6QuizResultView) u6QuizResultView.classList.add('hidden');
                 if (u6QuizIntroView) u6QuizIntroView.classList.remove('hidden');
                 updateParrotSpeech("크리스트교 세계의 변화 모험을 처음부터 다시 질주해보자! ⛪");
+            } else if (unit === 'unit7') {
+                state.unit7Progress = 0;
+                for (let key of state.completedActivities) {
+                    if (key.startsWith('u7-')) state.completedActivities.delete(key);
+                }
+                updateProgressBar();
+                switchPanel('unit7', 'u7-chapter1');
+                updateParrotSpeech("유라시아 교역망 모험을 처음부터 다시 질주해보자! 🐪");
+            } else if (unit === 'unit8') {
+                state.unit8Progress = 0;
+                for (let key of state.completedActivities) {
+                    if (key.startsWith('u8-')) state.completedActivities.delete(key);
+                }
+                updateProgressBar();
+                updateParrotSpeech("동아시아·인도 지역 질서의 변화 모험을 다시 시작해보자! 🏔️");
+            } else if (unit === 'unit9') {
+                state.unit9Progress = 0;
+                for (let key of state.completedActivities) {
+                    if (key.startsWith('u9-')) state.completedActivities.delete(key);
+                }
+                updateProgressBar();
+                updateParrotSpeech("서아시아와 유럽 사회의 변화 모험을 다시 시작해보자! 🏰");
             }
             setParrotAvatar('teacher');
         });

@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모찌와 함께하는 뒹굴뒹굴 세계사</title>
     <link rel="icon" href="assets/favicon.png" type="image/png">
-    <!-- Google Fonts for Cute Typography -->
+    <!-- Google Fonts & Pretendard for Beautiful Korean Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Nanum+Neo:wght@400;700;800&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Jua&family=Gowun+Dodum&family=Noto+Sans+KR:wght@300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <!-- FontAwesome for Cute Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -35,6 +36,9 @@
                 <button class="grand-unit-btn" data-grand="grand2">
                     대단원 II. 세계 종교의 확산과 지역 문화의 발전 🌍
                 </button>
+                <button class="grand-unit-btn" data-grand="grand3">
+                    대단원 III. 지역 세계의 교류와 변화 🗺️
+                </button>
             </div>
         </div>
 
@@ -60,6 +64,17 @@
                 </button>
                 <button class="unit-btn hidden" data-unit="unit6" data-grand="grand2">
                     <span class="unit-emoji">⛪</span> 3단원: 크리스트교 문화 확산
+                </button>
+
+                <!-- Grand Unit 3 Sub-Chapters (Hidden initially) -->
+                <button class="unit-btn hidden" data-unit="unit7" data-grand="grand3">
+                    <span class="unit-emoji">🐪</span> 1단원: 유라시아 교역 및 문화 교류의 확대
+                </button>
+                <button class="unit-btn hidden" data-unit="unit8" data-grand="grand3">
+                    <span class="unit-emoji">🏔️</span> 2단원: 동아시아·인도 지역 질서의 변화
+                </button>
+                <button class="unit-btn hidden" data-unit="unit9" data-grand="grand3">
+                    <span class="unit-emoji">🏰</span> 3단원: 서아시아와 유럽 사회의 변화
                 </button>
             </div>
         </div>
@@ -2236,6 +2251,259 @@
                         </div>
                     </div>
                 </section>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- UNIT 7: 유라시아 교역 및 문화 교류의 확대 CONTAINER -->
+        <!-- ========================================== -->
+        <div id="unit7-container" class="unit-view">
+            <!-- Chapter Selector Tab for Unit 7 -->
+            <nav class="chapter-nav" id="unit7-nav">
+                <button class="nav-tab active" data-target="u7-chapter1">
+                    <span class="tab-badge">ㄱ</span> 송과 북방 민족이 성장하다 🇨🇳
+                </button>
+                <button class="nav-tab" data-target="u7-chapter2">
+                    <span class="tab-badge">ㄴ</span> 몽골이 유라시아 대륙에 걸친 대제국을 건설하다 🐎
+                </button>
+            </nav>
+
+            <div class="chapter-content-container">
+                <!-- Chapter 7-1: ㄱ. 송과 북방 민족이 성장하다 -->
+                <section id="u7-chapter1" class="chapter-panel active">
+                    <div class="panel-header">
+                        <h3>ㄱ. 송과 북방 민족이 성장하다</h3>
+                        <p class="panel-subtitle">문치주의를 펼친 송나라와 고유한 문화를 지키며 성장한 북방 민족들의 대결!</p>
+                    </div>
+
+                    <div class="study-section">
+                        <div class="parrot-tip">
+                            <img src="assets/parrot_teacher.png" alt="선생님 모찌" class="tip-avatar">
+                            <div class="tip-bubble-text">
+                                <strong>모찌의 핵심 콕! 🦜</strong><br>
+                                당나라가 멸망한 후 분열기를 통일한 **송나라**는 군인들의 힘을 빼기 위해 **문치주의(글공부한 선비 중심 정치)**를 펼쳤어. 
+                                덕분에 평화로웠지만 군사력이 약해져서 북방의 유목 민족(요, 서하, 금)에게 매년 엄청난 비단과 은(세패)을 바치며 시달렸지. 
+                                결국 금나라에 밀려 남쪽으로 도망쳐 **남송**을 세웠단다. 하지만 이 시기 강남 지방의 농업과 상업, 도시 문화는 엄청나게 발전했어!<br>
+                                한편, **요(거란)**와 **금(여진)**은 중국 문화를 받아들이면서도 자신들의 유목민 풍습을 지키기 위해 **이중 통치 체제**를 사용하고 고유 문자를 만들었단다!
+                            </div>
+                        </div>
+
+                        <div class="card-grid">
+                            <div class="flip-card u7-card" id="u7-c1-card1">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front card-theme-1">
+                                        <div class="card-icon">📚</div>
+                                        <h4>송의 문치주의 정책</h4>
+                                        <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>문관 우대와 군사력 약화</h4>
+                                        <ul>
+                                            <li><strong>배경:</strong> 당나라 말기 절도사(군인)들의 폐단을 막으려 황제가 군사권을 장악했어.</li>
+                                            <li><strong>내용:</strong> 문관(선비)을 우대하고 황제가 직접 치르는 전시(과거 시험)를 강화했지.</li>
+                                            <li><strong>결과:</strong> 군사력이 크게 약해져 북방 민족의 침입을 돈(세패)으로 때우며 재정이 어려워졌어.</li>
+                                        </ul>
+                                        <div class="parrot-mnemonic">
+                                            💡 <strong>모찌 암기법:</strong> 군인들 힘을 <strong>'뭉(문치주의)'</strong>개고 글공부만 시켰더니, 재정이 <strong>'송(송나라)'</strong>두리째 흔들렸다! 💸
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flip-card u7-card" id="u7-c1-card2">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front card-theme-2">
+                                        <div class="card-icon">🌾</div>
+                                        <h4>왕안석의 신법 개혁</h4>
+                                        <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>나라를 부유하게, 군대를 강하게!</h4>
+                                        <ul>
+                                            <li><strong>목적:</strong> 문치주의로 약해진 국가 재정을 구하고 군사력을 기르려 했어.</li>
+                                            <li><strong>신법:</strong> 영세 상인과 농민을 돕는 청묘법, 시역법 등 부국강병책을 실시했단다.</li>
+                                            <li><strong>결과:</strong> 기득권(사마광 등 보수파)의 격렬한 반대로 결국 개혁은 실패로 끝났어.</li>
+                                        </ul>
+                                        <div class="parrot-mnemonic">
+                                            💡 <strong>모찌 암기법:</strong> 나라 재정을 왕창 <strong>'안착(왕안석)'</strong>시키기 위한 농민 구제 개혁! 🌾
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flip-card u7-card" id="u7-c1-card3">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front card-theme-3">
+                                        <div class="card-icon">🛶</div>
+                                        <h4>남송과 강남 지방의 발달</h4>
+                                        <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>경제와 서민 문화의 황금기</h4>
+                                        <ul>
+                                            <li><strong>남송 건국:</strong> 금나라의 침략(정강의 변)으로 화북 지역을 뺏기고 남쪽(임안)으로 피난해 남송을 세웠어.</li>
+                                            <li><strong>강남 개발:</strong> 따뜻한 강남 지방에서 벼농사가 2기작 등으로 발달해 경제력이 화북을 압도했지.</li>
+                                            <li><strong>도시 문화:</strong> 지폐(회자, 교자) 사용, 석탄 사용, 서민들의 오락 시설(와사)이 크게 번창했단다.</li>
+                                        </ul>
+                                        <div class="parrot-mnemonic">
+                                            💡 <strong>모찌 암기법:</strong> 북쪽은 뺏겼지만, 남쪽 강남 물길 따라 배 타고 <strong>'남송(남쪽 송)'</strong>! 벼농사는 풍년! 🛶
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flip-card u7-card" id="u7-c1-card4">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front card-theme-4">
+                                        <div class="card-icon">👥</div>
+                                        <h4>북방 민족의 성장과 이중 통치</h4>
+                                        <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>독자적 문화를 지킨 유목 제국</h4>
+                                        <ul>
+                                            <li><strong>요(거란):</strong> 남면관(농민-중국식 지배)과 북면관(유목민-부족제)의 이중 지배 체제 운영.</li>
+                                            <li><strong>금(여진):</strong> 부족제 전투 조직인 맹안·모극제와 중국식 주현제를 섞어 썼어.</li>
+                                            <li><strong>민족 의식:</strong> 한족에 흡수되지 않으려 고유의 글자(요 문자, 금 문자)를 만들어 썼단다.</li>
+                                        </ul>
+                                        <div class="parrot-mnemonic">
+                                            💡 <strong>모찌 암기법:</strong> 유목민은 유목법, 한인은 중국법! 따로 관리하는 스마트한 <strong>'이중(더블) 통치'</strong>! 👥
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Chapter 7-2: ㄴ. 몽골이 유라시아 대륙에 걸친 대제국을 건설하다 -->
+                <section id="u7-chapter2" class="chapter-panel">
+                    <div class="panel-header">
+                        <h3>ㄴ. 몽골이 유라시아 대륙에 걸친 대제국을 건설하다</h3>
+                        <p class="panel-subtitle">말을 타고 세계를 제패한 칭기즈 칸과 유라시아를 하나로 묶은 원나라!</p>
+                    </div>
+
+                    <div class="study-section">
+                        <div class="parrot-tip">
+                            <img src="assets/parrot_teacher.png" alt="선생님 모찌" class="tip-avatar">
+                            <div class="tip-bubble-text">
+                                <strong>모찌의 핵심 콕! 🦜</strong><br>
+                                흩어져 있던 몽골 부족을 통일한 **칭기즈 칸**은 강력한 기마 부대와 군사 조직(천호제)을 바탕으로 동유럽까지 영토를 넓혀 인류 역사상 가장 넓은 제국을 세웠어. 
+                                그의 손자 **쿠빌라이 칸**은 나라 이름을 **원**으로 바꾸고 남송까지 정복해 중국 전체를 지배했지.<br>
+                                원나라는 몽골인 제일주의에 따라 글 잘 쓰고 셈이 빠른 이슬람계 사람들을 **색목인**으로 삼아 중용하고, 원래 중국 남쪽에 살던 한인들을 차별했어. 
+                                하지만 **역참제**를 정비해 유라시아 대륙 전체에 엄청난 무역로를 열어 동서양의 종교, 기술, 문화가 활발히 교류되는 다리를 놓았단다!
+                            </div>
+                        </div>
+
+                        <div class="card-grid">
+                            <div class="flip-card u7-card" id="u7-c2-card1">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front card-theme-1">
+                                        <div class="card-icon">🏹</div>
+                                        <h4>칭기즈 칸과 대제국 건설</h4>
+                                        <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>세계 역사상 가장 넓은 영토</h4>
+                                        <ul>
+                                            <li><strong>몽골 통일:</strong> 테무친이 부족들을 통합하고 1206년 '칭기즈 칸'으로 추대되었어.</li>
+                                            <li><strong>천호제와 케식:</strong> 유목민들을 1000가구 단위의 군사 조직으로 묶고, 충성스러운 친위대(케식)를 운영해 막강한 군대를 만들었지.</li>
+                                            <li><strong>정벌:</strong> 서하와 금을 치고 중앙아시아, 동유럽까지 휩쓸었어.</li>
+                                        </ul>
+                                        <div class="parrot-mnemonic">
+                                            💡 <strong>모찌 암기법:</strong> 천 명씩 묶어서 돌격! 칭기즈 칸의 무적 부대 <strong>'천호제(천 명의 호위무사)'</strong>! 🏹
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flip-card u7-card" id="u7-c2-card2">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front card-theme-2">
+                                        <div class="card-icon">👑</div>
+                                        <h4>쿠빌라이 칸과 원의 지배</h4>
+                                        <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>중국 전역 통일과 수도 대도 천도</h4>
+                                        <ul>
+                                            <li><strong>원 건국:</strong> 국호를 '원'으로 정하고, 수도를 대도(현재의 베이징)로 옮겼어.</li>
+                                            <li><strong>남송 정복:</strong> 1279년 남송을 완전히 정복하고 중국 전체를 지배하게 되었지.</li>
+                                            <li><strong>영토:</strong> 전 유라시아에 걸친 칸국 연합체(킵차크, 일, 차가타이, 오고타이 칸국)의 종주국이 되었어.</li>
+                                        </ul>
+                                        <div class="parrot-mnemonic">
+                                            💡 <strong>모찌 암기법:</strong> 큰 그림을 <strong>'쿠키(쿠빌라이)'</strong>처럼 맛있게 구운 원나라 황제! 🍪
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flip-card u7-card" id="u7-c2-card3">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front card-theme-3">
+                                        <div class="card-icon">⚖️</div>
+                                        <h4>몽골인 제일주의 신분제</h4>
+                                        <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>차별적인 민족 지배 정책</h4>
+                                        <ul>
+                                            <li><strong>1신분 몽골인:</strong> 모든 고위 관직과 권력을 독점하는 지배층.</li>
+                                            <li><strong>2신분 색목인:</strong> 서역·이슬람계 출신으로, 재정·세무 행정 실무를 도맡았어.</li>
+                                            <li><strong>피지배층 한인·남인:</strong> 과거 요/금 지배하의 한족(한인)과 가장 늦게 항복한 남송 한족(남인)은 세금 압박과 큰 차별을 받았단다.</li>
+                                        </ul>
+                                        <div class="parrot-mnemonic">
+                                            💡 <strong>모찌 암기법:</strong> 눈이 파랗고 다른 <strong>'색(Color)'</strong>을 가진 똑똑한 <strong>'색목인'</strong>이 돈 관리 2인자! 👁️
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flip-card u7-card" id="u7-c2-card4">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front card-theme-4">
+                                        <div class="card-icon">🐪</div>
+                                        <h4>역참제와 동서 교역망</h4>
+                                        <p class="card-hint-text">클릭해서 꿀팁 보기 👇</p>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h4>유라시아 교역망의 대통합</h4>
+                                        <ul>
+                                            <li><strong>역참제:</strong> 통행증(패자)을 가진 관리나 사신이 말을 갈아타고 쉴 수 있는 정거장을 전국 도로망에 설치했어.</li>
+                                            <li><strong>동서 교류:</strong> 비단길, 초원길, 바닷길이 하나로 이어졌어. 마르코 폴로(동방견문록), 이븐 바투타 등이 왕래했지.</li>
+                                            <li><strong>기술 전파:</strong> 이슬람 천문학이 전래되고, 중국의 화약·나침반·인쇄술이 유럽으로 넘어가 르네상스의 밑거름이 되었어.</li>
+                                        </ul>
+                                        <div class="parrot-mnemonic">
+                                            💡 <strong>모찌 암기법:</strong> 쌩쌩 달리다 지치면 말 갈아타자! 유라시아 고속도로 <strong>'역참(역마차)'</strong>! 🐎
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- UNIT 8: 동아시아·인도 지역 질서의 변화 CONTAINER -->
+        <!-- ========================================== -->
+        <div id="unit8-container" class="unit-view">
+            <div class="coming-soon-box">
+                <img src="assets/parrot_cheer.png" alt="준비 중인 모찌" class="coming-soon-avatar">
+                <h3>동아시아·인도 지역 질서의 변화 🏔️</h3>
+                <p>모찌가 다음 역사 여행을 위해 지도를 열심히 그리고 있어!<br>조금만 기다려주면 명·청 제국과 무굴 제국의 흥미진진한 이야기를 준비해올게! 🦜✨</p>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- UNIT 9: 서아시아와 유럽 사회의 변화 CONTAINER -->
+        <!-- ========================================== -->
+        <div id="unit9-container" class="unit-view">
+            <div class="coming-soon-box">
+                <img src="assets/parrot_teacher.png" alt="준비 중인 모찌" class="coming-soon-avatar">
+                <h3>서아시아와 유럽 사회의 변화 🏰</h3>
+                <p>오스만 제국의 팽창과 유럽의 절대 왕정 이야기!<br>모찌가 열심히 도서관에서 책을 읽으며 준비하고 있으니 기대해줘! 📚✨</p>
             </div>
         </div>
     </main>

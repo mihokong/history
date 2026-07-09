@@ -18,8 +18,8 @@
     --glass-border: rgba(255, 255, 255, 0.4);
     
     /* Font Families */
-    --font-cute: 'Fredoka', 'Gaegu', sans-serif;
-    --font-body: 'Nanum Neo', -apple-system, sans-serif;
+    --font-cute: 'Jua', 'Fredoka', sans-serif;
+    --font-body: 'Pretendard', 'Noto Sans KR', -apple-system, sans-serif;
     
     --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -1328,7 +1328,7 @@ body {
 }
 
 .certificate-container h2 {
-    font-family: 'Fredoka', 'Gaegu', cursive;
+    font-family: var(--font-cute);
     font-size: 2rem;
     color: #8b6508;
     margin-bottom: 20px;
