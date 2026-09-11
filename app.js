@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
         unit7Progress: 0,
         unit8Progress: 0,
         unit9Progress: 0,
+        unit10Progress: 0,
+        unit11Progress: 0,
+        unit12Progress: 0,
         completedActivities: new Set(),
         
         // Unit 1 Quiz State
@@ -51,6 +54,18 @@ document.addEventListener('DOMContentLoaded', () => {
         // Unit 9 Quiz State
         u9CurrentQuizIndex: 0,
         u9QuizScore: 0,
+
+        // Unit 10 Quiz State
+        u10CurrentQuizIndex: 0,
+        u10QuizScore: 0,
+
+        // Unit 11 Quiz State
+        u11CurrentQuizIndex: 0,
+        u11QuizScore: 0,
+
+        // Unit 12 Quiz State
+        u12CurrentQuizIndex: 0,
+        u12QuizScore: 0,
         
         theme: 'light',
         
@@ -135,7 +150,40 @@ document.addEventListener('DOMContentLoaded', () => {
             'u9-readCh3': 2,
             'u9-c3-card1': 5, 'u9-c3-card2': 5, 'u9-c3-card3': 5, 'u9-c3-card4': 5,
             'u9-game3': 10,
-            'u9-finalQuiz': 10
+            'u9-finalQuiz': 10,
+
+            // Unit 10
+            'u10-c1-card1': 5, 'u10-c1-card2': 5, 'u10-c1-card3': 5, 'u10-c1-card4': 5,
+            'u10-game1': 8,
+            'u10-readCh2': 3,
+            'u10-c2-card1': 5, 'u10-c2-card2': 5, 'u10-c2-card3': 5, 'u10-c2-card4': 5,
+            'u10-game2': 8,
+            'u10-readCh3': 3,
+            'u10-c3-card1': 5, 'u10-c3-card2': 5, 'u10-c3-card3': 5, 'u10-c3-card4': 5,
+            'u10-game3': 8,
+            'u10-finalQuiz': 10,
+
+            // Unit 11
+            'u11-c1-card1': 7.5, 'u11-c1-card2': 7.5, 'u11-c1-card3': 7.5, 'u11-c1-card4': 7.5,
+            'u11-game1': 12,
+            'u11-readCh2': 4,
+            'u11-c2-card1': 7.5, 'u11-c2-card2': 7.5, 'u11-c2-card3': 7.5, 'u11-c2-card4': 7.5,
+            'u11-game2': 12,
+            'u11-finalQuiz': 12,
+
+            // Unit 12
+            'u12-c1-card1': 3.5, 'u12-c1-card2': 3.5, 'u12-c1-card3': 3.5, 'u12-c1-card4': 3.5,
+            'u12-game1': 7,
+            'u12-readCh2': 2,
+            'u12-c2-card1': 3.5, 'u12-c2-card2': 3.5, 'u12-c2-card3': 3.5, 'u12-c2-card4': 3.5,
+            'u12-game2': 7,
+            'u12-readCh3': 2,
+            'u12-c3-card1': 3.5, 'u12-c3-card2': 3.5, 'u12-c3-card3': 3.5, 'u12-c3-card4': 3.5,
+            'u12-game3': 7,
+            'u12-readCh4': 2,
+            'u12-c4-card1': 3.5, 'u12-c4-card2': 3.5, 'u12-c4-card3': 3.5, 'u12-c4-card4': 3.5,
+            'u12-game4': 7,
+            'u12-finalQuiz': 10
         }
     };
 
@@ -163,7 +211,10 @@ document.addEventListener('DOMContentLoaded', () => {
         unit6: document.getElementById('unit6-container'),
         unit7: document.getElementById('unit7-container'),
         unit8: document.getElementById('unit8-container'),
-        unit9: document.getElementById('unit9-container')
+        unit9: document.getElementById('unit9-container'),
+        unit10: document.getElementById('unit10-container'),
+        unit11: document.getElementById('unit11-container'),
+        unit12: document.getElementById('unit12-container')
     };
 
     // Grand Unit Selector Elements
@@ -202,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Switch to the default active unit of this Grand Unit
-        const defaultUnit = grandId === 'grand1' ? 'unit1' : (grandId === 'grand2' ? 'unit4' : 'unit7');
+        const defaultUnit = grandId === 'grand1' ? 'unit1' : (grandId === 'grand2' ? 'unit4' : (grandId === 'grand3' ? 'unit7' : 'unit10'));
         switchUnit(defaultUnit);
     }
 
@@ -316,6 +367,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 오스만 제국의 번영과 서유럽 절대 왕정 시대의 다이내믹한 변화를 향해 날아볼까? 🛡️🔑
             `;
             updateParrotSpeech("이슬람의 자존심 오스만 제국과 유럽의 화려한 베르사유 절대 왕정 시대를 기대해줘! 🏰");
+        } else if (unitId === 'unit10') {
+            nestEmoji.textContent = '🗽';
+            progressUnitLabel.textContent = "1단원 모험 진행률";
+            heroWelcomeText.innerHTML = `
+                열 번째 모험에 온 걸 환영해! 🗽<br>
+                여기는 왕과 귀족의 억압을 깨뜨린 <strong>아메리카의 민주공화국 성립</strong>, 인권의 깃발을 높이 든 <strong>프랑스 대혁명</strong>, 그리고 자유와 통일을 향해 달려간 <strong>국민 국가의 발전</strong>을 다루는 대단원이야!<br>
+                모찌와 함께 역사 카드를 뒤집고 자유의 여신 둥지 열쇠를 획득해 봐! 🗽🔑
+            `;
+            updateParrotSpeech("왕 없이 국민이 주인인 나라! 미국 독립 혁명과 프랑스 대혁명의 현장으로 날아가자! 🗽");
+        } else if (unitId === 'unit11') {
+            nestEmoji.textContent = '⚙️';
+            progressUnitLabel.textContent = "2단원 모험 진행률";
+            heroWelcomeText.innerHTML = `
+                열한 번째 모험에 온 걸 환영해! ⚙️<br>
+                여기는 증기 기관의 발명으로 세상의 생산 방식을 뒤바꾼 <strong>산업 혁명</strong>과, 자본주의의 욕망으로 전 세계를 침략한 <strong>제국주의 열강의 팽창</strong>을 다루는 단원이야!<br>
+                모찌와 함께 기계와 증기의 시대를 탐험하고 산업 톱니바퀴 열쇠를 모아보자! 🚂🔑
+            `;
+            updateParrotSpeech("와트의 증기 기관과 공장제 기계 공업, 그리고 제국주의 열강의 팽창을 낱낱이 파헤쳐보자! ⚙️");
+        } else if (unitId === 'unit12') {
+            nestEmoji.textContent = '🌏';
+            progressUnitLabel.textContent = "3단원 모험 진행률";
+            heroWelcomeText.innerHTML = `
+                열두 번째 모험에 온 걸 환영해! 🌏<br>
+                여기는 서양 열강의 거센 침략에 맞서 나라를 지키고 새 시대를 열고자 한 <strong>중국·일본의 근대화</strong>, 그리고 <strong>인도, 동남아시아, 서아시아, 아프리카의 민족 운동</strong>을 다루는 단원이야!<br>
+                모찌와 함께 아시아·아프리카의 뜨거운 민족 운동을 배우고 평화의 지구 열쇠를 손에 쥐어보자! 🌏🔑
+            `;
+            updateParrotSpeech("서양 침략에 맞서 나라를 지키고 근대화를 이룩하려던 아시아와 아프리카의 위대한 외침을 들어보자! ✊");
         }
 
         updateProgressBar();
@@ -350,6 +428,15 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (state.activeUnit === 'unit9') {
             switchPanel('unit9', 'u9-chapter1');
             updateParrotSpeech("비잔티움 제국을 정복한 오스만 제국 카드를 뒤집어봐! 🕌");
+        } else if (state.activeUnit === 'unit10') {
+            switchPanel('unit10', 'u10-chapter1');
+            updateParrotSpeech("미국 독립 혁명과 라틴 아메리카 카드를 뒤집어서 민주공화국의 탄생을 알아봐! 🗽");
+        } else if (state.activeUnit === 'unit11') {
+            switchPanel('unit11', 'u11-chapter1');
+            updateParrotSpeech("증기 기관과 산업 혁명 카드를 뒤집어서 근대 산업 사회의 빛과 그늘을 알아봐! ⚙️");
+        } else if (state.activeUnit === 'unit12') {
+            switchPanel('unit12', 'u12-chapter1');
+            updateParrotSpeech("중국의 근대화 운동 카드를 클릭해서 아시아의 뜨거운 독립 열망을 알아봐! 🇨🇳");
         }
     });
 
@@ -423,6 +510,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 state.unit8Progress = Math.min(state.unit8Progress + addValue, 100);
             } else if (activityKey.startsWith('u9-')) {
                 state.unit9Progress = Math.min(state.unit9Progress + addValue, 100);
+            } else if (activityKey.startsWith('u10-')) {
+                state.unit10Progress = Math.min(state.unit10Progress + addValue, 100);
+            } else if (activityKey.startsWith('u11-')) {
+                state.unit11Progress = Math.min(state.unit11Progress + addValue, 100);
+            } else if (activityKey.startsWith('u12-')) {
+                state.unit12Progress = Math.min(state.unit12Progress + addValue, 100);
             }
             
             updateProgressBar();
@@ -449,6 +542,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (unitId === 'unit7') return state.unit7Progress;
         if (unitId === 'unit8') return state.unit8Progress;
         if (unitId === 'unit9') return state.unit9Progress;
+        if (unitId === 'unit10') return state.unit10Progress;
+        if (unitId === 'unit11') return state.unit11Progress;
+        if (unitId === 'unit12') return state.unit12Progress;
         return 0;
     }
 
@@ -585,6 +681,36 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (targetId === 'u9-chapter-quiz') {
                 updateParrotSpeech("대단원 III - 3단원 최종 퀴즈 스테이지에 도달했어! 🏰 🔑");
             }
+        } else if (unitPrefix === 'unit10') {
+            if (targetId === 'u10-chapter2') {
+                addProgress('u10-readCh2');
+                updateParrotSpeech("단두대와 바스티유! 자유·평등·우애의 프랑스 대혁명으로 떠나보자! 🇫🇷");
+            } else if (targetId === 'u10-chapter3') {
+                addProgress('u10-readCh3');
+                updateParrotSpeech("빈 체제를 무너뜨린 7월·2월 혁명과 이탈리아·독일의 찬란한 통일 이야기! 🇩🇪🇮🇹");
+            } else if (targetId === 'u10-chapter-quiz') {
+                updateParrotSpeech("대단원 IV - 1단원 최종 퀴즈 스테이지에 도달했어! 🗽🔑");
+            }
+        } else if (unitPrefix === 'unit11') {
+            if (targetId === 'u11-chapter2') {
+                addProgress('u11-readCh2');
+                updateParrotSpeech("제국주의 열강의 아프리카와 아시아 침략! 자로 잰 국경선의 비밀을 파헤쳐보자! 🌍");
+            } else if (targetId === 'u11-chapter-quiz') {
+                updateParrotSpeech("대단원 IV - 2단원 최종 퀴즈 스테이지에 도달했어! ⚙️🔑");
+            }
+        } else if (unitPrefix === 'unit12') {
+            if (targetId === 'u12-chapter2') {
+                addProgress('u12-readCh2');
+                updateParrotSpeech("검은 배(흑선)의 충격과 메이지 유신으로 근대 국가로 변신한 일본을 알아보자! 🇯🇵");
+            } else if (targetId === 'u12-chapter3') {
+                addProgress('u12-readCh3');
+                updateParrotSpeech("세포이의 눈물과 캘커타 4대 강령, 그리고 동남아시아의 끈질긴 민족 독립 투쟁! 🇮🇳");
+            } else if (targetId === 'u12-chapter4') {
+                addProgress('u12-readCh4');
+                updateParrotSpeech("오스만 제국의 탄지마트와 아프리카의 당당한 승리 아도와 전투를 살펴보자! 🕌");
+            } else if (targetId === 'u12-chapter-quiz') {
+                updateParrotSpeech("대단원 IV - 3단원 최종 퀴즈 스테이지에 도달했어! 🌏🔑");
+            }
         }
     }
 
@@ -598,6 +724,9 @@ document.addEventListener('DOMContentLoaded', () => {
     setupTabListeners('unit7', '#unit7-nav', '#unit7-container .chapter-panel');
     setupTabListeners('unit8', '#unit8-nav', '#unit8-container .chapter-panel');
     setupTabListeners('unit9', '#unit9-nav', '#unit9-container .chapter-panel');
+    setupTabListeners('unit10', '#unit10-nav', '#unit10-container .chapter-panel');
+    setupTabListeners('unit11', '#unit11-nav', '#unit11-container .chapter-panel');
+    setupTabListeners('unit12', '#unit12-nav', '#unit12-container .chapter-panel');
 
     // -----------------------------------------
     // 5. Flip Cards for Units
@@ -700,6 +829,45 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (cardId.includes('c3-card2')) updateParrotSpeech("짐이 곧 국가다 베르사유 루이 14세와 영국 무적함대 격파 엘리자베스! ☀️");
                         if (cardId.includes('c3-card3')) updateParrotSpeech("수염을 깎으며 서구화한 표트르 대제와 국가의 종복 프리드리히 2세! 🪒");
                         if (cardId.includes('c3-card4')) updateParrotSpeech("사과가 쿵 뉴턴의 과학 혁명과 미신을 깨부수는 시민의 촛불 계몽사상! 💡");
+                    } else if (unitPrefix === 'u10') {
+                        if (cardId.includes('c1-card1')) updateParrotSpeech("차(보스턴 차 사건)마 못 참아 바다로 퐁당! 대표 없는 곳에 과세 없다! ☕");
+                        if (cardId.includes('c1-card2')) updateParrotSpeech("제퍼슨의 독립 선언과 삼권 분립 민주 공화국의 찬란한 탄생! 🗽");
+                        if (cardId.includes('c1-card3')) updateParrotSpeech("남북 전쟁의 위기를 딛고 링컨의 노예 해방 선언으로 연방 통일! 🎩");
+                        if (cardId.includes('c1-card4')) updateParrotSpeech("볼리바르와 산마르틴! 유럽 넌 끼어들지 마 먼로 선언! 🐴");
+                        if (cardId.includes('c2-card1')) updateParrotSpeech("2%만 꿀 빠는 구제도 아웃! 바스티유 감옥 부수고 인권 선언 발표! ⚖️");
+                        if (cardId.includes('c2-card2')) updateParrotSpeech("루이 16세 처형과 로베스피에르의 무시무시한 단두대 공포 정치! 🩸");
+                        if (cardId.includes('c2-card3')) updateParrotSpeech("국민투표 황제 나폴레옹과 법 앞의 평등 나폴레옹 법전! 👑");
+                        if (cardId.includes('c2-card4')) updateParrotSpeech("대륙 봉쇄령과 러시아 원정 실패, 하지만 자유·민족주의 이념 전파! 🗺️");
+                        if (cardId.includes('c3-card1')) updateParrotSpeech("옛 군주제로 돌아가자는 빈 체제를 박살 낸 프랑스 7월·2월 혁명! 💥");
+                        if (cardId.includes('c3-card2')) updateParrotSpeech("영국 노동자들의 참정권 눈물겨운 쟁취 투쟁 차티스트 운동! 🗳️");
+                        if (cardId.includes('c3-card3')) updateParrotSpeech("마치니, 카보우르, 그리고 붉은 셔츠단 가리발디의 의리 통일! 🇮🇹");
+                        if (cardId.includes('c3-card4')) updateParrotSpeech("관세 동맹과 비스마르크의 철혈 정책으로 탄생한 독일 제국! 🇩🇪");
+                    } else if (unitPrefix === 'u11') {
+                        if (cardId.includes('c1-card1')) updateParrotSpeech("정치 안정과 석탄·철, 인클로저 노동력이 만든 영국의 산업 혁명! 🇬🇧");
+                        if (cardId.includes('c1-card2')) updateParrotSpeech("와트의 증기 기관과 스티븐슨 기차, 풀턴 증기선이 연 교통 혁명! 🚂");
+                        if (cardId.includes('c1-card3')) updateParrotSpeech("빛나는 물질적 풍요와 하루 16시간 아이들까지 혹사당한 어두운 그늘! 🏙️");
+                        if (cardId.includes('c1-card4')) updateParrotSpeech("기계를 부순 러다이트 운동과 노동자 세상을 꿈꾼 마르크스 사회주의! 🔨");
+                        if (cardId.includes('c2-card1')) updateParrotSpeech("상품 시장과 원료를 노린 제국주의와 궤변 사회진화론! 🦁");
+                        if (cardId.includes('c2-card2')) updateParrotSpeech("베를린 회의에서 자를 대고 아프리카를 갈기갈기 찢은 제국주의 열강! 📐");
+                        if (cardId.includes('c2-card3')) updateParrotSpeech("영국의 남북 종단과 프랑스의 동서 횡단이 충돌한 파쇼다 사건! ⚔️");
+                        if (cardId.includes('c2-card4')) updateParrotSpeech("이탈리아 침략군을 대파하고 당당히 독립을 지킨 에티오피아 아도와 전투! 🛡️");
+                    } else if (unitPrefix === 'u12') {
+                        if (cardId.includes('c1-card1')) updateParrotSpeech("아편 밀수출 삼각 무역과 홍콩을 빼앗긴 불평등 난징 조약! 🚬");
+                        if (cardId.includes('c1-card2')) updateParrotSpeech("멸만흥한 태평천국 운동과 서양 무기만 베끼다 실패한 양무운동! 🌾");
+                        if (cardId.includes('c1-card3')) updateParrotSpeech("입헌군주제 변법자강 운동과 부청멸양 외친 의화단 운동! 📜");
+                        if (cardId.includes('c1-card4')) updateParrotSpeech("쑨원의 삼민주의와 신해혁명! 아시아 최초 공화국 중화민국 탄생! 🇨🇳");
+                        if (cardId.includes('c2-card1')) updateParrotSpeech("미국 페리의 검은 군함 흑선에 굴복한 굴욕적 불평등 개항! 🚢");
+                        if (cardId.includes('c2-card2')) updateParrotSpeech("막부를 뒤엎고 천황 중심 폐번치현과 징병제를 실시한 메이지 유신! 🌸");
+                        if (cardId.includes('c2-card3')) updateParrotSpeech("천황에게 절대적 권력을 몰아준 대일본 제국 헌법! 📜");
+                        if (cardId.includes('c2-card4')) updateParrotSpeech("청일·러일 전쟁 승리 후 1910년 대한제국을 강점한 제국주의 침략자 일본! ⚔️");
+                        if (cardId.includes('c3-card1')) updateParrotSpeech("소·돼지기름 탄약통 분노 폭발 세포이 항쟁과 무굴 제국 멸망! 🐘");
+                        if (cardId.includes('c3-card2')) updateParrotSpeech("벵골 분할령 철회시킨 캘커타 4대 강령 스와라지와 스와데시! 🇮🇳");
+                        if (cardId.includes('c3-card3')) updateParrotSpeech("베트남 판보이쩌우의 동유 운동과 인도네시아 사레카트 이슬람! 🇻🇳");
+                        if (cardId.includes('c3-card4')) updateParrotSpeech("필리핀 호세 리살과 아기날도의 항전, 타이라마 5세의 독립 유지! 🇵🇭");
+                        if (cardId.includes('c4-card1')) updateParrotSpeech("은혜 개혁 탄지마트와 헌법을 부활시킨 청년 튀르크당 혁명! 🇹🇷");
+                        if (cardId.includes('c4-card2')) updateParrotSpeech("초기 쿠란 순수 이슬람 와하브 운동과 이란 담배 보이콧 승리! 🚭");
+                        if (cardId.includes('c4-card3')) updateParrotSpeech("수에즈 운하 빚더미와 이집트인을 위한 이집트 외친 아라비 파샤! 🇪🇬");
+                        if (cardId.includes('c4-card4')) updateParrotSpeech("수단 마흐디, 남아공 줄루족 전사, 에티오피아 아도와 대승리! 🌍");
                     }
                 }
             });
@@ -714,6 +882,9 @@ document.addEventListener('DOMContentLoaded', () => {
     setupFlipCards('.u7-card', 'u7');
     setupFlipCards('.u8-card', 'u8');
     setupFlipCards('.u9-card', 'u9');
+    setupFlipCards('.u10-card', 'u10');
+    setupFlipCards('.u11-card', 'u11');
+    setupFlipCards('.u12-card', 'u12');
 
     // -----------------------------------------
     // 6. Unit 1 Game 1: Matching Card Game
@@ -2001,6 +2172,48 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (u9QuizResultView) u9QuizResultView.classList.add('hidden');
                 if (u9QuizIntroView) u9QuizIntroView.classList.remove('hidden');
                 updateParrotSpeech("서아시아와 유럽 사회의 변화 모험을 다시 시작해보자! 🏰");
+            } else if (unit === 'unit10') {
+                state.unit10Progress = 0;
+                state.u10CurrentQuizIndex = 0;
+                state.u10QuizScore = 0;
+                for (let key of state.completedActivities) {
+                    if (key.startsWith('u10-')) state.completedActivities.delete(key);
+                }
+                updateProgressBar();
+                switchPanel('unit10', 'u10-chapter1');
+                const u10QuizResultView = document.getElementById('u10-quiz-result');
+                const u10QuizIntroView = document.getElementById('u10-quiz-intro');
+                if (u10QuizResultView) u10QuizResultView.classList.add('hidden');
+                if (u10QuizIntroView) u10QuizIntroView.classList.remove('hidden');
+                updateParrotSpeech("유럽과 아메리카의 국민 국가 체제 모험을 다시 시작해보자! 🗽");
+            } else if (unit === 'unit11') {
+                state.unit11Progress = 0;
+                state.u11CurrentQuizIndex = 0;
+                state.u11QuizScore = 0;
+                for (let key of state.completedActivities) {
+                    if (key.startsWith('u11-')) state.completedActivities.delete(key);
+                }
+                updateProgressBar();
+                switchPanel('unit11', 'u11-chapter1');
+                const u11QuizResultView = document.getElementById('u11-quiz-result');
+                const u11QuizIntroView = document.getElementById('u11-quiz-intro');
+                if (u11QuizResultView) u11QuizResultView.classList.add('hidden');
+                if (u11QuizIntroView) u11QuizIntroView.classList.remove('hidden');
+                updateParrotSpeech("유럽의 산업화와 제국주의 모험을 다시 시작해보자! ⚙️");
+            } else if (unit === 'unit12') {
+                state.unit12Progress = 0;
+                state.u12CurrentQuizIndex = 0;
+                state.u12QuizScore = 0;
+                for (let key of state.completedActivities) {
+                    if (key.startsWith('u12-')) state.completedActivities.delete(key);
+                }
+                updateProgressBar();
+                switchPanel('unit12', 'u12-chapter1');
+                const u12QuizResultView = document.getElementById('u12-quiz-result');
+                const u12QuizIntroView = document.getElementById('u12-quiz-intro');
+                if (u12QuizResultView) u12QuizResultView.classList.add('hidden');
+                if (u12QuizIntroView) u12QuizIntroView.classList.remove('hidden');
+                updateParrotSpeech("아시아의 국민 국가 건설 운동 모험을 다시 시작해보자! 🌏");
             }
             setParrotAvatar('teacher');
         });
@@ -4219,6 +4432,1411 @@ document.addEventListener('DOMContentLoaded', () => {
 
         addProgress('u9-finalQuiz');
     }
+
+    // =========================================================================
+    // 30. Unit 10 Game 1: 아메리카 독립 혁명 OX 퀴즈
+    // =========================================================================
+    const u10G1Questions = [
+        { q: "보스턴 차 사건은 영국이 세금을 내려주자 식민지 주민들이 감사의 뜻으로 홍차를 대접한 평화로운 축제였다.", answer: false, hint: "틀렸어! 억울한 차세 부과에 분노하여 인디언으로 변장한 주민들이 영국 홍차 상자를 바다에 던져버린 사건이야!" },
+        { q: "미국 독립 선언서(1776)에는 모든 인간의 평등과 천부인권, 국민 주권, 그리고 정부에 대한 저항권이 명시되었다.", answer: true, hint: "맞아! 토머스 제퍼슨이 기초한 미국 독립 선언서에는 근대 민주주의의 핵심 원리가 모두 담겨 있단다!" },
+        { q: "미국의 남북 전쟁 당시 남부는 상공업이 발달하여 노예제를 적극 반대하고 높은 보호 관세를 주장했다.", answer: false, hint: "틀렸어! 상공업 발달로 노예제를 반대하고 보호 관세를 주장한 쪽은 '북부'였어! 남부는 대농장 목화 재배로 노예제와 자유 무역을 원했지!" },
+        { q: "링컨 대통령은 남북 전쟁 중 노예 해방 선언(1863)을 발표하여 국내외 여론을 북부에 절대적으로 유리하게 이끌었다.", answer: true, hint: "맞아! 노예 해방 선언으로 영국의 남부 지지를 차단하고 흑인들이 북부 군대에 합류하여 승기를 잡았어!" },
+        { q: "미국의 먼로 대통령은 유럽 열강의 아메리카 대륙에 대한 간섭을 엄격히 금지하는 '먼로 선언'을 발표했다.", answer: true, hint: "맞아! 1823년 먼로 선언으로 유럽의 간섭을 차단하여 라틴 아메리카 국가들의 독립에 든든한 방패가 되었단다!" }
+    ];
+
+    const u10G1QuestionText = document.getElementById('u10-g1-question-text');
+    const u10G1Feedback = document.getElementById('u10-g1-feedback');
+    const u10G1Result = document.getElementById('u10-g1-result');
+    const startU10G1Btn = document.getElementById('start-u10-g1-btn');
+    const u10G1OBtn = document.getElementById('u10-g1-o-btn');
+    const u10G1XBtn = document.getElementById('u10-g1-x-btn');
+
+    let u10G1Index = 0;
+    let u10G1Score = 0;
+    let u10G1QuestionsList = [];
+
+    if (startU10G1Btn) startU10G1Btn.addEventListener('click', initU10G1Game);
+    if (u10G1OBtn) u10G1OBtn.addEventListener('click', () => checkU10G1Answer(true));
+    if (u10G1XBtn) u10G1XBtn.addEventListener('click', () => checkU10G1Answer(false));
+
+    function initU10G1Game() {
+        u10G1Index = 0;
+        u10G1Score = 0;
+        u10G1QuestionsList = [...u10G1Questions].sort(() => Math.random() - 0.5);
+        if (u10G1Result) u10G1Result.classList.add('hidden');
+        if (u10G1Feedback) u10G1Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (startU10G1Btn) startU10G1Btn.classList.add('hidden');
+        if (u10G1OBtn) u10G1OBtn.classList.remove('hidden');
+        if (u10G1XBtn) u10G1XBtn.classList.remove('hidden');
+        showNextU10G1Question();
+        updateParrotSpeech("아메리카 독립 혁명 OX 퀴즈 시작! 🗽");
+    }
+
+    function showNextU10G1Question() {
+        if (u10G1Index >= u10G1QuestionsList.length) {
+            endU10G1Game();
+            return;
+        }
+        const q = u10G1QuestionsList[u10G1Index];
+        if (u10G1QuestionText) {
+            u10G1QuestionText.innerHTML = `<strong>Q${u10G1Index+1}.</strong> ${q.q}`;
+        }
+        if (u10G1Feedback) {
+            u10G1Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+            u10G1Feedback.textContent = '';
+        }
+        if (u10G1OBtn) u10G1OBtn.disabled = false;
+        if (u10G1XBtn) u10G1XBtn.disabled = false;
+    }
+
+    function checkU10G1Answer(userAns) {
+        if (u10G1OBtn) u10G1OBtn.disabled = true;
+        if (u10G1XBtn) u10G1XBtn.disabled = true;
+        const q = u10G1QuestionsList[u10G1Index];
+        const isCorrect = (userAns === q.answer);
+
+        if (isCorrect) {
+            u10G1Score++;
+            if (u10G1Feedback) {
+                u10G1Feedback.textContent = "정답이야! 딩동댕! 🗽✨";
+                u10G1Feedback.className = "ox-feedback show feedback-correct";
+            }
+            updateParrotSpeech("정답! 미국 독립 혁명의 자유 정신을 제대로 꿰뚫었어! 🇺🇸");
+            setParrotAvatar('happy');
+        } else {
+            if (u10G1Feedback) {
+                u10G1Feedback.textContent = `땡! 아쉽다! ${q.hint}`;
+                u10G1Feedback.className = "ox-feedback show feedback-wrong";
+            }
+            updateParrotSpeech(`아쉽다! 모찌 꿀팁: <br> ${q.hint}`);
+            setParrotAvatar('cheer');
+        }
+        u10G1Index++;
+        setTimeout(showNextU10G1Question, 2200);
+    }
+
+    function endU10G1Game() {
+        if (u10G1OBtn) u10G1OBtn.classList.add('hidden');
+        if (u10G1XBtn) u10G1XBtn.classList.add('hidden');
+        if (startU10G1Btn) {
+            startU10G1Btn.classList.remove('hidden');
+            startU10G1Btn.textContent = '다시 도전하기 🚀';
+        }
+        if (u10G1Result) {
+            u10G1Result.classList.remove('hidden');
+            const scoreVal = document.getElementById('u10-g1-score');
+            const totalVal = document.getElementById('u10-g1-total');
+            if (scoreVal) scoreVal.textContent = u10G1Score;
+            if (totalVal) totalVal.textContent = u10G1QuestionsList.length;
+            
+            const msg = document.getElementById('u10-g1-msg');
+            if (msg) {
+                if (u10G1Score === 5) msg.textContent = "💯 퍼펙트! 조지 워싱턴도 울고 갈 아메리카 독립 지식왕! 🗽";
+                else if (u10G1Score >= 3) msg.textContent = "👍 훌륭해! 보스턴 차 사건과 노예 해방 선언을 완벽히 이해하고 있어!";
+                else msg.textContent = "🦜 북부와 남부의 차이가 헷갈렸니? 모찌 카드를 보고 다시 도전해봐! 🚀";
+            }
+        }
+        addProgress('u10-game1');
+    }
+
+    // =========================================================================
+    // 31. Unit 10 Game 2: 프랑스 혁명과 나폴레옹 OX 퀴즈
+    // =========================================================================
+    const u10G2Questions = [
+        { q: "프랑스 혁명 이전의 앙시앵 레짐에서는 제1·2신분이 전체 인구의 대부분을 차지하고 세금을 도맡아 냈다.", answer: false, hint: "틀렸어! 2%도 안 되는 성직자와 귀족이 면세 특권을 누리고, 98%의 평민(제3신분)이 세금을 독박 썼지!" },
+        { q: "파리 시민들이 전제 정치와 압제의 상징인 바스티유 감옥을 습격하면서 프랑스 혁명이 본격적으로 타올랐다.", answer: true, hint: "맞아! 1789년 7월 14일 바스티유 감옥 습격으로 혁명의 불꽃이 타올랐단다!" },
+        { q: "로베스피에르는 루이 16세 처형 후 단두대 사용을 엄격히 금지하고 온건하고 평화로운 협치 정치를 펼쳤다.", answer: false, hint: "틀렸어! 반혁명 혐의자를 단두대로 무자비하게 처형하는 '공포 정치'를 펼치다 테르미도르 반동으로 처형당했어!" },
+        { q: "나폴레옹 법전은 법 앞의 평등, 종교의 자유, 사유재산권 존중 등 프랑스 혁명의 기본 정신을 집대성하였다.", answer: true, hint: "맞아! 근대 민법의 기초가 된 위대한 법전이란다!" },
+        { q: "나폴레옹의 유럽 정복 전쟁 과정에서 프랑스 혁명의 핵심 이념인 자유주의와 민족주의가 유럽 전역에 널리 퍼졌다.", answer: true, hint: "맞아! 정복 전쟁을 통해 유럽 민중들이 자유와 민족의 소중함을 깨닫게 되었지!" }
+    ];
+
+    const u10G2QuestionText = document.getElementById('u10-g2-question-text');
+    const u10G2Feedback = document.getElementById('u10-g2-feedback');
+    const u10G2Result = document.getElementById('u10-g2-result');
+    const startU10G2Btn = document.getElementById('start-u10-g2-btn');
+    const u10G2OBtn = document.getElementById('u10-g2-o-btn');
+    const u10G2XBtn = document.getElementById('u10-g2-x-btn');
+
+    let u10G2Index = 0;
+    let u10G2Score = 0;
+    let u10G2QuestionsList = [];
+
+    if (startU10G2Btn) startU10G2Btn.addEventListener('click', initU10G2Game);
+    if (u10G2OBtn) u10G2OBtn.addEventListener('click', () => checkU10G2Answer(true));
+    if (u10G2XBtn) u10G2XBtn.addEventListener('click', () => checkU10G2Answer(false));
+
+    function initU10G2Game() {
+        u10G2Index = 0;
+        u10G2Score = 0;
+        u10G2QuestionsList = [...u10G2Questions].sort(() => Math.random() - 0.5);
+        if (u10G2Result) u10G2Result.classList.add('hidden');
+        if (u10G2Feedback) u10G2Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (startU10G2Btn) startU10G2Btn.classList.add('hidden');
+        if (u10G2OBtn) u10G2OBtn.classList.remove('hidden');
+        if (u10G2XBtn) u10G2XBtn.classList.remove('hidden');
+        showNextU10G2Question();
+        updateParrotSpeech("프랑스 혁명 OX 퀴즈 시작! 🇫🇷");
+    }
+
+    function showNextU10G2Question() {
+        if (u10G2Index >= u10G2QuestionsList.length) {
+            endU10G2Game();
+            return;
+        }
+        const q = u10G2QuestionsList[u10G2Index];
+        if (u10G2QuestionText) {
+            u10G2QuestionText.innerHTML = `<strong>Q${u10G2Index+1}.</strong> ${q.q}`;
+        }
+        if (u10G2Feedback) {
+            u10G2Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+            u10G2Feedback.textContent = '';
+        }
+        if (u10G2OBtn) u10G2OBtn.disabled = false;
+        if (u10G2XBtn) u10G2XBtn.disabled = false;
+    }
+
+    function checkU10G2Answer(userAns) {
+        if (u10G2OBtn) u10G2OBtn.disabled = true;
+        if (u10G2XBtn) u10G2XBtn.disabled = true;
+        const q = u10G2QuestionsList[u10G2Index];
+        const isCorrect = (userAns === q.answer);
+
+        if (isCorrect) {
+            u10G2Score++;
+            if (u10G2Feedback) {
+                u10G2Feedback.textContent = "정답이야! 딩동댕! 🇫🇷✨";
+                u10G2Feedback.className = "ox-feedback show feedback-correct";
+            }
+            updateParrotSpeech("정답! 프랑스 혁명의 자유·평등 정신이 번쩍 빛나는구나! 👑");
+            setParrotAvatar('happy');
+        } else {
+            if (u10G2Feedback) {
+                u10G2Feedback.textContent = `땡! 아쉽다! ${q.hint}`;
+                u10G2Feedback.className = "ox-feedback show feedback-wrong";
+            }
+            updateParrotSpeech(`아쉽다! 모찌 꿀팁: <br> ${q.hint}`);
+            setParrotAvatar('cheer');
+        }
+        u10G2Index++;
+        setTimeout(showNextU10G2Question, 2200);
+    }
+
+    function endU10G2Game() {
+        if (u10G2OBtn) u10G2OBtn.classList.add('hidden');
+        if (u10G2XBtn) u10G2XBtn.classList.add('hidden');
+        if (startU10G2Btn) {
+            startU10G2Btn.classList.remove('hidden');
+            startU10G2Btn.textContent = '다시 도전하기 🚀';
+        }
+        if (u10G2Result) {
+            u10G2Result.classList.remove('hidden');
+            const scoreVal = document.getElementById('u10-g2-score');
+            const totalVal = document.getElementById('u10-g2-total');
+            if (scoreVal) scoreVal.textContent = u10G2Score;
+            if (totalVal) totalVal.textContent = u10G2QuestionsList.length;
+            
+            const msg = document.getElementById('u10-g2-msg');
+            if (msg) {
+                if (u10G2Score === 5) msg.textContent = "💯 퍼펙트! 나폴레옹도 감탄할 프랑스 혁명 마스터! 🇫🇷";
+                else if (u10G2Score >= 3) msg.textContent = "👍 훌륭해! 인권 선언과 공포 정치의 흐름을 꿰뚫고 있네!";
+                else msg.textContent = "🦜 바스티유 습격과 앙시앵 레짐을 다시 복습해볼까? 🚀";
+            }
+        }
+        addProgress('u10-game2');
+    }
+
+    // =========================================================================
+    // 32. Unit 10 Game 3: 19세기 자유주의와 통일 운동 OX 퀴즈
+    // =========================================================================
+    const u10G3Questions = [
+        { q: "빈 체제는 프랑스 혁명 이전의 옛 군주제와 신분 질서로 되돌아가자는 복고주의 성격을 띠었다.", answer: true, hint: "맞아! 오스트리아의 메테르니히가 주도하여 혁명 이전 상태로 되돌리려 했지!" },
+        { q: "프랑스 2월 혁명(1848)의 여파로 오스트리아의 메테르니히가 실각하면서 빈 체제가 완전히 붕괴되었다.", answer: true, hint: "맞아! 파리 시민과 노동자들의 봉기로 메테르니히가 영국으로 망명하며 빈 체제가 끝장났어!" },
+        { q: "영국의 차티스트 운동은 귀족들에게만 의회 선거권을 영구 보장하자고 요구한 보수주의 운동이었다.", answer: false, hint: "틀렸어! 선거권에서 제외된 '노동자'들이 보통 선거와 비밀 투표를 요구한 인민헌장 운동이야!" },
+        { q: "가리발디는 자신이 정복한 남부 이탈리아 영토를 사르데냐 국왕에게 바쳐 이탈리아 통일에 크게 기여했다.", answer: true, hint: "맞아! 붉은 셔츠단 가리발디의 아름다운 헌납으로 이탈리아 왕국이 완성되었단다!" },
+        { q: "비스마르크의 철혈 정책은 의회 다수결과 평화적 토론만으로 독일의 통일을 완성하자는 정책이었다.", answer: false, hint: "틀렸어! 언론과 다수결이 아니라 오직 '철(무기)과 피(군대)'로만 해결할 수 있다고 주장하며 군비를 키웠지!" }
+    ];
+
+    const u10G3QuestionText = document.getElementById('u10-g3-question-text');
+    const u10G3Feedback = document.getElementById('u10-g3-feedback');
+    const u10G3Result = document.getElementById('u10-g3-result');
+    const startU10G3Btn = document.getElementById('start-u10-g3-btn');
+    const u10G3OBtn = document.getElementById('u10-g3-o-btn');
+    const u10G3XBtn = document.getElementById('u10-g3-x-btn');
+
+    let u10G3Index = 0;
+    let u10G3Score = 0;
+    let u10G3QuestionsList = [];
+
+    if (startU10G3Btn) startU10G3Btn.addEventListener('click', initU10G3Game);
+    if (u10G3OBtn) u10G3OBtn.addEventListener('click', () => checkU10G3Answer(true));
+    if (u10G3XBtn) u10G3XBtn.addEventListener('click', () => checkU10G3Answer(false));
+
+    function initU10G3Game() {
+        u10G3Index = 0;
+        u10G3Score = 0;
+        u10G3QuestionsList = [...u10G3Questions].sort(() => Math.random() - 0.5);
+        if (u10G3Result) u10G3Result.classList.add('hidden');
+        if (u10G3Feedback) u10G3Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (startU10G3Btn) startU10G3Btn.classList.add('hidden');
+        if (u10G3OBtn) u10G3OBtn.classList.remove('hidden');
+        if (u10G3XBtn) u10G3XBtn.classList.remove('hidden');
+        showNextU10G3Question();
+        updateParrotSpeech("19세기 자유주의와 통일 OX 퀴즈 시작! 🇩🇪");
+    }
+
+    function showNextU10G3Question() {
+        if (u10G3Index >= u10G3QuestionsList.length) {
+            endU10G3Game();
+            return;
+        }
+        const q = u10G3QuestionsList[u10G3Index];
+        if (u10G3QuestionText) {
+            u10G3QuestionText.innerHTML = `<strong>Q${u10G3Index+1}.</strong> ${q.q}`;
+        }
+        if (u10G3Feedback) {
+            u10G3Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+            u10G3Feedback.textContent = '';
+        }
+        if (u10G3OBtn) u10G3OBtn.disabled = false;
+        if (u10G3XBtn) u10G3XBtn.disabled = false;
+    }
+
+    function checkU10G3Answer(userAns) {
+        if (u10G3OBtn) u10G3OBtn.disabled = true;
+        if (u10G3XBtn) u10G3XBtn.disabled = true;
+        const q = u10G3QuestionsList[u10G3Index];
+        const isCorrect = (userAns === q.answer);
+
+        if (isCorrect) {
+            u10G3Score++;
+            if (u10G3Feedback) {
+                u10G3Feedback.textContent = "정답이야! 딩동댕! 🇩🇪✨";
+                u10G3Feedback.className = "ox-feedback show feedback-correct";
+            }
+            updateParrotSpeech("정답! 이탈리아와 독일의 통일 영웅들을 확실히 기억하고 있네! 🇮🇹");
+            setParrotAvatar('happy');
+        } else {
+            if (u10G3Feedback) {
+                u10G3Feedback.textContent = `땡! 아쉽다! ${q.hint}`;
+                u10G3Feedback.className = "ox-feedback show feedback-wrong";
+            }
+            updateParrotSpeech(`아쉽다! 모찌 꿀팁: <br> ${q.hint}`);
+            setParrotAvatar('cheer');
+        }
+        u10G3Index++;
+        setTimeout(showNextU10G3Question, 2200);
+    }
+
+    function endU10G3Game() {
+        if (u10G3OBtn) u10G3OBtn.classList.add('hidden');
+        if (u10G3XBtn) u10G3XBtn.classList.add('hidden');
+        if (startU10G3Btn) {
+            startU10G3Btn.classList.remove('hidden');
+            startU10G3Btn.textContent = '다시 도전하기 🚀';
+        }
+        if (u10G3Result) {
+            u10G3Result.classList.remove('hidden');
+            const scoreVal = document.getElementById('u10-g3-score');
+            const totalVal = document.getElementById('u10-g3-total');
+            if (scoreVal) scoreVal.textContent = u10G3Score;
+            if (totalVal) totalVal.textContent = u10G3QuestionsList.length;
+            
+            const msg = document.getElementById('u10-g3-msg');
+            if (msg) {
+                if (u10G3Score === 5) msg.textContent = "💯 퍼펙트! 비스마르크도 감탄할 통일과 자유주의 마스터! 🇩🇪";
+                else if (u10G3Score >= 3) msg.textContent = "👍 훌륭해! 빈 체제 붕괴와 가리발디의 활약을 정확히 짚어냈어!";
+                else msg.textContent = "🦜 철혈 정책과 차티스트 운동 꿀팁 카드를 다시 읽어볼까? 🚀";
+            }
+        }
+        addProgress('u10-game3');
+    }
+
+    // =========================================================================
+    // 33. Unit 10 Final Quiz
+    // =========================================================================
+    const u10FinalQuestions = [
+        {
+            q: "미국 독립 혁명의 직접적인 도화선이 된 사건과 식민지 주민들이 내세운 핵심 구호로 옳은 것은?",
+            options: [
+                "보스턴 차 사건 - '대표 없는 곳에 과세 없다!'",
+                "바스티유 감옥 습격 - '빵이 없으면 케이크를!'",
+                "테니스 코트의 서약 - '자유가 아니면 죽음을!'",
+                "차티스트 운동 - '노동자에게 인민헌장을!'"
+            ],
+            correctIndex: 0,
+            hint: "영국의 차세 부과에 항의해 홍차를 바다에 던져버린 사건이야!"
+        },
+        {
+            q: "프랑스 혁명 당시 발표된 '인간과 시민의 권리 선언(인권 선언)'의 내용으로 적절하지 않은 것은?",
+            options: [
+                "모든 인간은 자유롭고 평등하게 태어났다.",
+                "국가의 모든 주권은 오직 국왕 1인에게만 귀속된다.",
+                "사유재산권은 그 누구도 침해할 수 없는 신성한 권리이다.",
+                "어떤 사람도 법에 의하지 않고는 체포되거나 구금될 수 없다."
+            ],
+            correctIndex: 1,
+            hint: "주권은 왕이 아니라 '국민'에게 있다는 국민 주권을 선언했어!"
+        },
+        {
+            q: "나폴레옹 시대의 역사적 사실과 가장 거리가 먼 것은?",
+            options: [
+                "국민투표를 거쳐 황제에 즉위하였다.",
+                "법 앞의 평등과 사유재산을 보장한 나폴레옹 법전을 편찬하였다.",
+                "영국을 경제적으로 고립시키기 위해 대륙 봉쇄령을 선포하였다.",
+                "오스트리아를 도와 메테르니히의 빈 체제를 앞장서 수호하였다."
+            ],
+            correctIndex: 3,
+            hint: "빈 체제는 나폴레옹이 몰락한 뒤에 세워진 옛 질서 복고 체제야!"
+        },
+        {
+            q: "19세기 유럽의 자유주의와 통일 운동에 대한 설명으로 옳은 것은?",
+            options: [
+                "영국의 차티스트 운동은 귀족들의 참정권 확대를 주장하였다.",
+                "가리발디는 붉은 셔츠단을 이끌고 남부 이탈리아를 점령한 뒤 사르데냐 국왕에게 바쳤다.",
+                "독일은 오스트리아의 비스마르크가 주도하여 평화적 다수결로 통일되었다.",
+                "프랑스 2월 혁명은 샤를 10세를 몰아내고 입헌군주제를 세웠다."
+            ],
+            correctIndex: 1,
+            hint: "가리발디가 의리의 영토 헌납을 실천하여 이탈리아 왕국이 완성되었어!"
+        },
+        {
+            q: "미국의 남북 전쟁(1861~1865)에 대한 설명으로 옳은 것은?",
+            options: [
+                "남부는 상공업 발전을 위해 노예 해방과 보호 관세를 강력히 요구하였다.",
+                "링컨 대통령은 노예 해방 선언(1863)을 발표하여 북부의 도덕적 명분을 높였다.",
+                "전쟁의 결과 미국은 남부와 북부의 두 개 독립 국가로 영구 분단되었다.",
+                "남부 연합이 최종 승리하여 아메리카 전역에 노예제가 영구 유지되었다."
+            ],
+            correctIndex: 1,
+            hint: "링컨의 노예 해방 선언으로 북부가 승리하고 연방 통일을 지켜냈지!"
+        }
+    ];
+
+    const u10QuizIntroView = document.getElementById('u10-quiz-intro');
+    const u10QuizPlayView = document.getElementById('u10-quiz-play');
+    const u10QuizResultView = document.getElementById('u10-quiz-result');
+    const u10QuizQuestionText = document.getElementById('u10-quiz-question-text');
+    const u10QuizOptionsContainer = document.getElementById('u10-quiz-options');
+    const u10QuizCounterText = document.getElementById('u10-quiz-counter');
+    const u10FinalTotalScore = document.getElementById('u10-final-score');
+    const u10ResultMessage = document.getElementById('u10-result-message');
+    const startU10QuizBtn = document.getElementById('start-u10-quiz-btn');
+
+    if (startU10QuizBtn) {
+        startU10QuizBtn.addEventListener('click', () => {
+            state.u10CurrentQuizIndex = 0;
+            state.u10QuizScore = 0;
+            if (u10QuizIntroView) u10QuizIntroView.classList.add('hidden');
+            if (u10QuizResultView) u10QuizResultView.classList.add('hidden');
+            if (u10QuizPlayView) u10QuizPlayView.classList.remove('hidden');
+            showU10FinalQuizQuestion();
+            updateParrotSpeech("유럽과 아메리카 국민 국가 최종 퀴즈 시작! 5문제 모두 맞혀봐! 🗽");
+        });
+    }
+
+    function showU10FinalQuizQuestion() {
+        if (!u10QuizPlayView) return;
+        if (state.u10CurrentQuizIndex < u10FinalQuestions.length) {
+            const qData = u10FinalQuestions[state.u10CurrentQuizIndex];
+            if (u10QuizCounterText) u10QuizCounterText.textContent = `${state.u10CurrentQuizIndex + 1} / ${u10FinalQuestions.length}`;
+            if (u10QuizQuestionText) u10QuizQuestionText.textContent = qData.q;
+            if (u10QuizOptionsContainer) u10QuizOptionsContainer.innerHTML = '';
+            
+            qData.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'quiz-opt-btn';
+                btn.textContent = opt;
+                btn.addEventListener('click', () => selectU10QuizOption(idx));
+                u10QuizOptionsContainer.appendChild(btn);
+            });
+        } else {
+            showU10QuizResults();
+        }
+    }
+
+    function selectU10QuizOption(userIndex) {
+        const qData = u10FinalQuestions[state.u10CurrentQuizIndex];
+        const isCorrect = userIndex === qData.correctIndex;
+        const optionButtons = u10QuizOptionsContainer.querySelectorAll('.quiz-opt-btn');
+        
+        optionButtons.forEach(btn => btn.disabled = true);
+
+        if (isCorrect) {
+            state.u10QuizScore++;
+            optionButtons[userIndex].classList.add('correct');
+            updateParrotSpeech("정답이야! 최고 최고! 미국과 프랑스 혁명, 국민 국가를 완전 정복했네! 🗽🎉");
+            setParrotAvatar('happy');
+        } else {
+            optionButtons[userIndex].classList.add('wrong');
+            optionButtons[qData.correctIndex].classList.add('correct');
+            updateParrotSpeech(`아쉽다! 모찌 꿀팁: <br> ${qData.hint}`);
+            setParrotAvatar('cheer');
+        }
+        state.u10CurrentQuizIndex++;
+        setTimeout(showU10FinalQuizQuestion, isCorrect ? 1800 : 4000);
+    }
+
+    function showU10QuizResults() {
+        if (u10QuizPlayView) u10QuizPlayView.classList.add('hidden');
+        if (u10QuizResultView) u10QuizResultView.classList.remove('hidden');
+        if (u10FinalTotalScore) u10FinalTotalScore.textContent = state.u10QuizScore;
+        
+        let messageText = "";
+        if (state.u10QuizScore === 5) {
+            messageText = "💯 완벽한 유럽·아메리카 국민 국가 마스터 탄생! 모찌가 자유의 여신상 둥지 황금 열쇠를 드릴게요! 미국 독립 선언부터 프랑스 혁명, 독일·이탈리아 통일까지 완전 마스터! 🗽🥇";
+            setParrotAvatar('happy');
+        } else if (state.u10QuizScore >= 3) {
+            messageText = "👍 훌륭해! 보스턴 차 사건, 인권 선언, 남북 전쟁의 주요 내용을 잘 이해하고 있어! 🗽✨";
+            setParrotAvatar('teacher');
+        } else {
+            messageText = "🦜 빈 체제와 프랑스 혁명의 세부 인물이 헷갈렸구나! 모찌의 OX 퀴즈를 풀며 기초를 다져보자! 🚀";
+            setParrotAvatar('cheer');
+        }
+        if (u10ResultMessage) u10ResultMessage.innerHTML = messageText;
+        
+        const today = new Date();
+        const dateString = `${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()}일`;
+        document.querySelectorAll('.cert-date-span').forEach(el => el.textContent = dateString);
+
+        addProgress('u10-finalQuiz');
+    }
+
+    // =========================================================================
+    // 34. Unit 11 Game 1: 산업 혁명과 사회 변화 OX 퀴즈
+    // =========================================================================
+    const u11G1Questions = [
+        { q: "영국에서 산업 혁명이 가장 먼저 시작된 배경에는 정치적 안정과 풍부한 석탄·철 자원이 있었다.", answer: true, hint: "맞아! 명예혁명 이후 정치 안정, 인클로저 노동력, 지하 자원 3박자가 맞았단다!" },
+        { q: "제임스 와트는 전기를 이용해 작동하는 현대식 컴퓨터를 최초로 발명하여 3차 산업 혁명을 열었다.", answer: false, hint: "틀렸어! 와트는 '증기 기관'을 개량하여 기계와 교통의 새로운 동력원을 제공했어!" },
+        { q: "스티븐슨의 증기 기관차 발명과 철도 개통으로 대량의 물자와 사람이 빠르고 저렴하게 이동할 수 있게 되었다.", answer: true, hint: "맞아! 철도는 시간과 공간의 거리를 획기적으로 줄여준 교통 혁명의 꽃이야!" },
+        { q: "산업 혁명 초기 공장에서는 노동자 보호법이 완벽히 갖추어져 어린이와 여성은 하루 3시간 이하만 일했다.", answer: false, hint: "틀렸어! 법적 보호가 없어 10세 미만 어린이도 하루 14~16시간 저임금 혹사에 시달렸단다!" },
+        { q: "러다이트 운동은 일자리를 잃고 생활고에 빠진 영국 노동자들이 공장 기계를 부수며 저항한 운동이다.", answer: true, hint: "맞아! 기계가 일자리를 빼앗았다고 여긴 노동자들의 눈물겨운 저항 운동이었어!" }
+    ];
+
+    const u11G1QuestionText = document.getElementById('u11-g1-question-text');
+    const u11G1Feedback = document.getElementById('u11-g1-feedback');
+    const u11G1Result = document.getElementById('u11-g1-result');
+    const startU11G1Btn = document.getElementById('start-u11-g1-btn');
+    const u11G1OBtn = document.getElementById('u11-g1-o-btn');
+    const u11G1XBtn = document.getElementById('u11-g1-x-btn');
+
+    let u11G1Index = 0;
+    let u11G1Score = 0;
+    let u11G1QuestionsList = [];
+
+    if (startU11G1Btn) startU11G1Btn.addEventListener('click', initU11G1Game);
+    if (u11G1OBtn) u11G1OBtn.addEventListener('click', () => checkU11G1Answer(true));
+    if (u11G1XBtn) u11G1XBtn.addEventListener('click', () => checkU11G1Answer(false));
+
+    function initU11G1Game() {
+        u11G1Index = 0;
+        u11G1Score = 0;
+        u11G1QuestionsList = [...u11G1Questions].sort(() => Math.random() - 0.5);
+        if (u11G1Result) u11G1Result.classList.add('hidden');
+        if (u11G1Feedback) u11G1Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (startU11G1Btn) startU11G1Btn.classList.add('hidden');
+        if (u11G1OBtn) u11G1OBtn.classList.remove('hidden');
+        if (u11G1XBtn) u11G1XBtn.classList.remove('hidden');
+        showNextU11G1Question();
+        updateParrotSpeech("산업 혁명 OX 퀴즈 시작! 🚂");
+    }
+
+    function showNextU11G1Question() {
+        if (u11G1Index >= u11G1QuestionsList.length) {
+            endU11G1Game();
+            return;
+        }
+        const q = u11G1QuestionsList[u11G1Index];
+        if (u11G1QuestionText) {
+            u11G1QuestionText.innerHTML = `<strong>Q${u11G1Index+1}.</strong> ${q.q}`;
+        }
+        if (u11G1Feedback) {
+            u11G1Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+            u11G1Feedback.textContent = '';
+        }
+        if (u11G1OBtn) u11G1OBtn.disabled = false;
+        if (u11G1XBtn) u11G1XBtn.disabled = false;
+    }
+
+    function checkU11G1Answer(userAns) {
+        if (u11G1OBtn) u11G1OBtn.disabled = true;
+        if (u11G1XBtn) u11G1XBtn.disabled = true;
+        const q = u11G1QuestionsList[u11G1Index];
+        const isCorrect = (userAns === q.answer);
+
+        if (isCorrect) {
+            u11G1Score++;
+            if (u11G1Feedback) {
+                u11G1Feedback.textContent = "정답이야! 딩동댕! 🚂✨";
+                u11G1Feedback.className = "ox-feedback show feedback-correct";
+            }
+            updateParrotSpeech("정답! 증기 기관과 산업 혁명의 빛과 그늘을 완벽하게 파악했어! ⚙️");
+            setParrotAvatar('happy');
+        } else {
+            if (u11G1Feedback) {
+                u11G1Feedback.textContent = `땡! 아쉽다! ${q.hint}`;
+                u11G1Feedback.className = "ox-feedback show feedback-wrong";
+            }
+            updateParrotSpeech(`아쉽다! 모찌 꿀팁: <br> ${q.hint}`);
+            setParrotAvatar('cheer');
+        }
+        u11G1Index++;
+        setTimeout(showNextU11G1Question, 2200);
+    }
+
+    function endU11G1Game() {
+        if (u11G1OBtn) u11G1OBtn.classList.add('hidden');
+        if (u11G1XBtn) u11G1XBtn.classList.add('hidden');
+        if (startU11G1Btn) {
+            startU11G1Btn.classList.remove('hidden');
+            startU11G1Btn.textContent = '다시 도전하기 🚀';
+        }
+        if (u11G1Result) {
+            u11G1Result.classList.remove('hidden');
+            const scoreVal = document.getElementById('u11-g1-score');
+            const totalVal = document.getElementById('u11-g1-total');
+            if (scoreVal) scoreVal.textContent = u11G1Score;
+            if (totalVal) totalVal.textContent = u11G1QuestionsList.length;
+            
+            const msg = document.getElementById('u11-g1-msg');
+            if (msg) {
+                if (u11G1Score === 5) msg.textContent = "💯 퍼펙트! 제임스 와트도 박수칠 산업 혁명 척척박사! 🚂";
+                else if (u11G1Score >= 3) msg.textContent = "👍 훌륭해! 증기 기관차와 러다이트 운동 역사를 잘 알고 있네!";
+                else msg.textContent = "🦜 영국의 산업 혁명 시작 배경을 다시 살펴볼까? 🚀";
+            }
+        }
+        addProgress('u11-game1');
+    }
+
+    // =========================================================================
+    // 35. Unit 11 Game 2: 제국주의 팽창과 열강의 침략 OX 퀴즈
+    // =========================================================================
+    const u11G2Questions = [
+        { q: "제국주의 열강들은 사회진화론을 내세워 강한 나라가 약한 나라를 식민 지배하는 것이 적자생존의 자연법칙이라고 왜곡했다.", answer: true, hint: "맞아! 다윈의 진화론을 악용해 침략과 지배를 뻔뻔하게 정당화했단다!" },
+        { q: "1884년 베를린 회의에서는 아프리카 원주민들의 투표를 거쳐 민주적으로 국경선을 정했다.", answer: false, hint: "틀렸어! 원주민 뜻은 전혀 묻지 않고 '실효 지배' 원칙에 따라 자를 대고 국경선을 그었지!" },
+        { q: "영국의 남북 종단 정책과 프랑스의 동서 횡단 정책이 수단의 파쇼다에서 부딪친 사건을 '파쇼다 사건'이라고 한다.", answer: true, hint: "맞아! 1898년 파쇼다에서 전쟁 위기까지 갔으나 프랑스가 양보하여 평화적으로 끝났어!" },
+        { q: "에티오피아는 아도와 전투에서 근대 무기로 무장하여 이탈리아 침략군을 대파하고 독립을 지켜냈다.", answer: true, hint: "맞아! 메넬리크 2세 황제가 이끈 위대한 승리로 독립을 사수했단다!" },
+        { q: "19세기 말 아프리카 대륙은 단 하나의 예외도 없이 모든 나라가 유럽 열강의 식민지로 완전히 전락하였다.", answer: false, hint: "틀렸어! 에티오피아와 라이베리아 두 나라는 끝까지 독립을 지켜냈어!" }
+    ];
+
+    const u11G2QuestionText = document.getElementById('u11-g2-question-text');
+    const u11G2Feedback = document.getElementById('u11-g2-feedback');
+    const u11G2Result = document.getElementById('u11-g2-result');
+    const startU11G2Btn = document.getElementById('start-u11-g2-btn');
+    const u11G2OBtn = document.getElementById('u11-g2-o-btn');
+    const u11G2XBtn = document.getElementById('u11-g2-x-btn');
+
+    let u11G2Index = 0;
+    let u11G2Score = 0;
+    let u11G2QuestionsList = [];
+
+    if (startU11G2Btn) startU11G2Btn.addEventListener('click', initU11G2Game);
+    if (u11G2OBtn) u11G2OBtn.addEventListener('click', () => checkU11G2Answer(true));
+    if (u11G2XBtn) u11G2XBtn.addEventListener('click', () => checkU11G2Answer(false));
+
+    function initU11G2Game() {
+        u11G2Index = 0;
+        u11G2Score = 0;
+        u11G2QuestionsList = [...u11G2Questions].sort(() => Math.random() - 0.5);
+        if (u11G2Result) u11G2Result.classList.add('hidden');
+        if (u11G2Feedback) u11G2Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (startU11G2Btn) startU11G2Btn.classList.add('hidden');
+        if (u11G2OBtn) u11G2OBtn.classList.remove('hidden');
+        if (u11G2XBtn) u11G2XBtn.classList.remove('hidden');
+        showNextU11G2Question();
+        updateParrotSpeech("제국주의 팽창 OX 퀴즈 시작! 🦁");
+    }
+
+    function showNextU11G2Question() {
+        if (u11G2Index >= u11G2QuestionsList.length) {
+            endU11G2Game();
+            return;
+        }
+        const q = u11G2QuestionsList[u11G2Index];
+        if (u11G2QuestionText) {
+            u11G2QuestionText.innerHTML = `<strong>Q${u11G2Index+1}.</strong> ${q.q}`;
+        }
+        if (u11G2Feedback) {
+            u11G2Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+            u11G2Feedback.textContent = '';
+        }
+        if (u11G2OBtn) u11G2OBtn.disabled = false;
+        if (u11G2XBtn) u11G2XBtn.disabled = false;
+    }
+
+    function checkU11G2Answer(userAns) {
+        if (u11G2OBtn) u11G2OBtn.disabled = true;
+        if (u11G2XBtn) u11G2XBtn.disabled = true;
+        const q = u11G2QuestionsList[u11G2Index];
+        const isCorrect = (userAns === q.answer);
+
+        if (isCorrect) {
+            u11G2Score++;
+            if (u11G2Feedback) {
+                u11G2Feedback.textContent = "정답이야! 딩동댕! 🦁✨";
+                u11G2Feedback.className = "ox-feedback show feedback-correct";
+            }
+            updateParrotSpeech("정답! 제국주의 열강의 침략과 저항 역사를 확실히 파악했어! 🛡️");
+            setParrotAvatar('happy');
+        } else {
+            if (u11G2Feedback) {
+                u11G2Feedback.textContent = `땡! 아쉽다! ${q.hint}`;
+                u11G2Feedback.className = "ox-feedback show feedback-wrong";
+            }
+            updateParrotSpeech(`아쉽다! 모찌 꿀팁: <br> ${q.hint}`);
+            setParrotAvatar('cheer');
+        }
+        u11G2Index++;
+        setTimeout(showNextU11G2Question, 2200);
+    }
+
+    function endU11G2Game() {
+        if (u11G2OBtn) u11G2OBtn.classList.add('hidden');
+        if (u11G2XBtn) u11G2XBtn.classList.add('hidden');
+        if (startU11G2Btn) {
+            startU11G2Btn.classList.remove('hidden');
+            startU11G2Btn.textContent = '다시 도전하기 🚀';
+        }
+        if (u11G2Result) {
+            u11G2Result.classList.remove('hidden');
+            const scoreVal = document.getElementById('u11-g2-score');
+            const totalVal = document.getElementById('u11-g2-total');
+            if (scoreVal) scoreVal.textContent = u11G2Score;
+            if (totalVal) totalVal.textContent = u11G2QuestionsList.length;
+            
+            const msg = document.getElementById('u11-g2-msg');
+            if (msg) {
+                if (u11G2Score === 5) msg.textContent = "💯 퍼펙트! 파쇼다 사건과 아도와 전투를 꿰뚫은 제국주의 마스터! 🦁";
+                else if (u11G2Score >= 3) msg.textContent = "👍 훌륭해! 베를린 회의와 영·프 충돌을 정확히 이해하고 있어!";
+                else msg.textContent = "🦜 에티오피아의 아도와 승리를 다시 확인해볼까? 🚀";
+            }
+        }
+        addProgress('u11-game2');
+    }
+
+    // =========================================================================
+    // 36. Unit 11 Final Quiz
+    // =========================================================================
+    const u11FinalQuestions = [
+        {
+            q: "영국에서 산업 혁명이 가장 먼저 일어날 수 있었던 배경으로 옳지 않은 것은?",
+            options: [
+                "명예혁명 이후 정치적 안정을 누렸다.",
+                "인클로저 운동으로 일자리를 잃은 농민들이 도시 노동자가 되었다.",
+                "철과 석탄 등 지하자원이 매우 빈약하여 해외 수입에만 의존했다.",
+                "넓은 해외 식민지를 보유하여 풍부한 자본과 시장이 마련되었다."
+            ],
+            correctIndex: 2,
+            hint: "영국은 석탄과 철 등 필수 광물 자원이 매우 '풍부'했어!"
+        },
+        {
+            q: "산업 혁명기 제임스 와트의 역사적 업적으로 가장 알맞은 것은?",
+            options: [
+                "증기 기관을 개량하여 기계와 교통의 새로운 핵심 동력원을 제공하였다.",
+                "보통 선거와 비밀 투표를 요구하는 인민헌장을 기초하였다.",
+                "기계를 부수는 러다이트 운동을 비밀리에 조직하고 지휘하였다.",
+                "사회진화론을 제창하여 식민지 침략의 정당성을 강조하였다."
+            ],
+            correctIndex: 0,
+            hint: "증기 기관을 실용적으로 개량하여 공장제 기계 공업의 문을 열었단다!"
+        },
+        {
+            q: "19세기 후반 제국주의 열강이 아시아와 아프리카를 침략하며 내세운 왜곡된 정당화 논리는?",
+            options: [
+                "강자가 약자를 지배하는 것이 자연의 법칙이라는 '사회진화론'",
+                "노동자가 주인 되는 평등 사회를 건설하자는 '과학적 사회주의'",
+                "문서에 세금을 붙이지 말라는 '대표 없는 곳에 과세 없다'",
+                "군주가 신으로부터 권력을 받았다는 '왕권신수설'"
+            ],
+            correctIndex: 0,
+            hint: "다윈의 진화론(적자생존)을 인간 사회에 억지로 갖다 붙인 궤변이야!"
+        },
+        {
+            q: "아프리카 분할 과정에서 영국의 종단 정책과 프랑스의 횡단 정책이 정면으로 부딪친 사건은?",
+            options: [
+                "보스턴 차 사건",
+                "파쇼다 사건",
+                "세포이의 항쟁",
+                "워털루 전투"
+            ],
+            correctIndex: 1,
+            hint: "1898년 수단의 파쇼다에서 영국군과 프랑스군이 대치했어!"
+        },
+        {
+            q: "19세기 말 서양 열강의 거센 아프리카 침략 속에서도 아도와 전투에서 이탈리아군을 물리치고 독립을 지켜낸 나라는?",
+            options: [
+                "이집트",
+                "수단",
+                "에티오피아",
+                "남아프리카 연방"
+            ],
+            correctIndex: 2,
+            hint: "메넬리크 2세 황제가 이끈 아프리카의 자랑스러운 독립국이야!"
+        }
+    ];
+
+    const u11QuizIntroView = document.getElementById('u11-quiz-intro');
+    const u11QuizPlayView = document.getElementById('u11-quiz-play');
+    const u11QuizResultView = document.getElementById('u11-quiz-result');
+    const u11QuizQuestionText = document.getElementById('u11-quiz-question-text');
+    const u11QuizOptionsContainer = document.getElementById('u11-quiz-options');
+    const u11QuizCounterText = document.getElementById('u11-quiz-counter');
+    const u11FinalTotalScore = document.getElementById('u11-final-score');
+    const u11ResultMessage = document.getElementById('u11-result-message');
+    const startU11QuizBtn = document.getElementById('start-u11-quiz-btn');
+
+    if (startU11QuizBtn) {
+        startU11QuizBtn.addEventListener('click', () => {
+            state.u11CurrentQuizIndex = 0;
+            state.u11QuizScore = 0;
+            if (u11QuizIntroView) u11QuizIntroView.classList.add('hidden');
+            if (u11QuizResultView) u11QuizResultView.classList.add('hidden');
+            if (u11QuizPlayView) u11QuizPlayView.classList.remove('hidden');
+            showU11FinalQuizQuestion();
+            updateParrotSpeech("산업화와 제국주의 최종 퀴즈 시작! 5문제 모두 맞혀봐! ⚙️");
+        });
+    }
+
+    function showU11FinalQuizQuestion() {
+        if (!u11QuizPlayView) return;
+        if (state.u11CurrentQuizIndex < u11FinalQuestions.length) {
+            const qData = u11FinalQuestions[state.u11CurrentQuizIndex];
+            if (u11QuizCounterText) u11QuizCounterText.textContent = `${state.u11CurrentQuizIndex + 1} / ${u11FinalQuestions.length}`;
+            if (u11QuizQuestionText) u11QuizQuestionText.textContent = qData.q;
+            if (u11QuizOptionsContainer) u11QuizOptionsContainer.innerHTML = '';
+            
+            qData.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'quiz-opt-btn';
+                btn.textContent = opt;
+                btn.addEventListener('click', () => selectU11QuizOption(idx));
+                u11QuizOptionsContainer.appendChild(btn);
+            });
+        } else {
+            showU11QuizResults();
+        }
+    }
+
+    function selectU11QuizOption(userIndex) {
+        const qData = u11FinalQuestions[state.u11CurrentQuizIndex];
+        const isCorrect = userIndex === qData.correctIndex;
+        const optionButtons = u11QuizOptionsContainer.querySelectorAll('.quiz-opt-btn');
+        
+        optionButtons.forEach(btn => btn.disabled = true);
+
+        if (isCorrect) {
+            state.u11QuizScore++;
+            optionButtons[userIndex].classList.add('correct');
+            updateParrotSpeech("정답이야! 최고 최고! 증기 기관과 제국주의 역사를 꿰뚫었네! 🚂🎉");
+            setParrotAvatar('happy');
+        } else {
+            optionButtons[userIndex].classList.add('wrong');
+            optionButtons[qData.correctIndex].classList.add('correct');
+            updateParrotSpeech(`아쉽다! 모찌 꿀팁: <br> ${qData.hint}`);
+            setParrotAvatar('cheer');
+        }
+        state.u11CurrentQuizIndex++;
+        setTimeout(showU11FinalQuizQuestion, isCorrect ? 1800 : 4000);
+    }
+
+    function showU11QuizResults() {
+        if (u11QuizPlayView) u11QuizPlayView.classList.add('hidden');
+        if (u11QuizResultView) u11QuizResultView.classList.remove('hidden');
+        if (u11FinalTotalScore) u11FinalTotalScore.textContent = state.u11QuizScore;
+        
+        let messageText = "";
+        if (state.u11QuizScore === 5) {
+            messageText = "💯 완벽한 산업화와 제국주의 마스터 탄생! 모찌가 산업 톱니바퀴 둥지의 황금 열쇠를 드릴게요! 와트의 증기 기관, 자본주의의 명암, 아프리카 분할과 에티오피아 독립까지 완전 정복! ⚙️🥇";
+            setParrotAvatar('happy');
+        } else if (state.u11QuizScore >= 3) {
+            messageText = "👍 훌륭해! 산업 혁명의 배경, 러다이트 운동, 파쇼다 사건의 의미를 잘 알고 있네! 🚂✨";
+            setParrotAvatar('teacher');
+        } else {
+            messageText = "🦜 사회진화론과 아도와 전투가 헷갈렸니? 모찌와 함께 OX 퀴즈를 풀며 기초를 다져보자! 🚀";
+            setParrotAvatar('cheer');
+        }
+        if (u11ResultMessage) u11ResultMessage.innerHTML = messageText;
+        
+        const today = new Date();
+        const dateString = `${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()}일`;
+        document.querySelectorAll('.cert-date-span').forEach(el => el.textContent = dateString);
+
+        addProgress('u11-finalQuiz');
+    }
+
+    // =========================================================================
+    // 37. Unit 12 Game 1: 중국 근대화 운동 OX 퀴즈
+    // =========================================================================
+    const u12G1Questions = [
+        { q: "영국은 청나라와의 무역 적자를 메우기 위해 인도산 아편을 청에 밀수출하는 삼각 무역을 전개했다.", answer: true, hint: "맞아! 모직물 대신 아편을 팔아 청나라의 은을 대량으로 빼앗아 갔단다!" },
+        { q: "양무운동의 핵심 구호인 '중체서용'은 중국의 전통 유교 사상을 버리고 서양식 의회 제도를 도입하자는 뜻이었다.", answer: false, hint: "틀렸어! 중국의 유교 제도(체)는 지키고 서양의 기술과 무기(용)만 수용하자는 겉핥기 개혁이었어!" },
+        { q: "캉유웨이가 주도한 변법자강 운동은 일본의 메이지 유신을 본떠 입헌군주제 도입 등 정치 제도의 개혁을 추진했다.", answer: true, hint: "맞아! 법과 제도를 바꾸려 했으나 서태후 등 보수파의 반대로 100일 만에 실패했지!" },
+        { q: "의화단 운동은 '부청멸양(청을 돕고 서양을 멸하자)'을 외치며 철도와 전신을 파괴하고 교회를 공격했다.", answer: true, hint: "맞아! 서양 침략에 분노한 농민 무술 조직 의화단이 일으킨 반외세 운동이야!" },
+        { q: "쑨원의 삼민주의와 우창 봉기를 계기로 일어난 신해혁명은 아시아 최초의 민주 공화국인 중화민국을 탄생시켰다.", answer: true, hint: "맞아! 1911년 신해혁명으로 2천 년 황제 제도가 끝나고 공화국이 세워졌단다!" }
+    ];
+
+    const u12G1QuestionText = document.getElementById('u12-g1-question-text');
+    const u12G1Feedback = document.getElementById('u12-g1-feedback');
+    const u12G1Result = document.getElementById('u12-g1-result');
+    const startU12G1Btn = document.getElementById('start-u12-g1-btn');
+    const u12G1OBtn = document.getElementById('u12-g1-o-btn');
+    const u12G1XBtn = document.getElementById('u12-g1-x-btn');
+
+    let u12G1Index = 0;
+    let u12G1Score = 0;
+    let u12G1QuestionsList = [];
+
+    if (startU12G1Btn) startU12G1Btn.addEventListener('click', initU12G1Game);
+    if (u12G1OBtn) u12G1OBtn.addEventListener('click', () => checkU12G1Answer(true));
+    if (u12G1XBtn) u12G1XBtn.addEventListener('click', () => checkU12G1Answer(false));
+
+    function initU12G1Game() {
+        u12G1Index = 0;
+        u12G1Score = 0;
+        u12G1QuestionsList = [...u12G1Questions].sort(() => Math.random() - 0.5);
+        if (u12G1Result) u12G1Result.classList.add('hidden');
+        if (u12G1Feedback) u12G1Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (startU12G1Btn) startU12G1Btn.classList.add('hidden');
+        if (u12G1OBtn) u12G1OBtn.classList.remove('hidden');
+        if (u12G1XBtn) u12G1XBtn.classList.remove('hidden');
+        showNextU12G1Question();
+        updateParrotSpeech("중국 근대화 OX 퀴즈 시작! 🇨🇳");
+    }
+
+    function showNextU12G1Question() {
+        if (u12G1Index >= u12G1QuestionsList.length) {
+            endU12G1Game();
+            return;
+        }
+        const q = u12G1QuestionsList[u12G1Index];
+        if (u12G1QuestionText) {
+            u12G1QuestionText.innerHTML = `<strong>Q${u12G1Index+1}.</strong> ${q.q}`;
+        }
+        if (u12G1Feedback) {
+            u12G1Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+            u12G1Feedback.textContent = '';
+        }
+        if (u12G1OBtn) u12G1OBtn.disabled = false;
+        if (u12G1XBtn) u12G1XBtn.disabled = false;
+    }
+
+    function checkU12G1Answer(userAns) {
+        if (u12G1OBtn) u12G1OBtn.disabled = true;
+        if (u12G1XBtn) u12G1XBtn.disabled = true;
+        const q = u12G1QuestionsList[u12G1Index];
+        const isCorrect = (userAns === q.answer);
+
+        if (isCorrect) {
+            u12G1Score++;
+            if (u12G1Feedback) {
+                u12G1Feedback.textContent = "정답이야! 딩동댕! 🇨🇳✨";
+                u12G1Feedback.className = "ox-feedback show feedback-correct";
+            }
+            updateParrotSpeech("정답! 아편 전쟁부터 신해혁명까지 중국의 격변을 완벽 이해했네! 🎇");
+            setParrotAvatar('happy');
+        } else {
+            if (u12G1Feedback) {
+                u12G1Feedback.textContent = `땡! 아쉽다! ${q.hint}`;
+                u12G1Feedback.className = "ox-feedback show feedback-wrong";
+            }
+            updateParrotSpeech(`아쉽다! 모찌 꿀팁: <br> ${q.hint}`);
+            setParrotAvatar('cheer');
+        }
+        u12G1Index++;
+        setTimeout(showNextU12G1Question, 2200);
+    }
+
+    function endU12G1Game() {
+        if (u12G1OBtn) u12G1OBtn.classList.add('hidden');
+        if (u12G1XBtn) u12G1XBtn.classList.add('hidden');
+        if (startU12G1Btn) {
+            startU12G1Btn.classList.remove('hidden');
+            startU12G1Btn.textContent = '다시 도전하기 🚀';
+        }
+        if (u12G1Result) {
+            u12G1Result.classList.remove('hidden');
+            const scoreVal = document.getElementById('u12-g1-score');
+            const totalVal = document.getElementById('u12-g1-total');
+            if (scoreVal) scoreVal.textContent = u12G1Score;
+            if (totalVal) totalVal.textContent = u12G1QuestionsList.length;
+            
+            const msg = document.getElementById('u12-g1-msg');
+            if (msg) {
+                if (u12G1Score === 5) msg.textContent = "💯 퍼펙트! 쑨원도 깜짝 놀랄 중국 근대사 박사! 🇨🇳";
+                else if (u12G1Score >= 3) msg.textContent = "👍 훌륭해! 중체서용과 삼민주의 구호를 잘 구분하고 있어!";
+                else msg.textContent = "🦜 양무운동과 변법자강 운동의 차이를 다시 살펴볼까? 🚀";
+            }
+        }
+        addProgress('u12-game1');
+    }
+
+    // =========================================================================
+    // 38. Unit 12 Game 2: 일본의 근대화와 팽창 OX 퀴즈
+    // =========================================================================
+    const u12G2Questions = [
+        { q: "미국의 페리 제독은 검은 군함(흑선)을 이끌고 나타나 무력시위를 벌이며 일본의 개항을 요구했다.", answer: true, hint: "맞아! 1853년 도쿄만에 나타난 흑선에 놀란 막부가 문을 열었단다!" },
+        { q: "메이지 유신의 '폐번치현'은 번을 없애고 현을 설치하여 전국의 권력을 중앙 정부에 집중시킨 개혁이다.", answer: true, hint: "맞아! 지방 영주(다이묘)의 지배권을 없애고 관리를 파견했지!" },
+        { q: "대일본 제국 헌법(1889)은 국민 주권주의를 바탕으로 천황의 모든 권력을 완전히 없앴다.", answer: false, hint: "틀렸어! 독일 헌법을 본떠 '천황에게 통수권 등 절대 권력'을 몰아준 헌법이야!" },
+        { q: "이와쿠라 사절단은 서양의 발전된 문물을 직접 시찰하고 불평등 조약 개정을 타진하기 위해 파견되었다.", answer: true, hint: "맞아! 미국과 유럽을 2년 가까이 시찰하며 근대화의 필요성을 절감했어!" },
+        { q: "일본은 청·일 전쟁과 러·일 전쟁에서 승리하며 제국주의 침략을 본격화하여 1910년 대한제국을 강제 병합했다.", answer: true, hint: "맞아! 아시아의 침략자로 돌변하여 우리 민족에게 크나큰 고통을 안겼단다!" }
+    ];
+
+    const u12G2QuestionText = document.getElementById('u12-g2-question-text');
+    const u12G2Feedback = document.getElementById('u12-g2-feedback');
+    const u12G2Result = document.getElementById('u12-g2-result');
+    const startU12G2Btn = document.getElementById('start-u12-g2-btn');
+    const u12G2OBtn = document.getElementById('u12-g2-o-btn');
+    const u12G2XBtn = document.getElementById('u12-g2-x-btn');
+
+    let u12G2Index = 0;
+    let u12G2Score = 0;
+    let u12G2QuestionsList = [];
+
+    if (startU12G2Btn) startU12G2Btn.addEventListener('click', initU12G2Game);
+    if (u12G2OBtn) u12G2OBtn.addEventListener('click', () => checkU12G2Answer(true));
+    if (u12G2XBtn) u12G2XBtn.addEventListener('click', () => checkU12G2Answer(false));
+
+    function initU12G2Game() {
+        u12G2Index = 0;
+        u12G2Score = 0;
+        u12G2QuestionsList = [...u12G2Questions].sort(() => Math.random() - 0.5);
+        if (u12G2Result) u12G2Result.classList.add('hidden');
+        if (u12G2Feedback) u12G2Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (startU12G2Btn) startU12G2Btn.classList.add('hidden');
+        if (u12G2OBtn) u12G2OBtn.classList.remove('hidden');
+        if (u12G2XBtn) u12G2XBtn.classList.remove('hidden');
+        showNextU12G2Question();
+        updateParrotSpeech("일본 근대화 OX 퀴즈 시작! 🇯🇵");
+    }
+
+    function showNextU12G2Question() {
+        if (u12G2Index >= u12G2QuestionsList.length) {
+            endU12G2Game();
+            return;
+        }
+        const q = u12G2QuestionsList[u12G2Index];
+        if (u12G2QuestionText) {
+            u12G2QuestionText.innerHTML = `<strong>Q${u12G2Index+1}.</strong> ${q.q}`;
+        }
+        if (u12G2Feedback) {
+            u12G2Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+            u12G2Feedback.textContent = '';
+        }
+        if (u12G2OBtn) u12G2OBtn.disabled = false;
+        if (u12G2XBtn) u12G2XBtn.disabled = false;
+    }
+
+    function checkU12G2Answer(userAns) {
+        if (u12G2OBtn) u12G2OBtn.disabled = true;
+        if (u12G2XBtn) u12G2XBtn.disabled = true;
+        const q = u12G2QuestionsList[u12G2Index];
+        const isCorrect = (userAns === q.answer);
+
+        if (isCorrect) {
+            u12G2Score++;
+            if (u12G2Feedback) {
+                u12G2Feedback.textContent = "정답이야! 딩동댕! 🇯🇵✨";
+                u12G2Feedback.className = "ox-feedback show feedback-correct";
+            }
+            updateParrotSpeech("정답! 메이지 유신과 제국주의 침략 역사를 확실하게 짚어냈어! 🌸");
+            setParrotAvatar('happy');
+        } else {
+            if (u12G2Feedback) {
+                u12G2Feedback.textContent = `땡! 아쉽다! ${q.hint}`;
+                u12G2Feedback.className = "ox-feedback show feedback-wrong";
+            }
+            updateParrotSpeech(`아쉽다! 모찌 꿀팁: <br> ${q.hint}`);
+            setParrotAvatar('cheer');
+        }
+        u12G2Index++;
+        setTimeout(showNextU12G2Question, 2200);
+    }
+
+    function endU12G2Game() {
+        if (u12G2OBtn) u12G2OBtn.classList.add('hidden');
+        if (u12G2XBtn) u12G2XBtn.classList.add('hidden');
+        if (startU12G2Btn) {
+            startU12G2Btn.classList.remove('hidden');
+            startU12G2Btn.textContent = '다시 도전하기 🚀';
+        }
+        if (u12G2Result) {
+            u12G2Result.classList.remove('hidden');
+            const scoreVal = document.getElementById('u12-g2-score');
+            const totalVal = document.getElementById('u12-g2-total');
+            if (scoreVal) scoreVal.textContent = u12G2Score;
+            if (totalVal) totalVal.textContent = u12G2QuestionsList.length;
+            
+            const msg = document.getElementById('u12-g2-msg');
+            if (msg) {
+                if (u12G2Score === 5) msg.textContent = "💯 퍼펙트! 메이지 유신과 일본 제국주의 팽창 완벽 정복! 🇯🇵";
+                else if (u12G2Score >= 3) msg.textContent = "👍 훌륭해! 폐번치현과 헌법 특징을 잘 알고 있구나!";
+                else msg.textContent = "🦜 대일본 제국 헌법의 천황 권한 카드를 다시 확인해볼까? 🚀";
+            }
+        }
+        addProgress('u12-game2');
+    }
+
+    // =========================================================================
+    // 39. Unit 12 Game 3: 인도와 동남아시아 민족 운동 OX 퀴즈
+    // =========================================================================
+    const u12G3Questions = [
+        { q: "세포이의 항쟁은 영국이 지급한 탄약통에 소와 돼지기름이 칠해졌다는 종교적 모욕이 기폭제가 되었다.", answer: true, hint: "맞아! 힌두교와 이슬람교의 금기를 건드려 전 민족적 항쟁으로 번졌지!" },
+        { q: "영국은 세포이의 항쟁을 진압한 후 무굴 제국을 멸망시키고 영국 여왕이 황제를 겸하는 인도 제국을 세웠다.", answer: true, hint: "맞아! 1877년 빅토리아 여왕이 인도 황제로 즉위하여 영국 직할령이 되었어!" },
+        { q: "인도의 캘커타 대회 4대 강령에는 스와라지(자치)와 스와데시(국산품 애용)가 포함되었다.", answer: true, hint: "맞아! 스와라지, 스와데시, 영국 상품 불매(보이콧), 민족 교육이 4대 강령이야!" },
+        { q: "베트남의 판보이쩌우는 청년들을 프랑스로 보내 프랑스 문화를 찬양하게 하는 동유 운동을 이끌었다.", answer: false, hint: "틀렸어! 근대화에 성공한 '일본'으로 유학을 보내 인재를 기르려 한 '동유(東遊) 운동'이야!" },
+        { q: "타이(태국)는 라마 5세의 개혁과 영국·프랑스 완충 지대 외교로 동남아시아에서 유일하게 식민지가 되지 않았다.", answer: true, hint: "맞아! 유일하게 독립을 지켜낸 자랑스러운 역사란다!" }
+    ];
+
+    const u12G3QuestionText = document.getElementById('u12-g3-question-text');
+    const u12G3Feedback = document.getElementById('u12-g3-feedback');
+    const u12G3Result = document.getElementById('u12-g3-result');
+    const startU12G3Btn = document.getElementById('start-u12-g3-btn');
+    const u12G3OBtn = document.getElementById('u12-g3-o-btn');
+    const u12G3XBtn = document.getElementById('u12-g3-x-btn');
+
+    let u12G3Index = 0;
+    let u12G3Score = 0;
+    let u12G3QuestionsList = [];
+
+    if (startU12G3Btn) startU12G3Btn.addEventListener('click', initU12G3Game);
+    if (u12G3OBtn) u12G3OBtn.addEventListener('click', () => checkU12G3Answer(true));
+    if (u12G3XBtn) u12G3XBtn.addEventListener('click', () => checkU12G3Answer(false));
+
+    function initU12G3Game() {
+        u12G3Index = 0;
+        u12G3Score = 0;
+        u12G3QuestionsList = [...u12G3Questions].sort(() => Math.random() - 0.5);
+        if (u12G3Result) u12G3Result.classList.add('hidden');
+        if (u12G3Feedback) u12G3Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (startU12G3Btn) startU12G3Btn.classList.add('hidden');
+        if (u12G3OBtn) u12G3OBtn.classList.remove('hidden');
+        if (u12G3XBtn) u12G3XBtn.classList.remove('hidden');
+        showNextU12G3Question();
+        updateParrotSpeech("인도·동남아 민족 운동 OX 퀴즈 시작! 🇮🇳");
+    }
+
+    function showNextU12G3Question() {
+        if (u12G3Index >= u12G3QuestionsList.length) {
+            endU12G3Game();
+            return;
+        }
+        const q = u12G3QuestionsList[u12G3Index];
+        if (u12G3QuestionText) {
+            u12G3QuestionText.innerHTML = `<strong>Q${u12G3Index+1}.</strong> ${q.q}`;
+        }
+        if (u12G3Feedback) {
+            u12G3Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+            u12G3Feedback.textContent = '';
+        }
+        if (u12G3OBtn) u12G3OBtn.disabled = false;
+        if (u12G3XBtn) u12G3XBtn.disabled = false;
+    }
+
+    function checkU12G3Answer(userAns) {
+        if (u12G3OBtn) u12G3OBtn.disabled = true;
+        if (u12G3XBtn) u12G3XBtn.disabled = true;
+        const q = u12G3QuestionsList[u12G3Index];
+        const isCorrect = (userAns === q.answer);
+
+        if (isCorrect) {
+            u12G3Score++;
+            if (u12G3Feedback) {
+                u12G3Feedback.textContent = "정답이야! 딩동댕! 🇮🇳✨";
+                u12G3Feedback.className = "ox-feedback show feedback-correct";
+            }
+            updateParrotSpeech("정답! 스와라지와 타이의 독립 유지 지혜를 정확히 알고 있네! 🐘");
+            setParrotAvatar('happy');
+        } else {
+            if (u12G3Feedback) {
+                u12G3Feedback.textContent = `땡! 아쉽다! ${q.hint}`;
+                u12G3Feedback.className = "ox-feedback show feedback-wrong";
+            }
+            updateParrotSpeech(`아쉽다! 모찌 꿀팁: <br> ${q.hint}`);
+            setParrotAvatar('cheer');
+        }
+        u12G3Index++;
+        setTimeout(showNextU12G3Question, 2200);
+    }
+
+    function endU12G3Game() {
+        if (u12G3OBtn) u12G3OBtn.classList.add('hidden');
+        if (u12G3XBtn) u12G3XBtn.classList.add('hidden');
+        if (startU12G3Btn) {
+            startU12G3Btn.classList.remove('hidden');
+            startU12G3Btn.textContent = '다시 도전하기 🚀';
+        }
+        if (u12G3Result) {
+            u12G3Result.classList.remove('hidden');
+            const scoreVal = document.getElementById('u12-g3-score');
+            const totalVal = document.getElementById('u12-g3-total');
+            if (scoreVal) scoreVal.textContent = u12G3Score;
+            if (totalVal) totalVal.textContent = u12G3QuestionsList.length;
+            
+            const msg = document.getElementById('u12-g3-msg');
+            if (msg) {
+                if (u12G3Score === 5) msg.textContent = "💯 퍼펙트! 세포이 항쟁부터 동남아 민족 운동까지 완벽 정복! 🇮🇳";
+                else if (u12G3Score >= 3) msg.textContent = "👍 훌륭해! 캘커타 강령과 타이 독립의 의미를 잘 알고 있어!";
+                else msg.textContent = "🦜 베트남 판보이쩌우의 동유 운동 카드를 다시 읽어보자! 🚀";
+            }
+        }
+        addProgress('u12-game3');
+    }
+
+    // =========================================================================
+    // 40. Unit 12 Game 4: 서아시아와 아프리카 저항 운동 OX 퀴즈
+    // =========================================================================
+    const u12G4Questions = [
+        { q: "오스만 제국의 청년 튀르크당은 무장봉기를 일으켜 술탄을 굴복시키고 헌법과 의회를 부활시켰다.", answer: true, hint: "맞아! 젊은 장교들이 주도하여 헌정 혁명을 성공시켰단다!" },
+        { q: "아라비아 반도의 와하브 운동은 서양 문화를 맹목적으로 받아들이고 이슬람 규율을 폐지하자는 운동이었다.", answer: false, hint: "틀렸어! 타락을 배격하고 '초기 순수한 이슬람과 쿠란의 가르침으로 돌아가자'는 운동이었어!" },
+        { q: "이란의 담배 보이콧 운동은 영국인에게 넘어간 담배 전매권에 맞서 전 국민이 불매 운동을 벌여 취소시켰다.", answer: true, hint: "맞아! 성직자와 상인들이 똘똘 뭉쳐 담배를 피우지 않음으로써 이권을 되찾았지!" },
+        { q: "이집트의 아라비 파샤는 영국의 내정 간섭에 맞서 '이집트인을 위한 이집트'를 외치며 혁명을 일으켰다.", answer: true, hint: "맞아! 군인과 민중이 단결하여 반영 운동을 전개했단다!" },
+        { q: "남아프리카의 줄루족과 수단의 마흐디는 서양 군대에 저항 없이 즉시 항복하고 식민 지배를 환영했다.", answer: false, hint: "틀렸어! 최신 총포로 무장한 영국군에 맞서 목숨을 건 혈전을 치렀단다!" }
+    ];
+
+    const u12G4QuestionText = document.getElementById('u12-g4-question-text');
+    const u12G4Feedback = document.getElementById('u12-g4-feedback');
+    const u12G4Result = document.getElementById('u12-g4-result');
+    const startU12G4Btn = document.getElementById('start-u12-g4-btn');
+    const u12G4OBtn = document.getElementById('u12-g4-o-btn');
+    const u12G4XBtn = document.getElementById('u12-g4-x-btn');
+
+    let u12G4Index = 0;
+    let u12G4Score = 0;
+    let u12G4QuestionsList = [];
+
+    if (startU12G4Btn) startU12G4Btn.addEventListener('click', initU12G4Game);
+    if (u12G4OBtn) u12G4OBtn.addEventListener('click', () => checkU12G4Answer(true));
+    if (u12G4XBtn) u12G4XBtn.addEventListener('click', () => checkU12G4Answer(false));
+
+    function initU12G4Game() {
+        u12G4Index = 0;
+        u12G4Score = 0;
+        u12G4QuestionsList = [...u12G4Questions].sort(() => Math.random() - 0.5);
+        if (u12G4Result) u12G4Result.classList.add('hidden');
+        if (u12G4Feedback) u12G4Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+        if (startU12G4Btn) startU12G4Btn.classList.add('hidden');
+        if (u12G4OBtn) u12G4OBtn.classList.remove('hidden');
+        if (u12G4XBtn) u12G4XBtn.classList.remove('hidden');
+        showNextU12G4Question();
+        updateParrotSpeech("서아시아·아프리카 저항 OX 퀴즈 시작! 🌍");
+    }
+
+    function showNextU12G4Question() {
+        if (u12G4Index >= u12G4QuestionsList.length) {
+            endU12G4Game();
+            return;
+        }
+        const q = u12G4QuestionsList[u12G4Index];
+        if (u12G4QuestionText) {
+            u12G4QuestionText.innerHTML = `<strong>Q${u12G4Index+1}.</strong> ${q.q}`;
+        }
+        if (u12G4Feedback) {
+            u12G4Feedback.classList.remove('show', 'feedback-correct', 'feedback-wrong');
+            u12G4Feedback.textContent = '';
+        }
+        if (u12G4OBtn) u12G4OBtn.disabled = false;
+        if (u12G4XBtn) u12G4XBtn.disabled = false;
+    }
+
+    function checkU12G4Answer(userAns) {
+        if (u12G4OBtn) u12G4OBtn.disabled = true;
+        if (u12G4XBtn) u12G4XBtn.disabled = true;
+        const q = u12G4QuestionsList[u12G4Index];
+        const isCorrect = (userAns === q.answer);
+
+        if (isCorrect) {
+            u12G4Score++;
+            if (u12G4Feedback) {
+                u12G4Feedback.textContent = "정답이야! 딩동댕! 🌍✨";
+                u12G4Feedback.className = "ox-feedback show feedback-correct";
+            }
+            updateParrotSpeech("정답! 탄지마트와 담배 보이콧, 아프리카의 저항 역사를 확실히 꿰뚫었어! ✊");
+            setParrotAvatar('happy');
+        } else {
+            if (u12G4Feedback) {
+                u12G4Feedback.textContent = `땡! 아쉽다! ${q.hint}`;
+                u12G4Feedback.className = "ox-feedback show feedback-wrong";
+            }
+            updateParrotSpeech(`아쉽다! 모찌 꿀팁: <br> ${q.hint}`);
+            setParrotAvatar('cheer');
+        }
+        u12G4Index++;
+        setTimeout(showNextU12G4Question, 2200);
+    }
+
+    function endU12G4Game() {
+        if (u12G4OBtn) u12G4OBtn.classList.add('hidden');
+        if (u12G4XBtn) u12G4XBtn.classList.add('hidden');
+        if (startU12G4Btn) {
+            startU12G4Btn.classList.remove('hidden');
+            startU12G4Btn.textContent = '다시 도전하기 🚀';
+        }
+        if (u12G4Result) {
+            u12G4Result.classList.remove('hidden');
+            const scoreVal = document.getElementById('u12-g4-score');
+            const totalVal = document.getElementById('u12-g4-total');
+            if (scoreVal) scoreVal.textContent = u12G4Score;
+            if (totalVal) totalVal.textContent = u12G4QuestionsList.length;
+            
+            const msg = document.getElementById('u12-g4-msg');
+            if (msg) {
+                if (u12G4Score === 5) msg.textContent = "💯 퍼펙트! 서아시아와 아프리카의 당당한 독립 투쟁 마스터! 🌍";
+                else if (u12G4Score >= 3) msg.textContent = "👍 훌륭해! 청년 튀르크당과 담배 보이콧 역사를 잘 기억하고 있네!";
+                else msg.textContent = "🦜 와하브 운동과 아라비 파샤 혁명을 다시 복습해볼까? 🚀";
+            }
+        }
+        addProgress('u12-game4');
+    }
+
+    // =========================================================================
+    // 41. Unit 12 Final Quiz
+    // =========================================================================
+    const u12FinalQuestions = [
+        {
+            q: "중국의 근대화 운동과 그 핵심 사상 및 구호의 연결이 올바른 것은?",
+            options: [
+                "태평천국 운동 - 중체서용",
+                "양무운동 - 부청멸양",
+                "의화단 운동 - 멸만흥한",
+                "신해혁명 - 삼민주의 (민족·민권·민생)"
+            ],
+            correctIndex: 3,
+            hint: "쑨원의 삼민주의를 깃발로 아시아 최초의 민주 공화국인 중화민국이 탄생했어!"
+        },
+        {
+            q: "일본 메이지 유신(1868) 시기에 추진된 근대적 개혁 내용으로 가장 적절하지 않은 것은?",
+            options: [
+                "지방 번을 폐지하고 중앙에서 관리를 파견한 '폐번치현'을 단행하였다.",
+                "신분제를 철폐하고 전 국민을 대상으로 근대식 '징병제'를 실시하였다.",
+                "에도 막부의 쇼군에게 영구적으로 국정 통치권을 위임하였다.",
+                "서양 문물을 시찰하고 조약 개정을 타진하기 위해 이와쿠라 사절단을 파견하였다."
+            ],
+            correctIndex: 2,
+            hint: "에도 막부는 '타도'되었고 정권은 천황 중심의 근대 정부로 넘어갔단다!"
+        },
+        {
+            q: "1906년 인도의 캘커타 대회에서 인도 국민 회의가 채택한 4대 강령에 해당하지 않는 것은?",
+            options: [
+                "스와라지 (자치 획득)",
+                "스와데시 (국산품 애용)",
+                "영국 상품 불매 (보이콧)",
+                "탄지마트 (은혜 개혁)"
+            ],
+            correctIndex: 3,
+            hint: "'탄지마트'는 오스만 제국의 서구식 근대화 개혁 이름이야!"
+        },
+        {
+            q: "동남아시아에서 영국의 침략을 받은 미얀마와 프랑스의 침략을 받은 인도차이나 사이에서 유일하게 식민지가 되지 않고 독립을 유지한 나라는?",
+            options: [
+                "베트남",
+                "타이 (태국)",
+                "필리핀",
+                "인도네시아"
+            ],
+            correctIndex: 1,
+            hint: "국왕 라마 5세의 개혁과 완충 지대 외교로 독립을 지켜낸 나라야!"
+        },
+        {
+            q: "19세기 말~20세기 초 서아시아 및 아프리카의 민족 운동에 대한 설명으로 옳은 것은?",
+            options: [
+                "청년 튀르크당은 오스만 제국의 헌법을 영구 폐지하고 전제 군주제를 세웠다.",
+                "이란의 담배 보이콧 운동은 영국의 담배 독점에 굴복하여 실패로 끝났다.",
+                "이집트의 아라비 파샤는 '이집트인을 위한 이집트'를 외치며 반영 혁명을 이끌었다.",
+                "에티오피아는 아도와 전투에서 이탈리아군에 대패하여 전 국토가 식민지가 되었다."
+            ],
+            correctIndex: 2,
+            hint: "아라비 파샤가 외세의 간섭에 맞서 이집트인의 자립을 외쳤단다!"
+        }
+    ];
+
+    const u12QuizIntroView = document.getElementById('u12-quiz-intro');
+    const u12QuizPlayView = document.getElementById('u12-quiz-play');
+    const u12QuizResultView = document.getElementById('u12-quiz-result');
+    const u12QuizQuestionText = document.getElementById('u12-quiz-question-text');
+    const u12QuizOptionsContainer = document.getElementById('u12-quiz-options');
+    const u12QuizCounterText = document.getElementById('u12-quiz-counter');
+    const u12FinalTotalScore = document.getElementById('u12-final-score');
+    const u12ResultMessage = document.getElementById('u12-result-message');
+    const startU12QuizBtn = document.getElementById('start-u12-quiz-btn');
+
+    if (startU12QuizBtn) {
+        startU12QuizBtn.addEventListener('click', () => {
+            state.u12CurrentQuizIndex = 0;
+            state.u12QuizScore = 0;
+            if (u12QuizIntroView) u12QuizIntroView.classList.add('hidden');
+            if (u12QuizResultView) u12QuizResultView.classList.add('hidden');
+            if (u12QuizPlayView) u12QuizPlayView.classList.remove('hidden');
+            showU12FinalQuizQuestion();
+            updateParrotSpeech("아시아 국민 국가 건설 최종 퀴즈 시작! 5문제 모두 맞혀봐! 🌏");
+        });
+    }
+
+    function showU12FinalQuizQuestion() {
+        if (!u12QuizPlayView) return;
+        if (state.u12CurrentQuizIndex < u12FinalQuestions.length) {
+            const qData = u12FinalQuestions[state.u12CurrentQuizIndex];
+            if (u12QuizCounterText) u12QuizCounterText.textContent = `${state.u12CurrentQuizIndex + 1} / ${u12FinalQuestions.length}`;
+            if (u12QuizQuestionText) u12QuizQuestionText.textContent = qData.q;
+            if (u12QuizOptionsContainer) u12QuizOptionsContainer.innerHTML = '';
+            
+            qData.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'quiz-opt-btn';
+                btn.textContent = opt;
+                btn.addEventListener('click', () => selectU12QuizOption(idx));
+                u12QuizOptionsContainer.appendChild(btn);
+            });
+        } else {
+            showU12QuizResults();
+        }
+    }
+
+    function selectU12QuizOption(userIndex) {
+        const qData = u12FinalQuestions[state.u12CurrentQuizIndex];
+        const isCorrect = userIndex === qData.correctIndex;
+        const optionButtons = u12QuizOptionsContainer.querySelectorAll('.quiz-opt-btn');
+        
+        optionButtons.forEach(btn => btn.disabled = true);
+
+        if (isCorrect) {
+            state.u12QuizScore++;
+            optionButtons[userIndex].classList.add('correct');
+            updateParrotSpeech("정답이야! 최고 최고! 아시아와 아프리카의 자주독립 투쟁을 정복했네! 🌏🎉");
+            setParrotAvatar('happy');
+        } else {
+            optionButtons[userIndex].classList.add('wrong');
+            optionButtons[qData.correctIndex].classList.add('correct');
+            updateParrotSpeech(`아쉽다! 모찌 꿀팁: <br> ${qData.hint}`);
+            setParrotAvatar('cheer');
+        }
+        state.u12CurrentQuizIndex++;
+        setTimeout(showU12FinalQuizQuestion, isCorrect ? 1800 : 4000);
+    }
+
+    function showU12QuizResults() {
+        if (u12QuizPlayView) u12QuizPlayView.classList.add('hidden');
+        if (u12QuizResultView) u12QuizResultView.classList.remove('hidden');
+        if (u12FinalTotalScore) u12FinalTotalScore.textContent = state.u12QuizScore;
+        
+        let messageText = "";
+        if (state.u12QuizScore === 5) {
+            messageText = "💯 완벽한 아시아·아프리카 국민 국가 마스터 탄생! 모찌가 평화의 지구 둥지 황금 열쇠를 드릴게요! 신해혁명부터 메이지 유신, 인도 캘커타 강령, 오스만 탄지마트와 에티오피아 승리까지 완전 마스터! 🌏🥇";
+            setParrotAvatar('happy');
+        } else if (state.u12QuizScore >= 3) {
+            messageText = "👍 훌륭해! 삼민주의, 메이지 유신, 스와라지 운동의 핵심을 잘 이해하고 있어! 🌏✨";
+            setParrotAvatar('teacher');
+        } else {
+            messageText = "🦜 동남아시아와 서아시아 인물들이 헷갈렸니? 모찌의 OX 퀴즈를 풀며 기초를 다져보자! 🚀";
+            setParrotAvatar('cheer');
+        }
+        if (u12ResultMessage) u12ResultMessage.innerHTML = messageText;
+        
+        const today = new Date();
+        const dateString = `${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()}일`;
+        document.querySelectorAll('.cert-date-span').forEach(el => el.textContent = dateString);
+
+        addProgress('u12-finalQuiz');
+    }
+
     // Initialize progress bar at load
     updateProgressBar();
 });

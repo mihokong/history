@@ -1459,7 +1459,7 @@ body {
 /* Grand Unit Selector & Coming Soon Styles   */
 /* ========================================== */
 .grand-unit-selector-wrap {
-    max-width: 800px;
+    max-width: 1060px;
     margin: 0 auto 15px auto;
     display: flex;
     justify-content: center;
@@ -1467,6 +1467,7 @@ body {
 
 .grand-unit-selector {
     display: flex;
+    flex-wrap: wrap;
     background: var(--bg-card);
     padding: 6px;
     border-radius: 16px;
@@ -1474,6 +1475,19 @@ body {
     box-shadow: 0 4px 10px var(--shadow-color);
     gap: 6px;
     width: 100%;
+}
+
+@media (max-width: 900px) {
+    .grand-unit-selector {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 520px) {
+    .grand-unit-selector {
+        grid-template-columns: 1fr;
+    }
 }
 
 .grand-unit-btn {
